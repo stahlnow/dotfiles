@@ -1,0 +1,22 @@
+# Host that runs Transmission daemon
+# set srv.url otherhost:123
+set srv.url merkur
+
+# Poll every 10 seconds
+set tui.poll 10
+
+# Default columns in torrent lists
+set columns.torrents name ratio rate-up rate-down
+set tui.poll 10
+
+# Default columns in torrent lists
+set columns.torrents name ratio rate-up rate-down 
+
+# Open a few tabs
+tab ls all --sort !time-added --columns name,progress,ratio,size
+tab ls active --sort !progress,path,!rate
+tab ls paused --sort !progress --columns name,progress,ratio,size
+tab ls isolated --sort tracker --columns name,path
+
+tab --focus 1
+

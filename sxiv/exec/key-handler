@@ -1,0 +1,22 @@
+#!/bin/sh
+while read file
+do
+	case "$1" in
+	"C-d")
+		trash-put "$file" ;;
+	"C-r")
+		convert -rotate 90 "$file" "$file" ;;
+    "C-f")
+		# copy file name to clipboard
+        echo -n "$file" | xclip -selection clipboard ;;
+	"C-c")
+		# copy image to clipboard
+		TYPE=$(file -b --mime-type "$file")
+		xclip -selection clipboard -t "$TYPE" < "$file" ;;
+	"C-w")
+		nitrogen --save --set-zoom-fill "$file" ;;
+	"C-e")
+		gimp "$file" ;;
+	esac
+done
+

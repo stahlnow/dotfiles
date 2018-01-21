@@ -1,0 +1,183 @@
+
+! colors
+
+! http://ciembor.github.com/4bit
+*background: #0d1926
+*foreground: #d9e6f2
+*color0:    #000000
+*color1:    #b87a7a
+*color2:    #7ab87a
+*color3:    #b8b87a
+*color4:    #7a7ab8
+*color5:    #b87ab8
+*color6:    #7ab8b8
+*color7:    #d9d9d9
+*color8:    #262626
+*color9:    #dbbdbd
+*color10:    #bddbbd
+*color11:    #dbdbbd
+*color12:    #bdbddb
+*color13:    #dbbddb
+*color14:    #bddbdb
+*color15:    #ffffff
+
+! special
+!*.foreground:   #4a4543
+!*.background:   #ffffff
+!*.cursorColor:  #4a4543
+
+! black
+!*.color0:       #090300
+!*.color8:       #5c5855
+
+! red
+!*.color1:       #db2d20
+!*.color9:       #db2d20
+
+! green
+!*.color2:       #01a252
+!*.color10:      #01a252
+
+! yellow
+!*.color3:       #d800e4
+!*.color11:      #b701c1
+
+! blue
+!*.color4:       #01a0e4
+!*.color12:      #01a0e4
+
+! magenta
+!*.color5:       #a16a94
+!*.color13:      #a16a94
+
+! cyan
+!*.color6:       #b5e4f4
+!*.color14:      #b5e4f4
+
+! white
+!*.color7:       #a5a2a2
+!*.color15:      #000000
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! URXVT settings
+
+
+URxvt*iconFile: /usr/share/icons/Adwaita/512x512/apps/utilities-terminal.png
+
+! Enable Ctrl+Shift bindings
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
+*scrollBar: false
+*saveLines: 10000
+
+
+
+URxvt*loginShell:       true
+URxvt*inheritPixmap:    false
+URxvt*intensityStyles:  true
+URxvt*urgentOnBell:     false
+URxvt*skipBuiltinGlyphs:    true
+
+! Font
+URxvt*font: xft:xos4 Terminus:size=8,\
+			xft:Code2000:antialias=false
+!*font:  xft:xos4 Terminus:size=8,\
+!        xft:Code2000:antialias=false
+! -xos4-terminus-medium-r-normal--14-140-72-72-c-80-iso10646-1,\
+! -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
+
+! do not scroll with output
+URxvt*scrollTtyOutput: false
+
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+
+! Disable the scrollback buffer for the secondary screen
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
+! add better mouse wheel support from rxvt-unicode-better-wheel-scrolling
+URxvt.secondaryWheel: 1
+
+! Fix Home End buttons
+URxvt.keysym.Home: \033[1~
+URxvt.keysym.End: \033[4~
+URxvt.keysym.KP_Home: \033[1~
+URxvt.keysym.KP_End:  \033[4~
+
+! Perl extensions
+! URxvt.perl-ext:
+URxvt.perl-ext-common: default,matcher,fullscreen,resize-font,selection-to-clipboard,clipboard
+
+! Clipboard
+! URxvt.keysym.C-c:   perl:clipboard:copy
+URxvt.keysym.C-v:   perl:clipboard:paste
+
+! Tab(bedex)
+!URxvt.tabbed.autohide: true
+!URxvt.tabbed.reopen-on-close: no
+
+!URxvt.keysym.Control-t: perl:tabbedex:new_tab
+!URxvt.keysym.Control-Tab: perl:tabbedex:next_tab
+!URxvt.keysym.Control-Shift-Tab: perl:tabbedex:prev_tab
+!URxvt.keysym.Control-Shift-Left: perl:tabbedex:move_tab_left
+!URxvt.keysym.Control-Shift-Right: perl:tabbedex:move_tab_right
+!URxvt.keysym.Control-Shift-R: perl:tabbedex:rename_tab
+
+!URxvt.tabbed.no-tabbedex-keys: yes
+!URxvt.keysym.Shift-Left: perl:tabbedex:prev_tab
+!URxvt.keysym.Shift-Right: perl:tabbedex:next_tab
+!URxvt.keysym.Shift-Down: perl:tabbedex:new_tab
+!URxvt.keysym.Shift-Up: perl:tabbedex:rename_tab
+! URxvt.keysym.Control-Left: perl:tabbedex:move_tab_left
+! URxvt.keysym.Control-Right: perl:tabbedex:move_tab_right
+!URxvt.keysym.Meta-1: perl:tabbedex:goto_tab_1
+!URxvt.keysym.Meta-2: perl:tabbedex:goto_tab_2
+!URxvt.keysym.Meta-3: perl:tabbedex:goto_tab_3
+!URxvt.keysym.Meta-4: perl:tabbedex:goto_tab_4
+!URxvt.keysym.Meta-5: perl:tabbedex:goto_tab_5
+!URxvt.keysym.Meta-6: perl:tabbedex:goto_tab_6
+!URxvt.keysym.Meta-7: perl:tabbedex:goto_tab_7
+!URxvt.keysym.Meta-8: perl:tabbedex:goto_tab_8
+!URxvt.keysym.Meta-9: perl:tabbedex:goto_tab_9
+!URxvt.keysym.Meta-0: perl:tabbedex:goto_tab_10
+
+!URxvt.tabbed.tabbar-fg: 2
+!URxvt.tabbed.tabbar-bg: 0
+!URxvt.tabbed.tab-fg: 3
+!URxvt.tabbed.tab-bg: 0
+
+! Fullscreen
+URxvt.keysym.F11: perl:fullscreen:switch
+
+! Resize Font
+! URxvt.resize-font.smaller: C-Down
+! URxvt.resize-font.bigger: C-Up
+
+
+! Keyboard search (needs perl extension keyboard-select)
+! URxvt.keysym.M-s:   perl:keyboard-select:search
+
+! URLs
+URxvt.url-launcher:     chromium
+URxvt.matcher.button:   1
+URxvt.keysym.C-Delete:  perl:matcher:last
+URxvt.keysym.M-Delete:  perl:matcher:list
+URxvt.matcher.rend.0:   Uline Bold fg5
+
+! more matcher
+! URxvt.matcher.pattern.2:  \\B(/\\S+?):(\\d+)(?=:|$)
+! URxvt.matcher.launcher.2: subl3 +$2 $1
+
+
+! ------------------------------------------------------------------------------
+! ROFI Color theme
+! ------------------------------------------------------------------------------
+rofi.color-enabled: true
+rofi.color-window: #273238, #273238, #1e2529
+rofi.color-normal: #273238, #c1c1c1, #273238, #394249, #ffffff
+rofi.color-active: #273238, #80cbc4, #273238, #394249, #80cbc4
+rofi.color-urgent: #273238, #ff1844, #273238, #394249, #ff1844
+
