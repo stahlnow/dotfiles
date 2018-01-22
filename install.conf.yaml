@@ -6,7 +6,6 @@
 - clean: ['~']
 
 - link:
-        ~/.config/doublemcmd: doublecmd
         ~/.config/mc: mc
         ~/.config/mpd/mpd.conf: mpd.conf
         ~/.config/sxiv: sxiv
