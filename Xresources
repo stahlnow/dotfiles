@@ -70,8 +70,6 @@ URxvt.iso14755_52: false
 *scrollBar: false
 *saveLines: 10000
 
-
-
 URxvt*loginShell:       true
 URxvt*inheritPixmap:    false
 URxvt*intensityStyles:  true
@@ -115,40 +113,6 @@ URxvt.perl-ext-common: default,matcher,fullscreen,resize-font,selection-to-clipb
 ! URxvt.keysym.C-c:   perl:clipboard:copy
 URxvt.keysym.C-v:   perl:clipboard:paste
 
-! Tab(bedex)
-!URxvt.tabbed.autohide: true
-!URxvt.tabbed.reopen-on-close: no
-
-!URxvt.keysym.Control-t: perl:tabbedex:new_tab
-!URxvt.keysym.Control-Tab: perl:tabbedex:next_tab
-!URxvt.keysym.Control-Shift-Tab: perl:tabbedex:prev_tab
-!URxvt.keysym.Control-Shift-Left: perl:tabbedex:move_tab_left
-!URxvt.keysym.Control-Shift-Right: perl:tabbedex:move_tab_right
-!URxvt.keysym.Control-Shift-R: perl:tabbedex:rename_tab
-
-!URxvt.tabbed.no-tabbedex-keys: yes
-!URxvt.keysym.Shift-Left: perl:tabbedex:prev_tab
-!URxvt.keysym.Shift-Right: perl:tabbedex:next_tab
-!URxvt.keysym.Shift-Down: perl:tabbedex:new_tab
-!URxvt.keysym.Shift-Up: perl:tabbedex:rename_tab
-! URxvt.keysym.Control-Left: perl:tabbedex:move_tab_left
-! URxvt.keysym.Control-Right: perl:tabbedex:move_tab_right
-!URxvt.keysym.Meta-1: perl:tabbedex:goto_tab_1
-!URxvt.keysym.Meta-2: perl:tabbedex:goto_tab_2
-!URxvt.keysym.Meta-3: perl:tabbedex:goto_tab_3
-!URxvt.keysym.Meta-4: perl:tabbedex:goto_tab_4
-!URxvt.keysym.Meta-5: perl:tabbedex:goto_tab_5
-!URxvt.keysym.Meta-6: perl:tabbedex:goto_tab_6
-!URxvt.keysym.Meta-7: perl:tabbedex:goto_tab_7
-!URxvt.keysym.Meta-8: perl:tabbedex:goto_tab_8
-!URxvt.keysym.Meta-9: perl:tabbedex:goto_tab_9
-!URxvt.keysym.Meta-0: perl:tabbedex:goto_tab_10
-
-!URxvt.tabbed.tabbar-fg: 2
-!URxvt.tabbed.tabbar-bg: 0
-!URxvt.tabbed.tab-fg: 3
-!URxvt.tabbed.tab-bg: 0
-
 ! Fullscreen
 URxvt.keysym.F11: perl:fullscreen:switch
 
@@ -167,17 +131,4 @@ URxvt.keysym.C-Delete:  perl:matcher:last
 URxvt.keysym.M-Delete:  perl:matcher:list
 URxvt.matcher.rend.0:   Uline Bold fg5
 
-! more matcher
-! URxvt.matcher.pattern.2:  \\B(/\\S+?):(\\d+)(?=:|$)
-! URxvt.matcher.launcher.2: subl3 +$2 $1
-
-
-! ------------------------------------------------------------------------------
-! ROFI Color theme
-! ------------------------------------------------------------------------------
-rofi.color-enabled: true
-rofi.color-window: #273238, #273238, #1e2529
-rofi.color-normal: #273238, #c1c1c1, #273238, #394249, #ffffff
-rofi.color-active: #273238, #80cbc4, #273238, #394249, #80cbc4
-rofi.color-urgent: #273238, #ff1844, #273238, #394249, #ff1844
 
