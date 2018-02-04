@@ -1,6 +1,6 @@
 !keycode  21 = dead_circumflex dead_grave equal plus dead_tilde dead_ogonek
 ! remap dead_cirumflex to slash
-keycode  21 = slash dead_circumflex dead_grave equal dead_tilde dead_ogonek
+keycode  21 = slash dead_circumflex dead_grave equal dead_tilde dead_grave
 
 !keycode 112 = Prior NoSymbol Prior
 ! remap PgUp to Home
