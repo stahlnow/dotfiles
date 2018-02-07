@@ -6,7 +6,6 @@
 - clean: ['~']
 
 - link:
-        ~/.config/mc: mc
         ~/.config/mpd/mpd.conf: mpd.conf
         ~/.config/sxiv: sxiv
         ~/.config/stig: stig
@@ -14,6 +13,7 @@
         ~/.vimrc: vimrc
         ~/.Xresources: Xresources
         ~/.Xmodmap: Xmodmap
+        ~/.hyper.js: hyper.js
 
 - shell:
         - [git submodule update --init --recursive, Installing submodules]
