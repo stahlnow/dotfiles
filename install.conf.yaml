@@ -12,7 +12,6 @@
         ~/.tmux.conf: tmux.conf
         ~/.vimrc: vimrc
         ~/.Xresources: Xresources
-        ~/.Xmodmap: Xmodmap
         ~/.hyper.js: hyper.js
 
 - shell:
