@@ -286,3 +286,6 @@ function! MyTabLine()
   return s
 endfunction
 
+highlight! link DiffText MatchParen
+
+
