@@ -2,7 +2,8 @@
 ! colors
 
 ! http://ciembor.github.com/4bit
-*background: #0d1926
+!*background: #0d1926
+*background: black
 *foreground: #d9e6f2
 *color0:    #000000
 *color1:    #b87a7a
@@ -21,44 +22,39 @@
 *color14:    #bddbdb
 *color15:    #ffffff
 
-! special
-!*.foreground:   #4a4543
-!*.background:   #ffffff
-!*.cursorColor:  #4a4543
-
-! black
-!*.color0:       #090300
-!*.color8:       #5c5855
-
-! red
-!*.color1:       #db2d20
-!*.color9:       #db2d20
-
-! green
-!*.color2:       #01a252
-!*.color10:      #01a252
-
-! yellow
-!*.color3:       #d800e4
-!*.color11:      #b701c1
-
-! blue
-!*.color4:       #01a0e4
-!*.color12:      #01a0e4
-
-! magenta
-!*.color5:       #a16a94
-!*.color13:      #a16a94
-
-! cyan
-!*.color6:       #b5e4f4
-!*.color14:      #b5e4f4
-
-! white
-!*.color7:       #a5a2a2
-!*.color15:      #000000
-
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! URXVT settings
+! --- URxvt defaults
+!URxvt*geometry:           80x44
+URxvt*cursorBlink:        0 
+URxvt*cursorUnderline:    0
+URxvt*urgentOnBell:       true
+!URxvt*letterSpace:        -.30
+URxvt*internalBorder:     2
+URxvt*scrollBar:          false
+URxvt.transparent:        false
+
+
+!URxvt*termName: xterm-256color
+URxvt*termName: rxvt-unicode-256color
+
+
+Xft.dpi:        96:unscaled
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintmedium
+Xft.lcdfilter:  lcddefault
+
+! Start maximized
+URxvt*geometry: 256x96
+!URxvt.font: xft:DejaVu Sans Mono for Powerline:pixelsize=9:antialias=true:autohint=true
+URxvt.allow_bold: true
+URxvt*boldFont: xft:DejaVu Sans Mono for Powerline:bold:pixelsize=16:antialias=true:autohint=true
+
+! Fix font space
+URxvt*letterSpace: -0.5
+URxvt*lineSpace: 0  // pixels, default = 1
+
 
 
 URxvt*iconFile: /usr/share/icons/Adwaita/512x512/apps/utilities-terminal.png
@@ -73,16 +69,14 @@ URxvt.iso14755_52: false
 URxvt*loginShell:       true
 URxvt*inheritPixmap:    false
 URxvt*intensityStyles:  true
-URxvt*urgentOnBell:     false
 URxvt*skipBuiltinGlyphs:    true
 
 ! Font
-URxvt*font: xft:xos4 Terminus:size=8,\
-			xft:Code2000:antialias=false
-!*font:  xft:xos4 Terminus:size=8,\
-!        xft:Code2000:antialias=false
-! -xos4-terminus-medium-r-normal--14-140-72-72-c-80-iso10646-1,\
-! -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
+URxvt.font: -*-terminus-medium-r-*-*-12-*-*-*-*-*-iso10646-1
+URxvt.boldFont: -*-terminus-medium-r-*-*-12-*-*-*-*-*-iso10646-1
+URxvt.italicFont: -*-terminus-medium-r-*-*-12-*-*-*-*-*-iso10646-1
+URxvt.boldItalicFont: -*-terminus-medium-r-*-*-12-*-*-*-*-*-iso10646-1
+
 
 ! do not scroll with output
 URxvt*scrollTtyOutput: false
