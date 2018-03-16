@@ -24,7 +24,7 @@
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! URXVT settings
 ! --- URxvt defaults
-!URxvt*geometry:           80x44
+URxvt*geometry:          256x96 
 URxvt*cursorBlink:        0 
 URxvt*cursorUnderline:    0
 URxvt*urgentOnBell:       true
@@ -48,18 +48,6 @@ Xft.hinting:    true
 Xft.hintstyle:  hintmedium
 Xft.lcdfilter:  lcddefault
 
-! Start maximized
-URxvt*geometry: 256x96
-!URxvt.font: xft:DejaVu Sans Mono for Powerline:pixelsize=9:antialias=true:autohint=true
-URxvt.allow_bold: true
-URxvt*boldFont: xft:DejaVu Sans Mono for Powerline:bold:pixelsize=16:antialias=true:autohint=true
-
-! Fix font space
-URxvt*letterSpace: -0.5
-URxvt*lineSpace: 0  // pixels, default = 1
-
-
-
 URxvt*iconFile: /usr/share/icons/Adwaita/512x512/apps/utilities-terminal.png
 
 ! Enable Ctrl+Shift bindings
@@ -79,6 +67,17 @@ URxvt.font: -*-terminus-medium-r-*-*-12-*-*-*-*-*-iso10646-1
 URxvt.boldFont: -*-terminus-medium-r-*-*-12-*-*-*-*-*-iso10646-1
 URxvt.italicFont: -*-terminus-medium-r-*-*-12-*-*-*-*-*-iso10646-1
 URxvt.boldItalicFont: -*-terminus-medium-r-*-*-12-*-*-*-*-*-iso10646-1
+
+!URxvt*font: xft:Terminus:pixelsize=12,xft:Inconsolata\ for\ Powerline:pixelsize=12
+!URxvt*font: xft:Source\ Code\ Pro\ Medium:pixelsize=10:antialias=true:hinting=true,xft:Source\ Code\ Pro\ Medium:pixelsize=13:antialias=true:hinting=true
+!URxvt.font: xft:Inconsolata for Powerline:size=10:style=Medium
+
+URxvt.allow_bold: true
+
+! Fix font space
+URxvt*letterSpace: -0.5
+URxvt*lineSpace: 0  // pixels, default = 1
+
 
 
 ! do not scroll with output

@@ -11,8 +11,20 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
+
+" vim-tmux-navigator
+" Navigate Split Panes
+" see Plugin: https://github.com/christoomey/vim-tmux-navigator
+" <ctrl-h> => Left
+" <ctrl-j> => Down
+" <ctrl-k> => Up
+" <ctrl-l> => Right
+" <ctrl-\> => Previous split
 Plugin 'christoomey/vim-tmux-navigator'
+
+" NERDTree Ctrl+n 
 Plugin 'scrooloose/nerdtree'
+
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'Valloric/YouCompleteMe'
 " Plugin 'wincent/command-t'
@@ -23,6 +35,9 @@ Plugin 'szw/vim-g'
 
 " plugins from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
+
+" Powerline
+Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 " Git plugin not hosted on GitHub
 " Plugin 'git://git.wincent.com/command-t.git'
@@ -72,14 +87,6 @@ nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
 
-
-
-" alternate copy/paste shortcuts
-" vmap <C-c> "+yi
-" vmap <C-x> "+c
-" vmap <C-v> c<ESC>"+p
-" imap <C-v> <C-r><C-o>+
-
 " Map space key as <leader>
 let mapleader=" "
 
@@ -91,15 +98,6 @@ inoremap <A-h> <C-o>h
 inoremap <A-j> <C-o>j
 inoremap <A-k> <C-o>k
 inoremap <A-l> <C-o>l
-
-" Navigate Split Panes
-" see Plugin: https://github.com/christoomey/vim-tmux-navigator
-" <ctrl-h> => Left
-" <ctrl-j> => Down
-" <ctrl-k> => Up
-" <ctrl-l> => Right
-" <ctrl-\> => Previous split
-
 
 " Go to tab by number
 noremap <leader>1 1gt
@@ -116,7 +114,7 @@ noremap <leader>0 :tablast<cr>
 " enable mouse
 set mouse=a
 
-" Arrows are unvimlike 
+" Cursor keys / arrows are unvimlike, disable them
 nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
@@ -125,6 +123,11 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
+
+
+" ################################################ Powerline setup
+set laststatus=2 " Always display the statusline in all windows
+set showtabline=2 " Always display the tabline, even if there is only one tab
 
 " ####################################################################  Python
 
@@ -194,9 +197,6 @@ endfunction
 " ####################################################################  NERDTree setup
 
 map <C-n> :NERDTreeToggle<CR> 
-
-" ####################################################################  Command-T setup
-
 
 " ######################################################################### SCVim setup
 let g:sclangTerm = "urxvt"
@@ -286,6 +286,8 @@ function! MyTabLine()
   return s
 endfunction
 
+
+" nicer highlighting colors
 highlight! link DiffText MatchParen
 
 
