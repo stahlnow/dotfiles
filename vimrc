@@ -39,6 +39,9 @@ Plugin 'L9'
 " Powerline
 Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 
+" Nerd Commenter
+Plugin 'scrooloose/nerdcommenter'
+
 " Git plugin not hosted on GitHub
 " Plugin 'git://git.wincent.com/command-t.git'
 
