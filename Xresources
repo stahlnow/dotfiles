@@ -37,6 +37,9 @@ URxvt.transparent:        false
 !URxvt*termName: xterm-256color
 URxvt*termName: rxvt-unicode-256color
 
+! Disable PrtSc-button print so we dont accidentally print the whole tmux session 
+URxvt.print-pipe:  cat > /dev/null
+
 
 Xft.dpi:        96:unscaled
 Xft.antialias:  true
