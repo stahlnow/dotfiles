@@ -17,6 +17,8 @@ do
 		nitrogen --save --set-zoom-fill "$file" ;;
 	"C-e")
 		gimp "$file" & ;;
+	"C-p")
+		lp "$file" & ;;
 	esac
 done
 

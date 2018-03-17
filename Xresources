@@ -27,7 +27,7 @@ URxvt*foreground: #d9e6f2
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! URXVT settings
 ! --- URxvt defaults
-!URxvt*geometry:           80x44
+URxvt*geometry:          256x96 
 URxvt*cursorBlink:        0 
 URxvt*cursorUnderline:    0
 URxvt*urgentOnBell:       true
@@ -40,25 +40,15 @@ URxvt.transparent:        false
 !URxvt*termName: xterm-256color
 URxvt*termName: rxvt-unicode-256color
 
-
-Xft.dpi:        96:unscaled
-Xft.antialias:  true
-Xft.rgba:       rgb
-Xft.hinting:    true
-Xft.hintstyle:  hintmedium
-Xft.lcdfilter:  lcddefault
-
-! Start maximized
-URxvt*geometry: 256x96
-!URxvt.font: xft:DejaVu Sans Mono for Powerline:pixelsize=9:antialias=true:autohint=true
-URxvt.allow_bold: true
-URxvt*boldFont: xft:DejaVu Sans Mono for Powerline:bold:pixelsize=16:antialias=true:autohint=true
-
-! Fix font space
-URxvt*letterSpace: -0.5
-URxvt*lineSpace: 0  // pixels, default = 1
+! Disable PrtSc-button print so we dont accidentally print the whole tmux session 
+URxvt.print-pipe:  "cat > /dev/null"
 
 
+!Xft.dpi:		96
+!Xft.rgba:       rgb
+!Xft.hinting:    true
+!Xft.hintstyle:  hintslight
+!Xft.lcdfilter:  lcddefault
 
 URxvt*iconFile: /usr/share/icons/Adwaita/512x512/apps/utilities-terminal.png
 
@@ -75,10 +65,20 @@ URxvt*intensityStyles:  true
 URxvt*skipBuiltinGlyphs:    true
 
 ! Font
-URxvt.font: -*-terminus-medium-r-*-*-12-*-*-*-*-*-iso10646-1
-URxvt.boldFont: -*-terminus-medium-r-*-*-12-*-*-*-*-*-iso10646-1
-URxvt.italicFont: -*-terminus-medium-r-*-*-12-*-*-*-*-*-iso10646-1
-URxvt.boldItalicFont: -*-terminus-medium-r-*-*-12-*-*-*-*-*-iso10646-1
+!urxvt.font: -*-terminus-medium-r-*-*-12-*-*-*-*-*-iso10646-1
+!urxvt.boldfont: -*-terminus-medium-r-*-*-12-*-*-*-*-*-iso10646-1
+!urxvt.italicfont: -*-terminus-medium-r-*-*-12-*-*-*-*-*-iso10646-1
+!urxvt.bolditalicfont: -*-terminus-medium-r-*-*-12-*-*-*-*-*-iso10646-1
+
+URxvt.font:        -xos4-terminus-medium-*-*-*-12-*-*-*-*-*-*-*
+URxvt.boldFont:    -xos4-terminus-bold-*-*-*-12-*-*-*-*-*-*-*
+
+URxvt.allow_bold: true
+
+! Fix font space
+URxvt*letterSpace: -0.5
+! line space in pixels, default = 1
+URxvt*lineSpace: 0  
 
 
 ! do not scroll with output
@@ -104,7 +104,7 @@ URxvt.keysym.KP_End:  \033[4~
 
 ! Perl extensions
 ! URxvt.perl-ext:
-URxvt.perl-ext-common: default,matcher,fullscreen,resize-font,selection-to-clipboard,clipboard
+URxvt.perl-ext-common: default,matcher,fullscreen,selection-to-clipboard,clipboard
 
 ! Clipboard
 ! URxvt.keysym.C-c:   perl:clipboard:copy
