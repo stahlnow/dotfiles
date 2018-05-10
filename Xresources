@@ -2,14 +2,17 @@
 ! colors
 
 ! http://ciembor.github.com/4bit
-!*background: #0d1926
-*background: black
-*foreground: #d9e6f2
+*background: #d9d9d9
+*foreground: #000C1A
+
+!URxvt*background: #0d1926
+URxvt*background: black
+URxvt*foreground: #d9e6f2
 *color0:    #000000
 *color1:    #b87a7a
 *color2:    #7ab87a
 *color3:    #b8b87a
-*color4:    #7a7ab8
+*color4:    #1a7aff
 *color5:    #b87ab8
 *color6:    #7ab8b8
 *color7:    #d9d9d9
@@ -17,7 +20,7 @@
 *color9:    #dbbdbd
 *color10:    #bddbbd
 *color11:    #dbdbbd
-*color12:    #bdbddb
+*color12:    #5dbddb
 *color13:    #dbbddb
 *color14:    #bddbdb
 *color15:    #ffffff

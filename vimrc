@@ -26,8 +26,6 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'scrooloose/nerdtree'
 
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'Valloric/YouCompleteMe'
-" Plugin 'wincent/command-t'
 Plugin 'tpope/vim-fugitive'
 Plugin 'ervandew/supertab'
 Plugin 'supercollider/scvim'
@@ -41,6 +39,9 @@ Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 " Nerd Commenter
 Plugin 'scrooloose/nerdcommenter'
+
+" Colorizer for visualising color codes like #ff00ff or 'green'
+Plugin 'chrisbra/Colorizer'
 
 " Git plugin not hosted on GitHub
 " Plugin 'git://git.wincent.com/command-t.git'

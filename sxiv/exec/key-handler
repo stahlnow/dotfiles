@@ -12,7 +12,7 @@ do
 	"C-c")
 		# copy image to clipboard
 		TYPE=$(file -b --mime-type "$file")
-		xclip -selection clipboard -t "$TYPE" < "$file" ;;
+		xclip -selection clipboard -t "$TYPE" -i "$file" ;;
 	"C-w")
 		nitrogen --save --set-zoom-fill "$file" ;;
 	"C-e")
