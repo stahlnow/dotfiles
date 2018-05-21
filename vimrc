@@ -135,6 +135,18 @@ set showtabline=2 " Always display the tabline, even if there is only one tab
 
 " ####################################################################  Python
 
+" PEP8 indentation
+au BufNewFile,BufRead *.py:
+	\ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
+
+
+
 " save file and run python
 " imap <F5> <Esc>:w<CR>:!clear;python %<CR>
 
