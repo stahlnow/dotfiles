@@ -91,6 +91,9 @@ nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
 
+" q starts visual block mode
+nnoremap q <c-V>
+
 " Map space key as <leader>
 let mapleader=" "
 
