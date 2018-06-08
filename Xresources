@@ -6,8 +6,8 @@
 *foreground: #000C1A
 
 !URxvt*background: #0d1926
-URxvt*background: black
-URxvt*foreground: #d9e6f2
+!URxvt*background: black
+!URxvt*foreground: #d9e6f2
 *color0:    #000000
 *color1:    #b87a7a
 *color2:    #7ab87a
@@ -27,105 +27,105 @@ URxvt*foreground: #d9e6f2
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! URXVT settings
 ! --- URxvt defaults
-URxvt*geometry:          256x96 
-URxvt*cursorBlink:        0 
-URxvt*cursorUnderline:    0
-URxvt*urgentOnBell:       true
-!URxvt*letterSpace:        -.30
-URxvt*internalBorder:     2
-URxvt*scrollBar:          false
-URxvt.transparent:        false
-
-
-!URxvt*termName: xterm-256color
-URxvt*termName: rxvt-unicode-256color
-
-! Disable PrtSc-button print so we dont accidentally print the whole tmux session 
-URxvt.print-pipe:  "cat > /dev/null"
-
-
-!Xft.dpi:		96
-!Xft.rgba:       rgb
-!Xft.hinting:    true
-!Xft.hintstyle:  hintslight
-!Xft.lcdfilter:  lcddefault
-
-URxvt*iconFile: /usr/share/icons/Adwaita/512x512/apps/utilities-terminal.png
-
-! Enable Ctrl+Shift bindings
-URxvt.iso14755: false
-URxvt.iso14755_52: false
-
-*scrollBar: false
-*saveLines: 10000
-
-URxvt*loginShell:       true
-URxvt*inheritPixmap:    false
-URxvt*intensityStyles:  true
-URxvt*skipBuiltinGlyphs:    true
-
-! Font
-!urxvt.font: -*-terminus-medium-r-*-*-12-*-*-*-*-*-iso10646-1
-!urxvt.boldfont: -*-terminus-medium-r-*-*-12-*-*-*-*-*-iso10646-1
-!urxvt.italicfont: -*-terminus-medium-r-*-*-12-*-*-*-*-*-iso10646-1
-!urxvt.bolditalicfont: -*-terminus-medium-r-*-*-12-*-*-*-*-*-iso10646-1
-
-URxvt.font:        -xos4-terminus-medium-*-*-*-12-*-*-*-*-*-*-*
-URxvt.boldFont:    -xos4-terminus-bold-*-*-*-12-*-*-*-*-*-*-*
-
-URxvt.allow_bold: true
-
-! Fix font space
-URxvt*letterSpace: -0.5
-! line space in pixels, default = 1
-URxvt*lineSpace: 0  
-
-
-! do not scroll with output
-URxvt*scrollTtyOutput: false
-
-! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
-URxvt*scrollWithBuffer: true
-
-! scroll back to the bottom on keypress
-URxvt*scrollTtyKeypress: true
-
-! Disable the scrollback buffer for the secondary screen
-URxvt.secondaryScreen: 1
-URxvt.secondaryScroll: 0
-! add better mouse wheel support from rxvt-unicode-better-wheel-scrolling
-URxvt.secondaryWheel: 1
-
-! Fix Home End buttons
-URxvt.keysym.Home: \033[1~
-URxvt.keysym.End: \033[4~
-URxvt.keysym.KP_Home: \033[1~
-URxvt.keysym.KP_End:  \033[4~
-
-! Perl extensions
-! URxvt.perl-ext:
-URxvt.perl-ext-common: default,matcher,fullscreen,selection-to-clipboard,clipboard
-
-! Clipboard
-! URxvt.keysym.C-c:   perl:clipboard:copy
-URxvt.keysym.C-v:   perl:clipboard:paste
-
-! Fullscreen
-URxvt.keysym.F11: perl:fullscreen:switch
-
-! Resize Font
-! URxvt.resize-font.smaller: C-Down
-! URxvt.resize-font.bigger: C-Up
-
-
-! Keyboard search (needs perl extension keyboard-select)
-! URxvt.keysym.M-s:   perl:keyboard-select:search
-
-! URLs
-URxvt.url-launcher:     chromium
-URxvt.matcher.button:   1
-URxvt.keysym.C-Delete:  perl:matcher:last
-URxvt.keysym.M-Delete:  perl:matcher:list
-URxvt.matcher.rend.0:   Uline Bold fg5
+!!URxvt*geometry:          256x96 
+!!URxvt*cursorBlink:        0 
+!!URxvt*cursorUnderline:    0
+!URxvt*urgentOnBell:       true
+!!URxvt*letterSpace:        -.30
+!URxvt*inernalBorder:     2
+!URxvt*scrollBar:          false
+!URxvt.transparent:        false
+!
+!
+!!URxvt*termName: xterm-256color
+!URxvt*termName: rxvt-unicode-256color
+!
+!! Disable PrtSc-button print so we dont accidentally print the whole tmux session 
+!URxvt.print-pipe:  "cat > /dev/null"
+!
+!
+!!Xft.dpi:		96
+!!Xft.rgba:       rgb
+!!Xft.hinting:    true
+!!Xft.hintstyle:  hintslight
+!!Xft.lcdfilter:  lcddefault
+!
+!URxvt*iconFile: /usr/share/icons/Adwaita/512x512/apps/utilities-terminal.png
+!
+!! Enable Ctrl+Shift bindings
+!URxvt.iso14755: false
+!URxvt.iso14755_52: false
+!
+!*scrollBar: false
+!*saveLines: 10000
+!
+!URxvt*loginShell:       true
+!URxvt*inheritPixmap:    false
+!URxvt*intensityStyles:  true
+!URxvt*skipBuiltinGlyphs:    true
+!
+!! Font
+!!urxvt.font: -*-terminus-medium-r-*-*-12-*-*-*-*-*-iso10646-1
+!!urxvt.boldfont: -*-terminus-medium-r-*-*-12-*-*-*-*-*-iso10646-1
+!!urxvt.italicfont: -*-terminus-medium-r-*-*-12-*-*-*-*-*-iso10646-1
+!!urxvt.bolditalicfont: -*-terminus-medium-r-*-*-12-*-*-*-*-*-iso10646-1
+!
+!URxvt.font:        -xos4-terminus-medium-*-*-*-12-*-*-*-*-*-*-*
+!URxvt.boldFont:    -xos4-terminus-bold-*-*-*-12-*-*-*-*-*-*-*
+!
+!URxvt.allow_bold: true
+!
+!! Fix font space
+!URxvt*letterSpace: -0.5
+!! line space in pixels, default = 1
+!URxvt*lineSpace: 0  
+!
+!
+!! do not scroll with output
+!URxvt*scrollTtyOutput: false
+!
+!! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+!URxvt*scrollWithBuffer: true
+!
+!! scroll back to the bottom on keypress
+!URxvt*scrollTtyKeypress: true
+!
+!! Disable the scrollback buffer for the secondary screen
+!URxvt.secondaryScreen: 1
+!URxvt.secondaryScroll: 0
+!! add better mouse wheel support from rxvt-unicode-better-wheel-scrolling
+!URxvt.secondaryWheel: 1
+!
+!! Fix Home End buttons
+!URxvt.keysym.Home: \033[1~
+!URxvt.keysym.End: \033[4~
+!URxvt.keysym.KP_Home: \033[1~
+!URxvt.keysym.KP_End:  \033[4~
+!
+!! Perl extensions
+!! URxvt.perl-ext:
+!URxvt.perl-ext-common: default,matcher,fullscreen,selection-to-clipboard,clipboard
+!
+!! Clipboard
+!! URxvt.keysym.C-c:   perl:clipboard:copy
+!URxvt.keysym.C-v:   perl:clipboard:paste
+!
+!! Fullscreen
+!URxvt.keysym.F11: perl:fullscreen:switch
+!
+!! Resize Font
+!! URxvt.resize-font.smaller: C-Down
+!! URxvt.resize-font.bigger: C-Up
+!
+!
+!! Keyboard search (needs perl extension keyboard-select)
+!! URxvt.keysym.M-s:   perl:keyboard-select:search
+!
+!! URLs
+!URxvt.url-launcher:     chromium
+!URxvt.matcher.button:   1
+!URxvt.keysym.C-Delete:  perl:matcher:last
+!URxvt.keysym.M-Delete:  perl:matcher:list
+!URxvt.matcher.rend.0:   Uline Bold fg5
 
 
