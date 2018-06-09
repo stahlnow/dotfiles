@@ -115,12 +115,14 @@ custom_cursor_colors: false
 colors:
   # Default colors
   primary:
-    background: '0x282a36'
+    #background: '0x282a36'
+    background: '0x000000'
     foreground: '0xeff0eb'
 
   # Normal colors
   normal:
-    black:   '0x282a36'
+    #black:   '0x282a36'
+    black:   '0x000000'
     red:     '0xff5c57'
     green:   '0x5af78e'
     yellow:  '0xf3f99d'
@@ -131,7 +133,8 @@ colors:
 
   # Bright colors
   bright:
-    black:   '0x686868'
+    #black:   '0x686868'
+    black:   '0x000000'
     red:     '0xff5c57'
     green:   '0x5af78e'
     yellow:  '0xf3f99d'
@@ -167,7 +170,7 @@ visual_bell:
   duration: 0
 
 # Background opacity
-background_opacity: 1.0
+background_opacity: 0.9
 
 # Mouse bindings
 #
@@ -244,6 +247,7 @@ live_config_reload: true
 # etc.  These all match the glutin::VirtualKeyCode variants.
 #
 # A list with all available `key` names can be found here:
+
 # https://docs.rs/glutin/*/glutin/enum.VirtualKeyCode.html#variants
 #
 # Possible values for `mods`
