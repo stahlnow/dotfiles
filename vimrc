@@ -72,6 +72,10 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 " ###################################################################### General setup
+
+" Map space key as <leader>
+let mapleader=" "
+
 syntax on 					" turn on syntax highlighting
 set number    				" show line numbers
 set autoread 				" auto reload buffer when file modified externally
@@ -94,8 +98,15 @@ set showmode
 " q starts visual block mode
 nnoremap q <c-V>
 
-" Map space key as <leader>
-let mapleader=" "
+" use space + d / p for delete/paste to black hole register
+nnoremap <leader>d "_d
+xnoremap <leader>d "_d
+xnoremap <leader>p "_dP
+
+" Insert newline without entering insert mode and staying on same line
+"nmap <C-Enter> O<Esc>j
+"nmap <S-CR> i<CR><Esc>j
+nmap <CR> o<Esc>k
 
 " Make double-<Esc> clear search highlights
 nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
