@@ -5,12 +5,9 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-
 " Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
 
 " vim-tmux-navigator
 " Navigate Split Panes
@@ -43,19 +40,6 @@ Plugin 'scrooloose/nerdcommenter'
 " Colorizer for visualising color codes like #ff00ff or 'green'
 Plugin 'chrisbra/Colorizer'
 
-" Git plugin not hosted on GitHub
-" Plugin 'git://git.wincent.com/command-t.git'
-
-" git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/gmarik/path/to/plugin'
-
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-" Plugin 'ascenator/L9', {'name': 'newL9'}
-
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -86,6 +70,32 @@ set incsearch 				" highlight matches while typing search
 set splitbelow
 set splitright
 
+" quick save leader + s
+noremap <Leader>s :update<CR>
+
+" copy with ctrl+c
+vnoremap <C-c> "+y
+
+" paste with ctrl+v
+inoremap <C-v> <ESC>"+pa
+" vnoremap <C-d> "+d
+
+" quick commands in insert mode
+" II go to just before the first non-blank text of the line 
+inoremap II <Esc>I
+" AA go to the end of the line 
+inoremap AA <Esc>A
+" OO start editing on a new line above the current line
+inoremap OO <Esc>O
+" CC change what is on the right of the cursor 
+inoremap CC <Esc>C
+" SS change the whole line 
+inoremap SS <Esc>S
+" DD delete the current line (end in normal mode)
+inoremap DD <Esc>dd
+" UU undo 
+inoremap UU <Esc>u
+
 " F2 sets paste mode
 " Start insert mode.
 " Press F2 (toggles the 'paste' option on).
@@ -104,8 +114,6 @@ xnoremap <leader>d "_d
 xnoremap <leader>p "_dP
 
 " Insert newline without entering insert mode and staying on same line
-"nmap <C-Enter> O<Esc>j
-"nmap <S-CR> i<CR><Esc>j
 nmap <CR> o<Esc>k
 
 " Make double-<Esc> clear search highlights
@@ -141,6 +149,40 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
+
+
+
+" List occurrences of keyword under cursor, and
+" jump to selected occurrence.
+function! s:JumpOccurrence()
+  let v:errmsg = ""
+  exe "normal [I"
+  if strlen(v:errmsg) == 0
+    let nr = input("Which one: ")
+    if nr =~ '\d\+'
+      exe "normal! " . nr . "[\t"
+    endif
+  endif
+endfunction
+
+" List occurrences of keyword entered at prompt, and
+" jump to selected occurrence.
+function! s:JumpPrompt()
+  let keyword = input("Keyword to find: ")
+  if strlen(keyword) > 0
+    let v:errmsg = ""
+    exe "ilist! " . keyword
+    if strlen(v:errmsg) == 0
+      let nr = input("Which one: ")
+      if nr =~ '\d\+'
+        exe "ijump! " . nr . keyword
+      endif
+    endif
+  endif
+endfunction
+
+nnoremap <Leader>j :call <SID>JumpOccurrence()<CR>
+nnoremap <Leader>p :call <SID>JumpPrompt()<CR>
 
 
 " ################################################ Powerline setup
@@ -317,7 +359,31 @@ function! MyTabLine()
 endfunction
 
 
-" nicer highlighting colors
+" nicer diff highlighting colors
 highlight! link DiffText MatchParen
+
+" Automatically set paste mode in Vim when pasting in insert mode
+"function! WrapForTmux(s)
+"  if !exists('$TMUX')
+"    return a:s
+"  endif
+"
+"  let tmux_start = "\<Esc>Ptmux;"
+"  let tmux_end = "\<Esc>\\"
+"
+"  return tmux_start . substitute(a:s, "\<Esc>", "\<Esc>\<Esc>", 'g') . tmux_end
+"endfunction
+"
+"let &t_SI .= WrapForTmux("\<Esc>[?2004h")
+"let &t_EI .= WrapForTmux("\<Esc>[?2004l")
+"
+"function! XTermPasteBegin()
+"  set pastetoggle=<Esc>[201~
+"  set paste
+"  return ""
+"endfunction
+"
+"inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+"
 
 
