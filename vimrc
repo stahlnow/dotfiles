@@ -64,11 +64,20 @@ syntax on 					" turn on syntax highlighting
 set number    				" show line numbers
 set autoread 				" auto reload buffer when file modified externally
 set hlsearch 				" keep previous search highlighted
-set tabstop=4
 set clipboard=unnamedplus
 set incsearch 				" highlight matches while typing search
 set splitbelow
 set splitright
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swp//
+
+filetype plugin indent on
+" show existing tab with 4 spaces width
+set tabstop=4
+" when indenting with '>', use 4 spaces width
+set shiftwidth=4
+" On pressing tab, insert 4 spaces
+set expandtab
 
 " quick save leader + s
 noremap <Leader>s :update<CR>
@@ -79,6 +88,10 @@ vnoremap <C-c> "+y
 " paste with ctrl+v
 inoremap <C-v> <ESC>"+pa
 " vnoremap <C-d> "+d
+
+" remap $ to ç
+noremap ç $
+inoremap ç <c-o>$
 
 " quick commands in insert mode
 " II go to just before the first non-blank text of the line 
