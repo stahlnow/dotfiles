@@ -40,6 +40,9 @@ Plugin 'scrooloose/nerdcommenter'
 " Colorizer for visualising color codes like #ff00ff or 'green'
 Plugin 'chrisbra/Colorizer'
 
+" Show git changes
+Plugin 'airblade/vim-gitgutter'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
