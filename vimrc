@@ -86,8 +86,7 @@ noremap <Leader>s :update<CR>
 vnoremap <C-c> "+y
 
 " paste with ctrl+v
-inoremap <C-v> <ESC>"+pa
-" vnoremap <C-d> "+d
+inoremap <C-v> <c-o>"+pa
 
 " remap $ to ç
 noremap ç $
