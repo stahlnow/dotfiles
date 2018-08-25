@@ -95,6 +95,7 @@ inoremap <C-v> <c-o>"+pa
 noremap ç $
 inoremap ç <c-o>$
 
+" EXPERIMENTAL
 " quick commands in insert mode
 " II go to just before the first non-blank text of the line 
 inoremap II <Esc>I
@@ -140,6 +141,12 @@ inoremap <A-j> <C-o>j
 inoremap <A-k> <C-o>k
 inoremap <A-l> <C-o>l
 
+" Quick resize with leader up down left right 
+noremap <silent> <leader><up> <Esc>:res -5<CR><Esc>
+noremap <silent> <leader><down> <Esc>:res +5<CR><Esc>
+noremap <silent> <leader><left> <Esc>:vertical res +5<CR><Esc>
+noremap <silent> <leader><right> <Esc>:vertical res -5<CR><Esc>
+
 " Go to tab by number
 noremap <leader>1 1gt
 noremap <leader>2 2gt
@@ -156,14 +163,15 @@ noremap <leader>0 :tablast<cr>
 set mouse=a
 
 " Cursor keys / arrows are unvimlike, disable them
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
+
+"nnoremap <up> <nop>
+"nnoremap <down> <nop>
+"nnoremap <left> <nop>
+"nnoremap <right> <nop>
+"inoremap <up> <nop>
+"inoremap <down> <nop>
+"inoremap <left> <nop>
+"inoremap <right> <nop>
 
 
 
