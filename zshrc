@@ -34,7 +34,7 @@ alias pg='ps -Af | grep $1'         # requires an argument (note: /usr/bin/pg is
 if [ $UID -ne 0 ]; then
     alias sudo='sudo '
     alias scat='sudo cat'
-    alias svim='sudo vim'
+    alias svim='sudo -E vim' # -E preserve environment
     alias root='sudo su'
     alias reboot='sudo systemctl reboot'
     alias poweroff='sudo systemctl poweroff'
@@ -57,6 +57,9 @@ alias lm='la | more'
 alias pac="sudo /usr/bin/pacman -S"	# install one or more packages
 alias pacs="/usr/bin/pacman -Ss"	# search for packages
 alias pacrem="sudo /usr/bin/pacman -Rns"  # remove the specified package(s), its configuration(s) and unneeded dependencies
+alias paci="/usr/bin/pacman -Qi" # get info about package
+alias paco="/usr/bin/pacman -Qo" # who owns a file?
+
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
