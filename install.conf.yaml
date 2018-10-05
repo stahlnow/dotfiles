@@ -6,14 +6,9 @@
 - clean: ['~']
 
 - link:
-        ~/.config/alacritty/alacritty.yml: alacritty.yml
         ~/.config/mpd/mpd.conf: mpd.conf
-        ~/.config/sxiv: sxiv
-        ~/.config/stig: stig
         ~/.tmux.conf: tmux.conf
         ~/.vimrc: vimrc
-        ~/.Xresources: Xresources
-        ~/.config/gtk-3.0/gtk.css: gtk-3.0/gtk.css
 
 - shell:
         - [git submodule update --init --recursive, Installing submodules]
