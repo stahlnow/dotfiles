@@ -43,6 +43,9 @@ Plugin 'chrisbra/Colorizer'
 " Show git changes
 Plugin 'airblade/vim-gitgutter'
 
+" YAML plugin
+Plugin 'avakhov/vim-yaml'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -211,6 +214,10 @@ nnoremap <Leader>p :call <SID>JumpPrompt()<CR>
 " ################################################ Powerline setup
 set laststatus=2 " Always display the statusline in all windows
 set showtabline=2 " Always display the tabline, even if there is only one tab
+
+" #################################################################### yaml 
+" Get the 2-space YAML as the default when hit carriage return after the colon
+" autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " ####################################################################  Python
 
