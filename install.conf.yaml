@@ -6,6 +6,7 @@
 - clean: ['~']
 
 - link:
+        ~/.zshrc: zshrc
         ~/.config/mpd/mpd.conf: mpd.conf
         ~/.tmux.conf: tmux.conf
         ~/.vimrc: vimrc
