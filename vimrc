@@ -98,19 +98,19 @@ inoremap ç <c-o>$
 " EXPERIMENTAL
 " quick commands in insert mode
 " II go to just before the first non-blank text of the line 
-inoremap II <Esc>I
+" inoremap II <Esc>I
 " AA go to the end of the line 
-inoremap AA <Esc>A
+" inoremap AA <Esc>A
 " OO start editing on a new line above the current line
-inoremap OO <Esc>O
+" inoremap OO <Esc>O
 " CC change what is on the right of the cursor 
-inoremap CC <Esc>C
+" inoremap CC <Esc>C
 " SS change the whole line 
-inoremap SS <Esc>S
+" inoremap SS <Esc>S
 " DD delete the current line (end in normal mode)
-inoremap DD <Esc>dd
+" inoremap DD <Esc>dd
 " UU undo 
-inoremap UU <Esc>u
+" inoremap UU <Esc>u
 
 " F2 sets paste mode
 " Start insert mode.
