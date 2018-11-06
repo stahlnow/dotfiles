@@ -212,6 +212,10 @@ nnoremap <Leader>p :call <SID>JumpPrompt()<CR>
 set laststatus=2 " Always display the statusline in all windows
 set showtabline=2 " Always display the tabline, even if there is only one tab
 
+
+" #################################################################### YAML
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
 " ####################################################################  Python
 
 " PEP8 indentation
