@@ -28,6 +28,9 @@ Plugin 'ervandew/supertab'
 Plugin 'supercollider/scvim'
 Plugin 'szw/vim-g'
 
+" A Vim Plugin for Lively Previewing LaTeX PDF Output
+Plugin 'xuhdev/vim-latex-live-preview'
+
 " plugins from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
 
