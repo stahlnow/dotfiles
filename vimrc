@@ -19,6 +19,9 @@ Plugin 'VundleVim/Vundle.vim'
 " <ctrl-\> => Previous split
 Plugin 'christoomey/vim-tmux-navigator'
 
+" Markdown previe with Ctrl+p (on .md files)
+Plugin 'iamcco/markdown-preview.vim'
+
 " NERDTree Ctrl+n 
 Plugin 'scrooloose/nerdtree'
 
