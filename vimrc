@@ -419,4 +419,6 @@ highlight! link DiffText MatchParen
 "inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 "
 
-
+" LaTeX Live Previewer options
+let g:livepreview_previewer = 'evince'
+let g:livepreview_engine = 'lualatex'
