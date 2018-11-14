@@ -34,6 +34,9 @@ Plugin 'szw/vim-g'
 " A Vim Plugin for Lively Previewing LaTeX PDF Output
 Plugin 'xuhdev/vim-latex-live-preview'
 
+" Auto-reload file that changed on disk
+Plugin 'djoshea/vim-autoread'
+
 " plugins from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
 
@@ -97,9 +100,13 @@ vnoremap <C-c> "+y
 " paste with ctrl+v
 inoremap <C-v> <c-o>"+pa
 
-" remap $ to ç
+" remap $ to ç to use shift+4 as 'go to end of line'
 noremap ç $
 inoremap ç <c-o>$
+
+" remap ^ to 1
+noremap 1 ^
+
 
 " EXPERIMENTAL
 " quick commands in insert mode
