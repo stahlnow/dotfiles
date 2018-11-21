@@ -19,38 +19,64 @@ Plugin 'VundleVim/Vundle.vim'
 " <ctrl-\> => Previous split
 Plugin 'christoomey/vim-tmux-navigator'
 
-" Markdown previe with Ctrl+p (on .md files)
-Plugin 'iamcco/markdown-preview.vim'
+" Smart auto-indentation for Python
+Plugin 'vim-scripts/indentpython.vim'
 
-" NERDTree Ctrl+n 
+" Rich python syntax highlighting
+Plugin 'kh3phr3n/python-syntax'
+
+" Syntax checker
+Plugin 'vim-syntastic/syntastic'
+
+" Python backend for 'syntastic'
+Plugin 'nvie/vim-flake8'
+
+" Find files with Ctrl+p
+Plugin 'ctrlpvim/ctrlp.vim'
+
+" NERDTree Ctrl+n
 Plugin 'scrooloose/nerdtree'
-
 Plugin 'Xuyuanp/nerdtree-git-plugin'
+" Nerd Commenter
+Plugin 'scrooloose/nerdcommenter'
+
+"""""""""""""""""""""""""""""""""""""""""""""" Fancy plugins
+" Awesome staring screen for Vim
+Plugin 'mhinz/vim-startify'
+
+" Monokai Theme
+Plugin 'crusoexia/vim-monokai'
+
+" Git wrapper
+" usage: :Gstatus, :Gedit, :Gsplit, :Gvsplit
 Plugin 'tpope/vim-fugitive'
+
 Plugin 'ervandew/supertab'
-Plugin 'supercollider/scvim'
-Plugin 'szw/vim-g'
 
-" A Vim Plugin for Lively Previewing LaTeX PDF Output
-Plugin 'xuhdev/vim-latex-live-preview'
-
-" Auto-reload file that changed on disk
-Plugin 'djoshea/vim-autoread'
-
-" plugins from http://vim-scripts.org/vim/scripts.html
-Plugin 'L9'
+" Google
+" Plugin 'szw/vim-g'
 
 " Powerline
 Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
-
-" Nerd Commenter
-Plugin 'scrooloose/nerdcommenter'
 
 " Colorizer for visualising color codes like #ff00ff or 'green'
 Plugin 'chrisbra/Colorizer'
 
 " Show git changes
 Plugin 'airblade/vim-gitgutter'
+
+" Markdown preview with Ctrl+p (on .md files)
+Plugin 'iamcco/markdown-preview.vim'
+
+" Auto-reload file that changed on disk
+Plugin 'djoshea/vim-autoread'
+
+" Supercollider plugin
+Plugin 'supercollider/scvim'
+
+" Live Previewing LaTeX PDF Output
+" usage: LLPStartPreview
+Plugin 'xuhdev/vim-latex-live-preview'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -110,19 +136,19 @@ noremap 1 ^
 
 " EXPERIMENTAL
 " quick commands in insert mode
-" II go to just before the first non-blank text of the line 
+" II go to just before the first non-blank text of the line
 " inoremap II <Esc>I
-" AA go to the end of the line 
+" AA go to the end of the line
 " inoremap AA <Esc>A
 " OO start editing on a new line above the current line
 " inoremap OO <Esc>O
-" CC change what is on the right of the cursor 
+" CC change what is on the right of the cursor
 " inoremap CC <Esc>C
-" SS change the whole line 
+" SS change the whole line
 " inoremap SS <Esc>S
 " DD delete the current line (end in normal mode)
 " inoremap DD <Esc>dd
-" UU undo 
+" UU undo
 " inoremap UU <Esc>u
 
 " F2 sets paste mode
@@ -154,7 +180,7 @@ inoremap <A-j> <C-o>j
 inoremap <A-k> <C-o>k
 inoremap <A-l> <C-o>l
 
-" Quick resize with leader up down left right 
+" Quick resize with leader up down left right
 noremap <silent> <leader><up> <Esc>:res -5<CR><Esc>
 noremap <silent> <leader><down> <Esc>:res +5<CR><Esc>
 noremap <silent> <leader><left> <Esc>:vertical res +5<CR><Esc>
@@ -186,8 +212,7 @@ set mouse=a
 "inoremap <left> <nop>
 "inoremap <right> <nop>
 
-
-
+" ################### jump to keyword by leader+j, keyword prompt: leader+p
 " List occurrences of keyword under cursor, and
 " jump to selected occurrence.
 function! s:JumpOccurrence()
@@ -231,6 +256,23 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " ####################################################################  Python
 
+" Point YCM to the Pipenv created virtualenv, if possible
+" At first, get the output of 'pipenv --venv' command.
+let pipenv_venv_path = system('pipenv --venv')
+" The above system() call produces a non zero exit code whenever
+" a proper virtual environment has not been found.
+" So, second, we only point YCM to the virtual environment when
+" the call to 'pipenv --venv' was successful.
+" Remember, that 'pipenv --venv' only points to the root directory
+" of the virtual environment, so we have to append a full path to
+" the python executable.
+if shell_error == 0
+  let venv_path = substitute(pipenv_venv_path, '\n', '', '')
+  let g:ycm_python_binary_path = venv_path . '/bin/python'
+else
+  let g:ycm_python_binary_path = 'python'
+endif
+
 " PEP8 indentation
 au BufNewFile,BufRead *.py:
 	\ set tabstop=4
@@ -241,74 +283,73 @@ au BufNewFile,BufRead *.py:
     \ set autoindent
     \ set fileformat=unix
 
-
-
 " save file and run python
 " imap <F5> <Esc>:w<CR>:!clear;python %<CR>
-
+nnoremap <silent> <F5> :w<CR>:!clear;pipenv run python %<CR><CR>
 
 " Bind F5 to save file if modified and execute python script in a buffer.
-nnoremap <silent> <F5> :call SaveAndExecutePython()<CR>
-vnoremap <silent> <F5> :<C-u>call SaveAndExecutePython()<CR>
+" nnoremap <silent> <F5> :call SaveAndExecutePython()<CR>
+" vnoremap <silent> <F5> :<C-u>call SaveAndExecutePython()<CR>
 
-function! SaveAndExecutePython()
-    " SOURCE [reusable window]: https://github.com/fatih/vim-go/blob/master/autoload/go/ui.vim
-
-    " save and reload current file
-    silent execute "update | edit"
-
-    " get file path of current file
-    let s:current_buffer_file_path = expand("%")
-
-    let s:output_buffer_name = "Python"
-    let s:output_buffer_filetype = "output"
-
-    " reuse existing buffer window if it exists otherwise create a new one
-    if !exists("s:buf_nr") || !bufexists(s:buf_nr)
-        silent execute 'botright new ' . s:output_buffer_name
-        let s:buf_nr = bufnr('%')
-    elseif bufwinnr(s:buf_nr) == -1
-        silent execute 'botright new'
-        silent execute s:buf_nr . 'buffer'
-    elseif bufwinnr(s:buf_nr) != bufwinnr('%')
-        silent execute bufwinnr(s:buf_nr) . 'wincmd w'
-    endif
-
-    silent execute "setlocal filetype=" . s:output_buffer_filetype
-    setlocal bufhidden=delete
-    setlocal buftype=nofile
-    setlocal noswapfile
-    setlocal nobuflisted
-    setlocal winfixheight
-    setlocal cursorline " make it easy to distinguish
-    setlocal nonumber
-    setlocal norelativenumber
-    setlocal showbreak=""
-
-    " clear the buffer
-    setlocal noreadonly
-    setlocal modifiable
-    %delete _
-
-    " add the console output
-    silent execute ".!python " . shellescape(s:current_buffer_file_path, 1)
-
-    " resize window to content length
-    " Note: This is annoying because if you print a lot of lines then your code buffer is forced to a height of one line every time you run this function.
-    "       However without this line the buffer starts off as a default size and if you resize the buffer then it keeps that custom size after repeated runs of this function.
-    "       But if you close the output buffer then it returns to using the default size when its recreated
-    "execute 'resize' . line('$')
-
-    " make the buffer non modifiable
-    setlocal readonly
-    setlocal nomodifiable
-endfunction
+"function! SaveAndExecutePython()
+"    " SOURCE [reusable window]: https://github.com/fatih/vim-go/blob/master/autoload/go/ui.vim
+"
+"    " save and reload current file
+"    silent execute "update | edit"
+"
+"    " get file path of current file
+"    let s:current_buffer_file_path = expand("%")
+"
+"    let s:output_buffer_name = "Python"
+"    let s:output_buffer_filetype = "output"
+"
+"    " reuse existing buffer window if it exists otherwise create a new one
+"    if !exists("s:buf_nr") || !bufexists(s:buf_nr)
+"        silent execute 'botright new ' . s:output_buffer_name
+"        let s:buf_nr = bufnr('%')
+"    elseif bufwinnr(s:buf_nr) == -1
+"        silent execute 'botright new'
+"        silent execute s:buf_nr . 'buffer'
+"    elseif bufwinnr(s:buf_nr) != bufwinnr('%')
+"        silent execute bufwinnr(s:buf_nr) . 'wincmd w'
+"    endif
+"
+"    silent execute "setlocal filetype=" . s:output_buffer_filetype
+"    setlocal bufhidden=delete
+"    setlocal buftype=nofile
+"    setlocal noswapfile
+"    setlocal nobuflisted
+"    setlocal winfixheight
+"    setlocal cursorline " make it easy to distinguish
+"    setlocal nonumber
+"    setlocal norelativenumber
+"    setlocal showbreak=""
+"
+"    " clear the buffer
+"    setlocal noreadonly
+"    setlocal modifiable
+"    %delete _
+"
+"    " add the console output
+"    silent execute "g:ycm_python_binary_path" shellescape(s:current_buffer_file_path, 1)
+"
+"    
+"    " resize window to content length
+"    " Note: This is annoying because if you print a lot of lines then your code buffer is forced to a height of one line every time you run this function.
+"    "       However without this line the buffer starts off as a default size and if you resize the buffer then it keeps that custom size after repeated runs of this function.
+"    "       But if you close the output buffer then it returns to using the default size when its recreated
+"    execute 'resize' . line('$')
+"
+"    " make the buffer non modifiable
+"    setlocal readonly
+"    setlocal nomodifiable
+"endfunction
 
 
 
 " ####################################################################  NERDTree setup
 
-map <C-n> :NERDTreeToggle<CR> 
+map <C-n> :NERDTreeToggle<CR>
 
 " ######################################################################### SCVim setup
 let g:sclangTerm = "urxvt"
@@ -402,30 +443,7 @@ endfunction
 " nicer diff highlighting colors
 highlight! link DiffText MatchParen
 
-" Automatically set paste mode in Vim when pasting in insert mode
-"function! WrapForTmux(s)
-"  if !exists('$TMUX')
-"    return a:s
-"  endif
-"
-"  let tmux_start = "\<Esc>Ptmux;"
-"  let tmux_end = "\<Esc>\\"
-"
-"  return tmux_start . substitute(a:s, "\<Esc>", "\<Esc>\<Esc>", 'g') . tmux_end
-"endfunction
-"
-"let &t_SI .= WrapForTmux("\<Esc>[?2004h")
-"let &t_EI .= WrapForTmux("\<Esc>[?2004l")
-"
-"function! XTermPasteBegin()
-"  set pastetoggle=<Esc>[201~
-"  set paste
-"  return ""
-"endfunction
-"
-"inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
-"
 
-" LaTeX Live Previewer options
+" ############################################## LaTeX Live Previewer options
 let g:livepreview_previewer = 'evince'
 let g:livepreview_engine = 'lualatex'
