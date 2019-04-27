@@ -107,6 +107,10 @@ inoremap ç <c-o>$
 " remap ^ to 1
 noremap 1 ^
 
+" enable ctags
+set tags=~/.mytags
+" jump to tag with ü
+nnoremap ü <C-]>
 
 " EXPERIMENTAL
 " quick commands in insert mode
@@ -171,6 +175,9 @@ noremap <leader>7 7gt
 noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
+
+" run last command
+noremap <leader>r :!!<cr>
 
 " enable mouse
 set mouse=a
