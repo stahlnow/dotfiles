@@ -73,6 +73,7 @@ filetype plugin indent on    " required
 let mapleader=" "
 
 syntax on 					" turn on syntax highlighting
+filetype plugin indent on   " enable plugins
 set number    				" show line numbers
 set autoread 				" auto reload buffer when file modified externally
 set hlsearch 				" keep previous search highlighted
@@ -83,7 +84,11 @@ set splitright
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swp//
 
-filetype plugin indent on
+set path+=**                
+" use with :find for opening files or b: for jumping to buffers
+" finds (nested) files in subdirectories, can use wildmarks :find *.cpp
+set wildmenu
+
 " show existing tab with 4 spaces width
 set tabstop=4
 " when indenting with '>', use 4 spaces width
@@ -104,30 +109,14 @@ inoremap <C-v> <c-o>"+pa
 noremap ç $
 inoremap ç <c-o>$
 
-" remap ^ to 1
+" remap ^ to 1 to use 1 as 'go to first character of line'
 noremap 1 ^
 
 " enable ctags
-set tags=~/.mytags
+" set tags=~/.mytags
+command! MakeTags !ctags -R .
 " jump to tag with ü
 nnoremap ü <C-]>
-
-" EXPERIMENTAL
-" quick commands in insert mode
-" II go to just before the first non-blank text of the line 
-" inoremap II <Esc>I
-" AA go to the end of the line 
-" inoremap AA <Esc>A
-" OO start editing on a new line above the current line
-" inoremap OO <Esc>O
-" CC change what is on the right of the cursor 
-" inoremap CC <Esc>C
-" SS change the whole line 
-" inoremap SS <Esc>S
-" DD delete the current line (end in normal mode)
-" inoremap DD <Esc>dd
-" UU undo 
-" inoremap UU <Esc>u
 
 " F2 sets paste mode
 " Start insert mode.
