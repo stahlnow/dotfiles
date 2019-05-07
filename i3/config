@@ -246,6 +246,13 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
+# Screenshot
+# Multi-screen screenshots with scrot
+bindsym --release Shift+Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/incoming/screenshots && mv $f ~/incoming/screenshots && xclip -selection clipboard -t image/png -i ~/incoming/screenshots/`ls -1 -t ~/incoming/screenshots | head -1`' # All screens
+#
+# Area selection screenshots
+bindsym --release Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/incoming/screenshots && mv $f ~/incoming/screenshots && xclip -selection clipboard -t image/png -i ~/incoming/screenshots/`ls -1 -t ~/incoming/screenshots | head -1`' # Area selection
+
 # Set Tabs as default layout
 workspace_layout tabbed
 
