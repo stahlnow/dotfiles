@@ -285,7 +285,9 @@ au BufNewFile,BufRead *.py:
 
 " save file and run python
 " imap <F5> <Esc>:w<CR>:!clear;python %<CR>
-nnoremap <silent> <F5> :w<CR>:!clear;pipenv run python %<CR><CR>
+nnoremap <silent> <F5> :w<CR>:!clear;pipenv run python %<CR>
+inoremap <silent> <F5> <Esc>:w<CR>:!clear;pipenv run python %<CR>
+
 
 " Bind F5 to save file if modified and execute python script in a buffer.
 " nnoremap <silent> <F5> :call SaveAndExecutePython()<CR>
