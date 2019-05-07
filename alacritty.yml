@@ -81,7 +81,7 @@ font:
     # style: Italic
 
   # Point size of the font
-  size: 8.0
+  size: 6.0
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
@@ -113,8 +113,8 @@ render_timer: false
 colors:
   # Default colors
   primary:
-    #background: '0x282a36'
-    background: '0x000000'
+    background: '0x282a36'
+    #background: '0x000000'
     foreground: '0xeff0eb'
 
   # Normal colors
@@ -168,7 +168,7 @@ visual_bell:
   duration: 0
 
 # Background opacity
-background_opacity: 0.9
+background_opacity: 0.4
 
 # Mouse bindings
 #
@@ -223,6 +223,7 @@ mouse.hide_when_typing: false
 cursor.style: Block
 
 # Live config reload (changes require restart)
+#
 live_config_reload: true
 
 # Shell
