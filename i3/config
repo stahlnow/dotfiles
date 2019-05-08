@@ -38,6 +38,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 bindsym $ALT+F4      kill
 
+
 # start dmenu (a program launcher)
 bindsym $mod+d exec j4-dmenu-desktop --dmenu="dmenu -i -nf '#000000' -nb '#00D5FF' -sb '#FFF700' -sf '#000000' -fn 'monospace-10' -p 'dmenu '"
 
@@ -260,15 +261,20 @@ workspace_layout tabbed
 for_window [class=".*"] border pixel 0
 
 # Enable floating for dialog, etc.
-for_window [window_role="^(bubble|pop-up|task_dialog|dialog|menu)$"] floating enable, border normal
+for_window [window_role="^(bubble|pop-up|task_dialog|dialog|menu)$"] floating enable, border pixel 10 
 
-for_window [title="Preferences$"] floating enable, border normal
+for_window [title="Preferences$"] floating enable, border pixel 10
 
 # Always float these applications.
-for_window [class="^(qjackctl|Pavucontrol|gpredict)$"] floating enable, border normal
+for_window [class="^(qjackctl|Pavucontrol|gpredict)$"] floating enable, border pixel 10
 
-# Force layout for all other new windows
+
+# Force tabbed layout for all other new windows
 for_window [class="[.]*"] layout tabbed
+
+# Kicad
+#for_window [class="Kicad" window_role="^(bubble|pop-up|task_dialog|dialog|menu)$"] layout splith, border pixel 10
+for_window [class="Kicad"] move to workspace $ws3
 
 # Move spotify to workspace 2
 for_window [class="Spotify"] move to workspace $ws2
