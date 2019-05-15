@@ -194,6 +194,10 @@ bindsym --whole-window $mod+button2 kill
 #bindsym --whole-window button2+j focus left
 #bindsym --whole-window button2+k focus right
 
+# Alt+Tab show rofi in window switch mode
+bindsym --release $ALT+Tab exec --no-startup-id "rofi -show window -kb-row-down 'Alt+Tab' -kb-accept-entry '!Alt_L,!Alt+Tab,Return' -config /home/stahl/.config/rofi/config.rasi"
+
+
 # Startup applications
 exec --no-startup-id udiskie -ans &
 
@@ -201,7 +205,8 @@ exec --no-startup-id udiskie -ans &
 exec xset s off
 exec xset -dpms
 
-exec_always --no-startup-id alttab -bg "#ffffff" -fg "#222222" -frame "#00ff00" -t 128x150 -i 128x128 -s 2 -theme hicolor
+#exec_always --no-startup-id alttab -bg "#ffffff" -fg "#222222" -frame "#00ff00" -t 128x150 -i 128x128 -s 2 -theme hicolor
+
 exec --no-startup-id dunst
 
 exec alacritty
