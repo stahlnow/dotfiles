@@ -293,10 +293,12 @@ for_window [class="[.]*"] layout tabbed
 
 # Kicad
 #for_window [class="Kicad" window_role="^(bubble|pop-up|task_dialog|dialog|menu)$"] layout splith, border pixel 10
-for_window [class="Kicad"] move to workspace $ws2
+# for_window [class="Kicad"] move to workspace $ws2
 
 # Move spotify to workspace 
-for_window [class="Spotify"] move to workspace $ws2
+# for_window [class="Spotify"] move to workspace $ws2
+
+for_window [class="Chromium"] move to workspace $ws2
 
 #for_window [class="[.]*"] floating enable, border pixel 0
 #for_window [class="[.]*"] floating enable, border pixel 0, resize set 1601 870, move position 0 30
