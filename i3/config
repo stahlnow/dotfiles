@@ -10,7 +10,8 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
-set $ALT Mod1
+set $alt Mod1
+set $ctrl Control
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -36,8 +37,7 @@ bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
-bindsym $ALT+F4      kill
-
+bindsym $alt+F4      kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec j4-dmenu-desktop --dmenu="dmenu -i -nf '#000000' -nb '#00D5FF' -sb '#FFF700' -sf '#000000' -fn 'monospace-10' -p 'dmenu '"
@@ -118,6 +118,17 @@ bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
 
+bindsym $ctrl+1 workspace $ws1
+bindsym $ctrl+2 workspace $ws2
+bindsym $ctrl+3 workspace $ws3
+bindsym $ctrl+4 workspace $ws4
+bindsym $ctrl+5 workspace $ws5
+bindsym $ctrl+6 workspace $ws6
+bindsym $ctrl+7 workspace $ws7
+bindsym $ctrl+8 workspace $ws8
+bindsym $ctrl+9 workspace $ws9
+
+
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
@@ -195,10 +206,15 @@ bindsym --whole-window $mod+button2 kill
 #bindsym --whole-window button2+k focus right
 
 # Alt+Tab show rofi in window switch mode
-bindsym --release $ALT+Tab exec --no-startup-id "rofi -show window -kb-row-down 'Alt+Tab' -kb-accept-entry '!Alt_L,!Alt+Tab,Return' -config /home/stahl/.config/rofi/config.rasi"
+bindsym --release $alt+Tab exec --no-startup-id "rofi -show window -kb-row-down 'Alt+Tab' -kb-accept-entry '!Alt_L,!Alt+Tab,Return' -config /home/stahl/.config/rofi/config.rasi"
 
 
 # Startup applications
+
+# start xbindkeys for workspace shortcuts, see ~/.xbindkeysrc config
+exec --no-startup-id xbindkeys
+
+# auto mount with udiskie
 exec --no-startup-id udiskie -ans &
 
 # turn off screensaver and energy star
@@ -207,14 +223,15 @@ exec xset -dpms
 
 #exec_always --no-startup-id alttab -bg "#ffffff" -fg "#222222" -frame "#00ff00" -t 128x150 -i 128x128 -s 2 -theme hicolor
 
+# notification daemon
 exec --no-startup-id dunst
 
 exec alacritty
 
 # start messenger softwares
 exec skypeforlinux
-exec --no-startup-id franz
-exec --no-startup-id slack
+#exec --no-startup-id franz
+#exec --no-startup-id slack
 exec --no-startup-id signal-desktop --start-in-tray
 
 # GNOME power manager
