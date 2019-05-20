@@ -49,8 +49,8 @@
   Mod5 + l
 
 # AltGr+ö
-"i3-msg 'workspace 4'"
-  Mod5 + odiaeresis
+#"i3-msg 'workspace 4'"
+#  Mod5 + odiaeresis
 
 
 

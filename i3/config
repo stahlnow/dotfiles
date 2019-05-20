@@ -9,8 +9,8 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod4
-set $alt Mod1
+set $mod Mod1
+set $alt Mod4
 set $ctrl Control
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -33,11 +33,11 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec alacritty
+#bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
-bindsym $alt+F4      kill
+bindsym $mod+F4      kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec j4-dmenu-desktop --dmenu="dmenu -i -nf '#000000' -nb '#00D5FF' -sb '#FFF700' -sf '#000000' -fn 'monospace-10' -p 'dmenu '"
@@ -45,21 +45,21 @@ bindsym $mod+d exec j4-dmenu-desktop --dmenu="dmenu -i -nf '#000000' -nb '#00D5F
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus right
-#bindsym $mod+j focus down
-#bindsym $mod+l focus up
+bindsym $mod+l focus down
+#bindsym $mod+k focus up
 #bindsym $mod+odiaeresis focus right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+#bindsym $mod+Left focus left
+#bindsym $mod+Down focus down
+#bindsym $mod+Up focus up
+#bindsym $mod+Right focus right
 
 # move focused window
 bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+odiaeresis move right
+bindsym $mod+Shift+l move down
+#bindsym $mod+Shift+l move up
+#bindsym $mod+Shift+odiaeresis move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -74,7 +74,7 @@ bindsym $mod+h split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+#bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 #bindsym $mod+s layout stacking
@@ -118,15 +118,15 @@ bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
 
-bindsym $ctrl+1 workspace $ws1
-bindsym $ctrl+2 workspace $ws2
-bindsym $ctrl+3 workspace $ws3
-bindsym $ctrl+4 workspace $ws4
-bindsym $ctrl+5 workspace $ws5
-bindsym $ctrl+6 workspace $ws6
-bindsym $ctrl+7 workspace $ws7
-bindsym $ctrl+8 workspace $ws8
-bindsym $ctrl+9 workspace $ws9
+#bindsym $ctrl+1 workspace $ws1
+#bindsym $ctrl+2 workspace $ws2
+#bindsym $ctrl+3 workspace $ws3
+#bindsym $ctrl+4 workspace $ws4
+#bindsym $ctrl+5 workspace $ws5
+#bindsym $ctrl+6 workspace $ws6
+#bindsym $ctrl+7 workspace $ws7
+#bindsym $ctrl+8 workspace $ws8
+#bindsym $ctrl+9 workspace $ws9
 
 
 # move focused container to workspace
@@ -142,7 +142,7 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 # Lock screen
-bindsym $mod+l exec i3lock -i $HOME/pics/himawari.png
+bindsym $win+l exec i3lock -i $HOME/pics/himawari.png
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -206,8 +206,8 @@ bindsym --whole-window $mod+button2 kill
 #bindsym --whole-window button2+k focus right
 
 # Alt+Tab show rofi in window switch mode
-bindsym --release $alt+Tab exec --no-startup-id "rofi -show window -kb-row-down 'Alt+Tab' -kb-accept-entry '!Alt_L,!Alt+Tab,Return' -config /home/stahl/.config/rofi/config.rasi"
-
+#bindsym --release $mod+Tab exec --no-startup-id "rofi -show window -kb-row-down 'Alt+Tab' -kb-accept-entry '!Alt_L,!Alt+Tab,Return' -config /home/stahl/.config/rofi/config.rasi"
+bindsym $mod+Tab workspace back_and_forth
 
 # Startup applications
 
@@ -240,12 +240,9 @@ exec_always --no-startup-id gnome-power-manager
 # polkit-gnome: Starts authentication-agent needed to get sudo password check aviable for GUIs needing it.
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
-# Shortcut for Chrome
-bindsym $mod+i exec chromium
-
 # Shorcut to toggle Polybar
-bindsym $mod+p exec "polybar-msg cmd hide"
-bindsym $mod+o exec "polybar-msg cmd show"
+#bindsym $mod+p exec "polybar-msg cmd hide"
+#bindsym $mod+o exec "polybar-msg cmd show"
 
 # Colors
 # class                 border  bground text    indicator child_border
@@ -308,14 +305,15 @@ for_window [class="^(qjackctl|Pavucontrol|gpredict)$"] floating enable, border p
 # Force tabbed layout for all other new windows
 for_window [class="[.]*"] layout tabbed
 
+for_window [class="Chromium"] move to workspace $ws2
+
 # Kicad
 #for_window [class="Kicad" window_role="^(bubble|pop-up|task_dialog|dialog|menu)$"] layout splith, border pixel 10
-# for_window [class="Kicad"] move to workspace $ws2
+for_window [class="Kicad"] move to workspace $ws3
 
 # Move spotify to workspace 
 # for_window [class="Spotify"] move to workspace $ws2
 
-for_window [class="Chromium"] move to workspace $ws2
 
 #for_window [class="[.]*"] floating enable, border pixel 0
 #for_window [class="[.]*"] floating enable, border pixel 0, resize set 1601 870, move position 0 30
