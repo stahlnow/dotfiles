@@ -197,7 +197,10 @@ mode "$mode_system" {
 }
 bindsym $mod+Delete mode "$mode_system"
 
+# Set desktop background color
+exec --no-startup-id xsetroot -solid "#000000"
 
+# Start Polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # The middle button over a titlebar kills the window
