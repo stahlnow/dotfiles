@@ -18,22 +18,22 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #222
+background = #000
 background-alt = #444
 ;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
 foreground-alt = #555
-primary = #ffb52a
-secondary = #e60053
+primary = #00ff00
+secondary = #00ff00
 alert = #bd2c40
 
 [bar/mybar]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 27
+height = 24
 ;offset-x = 1%
 ;offset-y = 1%
-radius = 6.0
+radius = 3.0
 fixed-center = false
 
 background = ${colors.background}
@@ -42,7 +42,7 @@ foreground = ${colors.foreground}
 line-size = 3
 line-color = #f00
 
-border-size = 4
+border-size = 1
 border-color = #00000000
 
 padding-left = 0
@@ -58,7 +58,7 @@ font-3 = Weather Icons:size=8;1
 
 modules-left = i3 mpd
 ;modules-center = mpd
-modules-right = filesystem xbacklight alsa pulseaudio openweathermap-detailed memory cpu wlan battery temperature date powermenu
+modules-right = xbacklight pulseaudio temperature filesystem memory cpu wlan battery openweathermap-detailed date 
 
 tray-position = right
 tray-padding = 2
@@ -107,7 +107,7 @@ interval = 25
 
 mount-0 = /
 
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+label-mounted = %{F#888}%mountpoint%%{F-}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
@@ -199,7 +199,7 @@ bar-indicator-foreground = #fff
 bar-indicator-font = 2
 bar-fill = ─
 bar-fill-font = 2
-bar-fill-foreground = #9f78e1
+bar-fill-foreground = ${colors.foreground-alt}
 bar-empty = ─
 bar-empty-font = 2
 bar-empty-foreground = ${colors.foreground-alt}
@@ -214,7 +214,8 @@ type = internal/cpu
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #f90000
+;format-underline = #f90000
+format-underline = ${colors.foreground-alt}
 label = %percentage:2%%
 
 [module/memory]
@@ -222,7 +223,8 @@ type = internal/memory
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
+;format-underline = #4bffdc
+format-underline = ${colors.foreground-alt}
 label = %percentage_used%%
 
 [module/wlan]
@@ -231,7 +233,7 @@ interface = wlp3s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #9f78e1
+format-connected-underline = ${colors.foreground-alt}
 label-connected = %essid%
 
 format-disconnected =
@@ -252,7 +254,8 @@ type = internal/network
 interface = docker0
 interval = 3.0
 
-format-connected-underline = #55aa55
+;format-connected-underline = #55aa55
+format-connected-underline = ${colors.foreground-alt}
 format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
@@ -273,7 +276,8 @@ time = %H:%M
 time-alt = %H:%M:%S
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
+;format-underline = #0a6cf5
+format-underline = ${colors.foreground-alt}
 label = %date% %time%
 
 [module/pulseaudio]
@@ -287,11 +291,11 @@ label-muted = 🔇 muted
 label-muted-foreground = #666
 
 bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-0 = ${colors.foreground-alt}
+bar-volume-foreground-1 = ${colors.foreground-alt}
+bar-volume-foreground-2 = ${colors.foreground-alt}
+bar-volume-foreground-3 = ${colors.foreground-alt}
+bar-volume-foreground-4 = ${colors.foreground-alt}
 bar-volume-foreground-5 = #f5a70a
 bar-volume-foreground-6 = #ff5555
 bar-volume-gradient = false
@@ -315,11 +319,11 @@ format-muted-foreground = ${colors.foreground-alt}
 label-muted = sound muted
 
 bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-0 = ${colors.foreground-alt}
+bar-volume-foreground-1 = ${colors.foreground-alt}
+bar-volume-foreground-2 = ${colors.foreground-alt}
+bar-volume-foreground-3 = ${colors.foreground-alt}
+bar-volume-foreground-4 = ${colors.foreground-alt}
 bar-volume-foreground-5 = #f5a70a
 bar-volume-foreground-6 = #ff5555
 bar-volume-gradient = false
@@ -338,7 +342,8 @@ adapter = AC
 full-at = 98
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
+;format-charging-underline = #ffb52a
+format-charging-underline = ${colors.foreground-alt}
 
 format-discharging = <animation-discharging> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
@@ -370,7 +375,8 @@ thermal-zone = 0
 warn-temperature = 60
 
 format = <ramp> <label>
-format-underline = #f50a4d
+;format-underline = #f50a4d
+format-underline = ${colors.foreground-alt}
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
 
@@ -416,8 +422,9 @@ menu-2-1-exec = menu-open-0
 type = custom/script
 exec = ~/.config/polybar/openweathermap-detailed.sh
 interval = 600
-label-font = 3
-format-underline = #0a6cf5
+label-font = 0
+;format-underline = #0a6cf5
+format-underline = ${colors.foreground-alt}
 
 [settings]
 screenchange-reload = true

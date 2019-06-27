@@ -313,6 +313,7 @@ for_window [class="^(qjackctl|Pavucontrol|gpredict)$"] floating enable, border p
 for_window [class="[.]*"] layout tabbed
 
 for_window [class="Chromium"] move to workspace $ws2
+for_window [class="Evince"] move to workspace $ws3
 
 # Kicad
 #for_window [class="Kicad" window_role="^(bubble|pop-up|task_dialog|dialog|menu)$"] layout splith, border pixel 10
