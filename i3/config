@@ -330,7 +330,7 @@ focus_on_window_activation focus
 #for_window [class="[.]*"] layout tabbed, resize set 1600 870, move position 0 30
 
 # Add gaps
-gaps inner 10
+gaps inner 3
 # Only enable gaps on a workspace when there is at least one container
 smart_gaps on
 # Activate smart borders (always)
