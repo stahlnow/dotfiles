@@ -1,4 +1,5 @@
 #!/bin/sh
+# use with C-x + one of the following bindings
 while read file
 do
 	case "$1" in
@@ -19,6 +20,8 @@ do
 		gimp "$file" & ;;
 	"C-p")
 		lp "$file" & ;;
+    "C-m")
+        mv "$file" ~/pics & ;;
 	esac
 done
 

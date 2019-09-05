@@ -17,7 +17,7 @@ Plugin 'VundleVim/Vundle.vim'
 " <ctrl-k> => Up
 " <ctrl-l> => Right
 " <ctrl-\> => Previous split
-Plugin 'christoomey/vim-tmux-navigator'
+" Plugin 'christoomey/vim-tmux-navigator'
 
 " Smart auto-indentation for Python
 Plugin 'vim-scripts/indentpython.vim'
@@ -41,6 +41,9 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'scrooloose/nerdcommenter'
 
 """""""""""""""""""""""""""""""""""""""""""""" Fancy plugins
+" Unicode plugin
+Plugin 'chrisbra/unicode.vim'
+
 " Awesome staring screen for Vim
 Plugin 'mhinz/vim-startify'
 
@@ -105,10 +108,13 @@ set autoread 				" auto reload buffer when file modified externally
 set hlsearch 				" keep previous search highlighted
 set clipboard=unnamedplus
 set incsearch 				" highlight matches while typing search
+set smartcase               " case insensitive search unlesss capital letters used
 set splitbelow
 set splitright
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swp//
+
+colorscheme monokai
 
 set path+=**                
 " use with :find for opening files or b: for jumping to buffers
@@ -126,10 +132,10 @@ set expandtab
 noremap <Leader>s :update<CR>
 
 " copy with ctrl+c
-vnoremap <C-c> "+y
-
+" vnoremap <C-c> "*y
+vnoremap <C-c> y:call system("wl-copy", @")<cr>
 " paste with ctrl+v
-inoremap <C-v> <c-o>"+pa
+" inoremap <C-v> <c-o>"*pa
 
 " remap $ to ç to use shift+4 as 'go to end of line'
 noremap ç $
@@ -168,10 +174,10 @@ nmap <CR> o<Esc>k
 nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
 
 " provide hjkl movements in Insert mode via the <Alt> modifier key
-inoremap <A-h> <C-o>h
-inoremap <A-j> <C-o>j
-inoremap <A-k> <C-o>k
-inoremap <A-l> <C-o>l
+inoremap <C-h> <C-o>h
+inoremap <C-j> <C-o>j
+inoremap <C-k> <C-o>k
+inoremap <C-l> <C-o>l
 
 " Quick resize with leader up down left right
 noremap <silent> <leader><up> <Esc>:res -5<CR><Esc>

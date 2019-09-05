@@ -236,10 +236,10 @@ exec --no-startup-id dunst
 exec alacritty
 
 # start messenger softwares
-exec skypeforlinux
+#exec skypeforlinux
 #exec --no-startup-id franz
 #exec --no-startup-id slack
-exec --no-startup-id signal-desktop --start-in-tray
+#exec --no-startup-id signal-desktop --start-in-tray
 
 # GNOME power manager
 exec_always --no-startup-id gnome-power-manager
@@ -253,10 +253,10 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # Colors
 # class                 border  bground text    indicator child_border
-client.focused          #cccccc #f6f5f4 #000000 #2E9EF4   #285577
+client.focused          #cccccc #f6f5f4 #000000 #2E9EF4   #00ff00
 client.focused_inactive #333333 #232323 #FFFFFF #484E50   #5F676A
 client.unfocused        #333333 #222222 #888888 #292D2E   #222222
-client.urgent           #2F343A #900000 #FFFFFF #900000   #900000
+client.urgent           #ff00ff #900000 #FFFFFF #900000   #900000
 client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
 
 client.background       #FFFFFF
@@ -300,30 +300,32 @@ workspace_layout tabbed
 # Disable window titlebars for i3-gaps
 for_window [class=".*"] border pixel 0
 
-# Enable floating for dialog, etc.
-for_window [window_role="^(bubble|pop-up|task_dialog|dialog|menu)$"] floating enable, border pixel 10 
+# Focus window on activation
+focus_on_window_activation focus
 
-for_window [title="Preferences$"] floating enable, border pixel 10
+# Enable floating for dialog, etc.
+for_window [window_role="^(bubble|pop-up|task_dialog|dialog|menu)$"] floating enable, border pixel 2
+
+for_window [title="Preferences$"] floating enable, border pixel 2
+
+# supercollider
+for_window [title="^(Plot|Stethoscope|function plot)$"] floating enable, border pixel 2
 
 # Always float these applications.
-for_window [class="^(qjackctl|Pavucontrol|gpredict)$"] floating enable, border pixel 10
+for_window [class="^(qjackctl|Pavucontrol|gpredict)$"] floating enable, border pixel 2
 
 
 # Force tabbed layout for all other new windows
 for_window [class="[.]*"] layout tabbed
 
+# Browser on workspace 2
 for_window [class="Chromium"] move to workspace $ws2
-for_window [class="Evince"] move to workspace $ws3
 
-# Kicad
-#for_window [class="Kicad" window_role="^(bubble|pop-up|task_dialog|dialog|menu)$"] layout splith, border pixel 10
-for_window [class="Kicad"] move to workspace $ws3
+# Other software on workspace 3
+for_window [class="^(Evince|Kicad)$"] move to workspace $ws3
 
-# Move spotify to workspace 
-# for_window [class="Spotify"] move to workspace $ws2
-
-# Focus window on activation
-focus_on_window_activation focus
+# Chat and Sound on workspace 4
+for_window [class="^(Spotify|Slack|Skype|Signal)$"] move to workspace $ws4
 
 #for_window [class="[.]*"] floating enable, border pixel 0
 #for_window [class="[.]*"] floating enable, border pixel 0, resize set 1601 870, move position 0 30
