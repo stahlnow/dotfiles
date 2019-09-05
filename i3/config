@@ -332,7 +332,7 @@ for_window [class="^(Spotify|Slack|Skype|Signal)$"] move to workspace $ws4
 #for_window [class="[.]*"] layout tabbed, resize set 1600 870, move position 0 30
 
 # Add gaps
-gaps inner 10
+gaps inner 3
 # Only enable gaps on a workspace when there is at least one container
 smart_gaps on
 # Activate smart borders (always)
