@@ -132,8 +132,17 @@ set expandtab
 noremap <Leader>s :update<CR>
 
 " copy with ctrl+c
+" xnoremap         only in visual mode
+" <c-c>            bind cTRL-c
+" y                yank selection to "
+" :!wl-copy        send following argument to wayland clipboard
+" <C-r>"<cr>       magically paste " into vim's command line
+" <cr>             execute wl-copy command
+" gv               re-highlight selection
+xnoremap <c-c> y:!wl-copy <C-r>"<cr><cr>gv
+
 " vnoremap <C-c> "*y
-vnoremap <C-c> y:call system("wl-copy", @")<cr>
+" vnoremap <C-c> y:call system("wl-copy", @")<cr>
 " paste with ctrl+v
 " inoremap <C-v> <c-o>"*pa
 
