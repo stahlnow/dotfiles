@@ -271,11 +271,6 @@ bindsym --release Print exec --no-startup-id slurp | grim -g - $(xdg-user-dir DO
 ##############################################################
 # LAYOUT AND STYLE
 ##############################################################
-
-# Background
-# exec_always "swaymsg output LVDS-1 bg ~/pics/101355--staubfanger.jpeg fill"
-exec_always "swaymsg output LVDS-1 bg ~/pics/himawari.png fill"
-
 # Colors
 # class                 border  bground text    indicator child_border
 client.focused          #cccccc #f6f5f4 #000000 #2E9EF4   #dbdbbdaa
@@ -341,4 +336,7 @@ smart_borders on
 # Activate smart borders (only when there are effectively no gaps)
 smart_borders no_gaps
 
+
+# include local configs
+include /home/stahl/.config/sway/config.d/*
 
