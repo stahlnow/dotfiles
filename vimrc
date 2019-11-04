@@ -79,7 +79,9 @@ Plugin 'supercollider/scvim'
 
 " Live Previewing LaTeX PDF Output
 " usage: LLPStartPreview
-Plugin 'xuhdev/vim-latex-live-preview'
+" Plugin 'xuhdev/vim-latex-live-preview'
+
+Plugin 'lervag/vimtex'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
