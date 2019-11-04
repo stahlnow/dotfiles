@@ -273,10 +273,10 @@ bindsym --release Print exec --no-startup-id slurp | grim -g - $(xdg-user-dir DO
 ##############################################################
 # Colors
 # class                 border  bground text    indicator child_border
-client.focused          #cccccc #f6f5f4 #000000 #2E9EF4   #dbdbbdaa
+client.focused          #00ff00 #00ff00 #000000 #2E9EF4   #00ff00
 client.unfocused        #333333 #222222 #888888 #292D2E   #222222
 client.urgent           #ff00ff #900000 #FFFFFF #900000   #900000
-client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
+client.placeholder      #00ff00 #0C0C0C #FFFFFF #000000   #0C0C0C
 client.background       #FFFFFF
 
 # Set Tabs as default layout
@@ -306,7 +306,7 @@ for_window [class="Chromium"] move to workspace $ws2
 
 # Other software on workspace 3
 for_window [class="^(Kicad)$"] move to workspace $ws3
-for_window [app_id="^(evince)$"] move to workspace $ws3
+# for_window [app_id="^(evince)$"] move to workspace $ws3
 
 # Chat and Sound on workspace 4/5
 for_window [class="^(Spotify)$"] move to workspace $ws4
@@ -317,15 +317,15 @@ for_window [class="^(Slack|Skype|Signal)$"] move to workspace $ws5
 #for_window [class="[.]*"] layout tabbed, resize set 1600 870, move position 0 30
 
 # hide titlebars
-default_border none
-hide_edge_borders both
-hide_edge_borders smart 
-hide_edge_borders --i3 both
-hide_edge_borders --i3 smart
+#default_border none
+#hide_edge_borders both
+#hide_edge_borders smart 
+#hide_edge_borders --i3 both
+#hide_edge_borders --i3 smart
 
 # Add gaps
-gaps inner 2
-gaps outer 2
+gaps inner 5
+gaps outer 3
 
 # Only enable gaps on a workspace when there is at least one container
 smart_gaps on
