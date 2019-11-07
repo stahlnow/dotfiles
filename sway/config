@@ -266,7 +266,10 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Screenshot
-bindsym --release Print exec --no-startup-id slurp | grim -g - $(xdg-user-dir DOWNLOAD)/screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png') | wl-copy < $(xdg-user-dir DOWNLOAD)/screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
+# save region as file
+bindsym --release $ctrl+Print exec --no-startup-id slurp -d | grim -g - $(xdg-user-dir DOWNLOAD)/screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
+# copy region to clipboard
+bindsym --release Print exec --no-startup-id grim -g "$(slurp -d)" - | wl-copy
 
 ##############################################################
 # LAYOUT AND STYLE
@@ -279,8 +282,6 @@ client.urgent           #ff00ff #900000 #FFFFFF #900000   #900000
 client.placeholder      #00ff00 #0C0C0C #FFFFFF #000000   #0C0C0C
 client.background       #FFFFFF
 
-# Set Tabs as default layout
-# workspace_layout tabbed
 
 # Force tabbed layout for all other new windows
 # for_window [class="[.]*"] layout tabbed, border pixel 2
@@ -300,6 +301,7 @@ for_window [app_id="^(qjackctl|pavucontrol)$"] floating enable, border pixel 2
 for_window [class="^(Gpredict)$"] floating enable, border pixel 2
 
 
+for_window [app_id="Alacritty"] border pixel 1
 
 # Browser on workspace 2
 for_window [class="Chromium"] move to workspace $ws2
@@ -317,7 +319,7 @@ for_window [class="^(Slack|Skype|Signal)$"] move to workspace $ws5
 #for_window [class="[.]*"] layout tabbed, resize set 1600 870, move position 0 30
 
 # hide titlebars
-#default_border none
+default_border none
 #hide_edge_borders both
 #hide_edge_borders smart 
 #hide_edge_borders --i3 both
