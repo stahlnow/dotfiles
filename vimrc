@@ -117,6 +117,9 @@ set backupdir=~/.vim/backup//
 set directory=~/.vim/swp//
 
 colorscheme monokai
+if &diff
+    colorscheme github
+endif
 
 set path+=**                
 " use with :find for opening files or b: for jumping to buffers
@@ -454,9 +457,6 @@ function! MyTabLine()
   return s
 endfunction
 
-
-" nicer diff highlighting colors
-highlight! link DiffText MatchParen
 
 
 " ############################################## LaTeX Live Previewer options
