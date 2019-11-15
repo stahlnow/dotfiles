@@ -39,9 +39,9 @@ bindsym $mod+F4      kill
 bindsym $mod+d exec j4-dmenu-desktop --dmenu="dmenu -i -nf '#ffffff' -nb '#000000' -sb '#22ff22' -sf '#000000' -fn 'FuraCode Nerd Font-9' -p 'dmenu '"
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus right
-bindsym $mod+l focus down
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 #bindsym $mod+k focus up
 #bindsym $mod+odiaeresis focus right
 
@@ -52,9 +52,9 @@ bindsym $mod+l focus down
 #bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+l move down
-#bindsym $mod+Shift+l move up
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 #bindsym $mod+Shift+odiaeresis move right
 
 # alternatively, you can use the cursor keys:
@@ -73,7 +73,7 @@ bindsym $mod+v split v
 bindsym $win+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-#bindsym $mod+s layout stacking
+bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -91,7 +91,7 @@ bindsym $mod+a focus parent
 #
 
 # i3-easyfocus window
-bindsym $mod+s exec --no-startup-id i3-easyfocus -c --color-unfocused-bg 00ff00 --color-unfocused-fg 000000 --color-focused-bg 00ff00 --color-focused-fg 000000 --font pango:monospace
+# bindsym $mod+s exec --no-startup-id i3-easyfocus -c --color-unfocused-bg 00ff00 --color-unfocused-fg 000000 --color-focused-bg 00ff00 --color-focused-fg 000000 --font pango:monospace
 
 
 # Define names for default workspaces for which we configure key bindings later on.
