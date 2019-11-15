@@ -1,6 +1,5 @@
 # SWAY BABY SWAY
-
-input * xkb_layout "ch"
+input * xkb_layout "ch_modified"
 input * xkb_options "ctrl:nocaps" 
 
 set $mod Mod1
