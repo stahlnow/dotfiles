@@ -302,7 +302,7 @@ for_window [class="^(Gpredict)$"] floating enable, border pixel 2
 for_window [app_id="Alacritty"] border pixel 1
 
 # Browser on workspace 2
-for_window [class="Chromium"] move to workspace $ws2
+# for_window [class="Chromium"] move to workspace $ws2
 
 # Other software on workspace 3
 # for_window [class="^(Kicad)$"] move to workspace $ws3
