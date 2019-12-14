@@ -108,7 +108,6 @@ filetype plugin indent on   " enable plugins
 set number    				" show line numbers
 set autoread 				" auto reload buffer when file modified externally
 set hlsearch 				" keep previous search highlighted
-set clipboard=unnamedplus
 set incsearch 				" highlight matches while typing search
 set smartcase               " case insensitive search unlesss capital letters used
 set splitbelow
@@ -136,20 +135,15 @@ set expandtab
 " quick save leader + s
 noremap <Leader>s :update<CR>
 
-" copy with ctrl+c
-" xnoremap         only in visual mode
-" <c-c>            bind cTRL-c
-" y                yank selection to "
-" :!wl-copy        send following argument to wayland clipboard
-" <C-r>"<cr>       magically paste " into vim's command line
-" <cr>             execute wl-copy command
-" gv               re-highlight selection
-xnoremap <c-c> y:!wl-copy <C-r>"<cr><cr>gv
-
-" vnoremap <C-c> "*y
-" vnoremap <C-c> y:call system("wl-copy", @")<cr>
-" paste with ctrl+v
-" inoremap <C-v> <c-o>"*pa
+" handle copy/paste
+" use yy to copy to system clipboard and use p to paste from system clipboard
+set clipboard=unnamedplus
+" shortcuts for + clipboard (CLIPBOARD)
+noremap <Leader>y "+y
+noremap <Leader>p "+p
+" shortcuts for * clipboard (PRIMARY, copy on select)
+noremap <Leader>Y "*y
+noremap <Leader>P "*p
 
 " remap $ to ç to use shift+4 as 'go to end of line'
 noremap ç $
