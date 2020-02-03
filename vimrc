@@ -181,11 +181,17 @@ nmap <CR> o<Esc>k
 " Make double-<Esc> clear search highlights
 nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
 
-" provide hjkl movements in Insert mode via the <Alt> modifier key
-inoremap <C-h> <C-o>h
-inoremap <C-j> <C-o>j
-inoremap <C-k> <C-o>k
-inoremap <C-l> <C-o>l
+" provide hjkl movements in Insert mode via the <Ctrl> modifier key
+"inoremap <C-h> <C-o>h
+"inoremap <C-j> <C-o>j
+"inoremap <C-k> <C-o>k
+"inoremap <C-l> <C-o>l
+
+" Easier split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " Quick resize with leader up down left right
 noremap <silent> <leader><up> <Esc>:res -5<CR><Esc>
@@ -221,6 +227,11 @@ set mouse=a
 "inoremap <down> <nop>
 "inoremap <left> <nop>
 "inoremap <right> <nop>
+"
+
+" YCM YouCompleteMe settings
+let g:ycm_server_python_interpreter = '/usr/bin/python'
+
 
 " ################### jump to keyword by leader+j, keyword prompt: leader+p
 " List occurrences of keyword under cursor, and

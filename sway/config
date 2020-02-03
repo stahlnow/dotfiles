@@ -287,6 +287,26 @@ client.background       #FFFFFF
 # Focus window on activation
 focus_on_window_activation focus
 
+# hide titlebars
+default_border none
+#hide_edge_borders both
+#hide_edge_borders smart 
+#hide_edge_borders --i3 both
+#hide_edge_borders --i3 smart
+
+# Add gaps
+gaps inner 10 
+gaps outer 3
+
+# Only enable gaps on a workspace when there is at least one container
+smart_gaps on
+
+# Activate smart borders (always)
+smart_borders on
+
+# Activate smart borders (only when there are effectively no gaps)
+smart_borders no_gaps
+
 # Enable floating for dialog, etc.
 for_window [window_role="^(bubble|pop-up|task_dialog|dialog|menu)$"] floating enable, border pixel 2
 for_window [title="Preferences$"] floating enable, border pixel 2
@@ -300,6 +320,7 @@ for_window [class="^(Gpredict)$"] floating enable, border pixel 2
 
 
 for_window [app_id="Alacritty"] border pixel 1
+for_window [app_id="Alacritty"] gaps inner all set 10
 
 # Browser on workspace 2
 # for_window [class="Chromium"] move to workspace $ws2
@@ -316,25 +337,6 @@ for_window [class="^(Slack|Skype|Signal)$"] move to workspace $ws5
 #for_window [class="[.]*"] floating enable, border pixel 0, resize set 1601 870, move position 0 30
 #for_window [class="[.]*"] layout tabbed, resize set 1600 870, move position 0 30
 
-# hide titlebars
-default_border none
-#hide_edge_borders both
-#hide_edge_borders smart 
-#hide_edge_borders --i3 both
-#hide_edge_borders --i3 smart
-
-# Add gaps
-gaps inner 5
-gaps outer 3
-
-# Only enable gaps on a workspace when there is at least one container
-smart_gaps on
-
-# Activate smart borders (always)
-smart_borders on
-
-# Activate smart borders (only when there are effectively no gaps)
-smart_borders no_gaps
 
 
 # include local configs

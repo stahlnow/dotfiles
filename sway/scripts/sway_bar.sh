@@ -30,7 +30,7 @@ fi
 
 if ! [ $network ]
 then
-   network_active="kei netz, scheisse!"
+   network_active="kein netz, schade!"
 else
    network_active=""
 fi
