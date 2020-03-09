@@ -330,7 +330,7 @@ for_window [app_id="Alacritty"] gaps inner all set 10
 # for_window [app_id="^(evince)$"] move to workspace $ws3
 
 # Chat and Sound on workspace 4/5
-for_window [class="^(Spotify)$"] move to workspace $ws4
+for_window [class="^(Spotify)$"] move to workspace $ws9
 for_window [class="^(Slack|Skype|Signal)$"] move to workspace $ws5
 
 #for_window [class="[.]*"] floating enable, border pixel 0
