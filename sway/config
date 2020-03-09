@@ -283,6 +283,8 @@ client.background       #FFFFFF
 
 # Force tabbed layout for all other new windows
 # for_window [class="[.]*"] layout tabbed, border pixel 2
+#for_window [class="[.]*"] floating enable, border pixel 2
+#workspace_layout tabbed
 
 # Focus window on activation
 focus_on_window_activation focus
@@ -319,7 +321,7 @@ for_window [app_id="^(qjackctl|pavucontrol)$"] floating enable, border pixel 2
 for_window [class="^(Gpredict)$"] floating enable, border pixel 2
 
 
-for_window [app_id="Alacritty"] border pixel 1
+for_window [app_id="Alacritty"] border pixel 5
 for_window [app_id="Alacritty"] gaps inner all set 10
 
 # Browser on workspace 2
