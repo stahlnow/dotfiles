@@ -1,4 +1,5 @@
 # SWAY BABY SWAY
+#
 input * xkb_layout "ch_modified"
 input * xkb_options "ctrl:nocaps" 
 
@@ -35,7 +36,9 @@ bindsym $mod+Shift+q kill
 bindsym $mod+F4      kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec j4-dmenu-desktop --dmenu="dmenu -i -nf '#ffffff' -nb '#000000' -sb '#22ff22' -sf '#000000' -fn 'FuraCode Nerd Font-9' -p 'dmenu '"
+bindsym $mod+d exec j4-dmenu-desktop --dmenu="dmenu -i -nf '#ffffff' -nb '#000000' -sb '#add8e6' -sf '#000000' -fn 'FuraCode Nerd Font:pixelsize=11' -p 'dmenu '"
+
+bindsym $mod+f exec dmenu_extended_run
 
 # change focus
 bindsym $mod+j focus down
@@ -89,7 +92,8 @@ bindsym $mod+a focus parent
 #
 
 # i3-easyfocus window
-# bindsym $mod+s exec --no-startup-id i3-easyfocus -c --color-unfocused-bg 00ff00 --color-unfocused-fg 000000 --color-focused-bg 00ff00 --color-focused-fg 000000 --font pango:monospace
+#bindsym $mod+t exec --no-startup-id i3-easyfocus -c --color-unfocused-bg 00ff00 --color-unfocused-fg 000000 --color-focused-bg 00ff00 --color-focused-fg 000000 --font pango:monospace
+bindsym $mod+t exec --no-startup-id rofi -show window
 
 
 # Define names for default workspaces for which we configure key bindings later on.
@@ -201,7 +205,7 @@ bar {
         #statusline #ffffff
         #background #000000AA
         #focused_workspace #000000 #000000ee #ffffffff
-        #inactive_workspace #333333AA #333333AA #5c5c5cAA
+        ##inactive_workspace #333333AA #333333AA #5c5c5cAA
     #}
 #}
 
@@ -274,12 +278,17 @@ bindsym --release Print exec --no-startup-id grim -g "$(slurp -d)" - | wl-copy
 ##############################################################
 # Colors
 # class                 border  bground text    indicator child_border
-client.focused          #00ff00 #00ff00 #000000 #2E9EF4   #00ff00
+#client.focused          #00ff00 #00ff00 #000000 #2E9EF4   #00ff00
+#client.unfocused        #333333 #222222 #888888 #292D2E   #222222
+#client.urgent           #ff00ff #900000 #FFFFFF #900000   #900000
+#client.placeholder      #00ff00 #0C0C0C #FFFFFF #000000   #0C0C0C
+#client.background       #FFFFFF
+
+client.focused          #add8e6 #add8e6 #000000 #2E9EF4   #add8e6
 client.unfocused        #333333 #222222 #888888 #292D2E   #222222
 client.urgent           #ff00ff #900000 #FFFFFF #900000   #900000
-client.placeholder      #00ff00 #0C0C0C #FFFFFF #000000   #0C0C0C
+client.placeholder      #add8e6 #0C0C0C #FFFFFF #000000   #0C0C0C
 client.background       #FFFFFF
-
 
 # Force tabbed layout for all other new windows
 # for_window [class="[.]*"] layout tabbed, border pixel 2
@@ -321,14 +330,16 @@ for_window [app_id="^(qjackctl|pavucontrol)$"] floating enable, border pixel 2
 for_window [class="^(Gpredict)$"] floating enable, border pixel 2
 
 
-for_window [app_id="Alacritty"] border pixel 5
-for_window [app_id="Alacritty"] gaps inner all set 10
+for_window [app_id="Alacritty"] border pixel 3
+for_window [app_id="Alacritty"] gaps inner all set 7 
 
 # Browser on workspace 2
 # for_window [class="Chromium"] move to workspace $ws2
 
-# Other software on workspace 3
+# editor software on workspace 3
+# for_window [app_id="^(subl3)$"] move to workspace $ws3
 # for_window [class="^(Kicad)$"] move to workspace $ws3
+
 # for_window [app_id="^(evince)$"] move to workspace $ws3
 
 # Chat and Sound on workspace 4/5
@@ -339,7 +350,7 @@ for_window [class="^(Slack|Skype|Signal)$"] move to workspace $ws5
 #for_window [class="[.]*"] floating enable, border pixel 0, resize set 1601 870, move position 0 30
 #for_window [class="[.]*"] layout tabbed, resize set 1600 870, move position 0 30
 
-
+for_window [class="jetbrains-pycharm" title="^(win.*)"] floating enable
 
 # include local configs
 include /home/stahl/.config/sway/config.d/*

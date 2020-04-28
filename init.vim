@@ -60,7 +60,8 @@ Plugin 'ervandew/supertab'
 " Plugin 'szw/vim-g'
 
 " Powerline
-Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+" Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'vim-airline/vim-airline'
 
 " Colorizer for visualising color codes like #ff00ff or 'green'
 Plugin 'chrisbra/Colorizer'
@@ -277,23 +278,6 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " ####################################################################  Python
 
-" Point YCM to the Pipenv created virtualenv, if possible
-" At first, get the output of 'pipenv --venv' command.
-let pipenv_venv_path = system('pipenv --venv')
-" The above system() call produces a non zero exit code whenever
-" a proper virtual environment has not been found.
-" So, second, we only point YCM to the virtual environment when
-" the call to 'pipenv --venv' was successful.
-" Remember, that 'pipenv --venv' only points to the root directory
-" of the virtual environment, so we have to append a full path to
-" the python executable.
-if shell_error == 0
-  let venv_path = substitute(pipenv_venv_path, '\n', '', '')
-  let g:ycm_python_binary_path = venv_path . '/bin/python'
-else
-  let g:ycm_python_binary_path = 'python'
-endif
-
 " PEP8 indentation
 au BufNewFile,BufRead *.py:
 	\ set tabstop=4
@@ -303,72 +287,6 @@ au BufNewFile,BufRead *.py:
     \ set expandtab
     \ set autoindent
     \ set fileformat=unix
-
-" save file and run python
-" imap <F5> <Esc>:w<CR>:!clear;python %<CR>
-nnoremap <silent> <F5> :w<CR>:!clear;pipenv run python %<CR>
-inoremap <silent> <F5> <Esc>:w<CR>:!clear;pipenv run python %<CR>
-
-
-" Bind F5 to save file if modified and execute python script in a buffer.
-" nnoremap <silent> <F5> :call SaveAndExecutePython()<CR>
-" vnoremap <silent> <F5> :<C-u>call SaveAndExecutePython()<CR>
-
-"function! SaveAndExecutePython()
-"    " SOURCE [reusable window]: https://github.com/fatih/vim-go/blob/master/autoload/go/ui.vim
-"
-"    " save and reload current file
-"    silent execute "update | edit"
-"
-"    " get file path of current file
-"    let s:current_buffer_file_path = expand("%")
-"
-"    let s:output_buffer_name = "Python"
-"    let s:output_buffer_filetype = "output"
-"
-"    " reuse existing buffer window if it exists otherwise create a new one
-"    if !exists("s:buf_nr") || !bufexists(s:buf_nr)
-"        silent execute 'botright new ' . s:output_buffer_name
-"        let s:buf_nr = bufnr('%')
-"    elseif bufwinnr(s:buf_nr) == -1
-"        silent execute 'botright new'
-"        silent execute s:buf_nr . 'buffer'
-"    elseif bufwinnr(s:buf_nr) != bufwinnr('%')
-"        silent execute bufwinnr(s:buf_nr) . 'wincmd w'
-"    endif
-"
-"    silent execute "setlocal filetype=" . s:output_buffer_filetype
-"    setlocal bufhidden=delete
-"    setlocal buftype=nofile
-"    setlocal noswapfile
-"    setlocal nobuflisted
-"    setlocal winfixheight
-"    setlocal cursorline " make it easy to distinguish
-"    setlocal nonumber
-"    setlocal norelativenumber
-"    setlocal showbreak=""
-"
-"    " clear the buffer
-"    setlocal noreadonly
-"    setlocal modifiable
-"    %delete _
-"
-"    " add the console output
-"    silent execute "g:ycm_python_binary_path" shellescape(s:current_buffer_file_path, 1)
-"
-"    
-"    " resize window to content length
-"    " Note: This is annoying because if you print a lot of lines then your code buffer is forced to a height of one line every time you run this function.
-"    "       However without this line the buffer starts off as a default size and if you resize the buffer then it keeps that custom size after repeated runs of this function.
-"    "       But if you close the output buffer then it returns to using the default size when its recreated
-"    execute 'resize' . line('$')
-"
-"    " make the buffer non modifiable
-"    setlocal readonly
-"    setlocal nomodifiable
-"endfunction
-
-
 
 " ####################################################################  NERDTree setup
 
