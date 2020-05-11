@@ -26,6 +26,7 @@ suppress_default_binds = true
 # Copy filename
 <Shift+F> = exec echo "$imv_current_file" | wl-copy
 
+#<Ctrl+e> = exec gimp "$imv_current_file"; close
 
 q = quit
 y = exec echo working!
