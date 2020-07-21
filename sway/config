@@ -315,7 +315,7 @@ smart_borders no_gaps
 
 # Enable floating for dialog, etc.
 for_window [window_role="^(bubble|pop-up|task_dialog|dialog|menu)$"] floating enable, border pixel 2
-for_window [title="Preferences$"] floating enable, border pixel 2
+for_window [title="^(Copying|Preferences)$"] floating enable, border pixel 2
 
 # supercollider
 for_window [title="^(.*Plot.*|Stethoscope|.*plot.*)$"] floating enable, border pixel 2

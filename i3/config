@@ -33,7 +33,7 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-#bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -43,11 +43,10 @@ bindsym $mod+F4      kill
 bindsym $mod+d exec j4-dmenu-desktop --dmenu="dmenu -i -nf '#000000' -nb '#00D5FF' -sb '#FFF700' -sf '#000000' -fn 'monospace-10' -p 'dmenu '"
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus right
-bindsym $mod+l focus down
-#bindsym $mod+k focus up
-#bindsym $mod+odiaeresis focus right
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+h focus left
 
 # alternatively, you can use the cursor keys:
 #bindsym $mod+Left focus left
@@ -55,12 +54,12 @@ bindsym $mod+l focus down
 #bindsym $mod+Up focus up
 #bindsym $mod+Right focus right
 
-# move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+l move down
-#bindsym $mod+Shift+l move up
-#bindsym $mod+Shift+odiaeresis move right
 
+# move focused window
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+bindsym $mod+Shift+h move right
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
@@ -68,7 +67,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+g split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -148,9 +147,9 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 # Lock screen
 bindsym $win+l exec i3lock -i $HOME/pics/himawari.png
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+#bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
@@ -198,7 +197,8 @@ mode "$mode_system" {
 bindsym $mod+Delete mode "$mode_system"
 
 # Set desktop background color
-exec --no-startup-id xsetroot -solid "#000000"
+#exec --no-startup-id xsetroot -solid "#000000"
+exec_always --no-startup-id /usr/bin/feh --bg-fill '/home/stahl/pics/himawari.png'
 
 # Start Polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
@@ -233,8 +233,6 @@ exec xset -dpms
 # notification daemon
 exec --no-startup-id dunst
 
-exec alacritty
-
 # start messenger softwares
 #exec skypeforlinux
 #exec --no-startup-id franz
@@ -242,25 +240,25 @@ exec alacritty
 #exec --no-startup-id signal-desktop --start-in-tray
 
 # GNOME power manager
-exec_always --no-startup-id gnome-power-manager
+#exec_always --no-startup-id gnome-power-manager
 
 # polkit-gnome: Starts authentication-agent needed to get sudo password check aviable for GUIs needing it.
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
-# Shorcut to toggle Polybar
-#bindsym $mod+p exec "polybar-msg cmd hide"
-#bindsym $mod+o exec "polybar-msg cmd show"
-
 # Colors
 # class                 border  bground text    indicator child_border
-client.focused          #cccccc #f6f5f4 #000000 #2E9EF4   #00ff00
-client.focused_inactive #333333 #232323 #FFFFFF #484E50   #5F676A
+#client.focused          #cccccc #f6f5f4 #000000 #2E9EF4   #00ff00
+#client.focused_inactive #333333 #232323 #FFFFFF #484E50   #5F676A
+#client.unfocused        #333333 #222222 #888888 #292D2E   #222222
+#client.urgent           #ff00ff #900000 #FFFFFF #900000   #900000
+#client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
+#client.background       #FFFFFF
+
+client.focused          #daff35 #add8e6 #000000 #2E9EF4   #daff35
 client.unfocused        #333333 #222222 #888888 #292D2E   #222222
 client.urgent           #ff00ff #900000 #FFFFFF #900000   #900000
-client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
-
+client.placeholder      #add8e6 #0C0C0C #FFFFFF #000000   #0C0C0C
 client.background       #FFFFFF
-
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +1% #increase sound volume
@@ -295,10 +293,10 @@ bindsym --release Shift+Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdi
 bindsym --release Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/incoming/screenshots && mv $f ~/incoming/screenshots && xclip -selection clipboard -t image/png -i ~/incoming/screenshots/`ls -1 -t ~/incoming/screenshots | head -1`' # Area selection
 
 # Set Tabs as default layout
-workspace_layout tabbed
+workspace_layout default
 
 # Disable window titlebars for i3-gaps
-for_window [class=".*"] border pixel 0
+for_window [class=".*"] border pixel 1
 
 # Focus window on activation
 focus_on_window_activation focus
@@ -316,16 +314,16 @@ for_window [class="^(qjackctl|Pavucontrol|gpredict)$"] floating enable, border p
 
 
 # Force tabbed layout for all other new windows
-for_window [class="[.]*"] layout tabbed
+#for_window [class="[.]*"] layout tabbed
 
 # Browser on workspace 2
 for_window [class="Chromium"] move to workspace $ws2
 
 # Other software on workspace 3
-for_window [class="^(Evince|Kicad)$"] move to workspace $ws3
+for_window [class="^(Evince)$"] move to workspace $ws4
 
 # Chat and Sound on workspace 4
-for_window [class="^(Spotify|Slack|Skype|Signal)$"] move to workspace $ws4
+for_window [class="^(Spotify|Slack|Skype|Signal)$"] move to workspace $ws5
 
 #for_window [class="[.]*"] floating enable, border pixel 0
 #for_window [class="[.]*"] floating enable, border pixel 0, resize set 1601 870, move position 0 30

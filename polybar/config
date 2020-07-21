@@ -23,7 +23,7 @@ background-alt = #444
 ;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
 foreground-alt = #555
-primary = #00ff00
+primary = #daff35
 secondary = #00ff00
 alert = #bd2c40
 
@@ -52,13 +52,14 @@ module-margin-left = 1
 module-margin-right = 2
 
 font-0 = misc fixed:pixelsize=10;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
-font-3 = Weather Icons:size=8;1
+#font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+#font-2 = siji:pixelsize=10;1
+font-1 = "FuraCode Nerd Font:size=8"
+font-2 = Weather Icons:size=6;1
 
 modules-left = i3 mpd
 ;modules-center = mpd
-modules-right = xbacklight pulseaudio temperature filesystem memory cpu wlan battery openweathermap-detailed date 
+modules-right = xbacklight pulseaudio  wlan battery openweathermap-detailed date 
 
 tray-position = right
 tray-padding = 2
@@ -138,13 +139,28 @@ type = internal/i3
 format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
+label-active-font = 2
 
+; ws-icon-[0-9]+ = <label>;<icon>
+; NOTE: The <label> needs to match the name of the i3 workspace
+; Neither <label> nor <icon> can contain a semicolon (;)
+ws-icon-0 = 1;
+ws-icon-1 = 2;♛
+ws-icon-2 = 3;♜
+ws-icon-3 = 4;♝
+ws-icon-4 = 5;♞
+ws-icon-default = ♟
+; NOTE: You cannot skip icons, e.g. to get a ws-icon-6
+; you must also define a ws-icon-5.
+; NOTE: Icon will be available as the %icon% token inside label-*
 ; Only show workspaces on the same output as the bar
 ;pin-workspaces = true
 
 label-mode-padding = 2
 label-mode-foreground = #000
 label-mode-background = ${colors.primary}
+
+
 
 ; focused = Active workspace on focused monitor
 label-focused = %index%
@@ -191,7 +207,8 @@ label-song-ellipsis = true
 type = internal/xbacklight
 
 format = <label> <bar>
-label = BL
+label = 
+label-active-font = 2
 
 bar-width = 10
 bar-indicator = |
@@ -221,7 +238,7 @@ label = %percentage:2%%
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
+format-prefix = ""
 format-prefix-foreground = ${colors.foreground-alt}
 ;format-underline = #4bffdc
 format-underline = ${colors.foreground-alt}
@@ -242,11 +259,11 @@ format-disconnected =
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = "
 ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
@@ -268,7 +285,7 @@ format-disconnected =
 
 [module/date]
 type = internal/date
-interval = 5
+interval = 1
 
 date = " %A %d-%m-%Y"
 date-alt = " %Y-%m-%d"
@@ -282,12 +299,12 @@ label = %date% %time%
 
 [module/pulseaudio]
 type = internal/pulseaudio
-
+interval = 1
 format-volume = <label-volume> <bar-volume>
-label-volume = VOL %percentage%%
+label-volume =  %percentage%%
 label-volume-foreground = ${root.foreground}
 
-label-muted = 🔇 muted
+label-muted = 
 label-muted-foreground = #666
 
 bar-volume-width = 10
@@ -307,33 +324,6 @@ bar-volume-empty = ─
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
-[module/alsa]
-type = internal/alsa
-
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL
-label-volume-foreground = ${root.foreground}
-
-format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground-alt}
-label-muted = sound muted
-
-bar-volume-width = 10
-bar-volume-foreground-0 = ${colors.foreground-alt}
-bar-volume-foreground-1 = ${colors.foreground-alt}
-bar-volume-foreground-2 = ${colors.foreground-alt}
-bar-volume-foreground-3 = ${colors.foreground-alt}
-bar-volume-foreground-4 = ${colors.foreground-alt}
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/battery]
 type = internal/battery
@@ -422,7 +412,7 @@ menu-2-1-exec = menu-open-0
 type = custom/script
 exec = ~/.config/polybar/openweathermap-detailed.sh
 interval = 600
-label-font = 0
+label-font = 3
 ;format-underline = #0a6cf5
 format-underline = ${colors.foreground-alt}
 
