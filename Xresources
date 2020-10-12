@@ -25,6 +25,9 @@
 *color14:    #bddbdb
 *color15:    #ffffff
 
+!Xcursor.theme: Oxygen 01 Yellow
+Xcursor.size: 16
+
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! URXVT settings
 ! --- URxvt defaults
 !!URxvt*geometry:          256x96 

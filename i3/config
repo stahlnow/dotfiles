@@ -40,7 +40,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+F4      kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec j4-dmenu-desktop --dmenu="dmenu -i -nf '#000000' -nb '#00D5FF' -sb '#FFF700' -sf '#000000' -fn 'monospace-10' -p 'dmenu '"
+bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -nf '#000000' -nb '#daff35' -sb '#ffffff' -sf '#000000' -fn 'monospace-10' -p 'dmenu '"
 
 # change focus
 bindsym $mod+j focus down
@@ -120,17 +120,6 @@ bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
-
-#bindsym $ctrl+1 workspace $ws1
-#bindsym $ctrl+2 workspace $ws2
-#bindsym $ctrl+3 workspace $ws3
-#bindsym $ctrl+4 workspace $ws4
-#bindsym $ctrl+5 workspace $ws5
-#bindsym $ctrl+6 workspace $ws6
-#bindsym $ctrl+7 workspace $ws7
-#bindsym $ctrl+8 workspace $ws8
-#bindsym $ctrl+9 workspace $ws9
-
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -261,7 +250,7 @@ exec --no-startup-id dunst
 #exec_always --no-startup-id gnome-power-manager
 
 # polkit-gnome: Starts authentication-agent needed to get sudo password check aviable for GUIs needing it.
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+#exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # Colors
 # class                 border  bground text    indicator child_border
