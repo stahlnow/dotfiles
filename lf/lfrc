@@ -61,6 +61,7 @@ map b mark-load
 map gh :cd ~; set sortby natural; set reverse!;
 map gi :cd ~/incoming; set sortby time; set reverse
 map gs :cd ~/music;
+map gm :cd /run/media/stahl
 
 # view images in folder
 map V $imv -d -s shrink .
@@ -108,7 +109,7 @@ cmd extract ${{
         *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) tar xjvf $f;;
         *.tar.gz|*.tgz) tar xzvf $f;;
         *.tar.xz|*.txz) tar xJvf $f;;
-        *.zip) unzip $f;;
+        *.zip) unar $f;;
         *.rar) unrar x $f;;
         *.7z) 7z x $f;;
         *.gzip) gunzip $f;;
@@ -167,4 +168,50 @@ cmd start-search :{{
 }}
 map f start-search
 
+# Yank paths into your clipboard
+cmd yank-dirname ${{
+    dirname -- "$f" | tr -d '\n' | xclip -i -selection clipboard
+}}
+
+cmd yank-path ${{
+    if [ -n "$fs" ]; then echo "$fs"; else echo "$f" | tr -d '\n'; fi |
+      xclip -i -selection clipboard
+}}
+
+cmd yank-basename ${{
+    if [ -n "$fs" ]; then
+      echo "$fs" | xargs -r -d '\n' basename -a --
+    else
+      basename -- "$f" | tr -d '\n'
+    fi | xclip -i -selection clipboard
+}}
+
+cmd yank-basename-without-extension ${{
+    echo "$fx" |
+      xargs -r -d '\n' basename -a |
+      awk -e '{
+        for (i=length($0); i > 0; i--) {
+          if (substr($0, i, 1) == ".") {
+            if (i == 1) print $0
+            else print substr($0, 0, i-1)
+
+            break
+          }
+        }
+
+        if (i == 0)
+          print $0
+      }' |
+      if [ -n "$fs" ]; then cat; else tr -d '\n'; fi |
+      xclip -i -selection clipboard
+}}
+
+# Share any file 256MiB limit
+# returned url wil be appended to clipboard (linux) edit to pbcopy for osx
+cmd share ${{   curl -F"file=@$fx" https://0x0.st | xclip -selection c
+}}
+
+# Put lf into background
+# You might be missing the possibility to put the lf job into the background with the default ctrl and z keys.
+map <c-z> $ kill -STOP $PPID
 

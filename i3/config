@@ -161,10 +161,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym odiaeresis resize grow width 10 px or 10 ppt
+        bindsym j resize shrink width 40 px or 40 ppt
+        bindsym k resize grow height 40 px or 40 ppt
+        bindsym l resize shrink height 40 px or 40 ppt
+        bindsym odiaeresis resize grow width 40 px or 40 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -179,6 +179,24 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+
+
+## Manual management of external displays
+# Set the shortcuts and what they do
+set $mode_display Ext Screen (v) VGA ON, (h) HDMI ON, (x) VGA OFF, (y) HDMI OFF
+mode "$mode_display" {
+    bindsym v exec --no-startup-id xrandr --output VGA1 --auto --right-of LVDS1, mode "default"
+    bindsym h exec --no-startup-id xrandr --output HDMI1 --auto --right-of LVDS1, mode "default"
+    bindsym x exec --no-startup-id xrandr --output VGA1 --auto --off, mode "default"
+    bindsym y exec --no-startup-id xrandr --output HDMI1 --auto --off, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+# Declare here the shortcut to bring the display selection menu
+bindsym $mod+F7 mode "$mode_display"
+
 
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
@@ -263,7 +281,7 @@ client.background       #FFFFFF
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +1% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -1% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
@@ -292,9 +310,6 @@ bindsym --release Shift+Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdi
 # Area selection screenshots
 bindsym --release Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/incoming/screenshots && mv $f ~/incoming/screenshots && xclip -selection clipboard -t image/png -i ~/incoming/screenshots/`ls -1 -t ~/incoming/screenshots | head -1`' # Area selection
 
-# Set Tabs as default layout
-workspace_layout default
-
 # Disable window titlebars for i3-gaps
 for_window [class=".*"] border pixel 1
 
@@ -303,27 +318,34 @@ focus_on_window_activation focus
 
 # Enable floating for dialog, etc.
 for_window [window_role="^(bubble|pop-up|task_dialog|dialog|menu)$"] floating enable, border pixel 2
-
 for_window [title="Preferences$"] floating enable, border pixel 2
+
+# Always float these applications.
+for_window [class="Pavucontrol"] floating enable
+for_window [class="gpredict"] floating enable
+for_window [class="QjackCtl"] floating enable
 
 # supercollider
 for_window [title="^(Plot|Stethoscope|function plot)$"] floating enable, border pixel 2
 
-# Always float these applications.
-for_window [class="^(qjackctl|Pavucontrol|gpredict)$"] floating enable, border pixel 2
-
-
 # Force tabbed layout for all other new windows
 #for_window [class="[.]*"] layout tabbed
 
-# Browser on workspace 2
-for_window [class="Chromium"] move to workspace $ws2
+# Browsers on workspace 2
+for_window [window_role="browser"] move to workspace $ws2
 
-# Other software on workspace 3
-for_window [class="^(Evince)$"] move to workspace $ws4
+# Document software on workspace 4
+assign [class="(?i)libreoffice-writer$"]$ $ws4
+assign [class="(?i)soffice"] $ws4
+assign [class="(?i)libreoffice-calc"] $ws4
+assign [class="(?i)libreoffice.*"] $ws4
+for_window [class="^(libreoffice|libreoffice-writer|Evince)$"] move to workspace $ws4
 
 # Chat and Sound on workspace 4
 for_window [class="^(Spotify|Slack|Skype|Signal)$"] move to workspace $ws5
+
+# Keep
+assign [title="Google Keep"] $ws8
 
 #for_window [class="[.]*"] floating enable, border pixel 0
 #for_window [class="[.]*"] floating enable, border pixel 0, resize set 1601 870, move position 0 30

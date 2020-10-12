@@ -5,6 +5,6 @@ case "$1" in
     *.rar) unrar l "$1";;
     *.7z) 7z l "$1";;
     *.pdf) pdftotext "$1" -;;
-    *) ~/.config/lf/batcolor "$1" ;;
+    *) highlight -O ansi "$1" || cat "$1";;
 esac
 
