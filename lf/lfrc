@@ -58,6 +58,9 @@ map <enter> :open
 # b open bookmarks
 map b mark-load
 
+# n for natural sort
+map n set sortby natural;
+
 map gh :cd ~; set sortby natural; set reverse!;
 map gi :cd ~/incoming; set sortby time; set reverse
 map gs :cd ~/music;
