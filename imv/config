@@ -15,7 +15,8 @@ suppress_default_binds = true
 # Define some key bindings
 
 # Delete and then close an open image 
-<Shift+Delete> = exec rm "$imv_current_file"; close
+<Delete> = exec rm "$imv_current_file"; close
+<F8> = exec rm "$imv_current_file"; close
 
 # Rotate the currently open image by 90 degrees
 <Shift+R> = exec mogrify -rotate 90 "$imv_current_file"
@@ -28,7 +29,7 @@ suppress_default_binds = true
 #<Shift+F> = exec echo "$imv_current_file" | wl-copy
 <Shift+F> = exec echo -n "$imv_current_file" | xclip -selection clipboard
 
-#<Ctrl+e> = exec gimp "$imv_current_file"; close
+e = exec gimp "$imv_current_file" 2> /dev/null &> /dev/null &; close
 
 q = quit
 y = exec echo working!

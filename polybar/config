@@ -76,7 +76,7 @@ type = internal/i3
 format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
-label-active-font = 2
+#label-active-font = 1
 
 ; ws-icon-[0-9]+ = <label>;<icon>
 ; NOTE: The <label> needs to match the name of the i3 workspace
@@ -85,7 +85,7 @@ ws-icon-0 = 1;
 ws-icon-1 = 2;♛
 ws-icon-2 = 3;♜
 ws-icon-3 = 4;♝
-ws-icon-4 = 5;♞
+ws-icon-4 = 5;♞0
 ws-icon-default = ♟
 ; NOTE: You cannot skip icons, e.g. to get a ws-icon-6
 ; you must also define a ws-icon-5.
@@ -101,11 +101,11 @@ label-mode-background = ${colors.primary}
 label-focused = %index%
 label-focused-background = ${colors.background-alt}
 label-focused-underline = ${colors.primary}
-label-focused-padding = 3 
+label-focused-padding = 5 
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %index%
-label-unfocused-padding = 3
+label-unfocused-padding = 5
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %index%
