@@ -67,7 +67,7 @@ map gs :cd ~/music;
 map gm :cd /run/media/stahl
 
 # view images in folder
-map V $imv -d -s shrink .
+map V $find . -type f | sort | imv -d -s shrink
 
 ########## Midnight Commander mappings ###############
 map <f-2> rename

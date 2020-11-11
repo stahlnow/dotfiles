@@ -61,7 +61,7 @@ bindsym $mod+h focus left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
-bindsym $mod+Shift+h move right
+bindsym $mod+Shift+h move left
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
@@ -303,7 +303,10 @@ bindsym --release Shift+Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdi
 # Area selection screenshots
 bindsym --release Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/incoming/screenshots && mv $f ~/incoming/screenshots && xclip -selection clipboard -t image/png -i ~/incoming/screenshots/`ls -1 -t ~/incoming/screenshots | head -1`' # Area selection
 
-#workspace_layout default
+workspace_layout default
+
+# Force floating layout for all new windows
+# for_window [class="[.]*"] floating enable
 
 # title bar height
 # Disable window titlebars for i3-gaps
@@ -327,8 +330,6 @@ for_window [title="^(Plot|Stethoscope|function plot)$"] floating enable, border 
 # Force some software to tabbed mode
 for_window [class="^(jetbrains-pycharm)$"] layout tabbed
 
-# Force floating layout for all new windows
-for_window [class="[.]*"] floating enable
 
 # Browsers on workspace 2
 for_window [window_role="browser"] move to workspace $ws2
