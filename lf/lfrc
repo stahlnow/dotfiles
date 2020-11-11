@@ -85,7 +85,7 @@ map <f-8> push :delete<enter>
 #map X !$f
 
 # dedicated keys for file opener actions
-map o $mimeopen $f
+map o $mimeopen $f > /dev/null 2> /dev/null &
 map O $mimeopen --ask $f
 
 # define a custom 'open' command
