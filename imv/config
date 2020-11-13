@@ -19,15 +19,16 @@ suppress_default_binds = true
 <F8> = exec rm "$imv_current_file"; close
 
 # Rotate the currently open image by 90 degrees
-<Shift+R> = exec mogrify -rotate 90 "$imv_current_file"
+<Ctrl+r> = exec mogrify -rotate 90 "$imv_current_file"
 
 # Copy image to clipboard
 #<Shift+C> = exec wl-copy < "$imv_current_file"
-<Shift+C> = exec xclip -selection clipboard -t image/png -i "$imv_current_file"
+<Ctrl+c> = exec xclip -selection clipboard -t image/png -i "$imv_current_file"
+<F5> = exec xclip -selection clipboard -t image/png -i "$imv_current_file"
 
 # Copy filename
 #<Shift+F> = exec echo "$imv_current_file" | wl-copy
-<Shift+F> = exec echo -n "$imv_current_file" | xclip -selection clipboard
+<Ctrl+f> = exec echo -n "$imv_current_file" | xclip -selection clipboard
 
 e = exec gimp "$imv_current_file" 2> /dev/null &> /dev/null &; close
 
