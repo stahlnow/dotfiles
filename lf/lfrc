@@ -51,10 +51,6 @@ cmd yes_preview :{{
 }}
 map t yes_preview
 
-# use enter for shell commands
-# map <enter> shell
-map <enter> :open
-
 # b open bookmarks
 map b mark-load
 
@@ -91,6 +87,9 @@ map <f-8> push :delete<enter>
 # dedicated keys for file opener actions
 map o $mimeopen $f > /dev/null 2> /dev/null &
 map O $mimeopen --ask $f
+
+# map <enter> shell
+map <enter> $mimeopen $f > /dev/null 2> /dev/null &
 
 # define a custom 'open' command
 # This command is called when current file is not a directory. You may want to
