@@ -2,6 +2,8 @@
 
 [options]
 
+overlay_font = Monospace:12
+
 # Suppress built-in key bindings, and specify them explicitly in this
 # config file.
 suppress_default_binds = true
@@ -19,21 +21,20 @@ suppress_default_binds = true
 <F8> = exec rm "$imv_current_file"; close
 
 # Rotate the currently open image by 90 degrees
-<Ctrl+r> = exec mogrify -rotate 90 "$imv_current_file"
+r = exec mogrify -rotate 90 "$imv_current_file"
 
 # Copy image to clipboard
-#<Shift+C> = exec wl-copy < "$imv_current_file"
+y = exec xclip -selection clipboard -t image/png -i "$imv_current_file"
 <Ctrl+c> = exec xclip -selection clipboard -t image/png -i "$imv_current_file"
 <F5> = exec xclip -selection clipboard -t image/png -i "$imv_current_file"
+#<Shift+C> = exec wl-copy < "$imv_current_file"
 
 # Copy filename
-#<Shift+F> = exec echo "$imv_current_file" | wl-copy
 <Ctrl+f> = exec echo -n "$imv_current_file" | xclip -selection clipboard
+#<Shift+F> = exec echo "$imv_current_file" | wl-copy
 
+# Edit image
 e = exec gimp "$imv_current_file" 2> /dev/null &> /dev/null &; close
-
-q = quit
-y = exec echo working!
 
 # Image navigation
 <space> = next
@@ -60,6 +61,7 @@ i = zoom 1
 o = zoom -1
 
 # Other commands
+q = quit
 x = close
 f = fullscreen
 d = overlay
@@ -78,3 +80,4 @@ r = reset
 # Slideshow control
 t = slideshow +1
 <Shift+T> = slideshow -1
+

@@ -2,12 +2,8 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-" Keep Plugin commands between vundle#begin/end.
+call plug#begin(stdpath('data') . '/plugged')
+" Make sure you use single quotes for Plug
 
 " vim-tmux-navigator
 " Navigate Split Panes
@@ -17,87 +13,78 @@ Plugin 'VundleVim/Vundle.vim'
 " <ctrl-k> => Up
 " <ctrl-l> => Right
 " <ctrl-\> => Previous split
-Plugin 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-navigator'
 
 " Smart auto-indentation for Python
-Plugin 'vim-scripts/indentpython.vim'
+Plug 'vim-scripts/indentpython.vim'
 
 " Rich python syntax highlighting
-Plugin 'kh3phr3n/python-syntax'
+Plug 'kh3phr3n/python-syntax'
 
 " Syntax checker
-Plugin 'vim-syntastic/syntastic'
+Plug 'vim-syntastic/syntastic'
 
 " Python backend for 'syntastic'
-Plugin 'nvie/vim-flake8'
+Plug 'nvie/vim-flake8'
 
 " Find files with Ctrl+p
-Plugin 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " NERDTree Ctrl+n
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 " Nerd Commenter
-Plugin 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'
 
 """""""""""""""""""""""""""""""""""""""""""""" Fancy plugins
 " Unicode plugin
-Plugin 'chrisbra/unicode.vim'
+Plug 'chrisbra/unicode.vim'
 
 " Awesome staring screen for Vim
-Plugin 'mhinz/vim-startify'
+Plug 'mhinz/vim-startify'
 
 " Monokai Theme
-Plugin 'crusoexia/vim-monokai'
+Plug 'crusoexia/vim-monokai'
 
 " Git wrapper
 " usage: :Gstatus, :Gedit, :Gsplit, :Gvsplit
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
-Plugin 'ervandew/supertab'
+Plug 'ervandew/supertab'
 
 " Google
 " Plugin 'szw/vim-g'
 
 " Powerline
 " Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
-Plugin 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline'
 
 " Colorizer for visualising color codes like #ff00ff or 'green'
-Plugin 'chrisbra/Colorizer'
+Plug 'chrisbra/Colorizer'
 
 " Show git changes
-Plugin 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 
 " Markdown preview with Ctrl+p (on .md files)
-Plugin 'iamcco/markdown-preview.vim'
+Plug 'iamcco/markdown-preview.vim'
 
 " Auto-reload file that changed on disk
-Plugin 'djoshea/vim-autoread'
+Plug 'djoshea/vim-autoread'
 
 " Supercollider plugin
-Plugin 'supercollider/scvim'
+Plug 'supercollider/scvim'
 
 " Live Previewing LaTeX PDF Output
 " usage: LLPStartPreview
 " Plugin 'xuhdev/vim-latex-live-preview'
 
-Plugin 'lervag/vimtex'
+Plug 'lervag/vimtex'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+" Base 16 colorscheme
+Plug 'chriskempson/base16-vim'
+
+" Initialize plugin system
+call plug#end()
 
 " ###################################################################### General setup
 
@@ -116,7 +103,9 @@ set splitright
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swp//
 
-colorscheme monokai
+"colorscheme monokai
+colorscheme base16-apathy
+
 if &diff
     colorscheme github
 endif

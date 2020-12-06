@@ -7,7 +7,7 @@ lines: 1;
 /*	columns: 1;*/
 columns: 10;
 
-font: "DejaVu Sans Mono 24";
+font: "DejaVu Sans Mono 14";
 
 /*	bw: 1;*/
 /*	location: 0;*/
@@ -156,6 +156,7 @@ window-format: "{t}";
 
 }
 
+@theme "base16-default-dark"
 
 /* vim:ft=css
 
