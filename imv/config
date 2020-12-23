@@ -34,7 +34,8 @@ y = exec xclip -selection clipboard -t image/png -i "$imv_current_file"
 #<Shift+F> = exec echo "$imv_current_file" | wl-copy
 
 # Edit image
-e = exec gimp "$imv_current_file" 2> /dev/null &> /dev/null &; close
+e = exec krita "$imv_current_file" 2> /dev/null &> /dev/null &; close
+<Ctrl+e> = exec krita "$imv_current_file" 2> /dev/null &> /dev/null &; close
 
 # Image navigation
 <space> = next

@@ -307,7 +307,7 @@ client.background       $base07
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +1% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -1% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 bindsym $win+c exec ~/sh/show_cover.sh
 
@@ -345,7 +345,7 @@ workspace_layout default
 
 # title bar height
 # Disable window titlebars for i3-gaps
-for_window [class=".*"] border pixel 1
+for_window [class=".*"] border pixel 3
 
 # Focus window on activation
 focus_on_window_activation focus
@@ -391,7 +391,7 @@ assign [title="Google Keep"] $ws8
 #for_window [class="[.]*"] layout tabbed, resize set 1600 870, move position 0 30
 
 # Add gaps
-gaps inner 3
+gaps inner 12
 # Only enable gaps on a workspace when there is at least one container
 smart_gaps on
 # Activate smart borders (always)
