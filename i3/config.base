@@ -1,0 +1,278 @@
+# i3 base config file
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+set $mod Mod1   
+set $win Mod4   
+set $ctrl Control 
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# kill focused window
+bindsym $mod+F4 kill
+
+# change focus
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+h focus left
+
+# move focused window
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+bindsym $mod+Shift+h move left
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+g split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $win+Return fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+#bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+bindsym $mod+Tab workspace back_and_forth
+
+# start a terminal
+bindsym $mod+Return exec alacritty
+
+# start dmenu (a program launcher)
+bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -nf '$base05' -nb '$base00' -sb '$base02' -sf '$base05' -fn 'monospace-10' -p 'dmenu '"
+
+# Lock screen
+bindsym $win+l exec i3lock -i $HOME/pics/lockscreen.png
+# reload the configuration file
+#bindsym $mod+Shift+r reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# The middle button over a titlebar kills the window
+bindsym --release button2 kill
+# The middle button and a modifer over any part of the window kills the window
+bindsym --whole-window $mod+button2 kill
+
+#bindsym --whole-window button2 focus left
+#bindsym --whole-window button2+j focus left
+#bindsym --whole-window button2+k focus right
+ 
+################################## FANCY MODES ####################################################
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+        bindsym h resize shrink width 40 px or 40 ppt
+        bindsym j resize grow height 40 px or 40 ppt
+        bindsym k resize shrink height 40 px or 40 ppt
+        bindsym l resize grow width 40 px or 40 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+## Manual management of external displays
+set $mode_display Ext Screen (v) VGA ON, (h) HDMI ON, (x) VGA OFF, (y) HDMI OFF
+mode "$mode_display" {
+    bindsym v exec --no-startup-id xrandr --output VGA1 --auto --right-of LVDS1, mode "default"
+    bindsym h exec --no-startup-id xrandr --output HDMI1 --auto --right-of LVDS1, mode "default"
+    bindsym x exec --no-startup-id xrandr --output VGA1 --auto --off, mode "default"
+    bindsym y exec --no-startup-id xrandr --output HDMI1 --auto --off, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+# Declare here the shortcut to bring the display selection menu
+bindsym $mod+F7 mode "$mode_display"
+
+# System Mode
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id i3lock -i $HOME/pics/lockscreen.png, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id sudo systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id sudo systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id sudo systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id shutdown -h now, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Delete mode "$mode_system"
+
+################################## SCREENSHOTS ################################
+# Multi-screen screenshots with scrot
+bindsym --release Shift+Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/incoming/screenshots && mv $f ~/incoming/screenshots && xclip -selection clipboard -t image/png -i ~/incoming/screenshots/`ls -1 -t ~/incoming/screenshots | head -1`' # All screens
+
+# Area selection screenshots
+bindsym --release Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/incoming/screenshots && mv $f ~/incoming/screenshots && xclip -selection clipboard -t image/png -i ~/incoming/screenshots/`ls -1 -t ~/incoming/screenshots | head -1`' # Area selection
+
+################################## CUSTOM FANCY BINDINGS ################################
+# reload config
+bindsym $mod+Shift+c exec "~/.dotfiles/scripts/i3_merge_config.sh && i3-msg reload"
+
+# i3-easyfocus window
+bindsym $mod+s exec --no-startup-id i3-easyfocus -c --color-unfocused-bg 00ff00 --color-unfocused-fg 000000 --color-focused-bg 00ff00 --color-focused-fg 000000 --font pango:monospace
+
+# run lf file manager
+bindsym $win+f exec alacritty -e lf
+
+# show cover with mpc
+bindsym $win+c exec ~/sh/show_cover.sh
+
+################################## STARTUP SETUP ###########################################
+# Set desktop background color
+#exec --no-startup-id xsetroot -solid "#000000"
+exec_always --no-startup-id /usr/bin/feh --bg-fill '/home/stahl/pics/himawari.png'
+
+# Start Polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+# start xbindkeys for workspace shortcuts, see ~/.xbindkeysrc config
+exec --no-startup-id xbindkeys
+
+# auto mount with udiskie
+exec --no-startup-id udiskie -ans &
+
+# turn off screensaver and energy star
+exec --no-startup-id xset s off
+exec --no-startup-id xset -dpms
+
+# notification daemon
+exec --no-startup-id dunst
+
+################################## WORKSPACE SETUP ###########################################
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+################################## COLORS  #####################################################
+# Property Name         Border  BG      Text    Indicator Child Border
+client.focused          $base05 $base0D $base00 $base0D $base0C
+client.focused_inactive $base01 $base01 $base05 $base03 $base01
+client.unfocused        $base01 $base00 $base05 $base01 $base01
+client.urgent           $base08 $base08 $base00 $base08 $base08
+client.placeholder      $base00 $base00 $base05 $base00 $base00
+client.background       $base07
+
+
+################################## WORKSPACE CONFIG #############################################
+workspace_layout default
+
+# Force floating layout for all new windows
+# for_window [class="[.]*"] floating enable
+
+# title bar height
+# Disable window titlebars for i3-gaps
+for_window [class=".*"] border pixel 3
+
+# Focus window on activation
+focus_on_window_activation focus
+
+# Enable floating for dialog, etc.
+for_window [window_role="^(bubble|pop-up|task_dialog|dialog|menu)$"] floating enable, border pixel 2
+for_window [title="Preferences$"] floating enable, border pixel 2
+
+# Always float these applications.
+for_window [class="Pavucontrol"] floating enable
+for_window [class="gpredict"] floating enable
+for_window [class="QjackCtl"] floating enable
+
+# supercollider
+for_window [title="^(Plot|Stethoscope|function plot)$"] floating enable, border pixel 2
+
+# Force some software to tabbed mode
+for_window [class="^(jetbrains-pycharm)$"] layout tabbed
+
+
+# Browsers on workspace 2
+for_window [window_role="browser"] move to workspace $ws2
+
+# Document software on workspace 4
+for_window [class="^(XpdfReader|Evince|libreoffice-startcenter|Soffice)$"] move to workspace $ws4
+assign [class="(?i)libreoffice-writer$"]$ $ws4
+assign [class="(?i)soffice"] $ws4
+assign [class="(?i)libreoffice-calc"] $ws4
+assign [class="(?i)libreoffice.*"] $ws4
+for_window [class="^(libreoffice|libreoffice-writer|Evince)$"] move to workspace $ws4
+
+# Chat on workspace 5
+for_window [class="^(Telegram|Slack|Skype|Signal)$"] move to workspace $ws5
+
+# Sound on workspace 9
+for_window [class="^(Spotify)$"] move to workspace $ws9
+
+# Keep
+assign [title="Google Keep"] $ws8
+
+#for_window [class="[.]*"] floating enable, border pixel 0
+#for_window [class="[.]*"] floating enable, border pixel 0, resize set 1601 870, move position 0 30
+#for_window [class="[.]*"] layout tabbed, resize set 1600 870, move position 0 30
+
+
+
