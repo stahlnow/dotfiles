@@ -169,7 +169,7 @@ bindsym $mod+Shift+c exec "~/.dotfiles/scripts/i3_merge_config.sh && i3-msg relo
 bindsym $mod+s exec --no-startup-id i3-easyfocus -c --color-unfocused-bg 00ff00 --color-unfocused-fg 000000 --color-focused-bg 00ff00 --color-focused-fg 000000 --font pango:monospace
 
 # run lf file manager
-bindsym $win+f exec alacritty -e lf
+bindsym $win+f exec doublecmd
 
 # show cover with mpc
 bindsym $win+c exec ~/sh/show_cover.sh
