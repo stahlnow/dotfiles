@@ -17,6 +17,10 @@ set shellopts '-eu'
 # commands accordingly.
 set ifs "\n"
 
+#When this option is enabled, search command patterns are considered as globs, otherwise they are literals. With globbing, '*' matches any sequence, '?' matches any character, and '[...]' or '[^...] matches character sets or ranges. Otherwise, these characters are interpreted as they are.
+set globsearch on
+
+
 # leave some space at the top and the bottom of the screen
 set scrolloff 10
 
@@ -63,7 +67,8 @@ map gs :cd ~/music;
 map gm :cd /run/media/stahl
 
 # view images in folder
-map V $find . -type f | sort | imv -d -s shrink
+#map V $find . -type f | sort | imv -d -s shrink
+map V $~/.dotfiles/scripts/rifle_imv.sh $f
 
 ########## Midnight Commander mappings ###############
 map <f-2> rename
@@ -85,11 +90,11 @@ map <f-8> push :delete<enter>
 #map X !$f
 
 # dedicated keys for file opener actions
-map o $mimeopen $f > /dev/null 2> /dev/null &
+map o $mimeo -q $f > /dev/null 2> /dev/null &
 map O $mimeopen --ask $f
 
 # map <enter> shell
-map <enter> $mimeopen $f > /dev/null 2> /dev/null &
+map <enter> $mimeo -q $f > /dev/null 2> /dev/null &
 
 # define a custom 'open' command
 # This command is called when current file is not a directory. You may want to
