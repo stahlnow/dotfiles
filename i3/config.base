@@ -176,8 +176,8 @@ bindsym $win+c exec ~/sh/show_cover.sh
 
 ################################## STARTUP SETUP ###########################################
 # Set desktop background color
-#exec --no-startup-id xsetroot -solid "#000000"
-exec_always --no-startup-id /usr/bin/feh --bg-fill '/home/stahl/pics/himawari.png'
+exec --no-startup-id xsetroot -solid "#000000"
+#exec_always --no-startup-id /usr/bin/feh --bg-fill '/home/stahl/pics/himawari.png'
 
 # Start Polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
