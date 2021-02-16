@@ -66,7 +66,7 @@ bindsym $win+l exec i3lock -i $HOME/pics/lockscreen.png
 # reload the configuration file
 #bindsym $mod+Shift+r reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $win+Shift+r restart
 # exit i3 (logs you out of your X session)
 #bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
@@ -163,7 +163,7 @@ bindsym --release Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -
 
 ################################## CUSTOM FANCY BINDINGS ################################
 # reload config
-bindsym $mod+Shift+c exec "~/.dotfiles/scripts/i3_merge_config.sh && i3-msg reload"
+bindsym $mod+Shift+r exec "~/.dotfiles/scripts/i3_merge_config.sh && i3-msg reload"
 
 # i3-easyfocus window
 bindsym $mod+s exec --no-startup-id i3-easyfocus -c --color-unfocused-bg 00ff00 --color-unfocused-fg 000000 --color-focused-bg 00ff00 --color-focused-fg 000000 --font pango:monospace
@@ -173,6 +173,11 @@ bindsym $win+f exec doublecmd
 
 # show cover with mpc
 bindsym $win+c exec ~/sh/show_cover.sh
+
+
+exec --no-startup-id "python ~/.dotfiles/scripts/event_listener.py"
+# bindsym $win+Tab exec echo "swap_focus" | ncat --send-only -U "$XDG_RUNTIME_DIR/i3/event-listener.sock"
+bindsym $win+Tab exec echo "swap_focus" | nc -w0 -U "$XDG_RUNTIME_DIR/i3/event-listener.sock"
 
 ################################## STARTUP SETUP ###########################################
 # Set desktop background color
