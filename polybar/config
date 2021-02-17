@@ -51,11 +51,8 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = misc fixed:pixelsize=10;1
-#font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-#font-2 = siji:pixelsize=10;1
-font-1 = "FuraCode Nerd Font:size=8"
-font-2 = Weather Icons:size=6;1
+font-0 = RobotoMono Nerd Font:pixelsize=10;1
+font-1 = Weather Icons:size=6;1
 
 modules-left = i3 mpd 
 ;modules-center = mpd
@@ -125,16 +122,17 @@ label-urgent = %index%
 
 [module/mpd]
 type = internal/mpd
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
-
 host = 127.0.0.1
 port = 6600
+interval = 2
 
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
+format-online = <icon-prev>   <toggle>   <icon-next>   <label-song> 
+
+icon-prev = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
 
 label-song-maxlen = 25
 label-song-ellipsis = true
@@ -149,12 +147,12 @@ label-active-font = 2
 bar-width = 10
 bar-indicator = |
 bar-indicator-foreground = #fff
-bar-indicator-font = 2
+;bar-indicator-font = 2
 bar-fill = ─
-bar-fill-font = 2
+;bar-fill-font = 2
 bar-fill-foreground = ${colors.foreground-alt}
 bar-empty = ─
-bar-empty-font = 2
+;bar-empty-font = 2
 bar-empty-foreground = ${colors.foreground-alt}
 
 [module/backlight-acpi]
@@ -253,11 +251,11 @@ bar-volume-foreground-5 = #f5a70a
 bar-volume-foreground-6 = #ff5555
 bar-volume-gradient = false
 bar-volume-indicator = |
-bar-volume-indicator-font = 2
+;bar-volume-indicator-font = 2
 bar-volume-fill = ─
-bar-volume-fill-font = 2
+;bar-volume-fill-font = 2
 bar-volume-empty = ─
-bar-volume-empty-font = 2
+;bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
 
@@ -321,7 +319,7 @@ ramp-foreground = ${colors.foreground-alt}
 type = custom/script
 exec = ~/.config/polybar/openweathermap-detailed.sh
 interval = 600
-label-font = 3
+label-font = 2
 ;format-underline = #0a6cf5
 format-underline = ${colors.foreground-alt}
 
