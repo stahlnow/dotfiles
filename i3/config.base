@@ -53,7 +53,7 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-bindsym $mod+Tab workspace back_and_forth
+bindsym $win+Tab workspace back_and_forth
 
 # start a terminal
 bindsym $mod+Return exec alacritty
@@ -174,10 +174,10 @@ bindsym $win+f exec doublecmd
 # show cover with mpc
 bindsym $win+c exec ~/sh/show_cover.sh
 
-
-exec --no-startup-id "python ~/.dotfiles/scripts/event_listener.py"
-# bindsym $win+Tab exec echo "swap_focus" | ncat --send-only -U "$XDG_RUNTIME_DIR/i3/event-listener.sock"
-bindsym $win+Tab exec echo "swap_focus" | nc -w0 -U "$XDG_RUNTIME_DIR/i3/event-listener.sock"
+# swap focus between last windows https://github.com/olivierlemoal/i3-swap-focus
+exec_always --no-startup-id "~/.dotfiles/scripts/i3_swap_focus"
+# Using openbsd nc
+bindsym $mod+Tab exec echo "swap_focus" | nc -w0 -U "$XDG_RUNTIME_DIR/i3/swap_focus.sock"
 
 ################################## STARTUP SETUP ###########################################
 # Set desktop background color

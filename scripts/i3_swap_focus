@@ -1,14 +1,11 @@
 #!/usr/bin/env python3
-
-# Use following config in i3 :
-# exec --no-startup-id "python /usr/local/bin/event_listener.py"
-# bindsym $mod+Tab exec echo "swap_focus" | ncat --send-only -U "$XDG_RUNTIME_DIR/i3/event-listener.sock"
-
+# from https://github.com/olivierlemoal/i3-swap-focus
 import os
 import asyncio
+import argparse
 from i3ipc.aio import Connection
 
-socket = '{XDG_RUNTIME_DIR}/i3/event-listener.sock'.format_map(os.environ)
+socket = '{XDG_RUNTIME_DIR}/i3/swap_focus.sock'.format_map(os.environ)
 window_stack = []
 
 
@@ -20,12 +17,18 @@ async def on_unix_connect(i3, reader, writer):
             break
 
         if cmd == b'swap_focus' and window_stack:
-            cmd = '[con_id=%s] focus' % window_stack.pop()
+            window_id = window_stack.pop()
+            if stay_in_workspace:
+                current_workspace = (await i3.get_tree()).find_focused().workspace().id
+                window_workspace = (await i3.get_tree()).find_by_id(window_id).workspace().id
+                if current_workspace != window_workspace:
+                    continue
+            cmd = '[con_id=%s] focus' % window_id
             await i3.command(cmd)
 
 
-def on_window(self, event):
-    if event.container.window_instance == "scratchpad":
+def on_window(conn, event):
+    if "ignore_focus" in event.container.marks:
         return
     if event.change == 'focus':
         if not window_stack or event.container.id != window_stack[0]:
@@ -46,6 +49,11 @@ async def main():
     i3.on('window::focus', on_window)
     await i3.main()
     await server.wait_closed()
+
+
+parser = argparse.ArgumentParser(description='i3 script to toggle between last windows.')
+parser.add_argument('--stay-in-workspace', action=argparse.BooleanOptionalAction, default=False, help="Do not switch focus if window is on a different workspace")
+stay_in_workspace = parser.parse_args().stay_in_workspace
 
 asyncio.run(main())
 
