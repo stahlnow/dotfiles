@@ -18,12 +18,12 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #000
+background = #131
 background-alt = #444
 ;foreground = ${xrdb:color7:#222}
 foreground = #fff
 foreground-alt = #555
-primary = #66ffff
+primary = #efe
 secondary = #00ff00
 alert = #bd2c40
 
@@ -33,7 +33,7 @@ width = 100%
 height = 24
 ;offset-x = 1%
 ;offset-y = 1%
-radius = 3.0
+radius = 0.0
 fixed-center = false
 
 background = ${colors.background}
@@ -42,25 +42,25 @@ foreground = ${colors.foreground}
 line-size = 3
 line-color = #f00
 
-border-size = 1
-border-color = #00000000
+border-size = 0
+border-color = ${colors.primary}
 
 padding-left = 0
-padding-right = 2
+padding-right = 0
 
 module-margin-left = 1
-module-margin-right = 2
+module-margin-right = 1
 
-font-0 = RobotoMono Nerd Font:pixelsize=10;1
-font-1 = Weather Icons:size=6;1
+font-0 = FuraCode Nerd Font Mono:pixelsize=10;1
+font-1 = Weather Icons:size=10;1
 
 modules-left = i3 mpd 
 ;modules-center = mpd
 modules-right = xbacklight pulseaudio wlan battery openweathermap-detailed date 
 
 tray-position = right 
-tray-padding = 2
-tray-background = #0063ff
+tray-padding = 3
+tray-background = ${colors.background}
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -78,12 +78,12 @@ wrapping-scroll = false
 ; ws-icon-[0-9]+ = <label>;<icon>
 ; NOTE: The <label> needs to match the name of the i3 workspace
 ; Neither <label> nor <icon> can contain a semicolon (;)
-ws-icon-0 = 1;
-ws-icon-1 = 2;♛
-ws-icon-2 = 3;♜
-ws-icon-3 = 4;♝
-ws-icon-4 = 5;♞0
-ws-icon-default = ♟
+;ws-icon-0 = 1;
+;ws-icon-1 = 2;♛
+;ws-icon-2 = 3;♜
+;ws-icon-3 = 4;♝
+;ws-icon-4 = 5;♞0
+;ws-icon-default = ♟
 ; NOTE: You cannot skip icons, e.g. to get a ws-icon-6
 ; you must also define a ws-icon-5.
 ; NOTE: Icon will be available as the %icon% token inside label-*
@@ -98,11 +98,11 @@ label-mode-background = ${colors.primary}
 label-focused = %index%
 label-focused-background = ${colors.background-alt}
 label-focused-underline = ${colors.primary}
-label-focused-padding = 5 
+label-focused-padding = 2 
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %index%
-label-unfocused-padding = 5
+label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %index%
