@@ -275,7 +275,7 @@ for_window [class="^(jetbrains-pycharm)$"] layout tabbed
 
 
 # Browsers on workspace 2
-for_window [window_role="browser"] move to workspace $ws2
+# for_window [window_role="browser"] move to workspace $ws2
 
 # Document software on workspace 4
 for_window [class="^(XpdfReader|Evince|libreoffice-startcenter|Soffice)$"] move to workspace $ws4
