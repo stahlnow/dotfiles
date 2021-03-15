@@ -63,6 +63,7 @@ bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -nf '$bas
 
 # Lock screen
 bindsym $win+l exec i3lock -i $HOME/pics/lockscreen.png
+
 # reload the configuration file
 #bindsym $mod+Shift+r reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -181,7 +182,8 @@ bindsym $mod+Tab exec echo "swap_focus" | nc -w0 -U "$XDG_RUNTIME_DIR/i3/swap_fo
 
 ################################## STARTUP SETUP ###########################################
 # Set desktop background color
-exec --no-startup-id xsetroot -solid "#000000"
+# exec --no-startup-id xsetroot -solid "#000000"
+# exec_always --no-startup-id feh --bg-scale "~/.dotfiles/images/background.jpg"
 
 # Start Polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
