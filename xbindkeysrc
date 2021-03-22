@@ -37,23 +37,20 @@
 #keystate_capslock = enable
 #keystate_scrolllock= enable
 
-# bind AltGr + j,k,l,ö to switch to workspace 1,2,3,4
-
 "i3-msg 'workspace 1'"
-  Mod5 + j
+  Mod4 + j
 
 "i3-msg 'workspace 2'"
-  Mod5 + k
+  Mod4 + k
 
 "i3-msg 'workspace 3'"
-  Mod5 + l
+  Mod4 + l
 
-# AltGr+ö
-#"i3-msg 'workspace 4'"
-#  Mod5 + odiaeresis
+"i3-msg 'workspace 4'"
+  Mod4 + semicolon
 
-
-
+"i3-msg 'workspace 5'"
+  Mod4 + apostrophe
 
 ##################################
 # End of xbindkeys configuration #
