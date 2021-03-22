@@ -61,15 +61,14 @@ bindsym $mod+Return exec alacritty
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -nf '$base05' -nb '$base00' -sb '$base02' -sf '$base05' -fn 'monospace-10' -p 'dmenu '"
 
-# Lock screen
-bindsym $win+l exec i3lock -i $HOME/pics/lockscreen.png
+# reload config
+bindsym $mod+Shift+r exec "~/.dotfiles/scripts/i3_merge_config.sh && i3-msg reload"
 
-# reload the configuration file
-#bindsym $mod+Shift+r reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $win+Shift+r restart
+
 # exit i3 (logs you out of your X session)
-#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # The middle button over a titlebar kills the window
 bindsym --release button2 kill
@@ -163,9 +162,6 @@ bindsym --release Shift+Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdi
 bindsym --release Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/incoming/screenshots && mv $f ~/incoming/screenshots && xclip -selection clipboard -t image/png -i ~/incoming/screenshots/`ls -1 -t ~/incoming/screenshots | head -1`' # Area selection
 
 ################################## CUSTOM FANCY BINDINGS ################################
-# reload config
-bindsym $mod+Shift+r exec "~/.dotfiles/scripts/i3_merge_config.sh && i3-msg reload"
-
 # i3-easyfocus window
 bindsym $mod+s exec --no-startup-id i3-easyfocus -c --color-unfocused-bg 00ff00 --color-unfocused-fg 000000 --color-focused-bg 00ff00 --color-focused-fg 000000 --font pango:monospace
 
