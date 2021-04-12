@@ -62,7 +62,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -nf '$base05' -nb '$base00' -sb '$base02' -sf '$base05' -fn 'monospace-10' -p 'dmenu '"
 
 # reload config
-bindsym $mod+Shift+r exec "~/.dotfiles/scripts/i3_merge_config.sh && i3-msg reload"
+bindsym $mod+Shift+r exec "~/.dotfiles/scripts/i3_merge_config.sh && i3-msg reload && i3-msg restart"
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $win+Shift+r restart
@@ -264,6 +264,7 @@ for_window [title="Preferences$"] floating enable, border pixel 2
 for_window [class="Pavucontrol"] floating enable
 for_window [class="gpredict"] floating enable
 for_window [class="QjackCtl"] floating enable
+for_window [class="KeePassXC"] floating enable
 
 # supercollider
 for_window [title="^(Plot|Stethoscope|function plot)$"] floating enable, border pixel 2
