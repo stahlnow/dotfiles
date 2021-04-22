@@ -2,7 +2,7 @@
 
 if [[ $# -eq 0 ]] ; then
     # list colors
-    curl -s https://github.com/aaron-williamson/base16-alacritty/tree/master/colors | grep -Po '"base16-\K.*?(?=.yml)'
+    curl -sL https://github.com/aaron-williamson/base16-alacritty/tree/master/colors | grep -Po '"base16-\K.*?(?=.yml)'
     exit 0
 fi
 
