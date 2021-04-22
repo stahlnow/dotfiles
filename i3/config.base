@@ -259,12 +259,12 @@ focus_on_window_activation focus
 # Enable floating for dialog, etc.
 for_window [window_role="^(bubble|pop-up|task_dialog|dialog|menu)$"] floating enable, border pixel 2
 for_window [title="Preferences$"] floating enable, border pixel 2
-
 # Always float these applications.
 for_window [class="Pavucontrol"] floating enable
 for_window [class="gpredict"] floating enable
 for_window [class="QjackCtl"] floating enable
 for_window [class="KeePassXC"] floating enable
+for_window [class="^(doublecmd|Doublecmd)$"] floating enable
 
 # supercollider
 for_window [title="^(Plot|Stethoscope|function plot)$"] floating enable, border pixel 2
@@ -277,13 +277,14 @@ for_window [class="^(jetbrains-pycharm)$"] layout tabbed
 # for_window [window_role="browser"] move to workspace $ws2
 
 # Document software on workspace 4
-for_window [class="^(XpdfReader|Evince|libreoffice-startcenter|Soffice)$"] move to workspace $ws4
-assign [class="(?i)libreoffice-writer$"]$ $ws4
-assign [class="(?i)soffice"] $ws4
-assign [class="(?i)libreoffice-calc"] $ws4
-assign [class="(?i)libreoffice.*"] $ws4
-for_window [class="^(libreoffice|libreoffice-writer|Evince)$"] move to workspace $ws4
+#for_window [class="^(XpdfReader|Evince|libreoffice-startcenter|Soffice)$"] move to workspace $ws4
+#assign [class="(?i)libreoffice-writer$"]$ $ws4
+#assign [class="(?i)soffice"] $ws4
+#assign [class="(?i)libreoffice-calc"] $ws4
+#assign [class="(?i)libreoffice.*"] $ws4
+#for_window [class="^(libreoffice|libreoffice-writer|Evince)$"] move to workspace $ws4
 #for_window [class="^(doublecmd|Doublecmd)$"] move to workspace $ws4
+for_window [class="^(Evince)$"] move to workspace $ws4
 
 # Chat on workspace 5
 for_window [class="^(Telegram|Slack|Skype|Signal)$"] move to workspace $ws5
