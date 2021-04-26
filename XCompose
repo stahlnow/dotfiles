@@ -1,0 +1,71 @@
+# -*- coding: utf-8; mode: conf -*-
+include "%L"
+
+# german diaresis a.k.a. umlaut
+<Multi_key> <a> <a>: "ä"
+<Multi_key> <a> <A>: "Ä"
+<Multi_key> <o> <o>: "ö"
+<Multi_key> <o> <O>: "Ö"
+<Multi_key> <u> <u>: "ü"
+<Multi_key> <u> <U>: "Ü"
+
+# some greek letters
+<Multi_key> <g> <a> : "α"       # Alpha (ἄλφα)
+<Multi_key> <g> <A> : "Α"       # 
+<Multi_key> <g> <b> : "β"       # Beta (βῆτα)
+<Multi_key> <g> <B> : "Β"       # 
+<Multi_key> <g> <g> : "γ"       # Gamma (γάμμα)
+<Multi_key> <g> <G> : "Γ"       # 
+<Multi_key> <g> <d> : "δ"       # Delta (δέλτα)
+<Multi_key> <g> <D> : "Δ"       # 
+<Multi_key> <g> <e> : "ε"       # Epsilon (ἔ ψιλόν)
+<Multi_key> <g> <E> : "Ε"       # 
+<Multi_key> <g> <z> : "ζ"       # Zeta (ζῆτα)
+<Multi_key> <g> <z> : "Ζ"       # 
+<Multi_key> <g> <t> <h> : "θ"   #
+<Multi_key> <g> <T> <h> : "Θ"
+<Multi_key> <g> <l> : "λ"       # Lambda (λάμβδα)
+<Multi_key> <g> <L> : "Λ"
+<Multi_key> <g> <p> : "π"       # Pi (πῖ)
+<Multi_key> <g> <P> : "Π"       # 
+<Multi_key> <g> <r> <h> : "ρ"   # Rho (ῥῶ)
+<Multi_key> <g> <R> <h> : "Ρ"   # 
+<Multi_key> <g> <s> : "σ"       # Sigma (σῖγμα)
+<Multi_key> <g> <S> : "Σ"       # 
+<Multi_key> <g> <t> : "τ"       # Tau (ταῦ)
+<Multi_key> <g> <T> : "Τ"       # 
+<Multi_key> <g> <y> : "υ"       # Ypsilon (ὔ ψιλόν)
+<Multi_key> <g> <Y> : "Υ"       # 
+<Multi_key> <g> <p> <h> : "φ"   # Phi (φῖ)
+<Multi_key> <g> <P> <h> : "Φ"   #
+<Multi_key> <g> <p> <s> : "ψ"   # Psi (ψῖ)
+<Multi_key> <g> <P> <s> : "Ψ"   #
+<Multi_key> <g> <o> : "ω"       # Omega (ὦ μέγα)
+<Multi_key> <g> <O> : "Ω"       # 
+                          
+## Temperature            
+<Multi_key> <d> <e> <g> <C> 	: "℃"   U2103 	# DEGREE CELSIUS
+<Multi_key> <d> <e> <g> <F> 	: "℉"   U2109   # DEGREE FAHRENHEIT
+
+## Science
+<Multi_key> <r> <a> <d>	: "☢"	U2622		# RADIOACTIVE SIGN
+<Multi_key> <b> <h>		: "☣"	U2623		# BIOHAZARD SIGN
+
+## Emoji
+<Multi_key> <i> <d> <e> <a>		: "💡"    U1F4A1 # ELECTRIC LIGHT BULB
+<Multi_key> <a> <n> <g> <e> <r>	: "💢"    U1F4A2 # ANGER SYMBOL
+<Multi_key> <b> <o> <m> <b>		: "💣"    U1F4A3 # BOMB
+<Multi_key> <z> <z> <z>			: "💤"    U1F4A4 # SLEEPING SYMBOL
+<Multi_key> <p> <o> <w>			: "💥"    U1F4A5 # COLLISION SYMBOL
+<Multi_key> <s> <w> <e> <a> <t>	: "💦"    U1F4A6 # SPLASHING SWEAT SYMBOL
+<Multi_key> <d> <r> <o> <p>		: "💧"    U1F4A7 # DROPLET
+<Multi_key> <z> <i> <p>			: "💨"    U1F4A8 # DASH SYMBOL
+<Multi_key> <p> <o> <o>			: "💩"    U1F4A9 # PILE OF POO
+<Multi_key> <dollar> <b> <a> <g	: "💰"    U1F4B0 # MONEY BAG
+<Multi_key> <c> <a> <k> <e>		: "🍰"    U1F370 # SHORTCAKE
+<Multi_key> <b> <d> <a> <y>		: "🎂"    U1F382 # BIRTHDAY CAKE
+<Multi_key> <A> <O> <K>			: "👌"    U1F44C # OK HAND SIGN
+<Multi_key> <t> <h> <m> <u> <p>	: "👍"    U1F44D # THUMBS UP SIGN
+<Multi_key> <t> <h> <m> <d> <n>	: "👎"    U1F44E # THUMBS DOWN SIGN
+<Multi_key> <k> <i> <s> <s>		: "💋"    U1F48B # KISS MARK
+
