@@ -2,10 +2,10 @@
 include "%L"
 
 # german diaresis a.k.a. umlaut
-<Multi_key> <a> <a>: "ä"
-<Multi_key> <a> <A>: "Ä"
-<Multi_key> <o> <o>: "ö"
-<Multi_key> <o> <O>: "Ö"
+<Multi_key> <u> <a>: "ä"
+<Multi_key> <u> <A>: "Ä"
+<Multi_key> <u> <o>: "ö"
+<Multi_key> <u> <O>: "Ö"
 <Multi_key> <u> <u>: "ü"
 <Multi_key> <u> <U>: "Ü"
 
@@ -44,8 +44,8 @@ include "%L"
 <Multi_key> <g> <O> : "Ω"       # 
                           
 ## Temperature            
-<Multi_key> <d> <e> <g> <C> 	: "℃"   U2103 	# DEGREE CELSIUS
-<Multi_key> <d> <e> <g> <F> 	: "℉"   U2109   # DEGREE FAHRENHEIT
+<Multi_key> <d> <e> <g> <c> 	: "℃"   U2103 	# DEGREE CELSIUS
+<Multi_key> <d> <e> <g> <f> 	: "℉"   U2109   # DEGREE FAHRENHEIT
 
 ## Science
 <Multi_key> <r> <a> <d>	: "☢"	U2622		# RADIOACTIVE SIGN
@@ -61,11 +61,11 @@ include "%L"
 <Multi_key> <d> <r> <o> <p>		: "💧"    U1F4A7 # DROPLET
 <Multi_key> <z> <i> <p>			: "💨"    U1F4A8 # DASH SYMBOL
 <Multi_key> <p> <o> <o>			: "💩"    U1F4A9 # PILE OF POO
-<Multi_key> <dollar> <b> <a> <g	: "💰"    U1F4B0 # MONEY BAG
+<Multi_key> <b> <a> <g	        : "💰"    U1F4B0 # MONEY BAG
 <Multi_key> <c> <a> <k> <e>		: "🍰"    U1F370 # SHORTCAKE
 <Multi_key> <b> <d> <a> <y>		: "🎂"    U1F382 # BIRTHDAY CAKE
-<Multi_key> <A> <O> <K>			: "👌"    U1F44C # OK HAND SIGN
-<Multi_key> <t> <h> <m> <u> <p>	: "👍"    U1F44D # THUMBS UP SIGN
-<Multi_key> <t> <h> <m> <d> <n>	: "👎"    U1F44E # THUMBS DOWN SIGN
+<Multi_key> <o> <k>	    		: "👌"    U1F44C # OK HAND SIGN
+<Multi_key> <t> <u>	            : "👍"    U1F44D # THUMBS UP SIGN
+<Multi_key> <t> <d>	            : "👎"    U1F44E # THUMBS DOWN SIGN
 <Multi_key> <k> <i> <s> <s>		: "💋"    U1F48B # KISS MARK
 
