@@ -5,16 +5,7 @@ filetype off                  " required
 call plug#begin(stdpath('data') . '/plugged')
 " Make sure you use single quotes for Plug
 
-" vim-tmux-navigator
-" Navigate Split Panes
-" see Plugin: https://github.com/christoomey/vim-tmux-navigator
-" <ctrl-h> => Left
-" <ctrl-j> => Down
-" <ctrl-k> => Up
-" <ctrl-l> => Right
-" <ctrl-\> => Previous split
-Plug 'christoomey/vim-tmux-navigator'
-
+"""""""""""""""""""""""""""""""""""""""""""""" essential plugins
 " Smart auto-indentation for Python
 Plug 'vim-scripts/indentpython.vim'
 
@@ -35,6 +26,23 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 " Nerd Commenter
 Plug 'scrooloose/nerdcommenter'
+
+"""""""""""""""""""""""""""""""""""""""""""""" tmux related plugins
+" vim-tmux-navigator
+" Navigate Split Panes
+" see Plugin: https://github.com/christoomey/vim-tmux-navigator
+" <ctrl-h> => Left
+" <ctrl-j> => Down
+" <ctrl-k> => Up
+" <ctrl-l> => Right
+" <ctrl-\> => Previous split
+Plug 'christoomey/vim-tmux-navigator'
+
+" in tmux
+" FocusGained and FocusLost autocommand events are not working in terminal
+" vim. This plugin restores them when using vim inside Tmux. In tmux,
+" requires tmux-sensible plugin or "set -g focus-events on"
+Plug 'tmux-plugins/vim-tmux-focus-events'
 
 """""""""""""""""""""""""""""""""""""""""""""" Fancy plugins
 " Unicode plugin
@@ -97,14 +105,12 @@ set number    				" show line numbers
 set autoread 				" auto reload buffer when file modified externally
 set hlsearch 				" keep previous search highlighted
 set incsearch 				" highlight matches while typing search
-set smartcase               " case insensitive search unlesss capital letters used
+"set smartcase               " case insensitive search unlesss capital letters used
+set ignorecase
 set splitbelow
 set splitright
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swp//
-
-"colorscheme monokai
-colorscheme base16-apathy
 
 if &diff
     colorscheme github
@@ -124,6 +130,9 @@ set expandtab
 
 " quick save leader + s
 noremap <Leader>s :update<CR>
+
+" reload vim config in-place
+noremap <Leader>sv :source $MYVIMRC<CR>
 
 " handle copy/paste
 " use yy to copy to system clipboard and use p to paste from system clipboard
@@ -221,6 +230,13 @@ set mouse=a
 
 " YCM YouCompleteMe settings
 let g:ycm_server_python_interpreter = '/usr/bin/python'
+
+
+" colors base16-shell https://github.com/chriskempson/base16-shell
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
 
 
 " ################### jump to keyword by leader+j, keyword prompt: leader+p

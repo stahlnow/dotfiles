@@ -62,7 +62,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -nf '$base05' -nb '$base00' -sb '$base02' -sf '$base05' -fn 'monospace-10' -p 'dmenu '"
 
 # reload config
-bindsym $mod+Shift+r exec "~/.dotfiles/scripts/i3_merge_config.sh && i3-msg reload && i3-msg restart"
+bindsym $mod+Shift+r exec "~/.dotfiles/scripts/i3-merge-config.sh && i3-msg reload && i3-msg restart"
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $win+Shift+r restart
@@ -172,9 +172,8 @@ bindsym $win+f exec doublecmd
 bindsym $win+c exec ~/sh/show_cover.sh
 
 # swap focus between last windows https://github.com/olivierlemoal/i3-swap-focus
-exec_always --no-startup-id "~/.dotfiles/scripts/i3_swap_focus"
-# Using openbsd nc
-bindsym $mod+Tab exec echo "swap_focus" | nc -w0 -U "$XDG_RUNTIME_DIR/i3/swap_focus.sock"
+exec_always --no-startup-id "~/.dotfiles/scripts/i3-swap-focus"
+bindsym $mod+Tab exec pkill -USR1 -F "${XDG_RUNTIME_DIR}/swap_focus.pid"
 
 ################################## STARTUP SETUP ###########################################
 # Set desktop background color
@@ -251,7 +250,7 @@ workspace_layout default
 
 # title bar height
 # Disable window titlebars for i3-gaps
-for_window [class=".*"] border pixel 3
+for_window [class=".*"] border pixel 1
 
 # Focus window on activation
 focus_on_window_activation focus
@@ -275,6 +274,10 @@ for_window [class="^(libreoffice|libreoffice-writer|libreoffice-calc)"] floating
 
 for_window [class="^(xpdf|XpdfReader)$"] floating enable
 
+# Calendar
+for_window [title=".*ProtonCalendar.*"] fullscreen disable 
+for_window [title=".*ProtonCalendar.*"] floating enable
+
 # supercollider
 for_window [title="^(Plot|Stethoscope|function plot)$"] floating enable, border pixel 2
 
@@ -295,7 +298,7 @@ for_window [class="^(jetbrains-pycharm)$"] layout tabbed
 #for_window [class="^(Evince)$"] move to workspace $ws4
 
 # Chat on workspace 5
-for_window [class="^(Telegram|Slack|Skype|Signal)$"] move to workspace $ws5
+for_window [class="^(TelegramDesktop|Slack|Skype|Signal)$"] move to workspace $ws5
 
 # Sound on workspace 9
 for_window [class="^(Spotify)$"] move to workspace $ws9
