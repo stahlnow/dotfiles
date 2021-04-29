@@ -266,6 +266,12 @@ for_window [class="QjackCtl"] floating enable
 for_window [class="KeePassXC"] floating enable
 for_window [class="^(doublecmd|Double Commander|Doublecmd)"] floating enable
 for_window [class="^(Evince)$"] floating enable
+for_window [class="^(imv)$"] floating enable
+for_window [class="^(matplotlib|Matplotlib)"] floating enable
+
+#for_window [name="^(ProtonCalendar)"] floating enable
+
+for_window [class="^(libreoffice|libreoffice-writer|libreoffice-calc)"] floating enable
 
 for_window [class="^(xpdf|XpdfReader)$"] floating enable
 
@@ -285,7 +291,6 @@ for_window [class="^(jetbrains-pycharm)$"] layout tabbed
 #assign [class="(?i)soffice"] $ws4
 #assign [class="(?i)libreoffice-calc"] $ws4
 #assign [class="(?i)libreoffice.*"] $ws4
-#for_window [class="^(libreoffice|libreoffice-writer|Evince)$"] move to workspace $ws4
 #for_window [class="^(doublecmd|Doublecmd)$"] move to workspace $ws4
 #for_window [class="^(Evince)$"] move to workspace $ws4
 
