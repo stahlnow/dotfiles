@@ -97,6 +97,7 @@ call plug#end()
 " ###################################################################### General setup
 
 " Map space key as <leader>
+nnoremap <SPACE> <Nop>
 let mapleader=" "
 
 syntax on 					" turn on syntax highlighting
@@ -105,7 +106,6 @@ set number    				" show line numbers
 set autoread 				" auto reload buffer when file modified externally
 set hlsearch 				" keep previous search highlighted
 set incsearch 				" highlight matches while typing search
-"set smartcase               " case insensitive search unlesss capital letters used
 set ignorecase
 set splitbelow
 set splitright
@@ -130,7 +130,7 @@ set expandtab
 
 " quick save leader + s
 noremap <Leader>s :update<CR>
-
+noremap <Leader>q :q<CR>
 " reload vim config in-place
 noremap <Leader>sv :source $MYVIMRC<CR>
 
@@ -145,8 +145,8 @@ noremap <Leader>Y "*y
 noremap <Leader>P "*p
 
 " remap $ to ç to use shift+4 as 'go to end of line'
-noremap ç $
-inoremap ç <c-o>$
+"noremap ç $
+"inoremap ç <c-o>$
 
 " remap ^ to 1 to use 1 as 'go to first character of line'
 noremap 1 ^
