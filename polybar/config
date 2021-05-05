@@ -54,8 +54,8 @@ module-margin-right = 1
 font-0 = FuraCode Nerd Font Mono:pixelsize=10;1
 font-1 = Weather Icons:size=10;1
 
-modules-left = i3 mpd 
-;modules-center = mpd
+modules-left = i3 mpd pulseaudio
+modules-center = mpd pulseaudio
 modules-right = xbacklight pulseaudio wlan battery openweathermap-detailed date 
 
 tray-position = right 
@@ -134,7 +134,7 @@ icon-play = 
 icon-pause = 
 icon-next = 
 
-label-song-maxlen = 25
+label-song-maxlen = 150
 label-song-ellipsis = true
 
 [module/xbacklight]
