@@ -64,9 +64,6 @@ bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -nf '$bas
 # reload config
 bindsym $mod+Shift+r exec "~/.dotfiles/scripts/i3-merge-config.sh && i3-msg reload && i3-msg restart"
 
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $win+Shift+r restart
-
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
@@ -269,8 +266,8 @@ for_window [class="^(Evince)$"] floating enable
 for_window [class="^(xpdf|XpdfReader)$"] floating enable
 
 # Calendar
-for_window [title=".*ProtonCalendar.*"] fullscreen disable 
-for_window [title=".*ProtonCalendar.*"] floating enable
+for_window [title="com-protonmail-calendar"] floating enable, resize set 1480 840, move absolute position center
+for_window [title="com-stahlnow-cloud"] floating enable, resize set 640 480, move absolute position center
 
 # supercollider
 for_window [title="^(Plot|Stethoscope|function plot)$"] floating enable, border pixel 2
