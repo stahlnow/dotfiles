@@ -1,0 +1,21 @@
+--- /usr/share/X11/xkb/symbols/pc	2021-02-17 16:20:22.000000000 +0100
++++ pc.modified	2021-05-12 16:33:20.300840351 +0200
+@@ -1,4 +1,4 @@
+-default partial alphanumeric_keys modifier_keys
++default  partial alphanumeric_keys modifier_keys
+ xkb_symbols "pc105" {
+ 
+     key <ESC>  {	[ Escape		]	};
+@@ -75,10 +75,10 @@
+     };
+     key  <INS> {	[  Insert		]	};
+     key <HOME> {	[  Home			]	};
+-    key <PGUP> {	[  Prior		]	};
++    key <PGUP> {	[  Home          	]	};
+     key <DELE> {	[  Delete		]	};
+     key  <END> {	[  End			]	};
+-    key <PGDN> {	[  Next			]	};
++    key <PGDN> {	[  End          	]	};
+ 
+     key   <UP> {	[  Up			]	};
+     key <LEFT> {	[  Left			]	};
