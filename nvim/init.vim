@@ -1,10 +1,9 @@
-" Vundle setup
+" vim-plug setup
+" https://github.com/junegunn/vim-plug
 set nocompatible              " be iMproved, required
 filetype off                  " required
-
 call plug#begin(stdpath('data') . '/plugged')
 " Make sure you use single quotes for Plug
-
 """""""""""""""""""""""""""""""""""""""""""""" essential plugins
 " Smart auto-indentation for Python
 Plug 'vim-scripts/indentpython.vim'
@@ -24,6 +23,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 " NERDTree Ctrl+n
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+
 " Nerd Commenter
 Plug 'scrooloose/nerdcommenter'
 
@@ -51,20 +51,12 @@ Plug 'chrisbra/unicode.vim'
 " Awesome staring screen for Vim
 Plug 'mhinz/vim-startify'
 
-" Monokai Theme
-Plug 'crusoexia/vim-monokai'
-
 " Git wrapper
 " usage: :Gstatus, :Gedit, :Gsplit, :Gvsplit
 Plug 'tpope/vim-fugitive'
 
 Plug 'ervandew/supertab'
 
-" Google
-" Plugin 'szw/vim-g'
-
-" Powerline
-" Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plug 'vim-airline/vim-airline'
 
 " Colorizer for visualising color codes like #ff00ff or 'green'
@@ -73,20 +65,8 @@ Plug 'chrisbra/Colorizer'
 " Show git changes
 Plug 'airblade/vim-gitgutter'
 
-" Markdown preview with Ctrl+p (on .md files)
-Plug 'iamcco/markdown-preview.vim'
-
 " Auto-reload file that changed on disk
 Plug 'djoshea/vim-autoread'
-
-" Supercollider plugin
-Plug 'supercollider/scvim'
-
-" Live Previewing LaTeX PDF Output
-" usage: LLPStartPreview
-" Plugin 'xuhdev/vim-latex-live-preview'
-
-Plug 'lervag/vimtex'
 
 " Base 16 colorscheme
 Plug 'chriskempson/base16-vim'
@@ -112,9 +92,15 @@ set splitright
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swp//
 
-if &diff
-    colorscheme github
-endif
+" handle vimdiff colorscheme for highlight
+"if &diff
+    "colorscheme github
+"endif
+" simple vimdiff highlight
+highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
 
 set path+=**                
 " use with :find for opening files or b: for jumping to buffers
