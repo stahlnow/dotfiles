@@ -312,6 +312,8 @@ for_window [class="^(Spotify)$"] move to workspace $ws9
 
 # Keep
 assign [title="Google Keep"] $ws8
+assign [class="superProductivity"] $ws8
+for_window [class="superProductivity"] floating enable, resize set 1323 686
 
 #for_window [class="[.]*"] floating enable, border pixel 0
 #for_window [class="[.]*"] floating enable, border pixel 0, resize set 1601 870, move position 0 30

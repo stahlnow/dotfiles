@@ -3,6 +3,7 @@ alacritty.yml
 
 
 local
+*.local
 
 *.swp
 *.idea
