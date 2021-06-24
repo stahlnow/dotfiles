@@ -22,18 +22,18 @@ bind ctrl-mousePress4 any zoomIn
 bind ctrl-mousePress5 any zoomOut
 
 # evil hack to get the fonts right
-fontFile Times-Roman		    /usr/share/ghostscript/9.53.3/Resource/Font/NimbusRoman-Regular
-fontFile Times-Italic		    /usr/share/ghostscript/9.53.3/Resource/Font/NimbusRoman-Italic
-fontFile Times-Bold		        /usr/share/ghostscript/9.53.3/Resource/Font/NimbusRoman-Bold
-fontFile Times-BoldItalic	    /usr/share/ghostscript/9.53.3/Resource/Font/NimbusRoman-BoldItalic
-fontFile Helvetica		        /usr/share/ghostscript/9.53.3/Resource/Font/NimbusSans-Regular
-fontFile Helvetica-Oblique	    /usr/share/ghostscript/9.53.3/Resource/Font/NimbusSans-Italic
-fontFile Helvetica-Bold		    /usr/share/ghostscript/9.53.3/Resource/Font/NimbusSans-Bold
-fontFile Helvetica-BoldOblique	/usr/share/ghostscript/9.53.3/Resource/Font/NimbusSans-BoldItalic
-fontFile Courier		        /usr/share/ghostscript/9.53.3/Resource/Font/NimbusMonoPS-Regular
-fontFile Courier-Oblique	    /usr/share/ghostscript/9.53.3/Resource/Font/NimbusMonoPS-Italic
-fontFile Courier-Bold		    /usr/share/ghostscript/9.53.3/Resource/Font/NimbusMonoPS-Bold
-fontFile Courier-BoldOblique	/usr/share/ghostscript/9.53.3/Resource/Font/NimbusMonoPS-BoldItalic
-fontFile Symbol			        /usr/share/ghostscript/9.53.3/Resource/Font/StandardSymbolsPS
-fontFile ZapfDingbats		    /usr/share/ghostscript/9.53.3/Resource/Font/D050000L
+fontFile Times-Roman		    /usr/share/ghostscript/9.54.0/Resource/Font/NimbusRoman-Regular
+fontFile Times-Italic		    /usr/share/ghostscript/9.54.0/Resource/Font/NimbusRoman-Italic
+fontFile Times-Bold		        /usr/share/ghostscript/9.54.0/Resource/Font/NimbusRoman-Bold
+fontFile Times-BoldItalic	    /usr/share/ghostscript/9.54.0/Resource/Font/NimbusRoman-BoldItalic
+fontFile Helvetica		        /usr/share/ghostscript/9.54.0/Resource/Font/NimbusSans-Regular
+fontFile Helvetica-Oblique	    /usr/share/ghostscript/9.54.0/Resource/Font/NimbusSans-Italic
+fontFile Helvetica-Bold		    /usr/share/ghostscript/9.54.0/Resource/Font/NimbusSans-Bold
+fontFile Helvetica-BoldOblique	/usr/share/ghostscript/9.54.0/Resource/Font/NimbusSans-BoldItalic
+fontFile Courier		        /usr/share/ghostscript/9.54.0/Resource/Font/NimbusMonoPS-Regular
+fontFile Courier-Oblique	    /usr/share/ghostscript/9.54.0/Resource/Font/NimbusMonoPS-Italic
+fontFile Courier-Bold		    /usr/share/ghostscript/9.54.0/Resource/Font/NimbusMonoPS-Bold
+fontFile Courier-BoldOblique	/usr/share/ghostscript/9.54.0/Resource/Font/NimbusMonoPS-BoldItalic
+fontFile Symbol			        /usr/share/ghostscript/9.54.0/Resource/Font/StandardSymbolsPS
+fontFile ZapfDingbats		    /usr/share/ghostscript/9.54.0/Resource/Font/D050000L
 
