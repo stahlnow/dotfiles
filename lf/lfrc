@@ -18,7 +18,7 @@ set shellopts '-eu'
 set ifs "\n"
 
 #When this option is enabled, search command patterns are considered as globs, otherwise they are literals. With globbing, '*' matches any sequence, '?' matches any character, and '[...]' or '[^...] matches character sets or ranges. Otherwise, these characters are interpreted as they are.
-set globsearch on
+#set globsearch on
 
 
 # leave some space at the top and the bottom of the screen
@@ -57,9 +57,6 @@ map t yes_preview
 
 # b open bookmarks
 map b mark-load
-
-# n for natural sort
-map n set sortby natural;
 
 map gh :cd ~; set sortby natural; set reverse!;
 map gi :cd ~/incoming; set sortby time; set reverse
