@@ -288,6 +288,9 @@ for_window [title="com-stahlnow-cloud"] floating enable, resize set 640 480, mov
 # supercollider
 for_window [title="^(Plot|Stethoscope|function plot)$"] floating enable, border pixel 2
 
+# pure data
+for_window [class="^(PdWindow|PatchWindow)$"] floating enable
+
 # Force some software to tabbed mode
 for_window [class="^(jetbrains-pycharm)$"] layout tabbed
 
