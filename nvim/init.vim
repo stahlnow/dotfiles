@@ -92,6 +92,8 @@ set splitright
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swp//
 
+set shortmess+=A            " don't show message when an existing swap file is found.
+
 " handle vimdiff colorscheme for highlight
 "if &diff
     "colorscheme github
