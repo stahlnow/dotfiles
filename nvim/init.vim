@@ -57,7 +57,7 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'ervandew/supertab'
 
-Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline'
 
 " Colorizer for visualising color codes like #ff00ff or 'green'
 Plug 'chrisbra/Colorizer'
