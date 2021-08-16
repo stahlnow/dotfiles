@@ -17,9 +17,49 @@ set shellopts '-eu'
 # commands accordingly.
 set ifs "\n"
 
-#When this option is enabled, search command patterns are considered as globs, otherwise they are literals. With globbing, '*' matches any sequence, '?' matches any character, and '[...]' or '[^...] matches character sets or ranges. Otherwise, these characters are interpreted as they are.
-#set globsearch on
+################################################################################
+############################## SEARCH SETUP ####################################
+################################################################################
+# When this option is enabled, search command patterns are considered as globs, otherwise they are literals. With globbing, '*' matches any sequence, '?' matches any character, and '[...]' or '[^...] matches character sets or ranges. Otherwise, these characters are interpreted as they are.
 
+#set globsearch
+set incsearch 
+set wrapscan 
+set wrapscroll 
+
+# Make search convenient.
+cmd cmd-search-enable-bindings :{{
+	cmap <tab> cmd-search-descend
+	cmap <enter> cmd-search-stop-and-enter
+	cmap <esc> cmd-search-abort
+    cmap <f-3> search-next
+}}
+cmd cmd-search-disable-bindings :{{
+	cmap <tab> cmd-complete
+	cmap <enter> cmd-enter
+	cmap <esc> cmd-escape
+}}
+cmd cmd-search-abort :{{
+	cmd-search-disable-bindings
+	cmd-escape
+}}
+cmd cmd-search-stop-and-enter :{{
+	cmd-search-disable-bindings
+	open
+}}
+cmd cmd-search-descend :{{
+	# For files, this should stop instead...
+	open
+	search
+}}
+cmd start-search :{{
+	cmd-search-enable-bindings
+	search
+}}
+map f start-search
+################################################################################
+################################################################################
+################################################################################
 
 # leave some space at the top and the bottom of the screen
 set scrolloff 10
@@ -35,7 +75,6 @@ set nopreview
 set ratios 1
 set info size:time
 
-set incsearch
 
 set previewer ~/.config/lf/pv.sh
 
@@ -86,17 +125,15 @@ map <f-8> push :delete<enter>
 #map x $$f
 #map X !$f
 
-# dedicated keys for file opener actions
-map o $mimeo -q $f > /dev/null 2> /dev/null &
-map O $mimeopen --ask $f
 
-# map <enter> shell
-map <enter> $mimeo -q $f > /dev/null 2> /dev/null &
 
-# define a custom 'open' command
 # This command is called when current file is not a directory. You may want to
 # use either file extensions and/or mime types here. Below uses an editor for
 # text files and a file opener for the rest.
+map O $mimeopen --ask $f
+
+map <enter> open
+
 cmd open ${{
     case $(file --mime-type $f -b) in
         text/*) $EDITOR $fx;;
@@ -137,40 +174,6 @@ cmd zip ${{
     zip -r $1.zip $1
     rm -rf $1
 }}
-
-
-# Make search convenient.
-cmd cmd-search-enable-bindings :{{
-	cmap <tab> cmd-search-descend
-	cmap <enter> cmd-search-stop-and-enter
-	cmap <esc> cmd-search-abort
-	cmap <c-j> search-next
-	cmap <c-k> search-prev
-    cmap <f-3> search-next
-}}
-cmd cmd-search-disable-bindings :{{
-	cmap <tab> cmd-complete
-	cmap <enter> cmd-enter
-	cmap <esc> cmd-escape
-}}
-cmd cmd-search-abort :{{
-	cmd-search-disable-bindings
-	cmd-escape
-}}
-cmd cmd-search-stop-and-enter :{{
-	cmd-search-disable-bindings
-	open
-}}
-cmd cmd-search-descend :{{
-	# For files, this should stop instead...
-	open
-	search
-}}
-cmd start-search :{{
-	cmd-search-enable-bindings
-	search
-}}
-map f start-search
 
 # Yank paths into your clipboard
 cmd yank-dirname ${{
