@@ -285,15 +285,12 @@ for_window [class="^(Evince)$"] floating enable
 for_window [class="^(imv)$"] floating enable
 for_window [class="^(matplotlib|Matplotlib)"] floating enable
 
-#for_window [name="^(ProtonCalendar)"] floating enable
-
 for_window [class="^(libreoffice|libreoffice-writer|libreoffice-calc)"] floating enable
 
 for_window [class="^(xpdf|XpdfReader)$"] floating enable
 
-# Calendar
-for_window [title="com-protonmail-calendar"] floating enable, resize set 1480 840, move absolute position center
-for_window [title="com-stahlnow-cloud"] floating enable, resize set 640 480, move absolute position center
+# protonmail-bridge
+for_window [title="ProtonMail Bridge"] floating enable, move absolute position center
 
 # supercollider
 for_window [title="^(Plot|Stethoscope|function plot)$"] floating enable, border pixel 2
