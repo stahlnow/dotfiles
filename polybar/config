@@ -18,7 +18,7 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #131
+background = #00000000
 background-alt = #444
 ;foreground = ${xrdb:color7:#222}
 foreground = #fff
@@ -55,7 +55,7 @@ font-0 = FuraCode Nerd Font Mono:pixelsize=10;1
 font-1 = Weather Icons:size=10;1
 
 modules-left = i3 mpd pulseaudio
-modules-center = mpd pulseaudio
+;modules-center = mpd pulseaudio
 modules-right = xbacklight pulseaudio wlan battery openweathermap-detailed date 
 
 tray-position = right 

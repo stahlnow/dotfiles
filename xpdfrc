@@ -1,6 +1,14 @@
 # default postscript page size
 psPaperSize A4
 
+# vim
+bind h any scrollLeft(32)
+bind l any scrollRight(32)
+bind k any scrollUp(32)
+bind j any scrollDown(32)
+
+bind f11 any toggleFullScreenMode
+
 # scroll faster
 bind mousePress4 any scrollUpPrevPage(64)
 bind mousePress5 any scrollDownNextPage(64)
