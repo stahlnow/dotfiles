@@ -212,7 +212,7 @@ exec --no-startup-id xset -dpms
 exec --no-startup-id dunst
 
 # protonmailbridge
-exec protonmail-bridge
+exec --no-startup-id protonmail-bridge --no-window
 
 ################################## WORKSPACE SETUP ###########################################
 set $ws1 "1"
@@ -286,14 +286,11 @@ for_window [class="^(Evince)$"] floating enable
 for_window [class="^(imv)$"] floating enable
 for_window [class="^(matplotlib|Matplotlib)"] floating enable
 
-#for_window [name="^(ProtonCalendar)"] floating enable
 
 for_window [class="^(libreoffice|libreoffice-writer|libreoffice-calc)"] floating enable
 
 for_window [class="^(xpdf|XpdfReader)$"] floating enable
 
-# Calendar
-for_window [title="com-protonmail-calendar"] floating enable, resize set 1480 840, move absolute position center
 for_window [title="com-stahlnow-cloud"] floating enable, resize set 640 480, move absolute position center
 
 # supercollider
@@ -301,6 +298,9 @@ for_window [title="^(Plot|Stethoscope|function plot)$"] floating enable, border 
 
 # pure data
 for_window [class="^(PdWindow|PatchWindow)$"] floating enable
+
+# protonmail-bridge 
+for_window [class="^(protonmail-bridge)$"] floating enable
 
 # Force some software to tabbed mode
 for_window [class="^(jetbrains-pycharm)$"] layout tabbed
