@@ -31,9 +31,10 @@ pipenv run python manage.py makemessages -d django -l de##makemessages
 pipenv run python ../manage.py makemessages -d django -l de##makemessages
 pipenv run python ../manage.py compilemessages##compilemessages
 SITE_TEMPLATES={{site}} pipenv run python manage.py runserver 0.0.0.0:8080##runserver
-sudo mount -t cifs //winstor20.ad.zhdk.ch/computersignale2 /mnt/computersignale2 -o username=cstaehli,password=-Analo303##zhdk
+sudo mount -t cifs //winstor5.ad.zhdk.ch/computersignale2 /mnt/computersignale2 -o username=cstaehli,password=-Analo303##zhdk
 pipenv run python ./manage.py check##check
 echo 'iYYmCq9.7c!9XZE' | sudo openconnect -u chstaehli@gess.ethz.ch sslvpn.ethz.ch/gess --passwd-on-stdin##eth
 echo '-Analo303' | sudo openconnect -u cstaehli vpn1.zhdk.ch --passwd-on-stdin##zhdk
 lsblk --output NAME,FSTYPE,LABEL,MOUNTPOINT,FSSIZE,FSUSED,FSUSE%##lsblk
-sudo mount -t cifs //winstor20.ad.zhdk.ch/computersignale /mnt/computersignale -o username=cstaehli,password=-Analo303
+sudo mount -t cifs //winstor5.ad.zhdk.ch/computersignale /mnt/computersignale -o username=cstaehli,password=-Analo303
+vim ~/.dotfiles/marker/user_commands.txt##commands
