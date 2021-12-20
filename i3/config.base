@@ -76,7 +76,7 @@ bindsym $win+Tab workspace back_and_forth
 bindsym $mod+Return exec alacritty
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -nf '$base05' -nb '$base00' -sb '$base02' -sf '$base05' -fn 'monospace-10' -p 'dmenu '"
+bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -nf '$base05' -nb '$base00' -sb '$base02' -sf '$base05' -fn 'monospace-8' -p 'dmenu '"
 
 # reload config
 bindsym $mod+Shift+r exec "~/.dotfiles/scripts/i3-merge-config.sh && i3-msg reload && i3-msg restart"
