@@ -270,6 +270,9 @@ set showtabline=2 " Always display the tabline, even if there is only one tab
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " ####################################################################  Python
+"
+" remove trailing whitespace 
+autocmd BufWritePre *.py :%s/\s\+$//e
 
 " PEP8 indentation
 au BufNewFile,BufRead *.py:

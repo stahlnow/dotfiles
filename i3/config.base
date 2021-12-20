@@ -286,7 +286,7 @@ for_window [class="^(Evince)$"] floating enable
 for_window [class="^(imv)$"] floating enable
 for_window [class="^(matplotlib|Matplotlib)"] floating enable
 
-for_window [class="^(libreoffice|libreoffice-writer|libreoffice-calc)"] floating enable
+#for_window [class="^(libreoffice|libreoffice-writer|libreoffice-calc)"] floating enable
 
 for_window [class="^(xpdf|XpdfReader)$"] floating enable
 
