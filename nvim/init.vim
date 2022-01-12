@@ -2,20 +2,26 @@
 " https://github.com/junegunn/vim-plug
 set nocompatible              " be iMproved, required
 filetype off                  " required
+
+" must be before Plug 'averms/black-nvim' ....
+let g:python3_host_prog = $HOME . '/.local/venv/nvim/bin/python'
+
 call plug#begin(stdpath('data') . '/plugged')
 " Make sure you use single quotes for Plug
 """""""""""""""""""""""""""""""""""""""""""""" essential plugins
 " Smart auto-indentation for Python
-Plug 'vim-scripts/indentpython.vim'
+"Plug 'vim-scripts/indentpython.vim'
 
 " Rich python syntax highlighting
-Plug 'kh3phr3n/python-syntax'
+"Plug 'kh3phr3n/python-syntax'
+
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 
 " Syntax checker
-Plug 'vim-syntastic/syntastic'
+"Plug 'vim-syntastic/syntastic'
 
 " Python backend for 'syntastic'
-Plug 'nvie/vim-flake8'
+"Plug 'nvie/vim-flake8'
 
 " Find files with Ctrl+p
 Plug 'ctrlpvim/ctrlp.vim'
@@ -70,6 +76,9 @@ Plug 'djoshea/vim-autoread'
 
 " Base 16 colorscheme
 Plug 'chriskempson/base16-vim'
+
+" Black for python (https://github.com/averms/black-nvim)
+Plug 'averms/black-nvim', {'do': ':UpdateRemotePlugins'}
 
 " Initialize plugin system
 call plug#end()
@@ -168,12 +177,6 @@ nmap <CR> o<Esc>k
 " Make double-<Esc> clear search highlights
 nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
 
-" provide hjkl movements in Insert mode via the <Ctrl> modifier key
-"inoremap <C-h> <C-o>h
-"inoremap <C-j> <C-o>j
-"inoremap <C-k> <C-o>k
-"inoremap <C-l> <C-o>l
-
 " Easier split navigations
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -204,17 +207,18 @@ noremap <leader>r :!!<cr>
 " enable mouse
 set mouse=a
 
-" Cursor keys / arrows are unvimlike, disable them
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin settings and other special functions
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"nnoremap <up> <nop>
-"nnoremap <down> <nop>
-"nnoremap <left> <nop>
-"nnoremap <right> <nop>
-"inoremap <up> <nop>
-"inoremap <down> <nop>
-"inoremap <left> <nop>
-"inoremap <right> <nop>
-"
+" Black settings (https://github.com/averms/black-nvim)
+nnoremap <buffer><silent> <c-q> <cmd>call Black() <bar> :update<cr>
+inoremap <buffer><silent> <c-q> <cmd>call Black() <bar> :update<cr>
+let g:black#settings = {
+    \ 'fast': 1,
+    \ 'line_length': 79 
+\}
+
 
 " YCM YouCompleteMe settings
 let g:ycm_server_python_interpreter = '/usr/bin/python'
@@ -273,6 +277,16 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 "
 " remove trailing whitespace 
 autocmd BufWritePre *.py :%s/\s\+$//e
+
+" syntastic
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
 
 " PEP8 indentation
 au BufNewFile,BufRead *.py:
