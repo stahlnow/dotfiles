@@ -28,6 +28,8 @@ initialSidebarState no
 # Ctrl + mouse wheel to zoom in / out
 bind ctrl-mousePress4 any zoomIn
 bind ctrl-mousePress5 any zoomOut
+bind shift-mousePress4 any scrollLeft(32)
+bind shift-mousePress5 any scrollRight(32)
 
 # evil hack to get the fonts right
 fontFile Times-Roman		    /usr/share/ghostscript/9.54.0/Resource/Font/NimbusRoman-Regular
