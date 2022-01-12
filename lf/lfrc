@@ -68,7 +68,7 @@ set scrolloff 10
 set period 1
 
 # style
-set icons on
+#set icons on
 set color256 on
 
 set nopreview
