@@ -11,14 +11,14 @@ floating_modifier $mod
 bindsym $mod+F4 kill
 
 ################################## COLORS  #####################################################
-
+# show base16 colours: ~/.config/base16-shell/colortest base16-circus.sh
 # class                 border  backgr. text    indicator child_border
-client.focused          $base02 $base0D $base00 $base0A $base04
-client.focused_inactive $base03 $base01 $base05 $base03 $base01
-client.unfocused        $base04 $base00 $base05 $base01 $base01
-client.urgent           $base08 $base08 $base00 $base08 $base08
-client.placeholder      $base00 $base00 $base05 $base00 $base00
-client.background       $base06
+client.focused          $base01 $base0D $base07 $base0A $base0A
+#client.focused_inactive $base03 $base01 $base05 $base03 $base01
+#client.unfocused        $base04 $base00 $base05 $base01 $base01
+#client.urgent           $base08 $base08 $base00 $base08 $base08
+#client.placeholder      $base00 $base00 $base05 $base00 $base00
+#client.background       $base06
 
 #################################################################################################
 # change focus
@@ -60,6 +60,7 @@ bindsym $mod+x border toggle
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
+
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -264,7 +265,7 @@ workspace_layout default
 
 # title bar height
 # Disable window titlebars for i3-gaps
-for_window [class=".*"] border pixel 5
+for_window [class=".*"] border pixel 1
 
 # Focus window on activation
 focus_on_window_activation focus
