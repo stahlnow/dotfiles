@@ -207,18 +207,21 @@ noremap <leader>r :!!<cr>
 " enable mouse
 set mouse=a
 
+" Triger `autoread` when files changes on disk
+" https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
+" https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
+    autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
+            \ if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
+
+" Notification after file change
+" https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
+autocmd FileChangedShellPost *
+  \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings and other special functions
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Black settings (https://github.com/averms/black-nvim)
-nnoremap <buffer><silent> <c-q> <cmd>call Black() <bar> :update<cr>
-inoremap <buffer><silent> <c-q> <cmd>call Black() <bar> :update<cr>
-let g:black#settings = {
-    \ 'fast': 1,
-    \ 'line_length': 79 
-\}
-
 
 " YCM YouCompleteMe settings
 let g:ycm_server_python_interpreter = '/usr/bin/python'
@@ -275,8 +278,16 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " ####################################################################  Python
 "
+" Black settings (https://github.com/averms/black-nvim)
+nnoremap <buffer><silent> <c-q> <cmd>call Black() <bar> :update<cr>
+inoremap <buffer><silent> <c-q> <cmd>call Black() <bar> :update<cr>
+let g:black#settings = {
+    \ 'fast': 1,
+    \ 'line_length': 79 
+\}
+
 " remove trailing whitespace 
-autocmd BufWritePre *.py :%s/\s\+$//e
+"autocmd BufWritePre *.py :%s/\s\+$//e
 
 " syntastic
 "set statusline+=%#warningmsg#
@@ -289,18 +300,22 @@ autocmd BufWritePre *.py :%s/\s\+$//e
 "let g:syntastic_check_on_wq = 0
 
 " PEP8 indentation
-au BufNewFile,BufRead *.py:
-	\ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set textwidth=79
-    \ set expandtab
-    \ set autoindent
-    \ set fileformat=unix
+"au BufNewFile,BufRead *.py:
+	"\ set tabstop=4
+    "\ set softtabstop=4
+    "\ set shiftwidth=4
+    "\ set textwidth=79
+    "\ set expandtab
+    "\ set autoindent
+    "\ set fileformat=unix
 
 " ####################################################################  NERDTree setup
 
 map <C-n> :NERDTreeToggle<CR>
+
+" ############################################## LaTeX Live Previewer options
+let g:livepreview_previewer = 'evince'
+let g:livepreview_engine = 'lualatex'
 
 " ######################################################################### SCVim setup
 let g:sclangTerm = "urxvt"
@@ -390,8 +405,3 @@ function! MyTabLine()
   return s
 endfunction
 
-
-
-" ############################################## LaTeX Live Previewer options
-let g:livepreview_previewer = 'evince'
-let g:livepreview_engine = 'lualatex'
