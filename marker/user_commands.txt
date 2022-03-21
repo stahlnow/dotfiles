@@ -39,3 +39,4 @@ vim ~/.dotfiles/marker/user_commands.txt##commands
 sudo mount -t cifs //winstor5.ad.zhdk.ch/computersignale /opt/computersignale -o username=cstaehli,password=-Analo303##zhdk
 sudo mount -t cifs //winstor5.ad.zhdk.ch/computersignale2 /opt/computersignale2 -o username=cstaehli,password=-Analo303##zhdk
 ~/.config/base16-shell/colortest {{base16-theme.sh}}##base16
+sudo openvpn --config ~/beach/vpn/z35/inspectorsteel-udp-1194-christoph-config.ovpn --auth-user-pass ~/beach/vpn/z35/pass##z35

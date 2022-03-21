@@ -9,19 +9,14 @@ let g:python3_host_prog = $HOME . '/.local/venv/nvim/bin/python'
 call plug#begin(stdpath('data') . '/plugged')
 " Make sure you use single quotes for Plug
 """""""""""""""""""""""""""""""""""""""""""""" essential plugins
-" Smart auto-indentation for Python
-"Plug 'vim-scripts/indentpython.vim'
-
-" Rich python syntax highlighting
-"Plug 'kh3phr3n/python-syntax'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 
-" Syntax checker
-"Plug 'vim-syntastic/syntastic'
+Plug 'posva/vim-vue'
 
-" Python backend for 'syntastic'
-"Plug 'nvie/vim-flake8'
+Plug 'tpope/vim-sleuth'
 
 " Find files with Ctrl+p
 Plug 'ctrlpvim/ctrlp.vim'
@@ -85,7 +80,7 @@ call plug#end()
 
 " ###################################################################### General setup
 
-" Map space key as <leader>
+" Map space key as <Leader>
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 
@@ -103,10 +98,6 @@ set directory=~/.vim/swp//
 
 set shortmess+=A            " don't show message when an existing swap file is found.
 
-" handle vimdiff colorscheme for highlight
-"if &diff
-    "colorscheme github
-"endif
 " simple vimdiff highlight
 highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
@@ -118,28 +109,27 @@ set path+=**
 " finds (nested) files in subdirectories, can use wildmarks :find *.cpp
 set wildmenu
 
-" show existing tab with 4 spaces width
-set tabstop=4
-" when indenting with '>', use 4 spaces width
-set shiftwidth=4
-" On pressing tab, insert 4 spaces
-set expandtab
+"set tabstop=4 " show existing tab with 4 spaces width
+"set shiftwidth=4 " number of spaces to use for auto indent
+"set expandtab " On pressing tab, insert 4 spaces
+"set autoindent " copy indent from current line when starting a new line
 
 " quick save leader + s
-noremap <Leader>s :update<CR>
-noremap <Leader>q :q<CR>
+nnoremap <Leader>s :update<CR>
+nnoremap <Leader>q :q<CR>
 " reload vim config in-place
-noremap <Leader>sv :source $MYVIMRC<CR>
+nnoremap <Leader>sv :source $MYVIMRC<CR>
 
 " handle copy/paste
 " use yy to copy to system clipboard and use p to paste from system clipboard
 set clipboard=unnamedplus
+
 " shortcuts for + clipboard (CLIPBOARD)
-noremap <Leader>y "+y
-noremap <Leader>p "+p
-" shortcuts for * clipboard (PRIMARY, copy on select)
-noremap <Leader>Y "*y
-noremap <Leader>P "*p
+"noremap <Leader>y "+y
+"noremap <Leader>p "+p
+"" shortcuts for * clipboard (PRIMARY, copy on select)
+"noremap <Leader>Y "*y
+"noremap <Leader>P "*p
 
 " remap $ to ç to use shift+4 as 'go to end of line'
 "noremap ç $
@@ -184,25 +174,25 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " Quick resize with leader up down left right
-noremap <silent> <leader><up> <Esc>:res -5<CR><Esc>
-noremap <silent> <leader><down> <Esc>:res +5<CR><Esc>
-noremap <silent> <leader><left> <Esc>:vertical res +5<CR><Esc>
-noremap <silent> <leader><right> <Esc>:vertical res -5<CR><Esc>
+nnoremap <silent> <leader><up> <Esc>:res -5<CR><Esc>
+nnoremap <silent> <leader><down> <Esc>:res +5<CR><Esc>
+nnoremap <silent> <leader><left> <Esc>:vertical res +5<CR><Esc>
+nnoremap <silent> <leader><right> <Esc>:vertical res -5<CR><Esc>
 
 " Go to tab by number
-noremap <leader>1 1gt
-noremap <leader>2 2gt
-noremap <leader>3 3gt
-noremap <leader>4 4gt
-noremap <leader>5 5gt
-noremap <leader>6 6gt
-noremap <leader>7 7gt
-noremap <leader>8 8gt
-noremap <leader>9 9gt
-noremap <leader>0 :tablast<cr>
+nnoremap <leader>1 1gt
+nnoremap <leader>2 2gt
+nnoremap <leader>3 3gt
+nnoremap <leader>4 4gt
+nnoremap <leader>5 5gt
+nnoremap <leader>6 6gt
+nnoremap <leader>7 7gt
+nnoremap <leader>8 8gt
+nnoremap <leader>9 9gt
+nnoremap <leader>0 :tablast<cr>
 
 " run last command
-noremap <leader>r :!!<cr>
+nnoremap <leader>r :!!<cr>
 
 " enable mouse
 set mouse=a
@@ -215,13 +205,20 @@ set mouse=a
 
 " Notification after file change
 " https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
-autocmd FileChangedShellPost *
-  \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+"autocmd FileChangedShellPost *
+  "\ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+
+
+" easy buffer switching
+:nnoremap <F5> :buffers<CR>:buffer<Space>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings and other special functions
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" https://github.com/ctrlpvim/ctrlp.vim
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|env\|venv\|build'
 
 " YCM YouCompleteMe settings
 let g:ycm_server_python_interpreter = '/usr/bin/python'
@@ -279,12 +276,14 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 " ####################################################################  Python
 "
 " Black settings (https://github.com/averms/black-nvim)
-nnoremap <buffer><silent> <c-q> <cmd>call Black() <bar> :update<cr>
-inoremap <buffer><silent> <c-q> <cmd>call Black() <bar> :update<cr>
+nnoremap <buffer><silent> <Leader>b <cmd>call Black() <bar> :update<cr>
+"inoremap <buffer><silent> <Leader>b <cmd>call Black() <bar> :update<cr>
 let g:black#settings = {
     \ 'fast': 1,
     \ 'line_length': 79 
 \}
+
+autocmd BufWritePre *.py execute ':call Black()'
 
 " remove trailing whitespace 
 "autocmd BufWritePre *.py :%s/\s\+$//e
