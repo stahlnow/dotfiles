@@ -70,7 +70,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'djoshea/vim-autoread'
 
 " Base 16 colorscheme
-Plug 'chriskempson/base16-vim'
+"Plug 'chriskempson/base16-vim'
+Plug 'RRethy/nvim-base16'
 
 " Black for python (https://github.com/averms/black-nvim)
 Plug 'averms/black-nvim', {'do': ':UpdateRemotePlugins'}
@@ -229,7 +230,6 @@ if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
 endif
-
 
 " ################### jump to keyword by leader+j, keyword prompt: leader+p
 " List occurrences of keyword under cursor, and
