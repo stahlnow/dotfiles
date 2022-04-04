@@ -1,0 +1,27 @@
+# assign workspaces for apps
+assign {
+	[app_id="(telegram|TelegramDesktop)"] $ws5
+	[instance="slack"] $ws5
+	[instance="signal"] $ws5
+}
+
+# enable floating for dialog, etc.
+for_window {
+	[window_role="^(bubble|pop-up|task_dialog|dialog|menu)$"] floating enable, border pixel 2
+
+	[app_id="(.*)keepassxc"] floating enable
+
+	[title="^(Copying|Preferences)$"] floating enable, border pixel 2
+
+	# supercollider
+	[title="^(.*Plot.*|Stethoscope|.*plot.*)$"] floating enable, border pixel 2
+
+	# Always float these applications.
+	[app_id="^(qjackctl|pavucontrol)$"] floating enable, border pixel 2 
+	[app_id="gpredict"] floating enable, border pixel 2
+	
+	[app_id="Alacritty"] border pixel 1
+	[app_id="Alacritty"] gaps inner all set 0 
+	
+	[class="jetbrains-pycharm" title="^(win.*)"] floating enable
+}
