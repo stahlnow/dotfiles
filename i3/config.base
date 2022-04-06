@@ -71,7 +71,7 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-bindsym $win+Tab workspace back_and_forth
+bindsym $mod+Tab workspace back_and_forth
 
 # start a terminal
 bindsym $mod+Return exec alacritty
@@ -188,8 +188,8 @@ bindsym $win+f exec doublecmd
 bindsym $win+c exec ~/sh/show_cover.sh
 
 # swap focus between last windows https://github.com/olivierlemoal/i3-swap-focus
-exec_always --no-startup-id "~/.dotfiles/scripts/i3-swap-focus"
-bindsym $mod+Tab exec pkill -USR1 -F "${XDG_RUNTIME_DIR}/swap_focus.pid"
+#exec_always --no-startup-id "~/.dotfiles/scripts/i3-swap-focus"
+#bindsym $mod+Tab exec pkill -USR1 -F "${XDG_RUNTIME_DIR}/swap_focus.pid"
 
 ################################## STARTUP SETUP ###########################################
 # Set desktop background color
