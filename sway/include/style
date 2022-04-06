@@ -1,0 +1,33 @@
+include colorscheme
+#                       Border  BG      Text    Ind     Child Border
+client.focused          $base0D $base0D $base00 $base0D $base0D
+client.focused_inactive $base01 $base01 $base05 $base03 $base01
+client.unfocused        $base00 $base00 $base05 $base01 $base01
+client.urgent           $base08 $base08 $base00 $base08 $base08
+
+set $opacity 1.0 
+for_window [class=".*"] opacity $opacity
+for_window [app_id=".*"] opacity $opacity
+
+focus_on_window_activation focus
+
+# hide titlebars
+default_border none
+#hide_edge_borders both
+#hide_edge_borders smart 
+#hide_edge_borders --i3 both
+#hide_edge_borders --i3 smart
+
+# Add gaps
+gaps inner 2 
+gaps outer 1
+
+# Only enable gaps on a workspace when there is at least one container
+smart_gaps on
+
+# Activate smart borders (always)
+smart_borders on
+
+# Activate smart borders (only when there are effectively no gaps)
+smart_borders no_gaps
+

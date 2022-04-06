@@ -53,4 +53,4 @@ else
 fi
 
 #echo "$song_status $media_artist - $media_song | $network_active $interface_easyname | $audio_active $audio_volume% | $battery_pluggedin $battery_charge | $date $current_time"
-echo "$audio_active $audio_volume% | $network_active $interface_easyname | $battery_pluggedin $battery_charge | $date $current_time"
+echo "$audio_active $audio_volume% $network_active $interface_easyname $battery_pluggedin $battery_charge $date $current_time"

@@ -378,15 +378,11 @@ live_config_reload: true
 # If the same trigger is assigned to multiple actions, all of them are executed
 # at once.
 key_bindings:
-  - { key: Paste,                                action: Paste          }
-  - { key: Copy,                                 action: Copy           }
-  #- { key: L,         mods: Control,             action: ClearLogNotice }
-  #- { key: L,         mods: Control, mode: ~Vi,  chars: "\x0c"          }
-  - { key: PageUp,    mods: Shift,   mode: ~Alt, action: ScrollPageUp,  }
-  - { key: PageDown,  mods: Shift,   mode: ~Alt, action: ScrollPageDown }
-  - { key: Home,      mods: Shift,   mode: ~Alt, action: ScrollToTop,   }
-  - { key: End,       mods: Shift,   mode: ~Alt, action: ScrollToBottom }
+  - { key: Paste,                     action: Paste          }
+  - { key: Copy,                      action: Copy           }
   
+  - { key: Return,   mods: Alt, action: SpawnNewInstance }
+
   # font size
   - { key: F1,     mods: Control,     action: IncreaseFontSize }
   - { key: F2,     mods: Control,     action: DecreaseFontSize }
