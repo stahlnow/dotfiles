@@ -106,12 +106,12 @@ mode "$mode_system" {
         --indicator \
         --indicator-radius 300 \
         --indicator-thickness 7 \
-        --effect-blur 7x5 \
+        --effect-blur 30x5 \
         --effect-vignette 0.5:0.5 \
         --ring-color 005500 \
         --key-hl-color 00ff00 \
         --line-color 00000000 \
-        --inside-color 00000022 \
+        --inside-color 00000088 \
         --text-color ffffff \
         --separator-color 00000000 \
         --grace 2 \
