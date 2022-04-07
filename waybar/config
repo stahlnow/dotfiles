@@ -1,0 +1,84 @@
+{
+    "modules-left": ["sway/workspaces", "mpd"],
+    "modules-center": ["sway/mode"],
+    "modules-right": ["pulseaudio", "network", "backlight", "battery", "clock", "tray"],
+    
+    "sway/mode": {
+        "format": "<span color='#0f0' background='#000'>{}</span>",
+        "max-length": 1200
+    },
+    "sway/workspaces": {
+        "disable-scroll": false,
+        "smooth-scrolling-threshold": 10,
+        "all-outputs": true,
+        "format": "<span>{value}</span>",
+    },
+    "mpd": {
+        "server": "127.0.0.1",
+        "format": "{stateIcon} {artist} - {title}",
+        "format-disconnected": "",
+        "format-stopped": "",
+        "unknown-tag": "N/A",
+        "interval": 5,
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "on-click": "mpc --host=localhost toggle",
+        "on-click-right": "mpc --host=localhost next",
+        "tooltip": false
+    },
+    "tray": {
+        "icon-size": 13,
+        "spacing": 5 
+    },
+    "clock": {
+        "format": "{:%a %d.%m.%Y %H:%M}",
+        "tooltip": false
+    },
+    "backlight": {
+        "device": "sysfs/backlight/auto" ,
+        "format": "{percent}% <span font='14' rise='-3000'>{icon}</span>",
+        "format-icons": ["",""],
+        "on-scroll-up": "light -A 1",
+        "on-scroll-down": "light -U 1",
+        "tooltip": false
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% <span font='14' rise='-3000'>{icon}</span>",
+        "format-charging": "{capacity}% <span font='14' rise='-3000'></span>",
+        "format-plugged": "{capacity}% <span font='14' rise='-3000'></span>" ,
+        "format-icons": ["", "", "", "", ""],
+        "tooltip": false
+    },
+    "network": {
+        "format-wifi": "{essid} <span font='14' rise='-3000'></span>",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr} <span font='14' rise='-3000'></span>",
+        "format-linked": "{ifname} (No IP) <span font='14' rise='-3000'></span>",
+        "format-disconnected": "Kein netz <span font='14' rise='-3000'></span>",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "tooltip": false
+    },
+    "pulseaudio": {
+        "on-scroll-up": "pulseaudio-ctl up 1",
+        "on-scroll-down": "pulseaudio-ctl down 1",
+        "on-click": "pulseaudio-ctl mute",
+        "format": "{volume}% <span font='14' rise='-3000'>{icon}</span>",
+        "format-muted": "muted <span font='14' rise='-3000'></span>",
+        "format-icons": {
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "tooltip": false
+    }
+}
