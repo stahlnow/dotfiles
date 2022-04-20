@@ -17,7 +17,11 @@ for_window {
 	[title="^(.*Plot.*|Stethoscope|.*plot.*)$"] floating enable, border pixel 2
 
 	# Always float these applications.
-	[app_id="^(qjackctl|pavucontrol)$"] floating enable, border pixel 2 
+	[app_id="pavucontrol"] floating enable, border pixel 2 
+
+	[class="(?i)qjackctl"] floating enable, border pixel 4
+	[title="(?i)JACK Audio Connection Kit"] floating enable, border pixel 4, resize set 485 108
+
 	[app_id="gpredict"] floating enable, border pixel 2
 	
 	[app_id="Alacritty"] border pixel 1

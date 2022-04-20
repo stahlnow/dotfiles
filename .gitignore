@@ -1,6 +1,4 @@
-alacritty.yml
-
-
+sway/include/colorscheme
 
 local
 *.local
