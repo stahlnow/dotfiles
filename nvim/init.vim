@@ -12,8 +12,6 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
-
 Plug 'posva/vim-vue'
 
 Plug 'tpope/vim-sleuth'
@@ -46,6 +44,9 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 
 """""""""""""""""""""""""""""""""""""""""""""" Fancy plugins
+" Git blame
+Plug 'tveskag/nvim-blame-line'
+
 " Unicode plugin
 Plug 'chrisbra/unicode.vim'
 
@@ -115,26 +116,22 @@ set wildmenu
 "set expandtab " On pressing tab, insert 4 spaces
 "set autoindent " copy indent from current line when starting a new line
 
-" quick save leader + s
 nnoremap <Leader>s :update<CR>
+nnoremap <Leader>d :bd<CR>
 nnoremap <Leader>q :q<CR>
+nnoremap <Leader>Q :q!<CR>
+" run last command
+nnoremap <leader>r :!!<cr>
+
 " reload vim config in-place
 nnoremap <Leader>sv :source $MYVIMRC<CR>
+nnoremap <Leader>a :Ag<CR>
 
 " handle copy/paste
 " use yy to copy to system clipboard and use p to paste from system clipboard
 set clipboard=unnamedplus
-
-" shortcuts for + clipboard (CLIPBOARD)
-"noremap <Leader>y "+y
-"noremap <Leader>p "+p
-"" shortcuts for * clipboard (PRIMARY, copy on select)
-"noremap <Leader>Y "*y
-"noremap <Leader>P "*p
-
-" remap $ to ç to use shift+4 as 'go to end of line'
-"noremap ç $
-"inoremap ç <c-o>$
+" paste over without overwriting register
+xnoremap <expr> p 'pgv"'.v:register.'y`>' 
 
 " remap ^ to 1 to use 1 as 'go to first character of line'
 noremap 1 ^
@@ -157,10 +154,12 @@ set showmode
 " q starts visual block mode
 nnoremap q <c-V>
 
-" use space + d / p for delete/paste to black hole register
-nnoremap <leader>d "_d
-xnoremap <leader>d "_d
-xnoremap <leader>p "_dP
+" use space + D for delete to black hole register
+nnoremap <leader>D "_d
+xnoremap <leader>D "_d
+
+
+nnoremap <silent> <leader>b :ToggleBlameLine<CR>
 
 " Insert newline without entering insert mode and staying on same line
 nmap <CR> o<Esc>k
@@ -192,8 +191,7 @@ nnoremap <leader>8 8gt
 nnoremap <leader>9 9gt
 nnoremap <leader>0 :tablast<cr>
 
-" run last command
-nnoremap <leader>r :!!<cr>
+
 
 " enable mouse
 set mouse=a
@@ -212,6 +210,16 @@ set mouse=a
 
 " easy buffer switching
 :nnoremap <F5> :buffers<CR>:buffer<Space>
+
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Custom functions 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Pretty print json"
+command PrettyJson :%!python -m json.tool
+
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -276,8 +284,6 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 " ####################################################################  Python
 "
 " Black settings (https://github.com/averms/black-nvim)
-nnoremap <buffer><silent> <Leader>b <cmd>call Black() <bar> :update<cr>
-"inoremap <buffer><silent> <Leader>b <cmd>call Black() <bar> :update<cr>
 let g:black#settings = {
     \ 'fast': 1,
     \ 'line_length': 79 
