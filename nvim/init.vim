@@ -220,7 +220,8 @@ set mouse=a
 "Pretty print json"
 command PrettyJson :%!python -m json.tool
 
-
+command YankPath :let @+=@%
+command YankFullPath :let @+=expand('%:p')
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings and other special functions
