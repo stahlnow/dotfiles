@@ -24,8 +24,8 @@ for_window {
 
 	[app_id="gpredict"] floating enable, border pixel 2
 	
-	[app_id="Alacritty"] border pixel 1
-	[app_id="Alacritty"] gaps inner all set 0 
+	#[app_id="Alacritty"] border pixel 10, gaps inner 1
+	#[app_id="Alacritty"] gaps inner all set 10 
 	
 	[class="jetbrains-pycharm" title="^(win.*)"] floating enable
 }

@@ -12,4 +12,4 @@ input * xkb_options "ctrl:nocaps,compose:ralt"
 font pango:Hack Nerd Font Mono 8
 
 include /home/stahl/.config/sway/include/*
-
+include /home/stahl/.config/sway/local
