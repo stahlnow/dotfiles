@@ -1,4 +1,5 @@
 sway/include/colorscheme
+waybar/colors.css
 
 local
 *.local
