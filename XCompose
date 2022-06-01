@@ -42,6 +42,7 @@ include "%L"
 <Multi_key> <g> <P> <s> : "Ψ"   #
 <Multi_key> <g> <o> : "ω"       # Omega (ὦ μέγα)
 <Multi_key> <g> <O> : "Ω"       # 
+<Multi_key> <g> <u> : "μ"       # Micro (mikrós)
                           
 ## Temperature            
 <Multi_key> <d> <e> <g> <c> 	: "℃"   U2103 	# DEGREE CELSIUS

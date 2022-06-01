@@ -7,6 +7,8 @@ bind l any scrollRight(32)
 bind k any scrollUp(32)
 bind j any scrollDown(32)
 
+bind r any rotateCW
+
 bind f11 any toggleFullScreenMode
 
 # scroll faster

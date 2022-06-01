@@ -65,8 +65,6 @@
         "tooltip": false
     },
     "pulseaudio": {
-        "on-scroll-up": "pulseaudio-ctl up 1",
-        "on-scroll-down": "pulseaudio-ctl down 1",
         "on-click": "pulseaudio-ctl mute",
         "format": "{volume}% <span font='14' rise='-3000'>{icon}</span>",
         "format-muted": "muted <span font='14' rise='-3000'></span>",
