@@ -44,6 +44,9 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 
 """""""""""""""""""""""""""""""""""""""""""""" Fancy plugins
+" Linter
+Plug 'dense-analysis/ale'
+
 " Git blame
 Plug 'tveskag/nvim-blame-line'
 
@@ -226,6 +229,13 @@ command YankFullPath :let @+=expand('%:p')
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings and other special functions
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" linter
+let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
+let g:ale_linters = {'vue': ['eslint', 'vls']}
+let g:ale_fixers = {'vue':['prettier', 'eslint']}
+let g:ale_sign_error = '🥵'
+let g:ale_sign_warning = '⚠️'
+let g:ale_fix_on_save = 1
 
 " https://github.com/ctrlpvim/ctrlp.vim
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|env\|venv\|build'
@@ -278,7 +288,8 @@ nnoremap <Leader>p :call <SID>JumpPrompt()<CR>
 set laststatus=2 " Always display the statusline in all windows
 set showtabline=2 " Always display the tabline, even if there is only one tab
 
-
+" #################################################################### SCSS
+autocmd FileType scss setlocal ts=2 sts=2 sw=2 expandtab
 " #################################################################### YAML
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
@@ -318,6 +329,29 @@ autocmd BufWritePre *.py execute ':call Black()'
 " ####################################################################  NERDTree setup
 
 map <C-n> :NERDTreeToggle<CR>
+
+" ####################################################################  NERDCommenter setup
+" hook for vue files
+let g:ft = ''
+function! NERDCommenter_before()
+  if &ft == 'vue'
+    let g:ft = 'vue'
+    let stack = synstack(line('.'), col('.'))
+    if len(stack) > 0
+      let syn = synIDattr((stack)[0], 'name')
+      if len(syn) > 0
+        exe 'setf ' . substitute(tolower(syn), '^vue_', '', '')
+      endif
+    endif
+  endif
+endfunction
+function! NERDCommenter_after()
+  if g:ft == 'vue'
+    setf vue
+    let g:ft = ''
+  endif
+endfunction
+
 
 " ############################################## LaTeX Live Previewer options
 let g:livepreview_previewer = 'evince'
