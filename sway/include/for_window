@@ -1,6 +1,7 @@
 # assign workspaces for apps
 assign {
 	[app_id="(telegram|TelegramDesktop)"] $ws5
+	[app_id="(.*)Kotatogram_Desktop"] $ws5
 	[instance="slack"] $ws5
 	[instance="signal"] $ws5
 }
