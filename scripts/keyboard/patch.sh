@@ -11,7 +11,6 @@ sudo patch /usr/share/X11/xkb/symbols/pc < pc.diff
 setxkbmap us
 
 # restart window manager
-# swaymsg reload
-i3-msg reload
+swaymsg reload
 
 

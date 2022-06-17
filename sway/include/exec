@@ -3,7 +3,7 @@ exec nextcloud
 exec mako
 exec slack
 exec signal-desktop --start-in-tray
-exec telegram-desktop
+exec kotatogram-desktop
 # polkit-gnome: Starts authentication-agent needed to get sudo password check aviable for GUIs needing it.
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec keepassxc

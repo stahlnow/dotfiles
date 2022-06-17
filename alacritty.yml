@@ -386,6 +386,8 @@ key_bindings:
   # font size
   - { key: F1,     mods: Control,     action: IncreaseFontSize }
   - { key: F2,     mods: Control,     action: DecreaseFontSize }
+  - { key: F12,     mods: Control,     action: IncreaseFontSize }
+  - { key: F11,     mods: Control,     action: DecreaseFontSize }
   - { key: Key0,   mods: Control,     action: ResetFontSize }
 
   # tmux
