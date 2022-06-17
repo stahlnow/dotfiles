@@ -16,8 +16,8 @@ bindsym --whole-window $mod+button2 kill
 # alt+tab switch workspaces
 bindsym $mod+Tab workspace back_and_forth
 
-# start dmenu 
-bindsym $mod+d exec j4-dmenu-desktop --dmenu="dmenu -i -nf '$base07' -nb '$base00' -sb '$base02' -sf '$base07' -fn 'Hack Nerd Font Mono:pixelsize=11' -p 'dmenu '"
+# start bemenu 
+bindsym $mod+d exec j4-dmenu-desktop --dmenu="bemenu -i --line-height 6 --nf '$base0B' --nb '$base00' --fb '$base0B' --ff '$base00' --prompt 'menu'" --no-generic --term=alacritty
 
 # change focus
 bindsym $mod+j focus down

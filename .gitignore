@@ -6,3 +6,5 @@ local
 
 *.swp
 *.idea
+
+*.diff

@@ -4,7 +4,9 @@
 
 overlay_font = Monospace:12
 
-background = checks
+#background = checks
+#background = ff00ff
+background = ffffff
 
 # Suppress built-in key bindings, and specify them explicitly in this
 # config file.
