@@ -30,6 +30,7 @@ for_window {
 	[app_id="thunderbird"] floating enable, border pixel 2
 
 	[app_id="firefox" title="^Developer Tools .*"] floating enable
+	[app_id="firefox" title="^Live Tracklist.*"] floating enable, border pixel 10, resize set 630 397
 }
 
 
