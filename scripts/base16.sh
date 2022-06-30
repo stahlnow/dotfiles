@@ -10,7 +10,7 @@ case "$1" in
     *)
         theme=$1
         echo setting theme to $theme
-        curl -f --silent https://raw.githubusercontent.com/rkubosz/base16-sway/master/themes/base16-$theme.config > ~/.config/sway/include/colorscheme 
+        curl -f --silent https://raw.githubusercontent.com/rkubosz/base16-sway/master/themes/base16-$theme.config > ~/.config/sway/colorscheme 
         curl -f --silent https://raw.githubusercontent.com/aarowill/base16-alacritty/master/colors/base16-$theme.yml > ~/.config/alacritty/colors.yml
         curl -f --silent https://raw.githubusercontent.com/mnussbaum/base16-waybar/master/colors/base16-$theme.css > ~/.config/waybar/colors.css
         # generate .vimrc_background

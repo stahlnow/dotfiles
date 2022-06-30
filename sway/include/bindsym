@@ -17,7 +17,7 @@ bindsym --whole-window $mod+button2 kill
 bindsym $mod+Tab workspace back_and_forth
 
 # start bemenu 
-bindsym $mod+d exec j4-dmenu-desktop --dmenu="bemenu -i --line-height 6 --nf '$base0B' --nb '$base00' --fb '$base0B' --ff '$base00' --prompt 'menu'" --no-generic --term=alacritty
+bindsym $mod+d exec j4-dmenu-desktop --dmenu="bemenu -i --line-height 6 --nf '$base05' --nb '$base00' --fb '$base05' --ff '$base00' --hb '$base08' --hf '$base00' --prompt ''" --no-generic --term=alacritty
 
 # change focus
 bindsym $mod+j focus down

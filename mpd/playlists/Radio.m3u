@@ -1,4 +1,6 @@
 #EXTM3U
+#EXTINF:-1, Open Broadcast
+http://stream.openbroadcast.org/openbroadcast.flac
 #EXTINF:-1, SRF 2 Kultur
 http://stream.srg-ssr.ch/m/drs2/aacp_96
 #EXTINF:-1, BR-Klassik
