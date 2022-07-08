@@ -142,11 +142,8 @@ xnoremap <expr> p 'pgv"'.v:register.'y`>'
 " remap ^ to 1 to use 1 as 'go to first character of line'
 noremap 1 ^
 
-" enable ctags
-" set tags=~/.mytags
-command! MakeTags !ctags -R .
-" jump to tag with ü
-nnoremap ü <C-]>
+" generate ctags
+command! MakeTags !git ctags
 
 " F2 sets paste mode
 " Start insert mode.
@@ -197,8 +194,6 @@ nnoremap <leader>8 8gt
 nnoremap <leader>9 9gt
 nnoremap <leader>0 :tablast<cr>
 
-
-
 " enable mouse
 set mouse=a
 
@@ -216,9 +211,6 @@ set mouse=a
 
 " easy buffer switching
 :nnoremap <F5> :buffers<CR>:buffer<Space>
-
-
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Custom functions 
@@ -252,39 +244,6 @@ if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
 endif
-
-" ################### jump to keyword by leader+j, keyword prompt: leader+p
-" List occurrences of keyword under cursor, and
-" jump to selected occurrence.
-function! s:JumpOccurrence()
-  let v:errmsg = ""
-  exe "normal [I"
-  if strlen(v:errmsg) == 0
-    let nr = input("Which one: ")
-    if nr =~ '\d\+'
-      exe "normal! " . nr . "[\t"
-    endif
-  endif
-endfunction
-
-" List occurrences of keyword entered at prompt, and
-" jump to selected occurrence.
-function! s:JumpPrompt()
-  let keyword = input("Keyword to find: ")
-  if strlen(keyword) > 0
-    let v:errmsg = ""
-    exe "ilist! " . keyword
-    if strlen(v:errmsg) == 0
-      let nr = input("Which one: ")
-      if nr =~ '\d\+'
-        exe "ijump! " . nr . keyword
-      endif
-    endif
-  endif
-endfunction
-
-nnoremap <Leader>j :call <SID>JumpOccurrence()<CR>
-nnoremap <Leader>p :call <SID>JumpPrompt()<CR>
 
 
 " ################################################ Powerline setup
