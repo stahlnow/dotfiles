@@ -1,4 +1,5 @@
 exec udiskie -ans &
+exec_always flashfocus
 exec nextcloud
 exec mako
 exec slack

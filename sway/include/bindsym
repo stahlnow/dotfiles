@@ -6,6 +6,9 @@ bindsym $mod+Return exec $term --working-directory $(~/.config/sway/scripts/sway
 # restart
 bindsym $mod+Shift+r exec "swaymsg reload"
 
+# make border
+bindsym $mod+b exec "swaymsg border pixel 5"
+
 # kill switches
 bindsym $mod+F4 kill
 # The middle button over a titlebar kills the window
