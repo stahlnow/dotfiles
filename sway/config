@@ -6,8 +6,10 @@ set $term alacritty
 
 floating_modifier $mod
 
-input * xkb_layout "us"
-input * xkb_options "ctrl:nocaps,compose:ralt"
+input * xkb_layout "us_personal"
+#input * xkb_layout "us"
+#input * xkb_options "ctrl:nocaps,compose:ralt"
+input * xkb_options "caps:escape,compose:ralt"
 
 font pango:Hack Nerd Font Mono 8
 
