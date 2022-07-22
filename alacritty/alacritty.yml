@@ -476,6 +476,6 @@ key_bindings:
   #
 
 import:
-  - /home/stahl/.config/alacritty/local.yml
-  - /home/stahl/.config/alacritty/colors.yml
+  - /home/stahl/.config/alacritty/include/local.yml
+  - /home/stahl/.config/alacritty/include/colors.yml
 

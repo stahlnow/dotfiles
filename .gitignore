@@ -1,6 +1,6 @@
 sway/colorscheme
 waybar/colors.css
-
+alacritty/include/*
 local
 *.local
 
