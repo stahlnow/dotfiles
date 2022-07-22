@@ -132,6 +132,8 @@ nnoremap <Leader>sv :source $MYVIMRC<CR>
 " fzf bindings
 nnoremap <Leader>a :Ag<CR>
 nnoremap <Leader>f :Files<CR>
+nnoremap <Leader>t :Tags<CR>
+
 
 " handle copy/paste
 " use yy to copy to system clipboard and use p to paste from system clipboard
@@ -263,7 +265,7 @@ let g:black#settings = {
     \ 'line_length': 79 
 \}
 
-autocmd BufWritePre *.py execute ':call Black()'
+" autocmd BufWritePre *.py execute ':call Black()'
 
 " remove trailing whitespace 
 "autocmd BufWritePre *.py :%s/\s\+$//e
