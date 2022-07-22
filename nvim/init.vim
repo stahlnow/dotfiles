@@ -121,8 +121,7 @@ set wildmenu
 
 nnoremap <Leader>s :update<CR>
 nnoremap <Leader>d :bd<CR>
-nnoremap <Leader>q :q<CR>
-nnoremap <Leader>Q :q!<CR>
+nnoremap <Leader>q :q!<CR>
 " run last command
 nnoremap <leader>r :!!<cr>
 
