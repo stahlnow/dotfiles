@@ -3,6 +3,12 @@
 if [[ $# -eq 0 ]] ; then
     # list colors
     curl -sL https://github.com/aaron-williamson/base16-alacritty/tree/master/colors | grep -Po '"base16-\K.*?(?=.yml)'
+
+    # print the current colors
+    for i in {0..15} ; do
+        printf "\x1b[48;5;%sm%3x\e[0m " "$i" "$i"
+    done
+    printf "\n";
     exit 0
 fi
 
