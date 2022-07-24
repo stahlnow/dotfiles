@@ -26,6 +26,9 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " Nerd Commenter
 Plug 'scrooloose/nerdcommenter'
 
+" Help fix the copy/paste madness
+Plug 'ojroques/vim-oscyank', {'branch': 'main'}
+
 """""""""""""""""""""""""""""""""""""""""""""" tmux related plugins
 " vim-tmux-navigator
 " Navigate Split Panes
@@ -136,7 +139,7 @@ nnoremap <Leader>t :Tags<CR>
 
 " handle copy/paste
 " use yy to copy to system clipboard and use p to paste from system clipboard
-set clipboard=unnamedplus
+set clipboard+=unnamedplus
 " paste over without overwriting register
 xnoremap <expr> p 'pgv"'.v:register.'y`>' 
 
