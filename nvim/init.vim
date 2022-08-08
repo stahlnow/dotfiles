@@ -143,6 +143,9 @@ set clipboard+=unnamedplus
 " paste over without overwriting register
 xnoremap <expr> p 'pgv"'.v:register.'y`>' 
 
+nnoremap <leader>p m`o<ESC>p``
+nnoremap <leader>P m`O<ESC>p``
+
 " remap ^ to 1 to use 1 as 'go to first character of line'
 noremap 1 ^
 

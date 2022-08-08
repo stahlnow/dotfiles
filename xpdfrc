@@ -7,9 +7,12 @@ bind l any scrollRight(32)
 bind k any scrollUp(32)
 bind j any scrollDown(32)
 
+bind b any prevPage
+bind backspace any prevPage
+
 bind r any rotateCW
 
-bind f11 any toggleFullScreenMode
+bind f any toggleFullScreenMode
 
 # scroll faster
 bind mousePress4 any scrollUpPrevPage(64)

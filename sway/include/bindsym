@@ -3,11 +3,14 @@ workspace_auto_back_and_forth yes
 # terminal
 bindsym $mod+Return exec $term --working-directory $(~/.config/sway/scripts/sway-cwd.sh)
 
+# browser
+bindsym $mod+b exec $browser
+
 # restart
 bindsym $mod+Shift+r exec "swaymsg reload"
 
 # make border
-bindsym $mod+b exec "swaymsg border pixel 5"
+bindsym $mod+Shift+b exec "swaymsg border pixel 5"
 
 # kill switches
 bindsym $mod+F4 kill
@@ -20,7 +23,9 @@ bindsym --whole-window $mod+button2 kill
 bindsym $mod+Tab workspace back_and_forth
 
 # start bemenu 
-bindsym $mod+d exec j4-dmenu-desktop --dmenu="bemenu -i --line-height 6 --nf '$base05' --nb '$base00' --fb '$base05' --ff '$base00' --hb '$base08' --hf '$base00' --prompt ''" --no-generic --term=alacritty
+set $bemenu_bg "#000000"
+set $bemenu_fg "$base0D"
+bindsym $mod+d exec j4-dmenu-desktop --dmenu="bemenu -i -M 500 --fn 'Hack Nerd Font Mono 9' -H 24 --nf '$bemenu_fg' --nb '$bemenu_bg' --ff '$bemenu_fg' --fb '$bemenu_bg' --hf '$bemenu_fg' --hb '$bemenu_bg' --prompt ''" --no-generic --term=alacritty
 
 # change focus
 bindsym $mod+j focus down
@@ -100,9 +105,8 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 ###############################################################
 # modes
 ###############################################################
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
-mode "$mode_system" {
-    #bindsym l exec --no-startup-id swaylock -i $HOME/pics/himawari.png, mode "default"
+set $mode_system "<span font_size='8pt' color='$base07'>System (<b>l</b>) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown</span>"
+mode --pango_markup $mode_system {
     bindsym l exec swaylock \
         --screenshots \
         --clock \
@@ -119,7 +123,7 @@ mode "$mode_system" {
         --separator-color 00000000 \
         --grace 2 \
         --fade-in 0.5 \
-        , mode default
+        , mode "default"
 
     bindsym e exec --no-startup-id swaymsg exit, mode "default"
     bindsym s exec --no-startup-id sudo systemctl suspend, mode "default"
@@ -130,9 +134,10 @@ mode "$mode_system" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+Delete mode "$mode_system"
+bindsym $mod+Delete mode $mode_system
 
-mode "resize" {
+set $mode_resize "<span font_size='8pt' color='$base07'>  Resize  </span>"
+mode --pango_markup $mode_resize  {
         bindsym h resize shrink width 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
@@ -147,7 +152,7 @@ mode "resize" {
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
 }
-bindsym $mod+r mode "resize"
+bindsym $mod+r mode $mode_resize
 
 ###############################################################
 # media and screenshot
@@ -170,9 +175,9 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # save screenshot region as file
-bindsym --release $ctrl+Print exec --no-startup-id slurp -d | grim -g - $(xdg-user-dir DOWNLOAD)/screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
+bindsym --release $ctrl+Print exec slurp -d | grim -g - $(xdg-user-dir DOWNLOAD)/screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
 # copy region to clipboard
-bindsym --release Print exec --no-startup-id grim -g "$(slurp -d)" - | wl-copy
+bindsym --release Print exec grim -g "$(slurp -d)" - | wl-copy
 
 ###############################################################
 # fancy shortcuts 

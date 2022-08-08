@@ -176,12 +176,12 @@ cmd zip ${{
 
 # Yank paths into your clipboard
 cmd yank-dirname ${{
-    dirname -- "$f" | tr -d '\n' | xclip -i -selection clipboard
+    dirname -- "$f" | tr -d '\n' | wl-copy -i -selection clipboard
 }}
 
 cmd yank-path ${{
     if [ -n "$fs" ]; then echo "$fs"; else echo "$f" | tr -d '\n'; fi |
-      xclip -i -selection clipboard
+      wl-copy
 }}
 
 cmd yank-basename ${{
@@ -189,7 +189,7 @@ cmd yank-basename ${{
       echo "$fs" | xargs -r -d '\n' basename -a --
     else
       basename -- "$f" | tr -d '\n'
-    fi | xclip -i -selection clipboard
+    fi | wl-copy
 }}
 
 cmd yank-basename-without-extension ${{
@@ -209,12 +209,11 @@ cmd yank-basename-without-extension ${{
           print $0
       }' |
       if [ -n "$fs" ]; then cat; else tr -d '\n'; fi |
-      xclip -i -selection clipboard
+      wl-copy
 }}
 
 # Share any file 256MiB limit
-# returned url wil be appended to clipboard (linux) edit to pbcopy for osx
-cmd share ${{   curl -F"file=@$fx" https://0x0.st | xclip -selection c
+cmd share ${{   curl -F"file=@$fx" https://0x0.st | wl-copy
 }}
 
 # Put lf into background

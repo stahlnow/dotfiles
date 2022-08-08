@@ -1,6 +1,8 @@
 # Host that runs Transmission daemon
 # set srv.url otherhost:123
-set connect.host 192.168.188.39 
+set connect.host 192.168.1.16
+set connect.user stahl
+set connect.password analog
 
 # Poll every 10 seconds
 set tui.poll 10

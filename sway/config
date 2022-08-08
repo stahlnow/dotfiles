@@ -3,9 +3,11 @@ set $mod Mod1
 set $win Mod4
 set $ctrl Control
 set $term alacritty
+set $browser firefox
 
 floating_modifier $mod
 
+# us_personal file in ~/.xkb/symbols/us_personal
 input * xkb_layout "us_personal"
 #input * xkb_layout "us"
 #input * xkb_options "ctrl:nocaps,compose:ralt"
