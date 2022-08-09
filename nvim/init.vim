@@ -146,6 +146,9 @@ xnoremap <expr> p 'pgv"'.v:register.'y`>'
 nnoremap <leader>p m`o<ESC>p``
 nnoremap <leader>P m`O<ESC>p``
 
+" use plugin to yank from anywhere (https://github.com/ojroques/vim-oscyank)
+vnoremap <leader>y :OSCYank<CR>
+
 " remap ^ to 1 to use 1 as 'go to first character of line'
 noremap 1 ^
 
