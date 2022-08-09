@@ -28,6 +28,6 @@ case "$1" in
           /usr/bin/nvr --nostart --servername $path -cc 'so ~/.config/nvim/init.vim'
         done
 
-        /usr/bin/swaymsg reload
+        #/usr/bin/swaymsg reload
         ;;
 esac

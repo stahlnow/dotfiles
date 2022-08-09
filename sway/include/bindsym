@@ -23,9 +23,9 @@ bindsym --whole-window $mod+button2 kill
 bindsym $mod+Tab workspace back_and_forth
 
 # start bemenu 
-set $bemenu_bg "#000000"
-set $bemenu_fg "$base0D"
-bindsym $mod+d exec j4-dmenu-desktop --dmenu="bemenu -i -M 500 --fn 'Hack Nerd Font Mono 9' -H 24 --nf '$bemenu_fg' --nb '$bemenu_bg' --ff '$bemenu_fg' --fb '$bemenu_bg' --hf '$bemenu_fg' --hb '$bemenu_bg' --prompt ''" --no-generic --term=alacritty
+set $be_b #000000
+set $be_primary $base0C
+bindsym $mod+d exec j4-dmenu-desktop --dmenu="bemenu -i -M 500 --fn 'Hack Nerd Font Mono 8' -H 24 --hf '$be_primary' --prompt ''" --no-generic --term=alacritty
 
 # change focus
 bindsym $mod+j focus down

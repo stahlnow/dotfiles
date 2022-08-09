@@ -1,4 +1,4 @@
-exec kanshi
+exec_always kanshi
 exec wl-paste -t text --watch clipman store --no-persist
 exec flashfocus
 exec mako
