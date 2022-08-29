@@ -12,6 +12,18 @@ if [[ $# -eq 0 ]] ; then
     exit 0
 fi
 
+if [[ $# -eq 2 ]] ; then
+
+    theme=$1
+    prog=$2
+
+    case $prog in
+        "waybar")
+            curl -f --silent https://raw.githubusercontent.com/mnussbaum/base16-waybar/master/colors/base16-$theme.css > ~/.config/waybar/colors.css
+    esac
+    exit 0
+fi
+
 case "$1" in
     *)
         theme=$1
@@ -19,6 +31,7 @@ case "$1" in
         curl -f --silent https://raw.githubusercontent.com/rkubosz/base16-sway/master/themes/base16-$theme.config > ~/.config/sway/colorscheme 
         curl -f --silent https://raw.githubusercontent.com/aarowill/base16-alacritty/master/colors/base16-$theme.yml > ~/.config/alacritty/include/colors.yml
         curl -f --silent https://raw.githubusercontent.com/mnussbaum/base16-waybar/master/colors/base16-$theme.css > ~/.config/waybar/colors.css
+        #curl -f --silent https://raw.githubusercontent.com/kdrag0n/base16-kitty/master/colors/base16-$theme.conf > ~/.config/kitty/current-theme.conf
 
         # generate .vimrc_background
         echo -e "if \0041exists('g:colors_name') || g:colors_name != 'base16-$theme'\n  colorscheme base16-$theme\nendif" >| ~/.vimrc_background

@@ -14,10 +14,8 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'posva/vim-vue'
 
+" This plugin automatically adjusts 'shiftwidth' and 'expandtab' heuristically based on the current file
 Plug 'tpope/vim-sleuth'
-
-" Find files with Ctrl+p
-Plug 'ctrlpvim/ctrlp.vim'
 
 " NERDTree Ctrl+n
 Plug 'scrooloose/nerdtree'
@@ -38,13 +36,13 @@ Plug 'ojroques/vim-oscyank', {'branch': 'main'}
 " <ctrl-k> => Up
 " <ctrl-l> => Right
 " <ctrl-\> => Previous split
-Plug 'christoomey/vim-tmux-navigator'
+"Plug 'christoomey/vim-tmux-navigator'
 
 " in tmux
 " FocusGained and FocusLost autocommand events are not working in terminal
 " vim. This plugin restores them when using vim inside Tmux. In tmux,
 " requires tmux-sensible plugin or "set -g focus-events on"
-Plug 'tmux-plugins/vim-tmux-focus-events'
+"Plug 'tmux-plugins/vim-tmux-focus-events'
 
 """""""""""""""""""""""""""""""""""""""""""""" Fancy plugins
 " Linter
@@ -56,18 +54,18 @@ Plug 'tveskag/nvim-blame-line'
 " Unicode plugin
 Plug 'chrisbra/unicode.vim'
 
-" Awesome staring screen for Vim
+" Awesome starting screen for Vim
 Plug 'mhinz/vim-startify'
 
 " Git wrapper
-" usage: :Gstatus, :Gedit, :Gsplit, :Gvsplit
+" usage: :Git status, :help fugitive
 Plug 'tpope/vim-fugitive'
 
 Plug 'ervandew/supertab'
 
-"Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline'
 
-" Colorizer for visualising color codes like #ff00ff or 'green'
+" Colorizer (:h Colorizer) for visualising color codes like #ff00ff or 'green'
 Plug 'chrisbra/Colorizer'
 
 " Show git changes
@@ -77,11 +75,13 @@ Plug 'airblade/vim-gitgutter'
 Plug 'djoshea/vim-autoread'
 
 " Base 16 colorscheme
-"Plug 'chriskempson/base16-vim'
 Plug 'RRethy/nvim-base16'
 
 " Black for python (https://github.com/averms/black-nvim)
 Plug 'averms/black-nvim', {'do': ':UpdateRemotePlugins'}
+
+" python docstring generator :Pydocstring
+Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
 
 " Initialize plugin system
 call plug#end()

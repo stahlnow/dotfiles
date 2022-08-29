@@ -1,5 +1,8 @@
 #!/bin/bash
 case "$1" in
+    *.jpg) kitty +kitten icat "$1";;
+    *.gif) kitty +kitten icat "$1";;
+    *.png) kitty +kitten icat "$1";;
     *.tar*) tar tf "$1";;
     *.zip) unzip -l "$1";;
     *.rar) unrar l "$1";;

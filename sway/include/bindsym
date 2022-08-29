@@ -10,7 +10,7 @@ bindsym $mod+b exec $browser
 bindsym $mod+Shift+r exec "swaymsg reload"
 
 # make border
-bindsym $mod+Shift+b exec "swaymsg border pixel 5"
+bindsym $mod+Shift+b exec "swaymsg border toggle"
 
 # kill switches
 bindsym $mod+F4 kill

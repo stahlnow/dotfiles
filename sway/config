@@ -2,7 +2,8 @@
 set $mod Mod1
 set $win Mod4
 set $ctrl Control
-set $term alacritty
+#set $term alacritty
+set $term kitty
 set $browser firefox
 
 floating_modifier $mod

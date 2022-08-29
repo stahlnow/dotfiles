@@ -1,1 +1,2 @@
-bar swaybar_command waybar
+# bar swaybar_command $HOME/.config/waybar/launch.sh
+exec_always --no-startup-id sh ~/.config/waybar/launch.sh 

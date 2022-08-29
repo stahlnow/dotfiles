@@ -1,0 +1,25 @@
+[global]
+
+[SpamFilter]
+[KillThreadsFilter]
+[ListMailsFilter]
+
+[SentMailsFilter]
+sent_tag = sent
+
+[ArchiveSentMailsFilter]
+
+[DMARCReportInspectionFilter]
+
+[FolderNameFilter.2]
+folder_explicit_list = .mail/stahlnow/sent
+folder_transforms = .mail/stahlnow/sent:sent
+folder_lowercases = true
+
+[Filter.1]
+message = Untagged 'inbox' from 'archive'
+query = 'tag:archive AND tag:inbox'
+tags = -inbox
+
+# what's still new goes into the inbox
+[InboxFilter]

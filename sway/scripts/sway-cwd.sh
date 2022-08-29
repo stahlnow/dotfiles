@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-terminal=${1:-alacritty}
+terminal=${1:-kitty}
 pid=$(swaymsg -t get_tree | jq '.. | select(.type?) | select(.type=="con") | select(.focused==true).pid')
 pname=$(ps -p ${pid} -o comm= | sed 's/-$//')
 

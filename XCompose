@@ -53,6 +53,14 @@ include "%L"
 <Multi_key> <b> <h>		: "☣"	U2623		# BIOHAZARD SIGN
 <Multi_key> <s> <a>	<t> : "📡"  U1F4C5      # SATELLITE ANTENNA
 
+## Vulgar Fractions
+<Multi_key> <n> <1> <2> : "½"
+<Multi_key> <n> <1> <3> : "⅓"
+<Multi_key> <n> <1> <4> : "¼"
+<Multi_key> <n> <1> <5> : "⅕"
+<Multi_key> <n> <1> <6> : "⅙"
+<Multi_key> <n> <1> <8> : "⅛"
+
 ## Emoji
 <Multi_key> <e> <o> <k>         	: "✅"    U1F4C5 # WHITE HEAVY CHECK MARK
 <Multi_key> <e> <c> <a> <l> 		: "📅"    U1F4C5 # CALENDAR
