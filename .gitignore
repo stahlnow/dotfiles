@@ -5,6 +5,7 @@ local
 *.local
 
 aerc/accounts.conf
+aerc/map.conf
 
 mpd/database
 mpd/log
