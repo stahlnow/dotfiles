@@ -4,6 +4,13 @@ alacritty/include/*
 local
 *.local
 
+aerc/accounts.conf
+
+mpd/database
+mpd/log
+mpd/state
+mpd/sticker.sql
+
 *.swp
 *.idea
 
