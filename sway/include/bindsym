@@ -22,6 +22,10 @@ bindsym --whole-window $mod+button2 kill
 # alt+tab switch workspaces
 bindsym $mod+Tab workspace back_and_forth
 
+# super+tab cycle workspaces
+bindsym $win+Tab workspace next
+
+
 # start bemenu 
 set $be_b #000000
 set $be_primary $base0C
