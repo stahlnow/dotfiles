@@ -4,7 +4,7 @@ set $win Mod4
 set $ctrl Control
 #set $term alacritty
 set $term kitty
-set $browser firefox
+set $browser firefox -P default
 
 floating_modifier $mod
 
