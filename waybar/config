@@ -1,7 +1,7 @@
 {
     "modules-left": ["sway/workspaces", "mpd"],
     "modules-center": ["sway/mode"],
-    "modules-right": ["pulseaudio", "network", "backlight", "battery", "clock", "tray"],
+    "modules-right": ["pulseaudio", "network", "backlight", "custom/gammastep", "battery", "clock", "tray"],
     
     "sway/mode": {
         "format": "<span color='#0f0' background='#000'>{}</span>",
@@ -78,5 +78,12 @@
             "default": ["", ""]
         },
         "tooltip": false
-    }
+    },
+    "custom/gammastep": {
+      "format": "<span font='14' rise='-3000'>{}</span>",
+      "interval": 5,
+      "on-update": "",
+      "exec": "sleep 0.05; ~/.local/bin/gammastep.sh",
+      "on-click": "~/.local/bin/gammastep.sh toggle"
+    },
 }
