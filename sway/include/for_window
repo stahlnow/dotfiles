@@ -3,6 +3,7 @@ assign {
 	[app_id="(telegram|TelegramDesktop)"] $ws5
 	[app_id="(.*)Kotatogram_Desktop"] $ws5
 	[instance="slack"] $ws5
+	[app_id="Slack"] $ws5
 	[instance="signal"] $ws5
 }
 
@@ -37,6 +38,7 @@ for_window {
 	[class="mgba"] floating enable, border pixel 10, resize set 640 480
 
 	[app_id="retroarch"] floating enable, border pixel 2
+	[app_id="dablin_gtk"] floating enable, border pixel 0
 
 }
 

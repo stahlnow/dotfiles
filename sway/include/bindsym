@@ -175,7 +175,7 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # save screenshot region as file
-bindsym --release $ctrl+Print exec slurp -d | grim -g - $(xdg-user-dir DOWNLOAD)/screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
+bindsym --release $ctrl+Print exec slurp -d | grim -g - $(xdg-user-dir HOME)/screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
 # copy region to clipboard
 bindsym --release Print exec grim -g "$(slurp -d)" - | wl-copy
 

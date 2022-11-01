@@ -27,3 +27,4 @@ poetry run ./manage.py migrate {{app}}##migrate
 poetry run ./manage.py showmigrations
 poetry run ./manage.py compilemessages
 poetry run ./manage.py loaddata {fixture}
+pip install --upgrade pip
