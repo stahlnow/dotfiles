@@ -24,7 +24,7 @@ bold_italic_font auto
 #:     italic_font      Operator Mono Book Italic
 #:     bold_italic_font Operator Mono Medium Italic
 
-font_size 8.1
+font_size 9.1
 
 #: Font size (in pts)
 
@@ -606,7 +606,7 @@ sync_to_monitor yes
 
 #: Terminal bell {{{
 
-enable_audio_bell no
+enable_audio_bell yes
 
 #: The audio bell. Useful to disable it in environments that require
 #: silence.
@@ -1528,7 +1528,7 @@ clear_all_shortcuts no
 #: cause all invocations of the hints kitten to have the --hints-
 #: offset=0 option applied.
 
-map ctrl+f launch --type=overlay --stdin-source=@screen_scrollback /usr/bin/fzf --no-sort --no-mouse --exact -i
+map kitty_mod+f launch --type=overlay --stdin-source=@screen_scrollback /usr/bin/fzf --no-sort --no-mouse --exact -i
 
 #: Clipboard {{{
 
@@ -1819,7 +1819,7 @@ map ctrl+shift+tab previous_tab
 
 #: New tab
 
-#map kitty_mod+t new_tab
+map kitty_mod+t new_tab
 map ctrl+t       new_tab_with_cwd
 
 #: Close tab
@@ -1841,8 +1841,8 @@ map kitty_mod+, move_tab_backward
 
 #: Set tab title
 
-#map kitty_mod+alt+t set_tab_title
-map kitty_mod+t set_tab_title
+map kitty_mod+alt+t set_tab_title
+map shift+cmd+i     set_tab_title
 
 
 map ctrl+1 goto_tab 1
@@ -1903,7 +1903,6 @@ map kitty_mod+l next_layout
 #: Increase font size
 
 map kitty_mod+equal  change_font_size all +2.0
-map ctrl+f1           change_font_size all +1.0
 map kitty_mod+plus   change_font_size all +2.0
 map kitty_mod+kp_add change_font_size all +2.0
 map cmd+plus         change_font_size all +2.0
@@ -1913,7 +1912,6 @@ map shift+cmd+equal  change_font_size all +2.0
 #: Decrease font size
 
 map kitty_mod+minus       change_font_size all -2.0
-map ctrl+f2                change_font_size all -1.0
 map kitty_mod+kp_subtract change_font_size all -2.0
 map cmd+minus             change_font_size all -2.0
 map shift+cmd+minus       change_font_size all -2.0
@@ -1922,7 +1920,6 @@ map shift+cmd+minus       change_font_size all -2.0
 
 map kitty_mod+backspace change_font_size all 0
 map cmd+0               change_font_size all 0
-map ctrl+0              change_font_size all 0
 
 
 #: To setup shortcuts for specific font sizes::
@@ -2013,6 +2010,10 @@ map ctrl+cmd+f    toggle_fullscreen
 #: Toggle maximized
 
 map kitty_mod+f10 toggle_maximized
+
+#: Toggle macOS secure keyboard entry
+
+map opt+cmd+s toggle_macos_secure_keyboard_entry
 
 #: Unicode input
 
@@ -2155,5 +2156,6 @@ map shift+cmd+/ open_url https://sw.kovidgoyal.net/kitty/
 
 
 # BEGIN_KITTY_THEME
+# 1984 Dark
 include current-theme.conf
 # END_KITTY_THEME
