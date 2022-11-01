@@ -45,6 +45,7 @@ include "%L"
 <Multi_key> <g> <u> : "μ"       # Micro (mikrós)
                           
 ## Temperature            
+<Multi_key> <d> <e> <g> 	: "ᵒ"
 <Multi_key> <d> <e> <g> <c> 	: "℃"   U2103 	# DEGREE CELSIUS
 <Multi_key> <d> <e> <g> <f> 	: "℉"   U2109   # DEGREE FAHRENHEIT
 
