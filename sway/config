@@ -4,7 +4,6 @@ set $win Mod4
 set $ctrl Control
 #set $term alacritty
 set $term kitty
-set $browser firefox -P stahlnow
 
 floating_modifier $mod
 
