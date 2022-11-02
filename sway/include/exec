@@ -7,13 +7,8 @@ exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec keepassxc
 exec nextcloud --background
 
-# exec swayidle -w \
-#          timeout 300 'swaylock -f --screenshots --clock --indicator --indicator-radius 300 --indicator-thickness 7 --effect-blur 30x5  --effect-vignette 0.5:0.5 --ring-color 005500 --key-hl-color 00ff00 --line-color 00000000 --inside-color 00000088 --text-color ffffff --separator-color 00000000 --grace 2 --fade-in 0.5' \
-#          timeout 600 'swaymsg "output * dpms off"' \
-#               resume 'swaymsg "output * dpms on"' before-sleep 'swaylock -f --screenshots --clock --indicator --indicator-radius 300 --indicator-thickness 7 --effect-blur 30x5  --effect-vignette 0.5:0.5 --ring-color 005500 --key-hl-color 00ff00 --line-color 00000000 --inside-color 00000088 --text-color ffffff --separator-color 00000000 --grace 2 --fade-in 0.5'
-# 
-#
-#
-# exec kotatogram-desktop
-# exec signal-desktop --start-in-tray
-# exec slack
+#exec swayidle -w \
+	  #timeout 300 'swaylock -f --screenshots --clock --indicator --indicator-radius 300 --indicator-thickness 7 --effect-blur 30x5  --effect-vignette 0.5:0.5 --ring-color 005500 --key-hl-color 00ff00 --line-color 00000000 --inside-color 00000088 --text-color ffffff --separator-color 00000000 --grace 2 --fade-in 0.5' \
+	  #timeout 600 'swaymsg "output * dpms off"' \
+	       #resume 'swaymsg "output * dpms on"' before-sleep 'swaylock -f --screenshots --clock --indicator --indicator-radius 300 --indicator-thickness 7 --effect-blur 30x5  --effect-vignette 0.5:0.5 --ring-color 005500 --key-hl-color 00ff00 --line-color 00000000 --inside-color 00000088 --text-color ffffff --separator-color 00000000 --grace 2 --fade-in 0.5'
+ 

@@ -18,7 +18,7 @@ for_window {
 	[title="^(Copying|Preferences)$"] floating enable, border pixel 2
 
 	# supercollider
-	[title="^(.*Plot.*|Stethoscope|.*plot.*)$"] floating enable, border pixel 2
+	#[title="^(.*Plot.*|Stethoscope|.*plot.*)$"] floating enable, border pixel 2
 
 	# Always float these applications.
 	[app_id="pavucontrol"] floating enable, border pixel 2 
