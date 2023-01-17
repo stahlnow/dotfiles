@@ -1,7 +1,7 @@
 {
     "modules-left": ["sway/workspaces", "mpd"],
     "modules-center": ["sway/mode"],
-    "modules-right": ["pulseaudio", "network", "backlight", "custom/gammastep", "battery", "clock", "tray"],
+    "modules-right": ["pulseaudio", "network", "backlight", "bluetooth", "custom/gammastep", "battery", "clock", "tray"],
     
     "sway/mode": {
         "format": "<span color='#0f0' background='#000'>{}</span>",
@@ -28,13 +28,25 @@
         "on-click-right": "mpc --host=localhost next",
         "tooltip": false
     },
+
+    "bluetooth": {
+	// "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
+	"format": " {status}",
+	"format-disabled": "", // an empty format will hide the module
+	"format-connected": "",
+	"tooltip-format": "{controller_alias}\t{controller_address}",
+	"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+    },
+
     "tray": {
         "icon-size": 13,
         "spacing": 5 
     },
     "clock": {
         "format": "{:%a %d.%m.%Y %H:%M}",
-        "tooltip": false
+        "tooltip": false,
+	"interval": 10,
     },
     "backlight": {
         "device": "sysfs/backlight/auto" ,
@@ -80,7 +92,7 @@
         "tooltip": false
     },
     "custom/gammastep": {
-      "format": "<span font='14' rise='-3000'>{}</span>",
+      "format": "<span font='14' rise='-3000'> {} </span>",
       "interval": 5,
       "on-update": "",
       "exec": "sleep 0.05; ~/.local/bin/gammastep.sh",

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=imv
+Keywords=Image
+Exec=/usr/bin/imv
+Icon=imv
+Terminal=false
+Type=Application
+MimeType=image/png;
+Categories=Graphics;

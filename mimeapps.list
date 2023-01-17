@@ -1,6 +1,7 @@
 [Default Applications]
 application/pdf=xpdf.desktop;
 application/json=nvim.desktop;
+text/x-python=nvim.desktop;
 text/plain=nvim.desktop;
 text/csv=libreoffice-calc.desktop;
 audio/mp3=deadbeef.desktop;

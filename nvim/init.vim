@@ -104,6 +104,8 @@ let g:pyindent_continue = 'shiftwidth()'
 let g:pyindent_close_paren = '-shiftwidth()'
 
 set number    				" show line numbers
+set title                               " enable 'title' as window name
+set titlestring=%t                      " set filename as title
 set autoread 				" auto reload buffer when file modified externally
 set hlsearch 				" keep previous search highlighted
 set incsearch 				" highlight matches while typing search
@@ -263,10 +265,12 @@ let g:ale_python_mypy_options = '--namespace-packages'
 let g:ale_python_mypy_show_notes = 1
 let g:ale_python_mypy_use_global = 0
 
+let g:ale_python_flake8_options = '--max-line-length=88'
+
+let g:ale_python_pylint_options = '--disable=C0114,C0115,C0116,R0903,W0613 --variable-rgx="[a-z0-9_]{1,30}$"'
 
 " YCM YouCompleteMe settings
 let g:ycm_server_python_interpreter = '/usr/bin/python'
-
 
 " colors base16-shell https://github.com/chriskempson/base16-shell
 if filereadable(expand("~/.vimrc_background"))
@@ -287,10 +291,10 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 " ####################################################################  Python
 "
 " Black settings (https://github.com/averms/black-nvim)
-"let g:black#settings = {
-    "\ 'fast': 1,
-    "\ 'line_length': 79
-"\}
+let g:black#settings = {
+    \ 'fast': 1,
+    \ 'line_length': 88
+\}
 
 " autocmd BufWritePre *.py execute ':call Black()'
 

@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=waddup
-Exec=/home/stahl/.local/bin/whatsapp
-Terminal=false
-Type=Application
-Categories=Chat;
-StartupNotify=false
