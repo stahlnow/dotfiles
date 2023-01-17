@@ -2,6 +2,7 @@ sway/colorscheme
 waybar/colors.css
 alacritty/include/*
 kitty/current-theme.conf
+kitty/kitty.conf.bak
 local
 *.local
 
