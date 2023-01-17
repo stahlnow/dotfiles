@@ -9,11 +9,9 @@ assign {
 
 # enable floating for dialog, etc.
 for_window {
-	#[app_id="kitty"] border normal
-
 	[window_role="^(bubble|pop-up|task_dialog|dialog|menu)$"] floating enable, border pixel 2
 
-	[app_id="(.*)keepassxc"] floating enable
+	#[app_id="(.*)keepassxc"] floating enable
 
 	[title="^(Copying|Preferences)$"] floating enable, border pixel 2
 

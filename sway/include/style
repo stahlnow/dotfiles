@@ -13,6 +13,8 @@ focus_on_window_activation focus
 
 # hide titlebars
 default_border none
+for_window [app_id="kitty"] border pixel 1
+
 #hide_edge_borders both
 #hide_edge_borders smart 
 #hide_edge_borders --i3 both
