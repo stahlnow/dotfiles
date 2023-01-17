@@ -54,9 +54,6 @@ Plug 'tveskag/nvim-blame-line'
 " Unicode plugin
 Plug 'chrisbra/unicode.vim'
 
-" Awesome starting screen for Vim
-Plug 'mhinz/vim-startify'
-
 " Git wrapper
 " usage: :Git status, :help fugitive
 Plug 'tpope/vim-fugitive'
@@ -83,6 +80,9 @@ Plug 'averms/black-nvim', {'do': ':UpdateRemotePlugins'}
 " python docstring generator :Pydocstring
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
 
+" icons
+Plug 'ryanoasis/vim-devicons'
+
 " Initialize plugin system
 call plug#end()
 
@@ -93,7 +93,16 @@ nnoremap <SPACE> <Nop>
 let mapleader=" "
 
 syntax on 					" turn on syntax highlighting
-filetype plugin indent on   " enable plugins
+
+filetype plugin on
+filetype indent on
+set autoindent " copy indent from current line when starting a new line
+
+let g:pyindent_open_paren = 'shiftwidth()'
+let g:pyindent_nested_paren = 'shiftwidth()'
+let g:pyindent_continue = 'shiftwidth()'
+let g:pyindent_close_paren = '-shiftwidth()'
+
 set number    				" show line numbers
 set autoread 				" auto reload buffer when file modified externally
 set hlsearch 				" keep previous search highlighted
@@ -112,7 +121,7 @@ highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Re
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
 
-set path+=**                
+set path+=**
 " use with :find for opening files or b: for jumping to buffers
 " finds (nested) files in subdirectories, can use wildmarks :find *.cpp
 set wildmenu
@@ -120,13 +129,15 @@ set wildmenu
 "set tabstop=4 " show existing tab with 4 spaces width
 "set shiftwidth=4 " number of spaces to use for auto indent
 "set expandtab " On pressing tab, insert 4 spaces
-"set autoindent " copy indent from current line when starting a new line
 
 nnoremap <Leader>s :update<CR>
 nnoremap <Leader>d :bd<CR>
 nnoremap <Leader>q :q!<CR>
 " run last command
 nnoremap <leader>r :!!<cr>
+
+nnoremap <leader>n ]c
+nnoremap <leader>p [c
 
 " reload vim config in-place
 nnoremap <Leader>sv :source $MYVIMRC<CR>
@@ -136,15 +147,16 @@ nnoremap <Leader>a :Ag<CR>
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>t :Tags<CR>
 
+nnoremap <Leader>bl :Black<CR>
 
 " handle copy/paste
 " use yy to copy to system clipboard and use p to paste from system clipboard
 set clipboard+=unnamedplus
 " paste over without overwriting register
-xnoremap <expr> p 'pgv"'.v:register.'y`>' 
+xnoremap <expr> p 'pgv"'.v:register.'y`>'
 
-nnoremap <leader>p m`o<ESC>p``
-nnoremap <leader>P m`O<ESC>p``
+"nnoremap <leader>p m`o<ESC>p``
+"nnoremap <leader>P m`O<ESC>p``
 
 " use plugin to yank from anywhere (https://github.com/ojroques/vim-oscyank)
 vnoremap <leader>y :OSCYank<CR>
@@ -204,6 +216,8 @@ nnoremap <leader>8 8gt
 nnoremap <leader>9 9gt
 nnoremap <leader>0 :tablast<cr>
 
+
+
 " enable mouse
 set mouse=a
 
@@ -223,27 +237,32 @@ set mouse=a
 :nnoremap <F5> :buffers<CR>:buffer<Space>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Custom functions 
+" Custom functions
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Pretty print json"
-command PrettyJson :%!python -m json.tool
+command! PrettyJson :%!python -m json.tool
 
-command YankPath :let @+=@%
-command YankFullPath :let @+=expand('%:p')
+command! YankPath :let @+=@%
+command! YankFullPath :let @+=expand('%:p')
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings and other special functions
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" linter
+" ale linter
 let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
-let g:ale_linters = {'vue': ['eslint', 'vls']}
-let g:ale_fixers = {'vue':['prettier', 'eslint']}
-let g:ale_sign_error = '🥵'
+"let g:ale_linters = {'python': ['flake8', 'mypy'], 'vue': ['eslint', 'vls']}
+let g:ale_linters = {'python': ['mypy'], 'vue': ['eslint', 'vls']}
+let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace'], 'python': ['black', 'isort'], 'vue':['prettier', 'eslint']}
+let g:ale_sign_error = ''
 let g:ale_sign_warning = '⚠️'
 let g:ale_fix_on_save = 1
+" python
+let g:ale_python_auto_poetry = 1
+let g:ale_python_mypy_ignore_invalid_syntax = 0
+let g:ale_python_mypy_options = '--namespace-packages'
+let g:ale_python_mypy_show_notes = 1
+let g:ale_python_mypy_use_global = 0
 
-" https://github.com/ctrlpvim/ctrlp.vim
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|env\|venv\|build'
 
 " YCM YouCompleteMe settings
 let g:ycm_server_python_interpreter = '/usr/bin/python'
@@ -268,14 +287,14 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 " ####################################################################  Python
 "
 " Black settings (https://github.com/averms/black-nvim)
-let g:black#settings = {
-    \ 'fast': 1,
-    \ 'line_length': 79 
-\}
+"let g:black#settings = {
+    "\ 'fast': 1,
+    "\ 'line_length': 79
+"\}
 
 " autocmd BufWritePre *.py execute ':call Black()'
 
-" remove trailing whitespace 
+" remove trailing whitespace
 "autocmd BufWritePre *.py :%s/\s\+$//e
 
 " syntastic
@@ -416,4 +435,3 @@ function! MyTabLine()
   endif
   return s
 endfunction
-
