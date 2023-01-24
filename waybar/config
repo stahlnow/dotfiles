@@ -2,7 +2,7 @@
     "modules-left": ["sway/workspaces", "mpd"],
     "modules-center": ["sway/mode"],
     "modules-right": ["pulseaudio", "network", "backlight", "bluetooth", "custom/gammastep", "battery", "clock", "tray"],
-    
+
     "sway/mode": {
         "format": "<span color='#0f0' background='#000'>{}</span>",
         "max-length": 1200
@@ -41,7 +41,7 @@
 
     "tray": {
         "icon-size": 13,
-        "spacing": 5 
+        "spacing": 5
     },
     "clock": {
         "format": "{:%a %d.%m.%Y %H:%M}",
@@ -78,8 +78,8 @@
     },
     "pulseaudio": {
         "on-click": "pulseaudio-ctl mute",
-        "format": "{volume}% <span font='14' rise='-3000'>{icon}</span>",
-        "format-muted": "muted <span font='14' rise='-3000'></span>",
+        "format": "{volume}% <span font='14' rise='-2500'>{icon}</span>",
+        "format-muted": "Muted <span font='14' rise='-2500'></span>",
         "format-icons": {
             "headphones": "",
             "handsfree": "",

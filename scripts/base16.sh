@@ -1,46 +1,133 @@
-#!/usr/bin/zsh
+#!/usr/bin/sh
 
-if [[ $# -eq 0 ]] ; then
-    # list colors
-    curl -sL https://github.com/aaron-williamson/base16-alacritty/tree/master/colors | grep -Po '"base16-\K.*?(?=.yml)'
+# Test if theme exists
+# string url
+# string theme
+# string pattern
+check_theme_exists() {
+	check=$(curl -sL "$1" | grep -Po "$3" | grep -x "$2")
+	if [[ -z $check  ]]; then
+		printf "theme not found"
+		return 1
+	fi
+	return 0
+}
 
-    # print the current colors
-    for i in {0..15} ; do
-        printf "\x1b[48;5;%sm%3x\e[0m " "$i" "$i"
-    done
-    printf "\n";
-    exit 0
+# Install kitty theme
+# string theme
+kitty() {
+	theme=$1
+	url=https://github.com/kdrag0n/base16-kitty/tree/master/colors
+	pat='"base16-\K.*?(?=.conf)'
+
+	if [ -z "$theme" ]; then
+		curl -sL $url | grep -Po $pat
+	else
+		check=$(check_theme_exists $url $theme $pat)
+		if [[ -z "$check" ]]; then
+			printf "install $theme for kitty.\n"
+			curl -sf https://raw.githubusercontent.com/kdrag0n/base16-kitty/master/colors/base16-$theme.conf > ~/.config/kitty/base16-theme.conf
+		else
+			printf "install $theme for kitty failed.\n"
+		fi
+	fi
+	return 0
+}
+
+waybar() {
+	theme=$1
+	url=https://github.com/mnussbaum/base16-waybar/tree/master/colors
+	pat='"base16-\K.*?(?=.css)'
+
+	if [ -z "$theme" ]; then
+		curl -sL $url | grep -Po $pat
+	else
+		check=$(check_theme_exists $url $theme $pat)
+		if [[ -z "$check" ]]; then
+			printf "install $theme for waybar.\n"
+			curl -sf https://raw.githubusercontent.com/mnussbaum/base16-waybar/master/colors/base16-$theme.css > ~/.config/waybar/colors.css
+		else
+			printf "install $theme for waybar failed.\n"
+		fi
+	fi
+	return 0
+}
+
+sway() {
+	theme=$1
+	url=https://github.com/rkubosz/base16-sway/tree/master/themes
+	pat='"base16-\K.*?(?=.config)'
+
+	if [ -z "$theme" ]; then
+		curl -sL $url | grep -Po $pat
+	else
+		check=$(check_theme_exists $url $theme $pat)
+		if [[ -z "$check" ]]; then
+			printf "install $theme for sway.\n"
+			curl -f --silent https://raw.githubusercontent.com/rkubosz/base16-sway/master/themes/base16-$theme.config > ~/.config/sway/colorscheme
+			swaymsg reload
+		else
+			printf "install $theme for sway failed.\n"
+		fi
+	fi
+	return 0
+}
+
+vim() {
+	theme=$1
+	url=https://github.com/RRethy/nvim-base16/tree/master/colors
+	pat='"base16-\K.*?(?=.vim)'
+
+	if [ -z "$theme" ]; then
+		curl -sL $url | grep -Po $pat
+	else
+		check=$(check_theme_exists $url $theme $pat)
+		if [[ -z "$check" ]]; then
+			printf "install $theme for vim.\n"
+			# generate .vimrc_background
+			echo -e "if \0041exists('g:colors_name') || g:colors_name != 'base16-$theme'\n  colorscheme base16-$theme\nendif" >| ~/.vimrc_background
+			# reload vim configs
+			for path in $(/usr/bin/nvr --nostart --serverlist)
+			do
+				/usr/bin/nvr --nostart --servername $path -cc "so ~/.config/nvim/init.vim"
+			done
+		else
+			printf "install $theme for vim failed.\n"
+		fi
+	fi
+	return 0
+
+}
+
+if [ $# -lt 1 -o $# -gt 2 ] ; then
+	echo "need a config (kitty, waybar, sway, vim) and optional a theme. To change all configs, type 'all [theme]'."
+	exit 0
+else
+	prog=$1
+	theme=$2
+	case $prog in
+		"all")
+			vim $theme # must be at the end.. something is not right in vim() when /usr/bin/nvr is called # TODO
+			kitty $theme
+			waybar $theme
+			sway $theme
+			;;
+
+		"kitty")
+			kitty $theme
+			;;
+		"waybar")
+			waybar $theme
+			;;
+		"sway")
+			sway $theme
+			;;
+		"vim")
+			vim $theme
+			;;
+		esac
+		exit 0
 fi
 
-if [[ $# -eq 2 ]] ; then
 
-    theme=$1
-    prog=$2
-
-    case $prog in
-        "waybar")
-            curl -f --silent https://raw.githubusercontent.com/mnussbaum/base16-waybar/master/colors/base16-$theme.css > ~/.config/waybar/colors.css
-    esac
-    exit 0
-fi
-
-case "$1" in
-    *)
-        theme=$1
-        echo setting theme to $theme
-        curl -f --silent https://raw.githubusercontent.com/rkubosz/base16-sway/master/themes/base16-$theme.config > ~/.config/sway/colorscheme 
-        curl -f --silent https://raw.githubusercontent.com/aarowill/base16-alacritty/master/colors/base16-$theme.yml > ~/.config/alacritty/include/colors.yml
-        curl -f --silent https://raw.githubusercontent.com/mnussbaum/base16-waybar/master/colors/base16-$theme.css > ~/.config/waybar/colors.css
-        #curl -f --silent https://raw.githubusercontent.com/kdrag0n/base16-kitty/master/colors/base16-$theme.conf > ~/.config/kitty/current-theme.conf
-
-        # generate .vimrc_background
-        echo -e "if \0041exists('g:colors_name') || g:colors_name != 'base16-$theme'\n  colorscheme base16-$theme\nendif" >| ~/.vimrc_background
-        # reload vim configs
-        for path in $(/usr/bin/nvr --nostart --serverlist)
-        do
-          /usr/bin/nvr --nostart --servername $path -cc 'so ~/.config/nvim/init.vim'
-        done
-
-        #/usr/bin/swaymsg reload
-        ;;
-esac
+# vi:syntax=bash:
