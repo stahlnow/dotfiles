@@ -13,7 +13,6 @@ docker system prune##prune
 git checkout --patch translations locale/*
 find . -name \*.pyc -delete
 echo 'iYYmCq9.7c!9XZE' | sudo openconnect -u chstaehli@gess.ethz.ch sslvpn.ethz.ch/gess --passwd-on-stdin##eth
-echo '_Analo303' | sudo openconnect -u cstaehli vpn1.zhdk.ch --passwd-on-stdin##zhdk
 lsblk --output NAME,FSTYPE,LABEL,MOUNTPOINT,FSSIZE,FSUSED,FSUSE%##lsblk
 sudo mount -t cifs //winstor5.ad.zhdk.ch/computersignale /opt/computersignale -o username=cstaehli,password=_Analo303##zhdk
 sudo mount -t cifs //winstor5.ad.zhdk.ch/computersignale2 /opt/computersignale2 -o username=cstaehli,password=_Analo303##zhdk
