@@ -14,6 +14,12 @@ input * xkb_layout "us_personal"
 #input * xkb_options "ctrl:nocaps,compose:ralt"
 input * xkb_options "caps:escape,compose:ralt"
 
+input "1133:49291:Logitech_G502_HERO_Gaming_Mouse" {
+  accel_profile flat
+  pointer_accel -0.5
+}
+
+
 font pango:Hack Nerd Font Mono 8
 
 include /home/stahl/.config/sway/colorscheme
@@ -25,4 +31,3 @@ include /home/stahl/.config/sway/local
 # XDG_CURRENT_DESKTOP=sway needs to be exported prior to start sway in ~/.zprofile
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK || true
 exec systemd-notify --ready || true
-

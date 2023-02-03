@@ -51,4 +51,3 @@ fontFile Courier-Bold		    /usr/share/ghostscript/Resource/Font/NimbusMonoPS-Bol
 fontFile Courier-BoldOblique	/usr/share/ghostscript/Resource/Font/NimbusMonoPS-BoldItalic
 fontFile Symbol			        /usr/share/ghostscript/Resource/Font/StandardSymbolsPS
 fontFile ZapfDingbats		    /usr/share/ghostscript/Resource/Font/D050000L
-

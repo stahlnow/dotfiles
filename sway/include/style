@@ -1,6 +1,6 @@
 include colorscheme
 #                       Border  BG      Text    Ind     Child Border
-client.focused          $base0D $base0D $base00 $base0D $base0F
+client.focused          $base0A $base0A $base00 $base0A $base0A
 client.focused_inactive $base01 $base01 $base05 $base03 $base01
 client.unfocused        $base00 $base00 $base05 $base01 $base01
 client.urgent           $base08 $base08 $base00 $base08 $base08
@@ -21,7 +21,7 @@ for_window [app_id="kitty"] border pixel 1
 #hide_edge_borders --i3 smart
 
 # Add gaps
-gaps inner 2
+gaps inner 1
 gaps outer 1
 
 # Only enable gaps on a workspace when there is at least one container

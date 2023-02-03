@@ -4,7 +4,7 @@ workspace_auto_back_and_forth yes
 bindsym $mod+Return exec $term --working-directory $(~/.config/sway/scripts/sway-cwd.sh)
 
 # browser
-bindsym $mod+b exec "firefox -P stahl"
+bindsym $mod+b exec "firefox -P default"
 
 # restart
 bindsym $mod+Shift+r exec "swaymsg reload"
@@ -26,7 +26,7 @@ bindsym $mod+Tab workspace back_and_forth
 bindsym $win+Tab workspace next
 
 
-# start bemenu 
+# start bemenu
 set $be_b #000000
 set $be_primary $base0C
 bindsym $mod+d exec j4-dmenu-desktop --dmenu="bemenu -i -M 500 --fn 'Hack Nerd Font Mono 8' -H 24 --hf '$be_primary' --prompt ''" --no-generic --term=alacritty
@@ -165,12 +165,18 @@ bindsym $mod+r mode $mode_resize
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +1% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -1% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym $mod+f3 exec --no-startup-id pactl set-sink-volume 0 +1% #increase sound volume
+bindsym $mod+f2 exec --no-startup-id pactl set-sink-volume 0 -1% #increase sound volume
+bindsym $mod+f1 exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym $win+f3 exec --no-startup-id pactl set-sink-volume 0 +1% #increase sound volume
+bindsym $win+f2 exec --no-startup-id pactl set-sink-volume 0 -1% #increase sound volume
+bindsym $win+f1 exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Sreen brightness controls
-bindsym XF86WakeUp+F8 exec ligth -U 5
-bindsym XF86WakeUp+F9 exec ligth -A 5
-bindsym XF86MonBrightnessUp exec sudo light -A 5  # increase screen brightness
-bindsym XF86MonBrightnessDown exec sudo light -U 5 # decrease screen brightness
+bindsym $mod+f6 exec ligth -U 5
+bindsym $mod+f5 exec ligth -A 5
+bindsym XF86MonBrightnessUp exec light -A 5  # increase screen brightness
+bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
@@ -184,10 +190,8 @@ bindsym --release $ctrl+Print exec slurp -d | grim -g - $(xdg-user-dir HOME)/scr
 bindsym --release Print exec grim -g "$(slurp -d)" - | wl-copy
 
 ###############################################################
-# fancy shortcuts 
+# fancy shortcuts
 ###############################################################
 # start two lf file manager
 set $double_lf $term -e lf & $term -e lf &
 bindsym $mod+u exec $double_lf
-
-
