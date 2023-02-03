@@ -211,6 +211,7 @@ nnoremap <Leader>sv :source $MYVIMRC<CR>
 " ale linter
 let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
 "let g:ale_linters = {'python': ['flake8', 'mypy'], 'vue': ['eslint', 'vls']}
+" let g:ale_linters = {'python': ['pylint', 'mypy'], 'vue': ['eslint', 'vls']}
 let g:ale_linters = {'python': ['mypy'], 'vue': ['eslint', 'vls']}
 let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace'], 'python': ['black', 'isort'], 'vue':['prettier', 'eslint']}
 let g:ale_sign_error = ''
