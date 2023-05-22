@@ -14,11 +14,11 @@ git checkout --patch translations locale/*
 find . -name \*.pyc -delete
 echo 'iYYmCq9.7c!9XZE' | sudo openconnect -u chstaehli@gess.ethz.ch sslvpn.ethz.ch/gess --passwd-on-stdin##eth
 lsblk --output NAME,FSTYPE,LABEL,MOUNTPOINT,FSSIZE,FSUSED,FSUSE%##lsblk
-sudo mount -t cifs //winstor5.ad.zhdk.ch/computersignale /opt/computersignale -o username=cstaehli,password=_Analo303##zhdk
-sudo mount -t cifs //winstor5.ad.zhdk.ch/computersignale2 /opt/computersignale2 -o username=cstaehli,password=_Analo303##zhdk
+sudo mount -t cifs //winstor5.ad.zhdk.ch/computersignale /opt/computersignale -o username=cstaehli,password=oog2Iam3woa0ohoor7ch##zhdk
+sudo mount -t cifs //winstor5.ad.zhdk.ch/computersignale2 /opt/computersignale2 -o username=cstaehli,password=oog2Iam3woa0ohoor7ch##zhdk
 sudo openvpn --config ~/beach/vpn/z35/inspectorsteel-udp-1194-christoph-config.ovpn --auth-user-pass ~/beach/vpn/z35/pass##z35
 poetry run ./manage.py check##check
-poetry run ./manage.py createsuperuser
+poetry run ./manage.py createsuperuser##createsuperuser
 poetry run ./manage.py shell_plus##shell
 poetry run ./manage.py runserver 0.0.0.0:8080##runserver
 poetry run ./manage.py makemigrations {{app}} --name {{name}}##makemigrations
@@ -27,3 +27,7 @@ poetry run ./manage.py showmigrations
 poetry run ./manage.py compilemessages
 poetry run ./manage.py loaddata {fixture}
 pip install --upgrade pip
+find . -regex '^.*\(__pycache__\|\.py[co]\)$' -delete##pyclean
+systemctl --type=service##services
+cd ~/.cache/pypoetry/virtualenvs/##virtualenvs
+poetry env info --path##poetry
