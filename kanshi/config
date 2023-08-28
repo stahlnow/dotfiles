@@ -4,5 +4,20 @@ profile {
 
 profile {
 	output "NEC Corporation PA272W 63116032TW" mode 2560x1440 position 0,0
-	output eDP-1 disable 
+	output eDP-1 disable
+}
+
+profile {
+  output "NEC Corporation EA294WMi 3Z000677NB" mode 2560x1080 position 0,0
+  output eDP-1 disable
+}
+
+profile {
+  output "NEC Corporation EA271Q 26706162NB" mode 2560x1440 position 0,0
+  output eDP-1 disable
+}
+
+profile {
+  output "Samsung Electric Company S24B300 0x00003333" mode 1920x1080 position 0,0
+  output eDP-1 disable
 }

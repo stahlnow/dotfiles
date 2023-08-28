@@ -47,7 +47,7 @@ primary_email=office@stahlnow.com
 #		in the mail store.
 #
 [new]
-tags=new
+tags=new;
 #tags=unread;inbox;sent;
 #ignore=
 # Search configuration
@@ -60,7 +60,7 @@ tags=new
 #		query will override that exclusion.
 #
 [search]
-exclude_tags=deleted;spam;
+# exclude_tags=killed;spam;
 # Maildir compatibility configuration
 #
 # The following option is supported here:

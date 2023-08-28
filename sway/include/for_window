@@ -25,25 +25,26 @@ for_window {
 	#[title="^(.*Plot.*|Stethoscope|.*plot.*)$"] floating enable, border pixel 2
 
 	# Always float these applications.
-	[app_id="pavucontrol"] floating enable, border pixel 2 
+	[app_id="pavucontrol"] floating enable, border pixel 2
 
 	[class="(?i)qjackctl"] floating enable, border pixel 4
 	[title="(?i)JACK Audio Connection Kit"] floating enable, border pixel 4, resize set 485 108
 
 	[app_id="gpredict"] floating enable, border pixel 2
-	
+
 	[class="jetbrains-pycharm" title="^(win.*)"] floating enable
 
 	[app_id="thunderbird"] floating enable, border pixel 2
 
 	[app_id="firefox" title="^Developer Tools .*"] floating enable
 	[app_id="firefox" title="^Live Tracklist.*"] floating enable, border pixel 10, resize set 630 397
+  [app_id="firefox" title="Firefox — Sharing Indicator"] floating enable
 
 	[class="mgba"] floating enable, border pixel 10, resize set 640 480
 
 	[app_id="retroarch"] floating enable, border pixel 2
 	[app_id="dablin_gtk"] floating enable, border pixel 0
 
+  [class="Hp-15c.tcl"] floating enable, sticky toggle
+
 }
-
-

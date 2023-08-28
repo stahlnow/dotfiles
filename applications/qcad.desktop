@@ -1,0 +1,6 @@
+[Desktop Entry]
+Version=1.0
+Name=Qcad
+Exec=XDG_SESSION_TYPE=x11 /home/stahl/.local/bin/qcad-3.28.1-pro-linux-qt5.14-x86_64/qcad
+Terminal=false
+Type=Application

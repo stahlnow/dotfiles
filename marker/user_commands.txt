@@ -31,3 +31,4 @@ find . -regex '^.*\(__pycache__\|\.py[co]\)$' -delete##pyclean
 systemctl --type=service##services
 cd ~/.cache/pypoetry/virtualenvs/##virtualenvs
 poetry env info --path##poetry
+pqdf input.pdf --password=password --decrypt output.pdf##Decrypt pdf and save

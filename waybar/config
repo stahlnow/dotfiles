@@ -1,101 +1,91 @@
 {
-    "modules-left": ["sway/workspaces", "mpd"],
-    "modules-center": ["sway/mode"],
-    "modules-right": ["pulseaudio", "network", "backlight", "bluetooth", "custom/gammastep", "battery", "clock", "tray"],
+  "modules-left": ["sway/workspaces", "mpd"],
+  "modules-center": ["sway/mode"],
+  "modules-right": ["pulseaudio", "network", "backlight", "custom/gammastep", "battery", "clock", "tray"],
 
-    "sway/mode": {
-        "format": "<span color='#0f0' background='#000'>{}</span>",
-        "max-length": 1200
+  "sway/mode": {
+    "format": "<span color='#0f0' background='#000'>{}</span>",
+    "max-length": 1200
+  },
+  "sway/workspaces": {
+    "disable-scroll": false,
+    "smooth-scrolling-threshold": 10,
+    "all-outputs": true,
+    "format": "<span>{value}</span>",
+  },
+  "mpd": {
+    "server": "127.0.0.1",
+    "format": "{stateIcon} {artist} - {title}",
+    "format-disconnected": "",
+    "format-stopped": "",
+    "unknown-tag": "N/A",
+    "interval": 5,
+    "state-icons": {
+      "paused": "",
+      "playing": ""
     },
-    "sway/workspaces": {
-        "disable-scroll": false,
-        "smooth-scrolling-threshold": 10,
-        "all-outputs": true,
-        "format": "<span>{value}</span>",
-    },
-    "mpd": {
-        "server": "127.0.0.1",
-        "format": "{stateIcon} {artist} - {title}",
-        "format-disconnected": "",
-        "format-stopped": "",
-        "unknown-tag": "N/A",
-        "interval": 5,
-        "state-icons": {
-            "paused": "",
-            "playing": ""
-        },
-        "on-click": "mpc --host=localhost toggle",
-        "on-click-right": "mpc --host=localhost next",
-        "tooltip": false
-    },
+    "on-click": "mpc --host=localhost toggle",
+    "on-click-right": "mpc --host=localhost next",
+    "tooltip": false
+  },
 
-    "bluetooth": {
-	// "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
-	"format": " {status}",
-	"format-disabled": "", // an empty format will hide the module
-	"format-connected": "",
-	"tooltip-format": "{controller_alias}\t{controller_address}",
-	"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
-	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+  "tray": {
+    "icon-size": 13,
+    "spacing": 5
+  },
+  "clock": {
+    "format": "{:%a %d.%m.%Y %H:%M}",
+    "tooltip": false,
+    "interval": 10,
+  },
+  "backlight": {
+    "device": "sysfs/backlight/auto" ,
+    "format": "{percent}% <span font='14' rise='-3000'>{icon}</span>",
+    "format-icons": ["",""],
+    "on-scroll-up": "light -A 1",
+    "on-scroll-down": "light -U 1",
+    "tooltip": false
+  },
+  "battery": {
+    "states": {
+      // "good": 95,
+      "warning": 15,
+      "critical": 5
     },
-
-    "tray": {
-        "icon-size": 13,
-        "spacing": 5
+    "format": "{capacity}% <span font='14' rise='-3000'>{icon}</span>",
+    "format-charging": "{capacity}% <span font='14' rise='-3000'></span>",
+    "format-plugged": "{capacity}% <span font='14' rise='-3000'></span>" ,
+    "format-icons": ["", "", "", "", ""],
+    "tooltip": false
+  },
+  "network": {
+    "format-wifi": "{essid} <span font='14' rise='-3000'></span>",
+    "format-ethernet": "{ifname}: {ipaddr}/{cidr} <span font='14' rise='-3000'>󰱓</span>",
+    "format-linked": "{ifname} (No IP) <span font='14' rise='-3000'>󰱟</span>",
+    "format-disconnected": "Kein netz <span font='14' rise='-3000'></span>",
+    "format-alt": "{ifname}: {ipaddr}/{cidr}",
+    "tooltip": false
+  },
+  "pulseaudio": {
+    "on-click": "~/.local/bin/pa_mute_toggle.sh",
+    "format": "{volume}% <span font='14' rise='-2500'>{icon}</span>",
+    "format-muted": "Muted <span font='14' rise='-2500'></span>",
+    "format-icons": {
+      "headphones": "",
+      "handsfree": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", ""]
     },
-    "clock": {
-        "format": "{:%a %d.%m.%Y %H:%M}",
-        "tooltip": false,
-	"interval": 10,
-    },
-    "backlight": {
-        "device": "sysfs/backlight/auto" ,
-        "format": "{percent}% <span font='14' rise='-3000'>{icon}</span>",
-        "format-icons": ["",""],
-        "on-scroll-up": "light -A 1",
-        "on-scroll-down": "light -U 1",
-        "tooltip": false
-    },
-    "battery": {
-        "states": {
-            // "good": 95,
-            "warning": 15,
-            "critical": 5
-        },
-        "format": "{capacity}% <span font='14' rise='-3000'>{icon}</span>",
-        "format-charging": "{capacity}% <span font='14' rise='-3000'></span>",
-        "format-plugged": "{capacity}% <span font='14' rise='-3000'></span>" ,
-        "format-icons": ["", "", "", "", ""],
-        "tooltip": false
-    },
-    "network": {
-        "format-wifi": "{essid} <span font='14' rise='-3000'></span>",
-        "format-ethernet": "{ifname}: {ipaddr}/{cidr} <span font='14' rise='-3000'></span>",
-        "format-linked": "{ifname} (No IP) <span font='14' rise='-3000'></span>",
-        "format-disconnected": "Kein netz <span font='14' rise='-3000'></span>",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}",
-        "tooltip": false
-    },
-    "pulseaudio": {
-        "on-click": "pulseaudio-ctl mute",
-        "format": "{volume}% <span font='14' rise='-2500'>{icon}</span>",
-        "format-muted": "Muted <span font='14' rise='-2500'></span>",
-        "format-icons": {
-            "headphones": "",
-            "handsfree": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", ""]
-        },
-        "tooltip": false
-    },
-    "custom/gammastep": {
-      "format": "<span font='14' rise='-3000'> {} </span>",
-      "interval": 5,
-      "on-update": "",
-      "exec": "sleep 0.05; ~/.local/bin/gammastep.sh",
-      "on-click": "~/.local/bin/gammastep.sh toggle"
-    },
+    "tooltip": false
+  },
+  "custom/gammastep": {
+    "format": "<span font='14' rise='-3000'> {} </span>",
+    "interval": 5,
+    "on-update": "",
+    "exec": "sleep 0.05; ~/.local/bin/gammastep.sh",
+    "on-click": "~/.local/bin/gammastep.sh toggle"
+  },
 }

@@ -2,7 +2,6 @@
 set $mod Mod1
 set $win Mod4
 set $ctrl Control
-#set $term alacritty
 set $term kitty
 
 floating_modifier $mod
@@ -10,8 +9,6 @@ floating_modifier $mod
 # us_personal file in ~/.xkb/symbols/us_personal
 include /home/stahl/.xkb/us_personal
 input * xkb_layout "us_personal"
-#input * xkb_layout "us"
-#input * xkb_options "ctrl:nocaps,compose:ralt"
 input * xkb_options "caps:escape,compose:ralt"
 
 input "1133:49291:Logitech_G502_HERO_Gaming_Mouse" {

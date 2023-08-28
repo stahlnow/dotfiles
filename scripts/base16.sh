@@ -27,6 +27,7 @@ kitty() {
 		if [[ -z "$check" ]]; then
 			printf "install $theme for kitty.\n"
 			curl -sf https://raw.githubusercontent.com/kdrag0n/base16-kitty/master/colors/base16-$theme.conf > ~/.config/kitty/base16-theme.conf
+      kill -USR1 $(pgrep kitty)
 		else
 			printf "install $theme for kitty failed.\n"
 		fi
@@ -100,14 +101,21 @@ vim() {
 }
 
 if [ $# -lt 1 -o $# -gt 2 ] ; then
-	echo "need a config (kitty, waybar, sway, vim) and optional a theme. To change all configs, type 'all [theme]'."
+	printf "usage: %s <app> [theme]\n" "$(basename "$0")"
+  printf "app can be one of: 'vim', 'kitty', 'waybar', 'sway'.\n"
+  printf "'all' can be used to apply the theme for all apps.\n"
+  printf "when theme is omitted, available themes are listed.\n"
 	exit 0
 else
 	prog=$1
 	theme=$2
 	case $prog in
 		"all")
-			vim $theme # must be at the end.. something is not right in vim() when /usr/bin/nvr is called # TODO
+			vim $theme
+      if [ -z "$theme" ]; then
+        echo "note: themes for vim were listed as reference"
+        exit 0
+      fi
 			kitty $theme
 			waybar $theme
 			sway $theme

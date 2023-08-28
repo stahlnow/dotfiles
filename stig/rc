@@ -1,6 +1,6 @@
 # Host that runs Transmission daemon
 # set srv.url otherhost:123
-set connect.host 192.168.1.16
+set connect.host 192.168.1.15
 set connect.user stahl
 set connect.password analog
 
@@ -12,7 +12,7 @@ set columns.torrents name ratio rate-up rate-down
 set tui.poll 10
 
 # Default columns in torrent lists
-set columns.torrents name ratio rate-up rate-down 
+set columns.torrents name ratio rate-up rate-down
 
 # Open a few tabs
 tab ls all --sort !added --columns name,%downloaded,ratio,size
@@ -23,3 +23,4 @@ tab ls isolated --sort tracker --columns name,path
 
 tab --focus 1
 
+set tui.theme my.theme

@@ -162,19 +162,26 @@ bindsym $mod+r mode $mode_resize
 # media and screenshot
 ###############################################################
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +1% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -1% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
-bindsym $mod+f3 exec --no-startup-id pactl set-sink-volume 0 +1% #increase sound volume
-bindsym $mod+f2 exec --no-startup-id pactl set-sink-volume 0 -1% #increase sound volume
-bindsym $mod+f1 exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
-bindsym $win+f3 exec --no-startup-id pactl set-sink-volume 0 +1% #increase sound volume
-bindsym $win+f2 exec --no-startup-id pactl set-sink-volume 0 -1% #increase sound volume
-bindsym $win+f1 exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.local/bin/pa_change_volume.sh +1% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/.local/bin/pa_change_volume.sh -1% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id ~/.local/bin/pa_mute_toggle.sh # mute sound
+bindsym $mod+f3 exec --no-startup-id ~/.local/bin/pa_change_volume.sh  +1% #increase sound volume
+bindsym $mod+f2 exec --no-startup-id ~/.local/bin/pa_change_volume.sh -1% #increase sound volume
+bindsym $mod+f1 exec --no-startup-id ~/.local/bin/pa_mute_toggle.sh  # mute sound
+bindsym $win+f3 exec --no-startup-id ~/.local/bin/pa_change_volume.sh  +1% #increase sound volume
+bindsym $win+f2 exec --no-startup-id ~/.local/bin/pa_change_volume.sh  -1% #increase sound volume
+bindsym $win+f1 exec --no-startup-id ~/.local/bin/pa_mute_toggle.sh # mute sound
+bindsym $ctrl+f3 exec --no-startup-id ~/.local/bin/pa_change_volume.sh  +1% #increase sound volume
+bindsym $ctrl+f2 exec --no-startup-id ~/.local/bin/pa_change_volume.sh -1% #increase sound volume
+bindsym $ctrl+f1 exec --no-startup-id ~/.local/bin/pa_mute_toggle.sh  # mute sound
 
 # Sreen brightness controls
-bindsym $mod+f6 exec ligth -U 5
-bindsym $mod+f5 exec ligth -A 5
+bindsym $mod+f6 exec light -A 5
+bindsym $mod+f5 exec light -U 5
+bindsym $win+f6 exec light -A 5
+bindsym $win+f5 exec light -U 5
+bindsym $ctrl+f6 exec light -A 5
+bindsym $ctrl+f5 exec light -U 5
 bindsym XF86MonBrightnessUp exec light -A 5  # increase screen brightness
 bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
 
