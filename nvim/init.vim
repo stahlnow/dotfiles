@@ -42,6 +42,13 @@ Plug 'ojroques/vim-oscyank', {'branch': 'main'}
 " Git blame
 Plug 'tveskag/nvim-blame-line'
 
+":Snek     " converts to snake_case               ('foo bar' -> 'foo_bar')
+":Camel    " converts to CamelCase                ('foo bar' -> 'FooBar')
+":CamelB   " converts to camelbackCase            ('foo bar' -> 'fooBar')
+":Kebab    " converts to kebab-case               ('foo bar' -> 'foo-bar')
+":Screm    " converts to SCREAMING_SNAKE_CASE     ('foo bar' -> 'FOO_BAR')
+Plug 'nicwest/vim-camelsnek'
+
 " Unicode plugin
 Plug 'chrisbra/unicode.vim'
 

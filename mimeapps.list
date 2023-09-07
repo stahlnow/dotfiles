@@ -46,6 +46,7 @@ video/x-ogm+ogg=mpv.desktop;
 video/x-theora=mpv.desktop;
 x-scheme-handler/http=firefox.desktop
 x-scheme-handler/https=firefox.desktop
+image/jpeg=imv-dir.desktop
 
 [Added Associations]
 audio/midi=deadbeef.desktop;
