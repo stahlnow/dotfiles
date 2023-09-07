@@ -14,8 +14,8 @@ git checkout --patch translations locale/*
 find . -name \*.pyc -delete
 echo 'iYYmCq9.7c!9XZE' | sudo openconnect -u chstaehli@gess.ethz.ch sslvpn.ethz.ch/gess --passwd-on-stdin##eth
 lsblk --output NAME,FSTYPE,LABEL,MOUNTPOINT,FSSIZE,FSUSED,FSUSE%##lsblk
-sudo mount -t cifs //winstor5.ad.zhdk.ch/computersignale /opt/computersignale -o username=cstaehli,password=oog2Iam3woa0ohoor7ch##zhdk
-sudo mount -t cifs //winstor5.ad.zhdk.ch/computersignale2 /opt/computersignale2 -o username=cstaehli,password=oog2Iam3woa0ohoor7ch##zhdk
+sudo mount -t cifs //winstor5.ad.zhdk.ch/computersignale /opt/computersignale -o username=cstaehli,password=##zhdk
+sudo mount -t cifs //winstor5.ad.zhdk.ch/computersignale2 /opt/computersignale2 -o username=cstaehli,password=##zhdk
 sudo openvpn --config ~/beach/vpn/z35/inspectorsteel-udp-1194-christoph-config.ovpn --auth-user-pass ~/beach/vpn/z35/pass##z35
 poetry run ./manage.py check##check
 poetry run ./manage.py createsuperuser##createsuperuser
