@@ -1,6 +1,8 @@
 hidden partial alphanumeric_keys
 xkb_symbols "editing" {
     include "us"
-    key <PGUP> {	[  Home          	]	};
-    key <PGDN> {	[  End          	]	};
+    key <PGUP> {[Home ]};
+    key <PGDN> {[End  ]};
+    key <HOME> {[Prior ]};
+    key <END>  {[Next  ]};
 };

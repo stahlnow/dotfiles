@@ -20,6 +20,9 @@ Plug 'ervandew/supertab'
 
 Plug 'dense-analysis/ale'
 
+" highlight word under cursor with <Leader>k
+Plug 'lfv89/vim-interestingwords'
+
 Plug 'posva/vim-vue'
 
 Plug 'tpope/vim-abolish'
@@ -28,13 +31,21 @@ Plug 'ycm-core/YouCompleteMe'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
+Plug 'github/copilot.vim'
+
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'deoplete-plugins/deoplete-jedi'
 
 """""""""""""""""""""""""""""""""""""""""""""" fancy plugins
 " NERDTree Ctrl+n
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'scrooloose/nerdtree'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
+
+
+" lf file manager <leader>f
+Plug 'ptzz/lf.vim'
+Plug 'voldikss/vim-floaterm'
+
 
 " Help fix the ssh copy/paste madness
 Plug 'ojroques/vim-oscyank', {'branch': 'main'}
@@ -156,7 +167,7 @@ noremap 1 ^
 nmap <CR> o<Esc>k
 
 " Make double-<Esc> clear search highlights
-nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
+nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch <bar> :call UncolorAllWords()<CR><Esc>
 
 " q starts visual block mode
 nnoremap q <c-V>
@@ -233,15 +244,35 @@ nnoremap <Leader>sv :source $MYVIMRC<CR>
 " #############################################################################################################
 " ############################################################################################### Plugin settings
 " #############################################################################################################
+
+" interestingwords
+nnoremap <silent> <leader>j :call UncolorAllWords()<cr>
+
+
+" Copilot
+let g:copilot_enabled = v:false
+let g:copilot_filetypes = {
+      \ '*': v:false,
+      \ 'python': v:true,
+      \ 'js': v:true,
+      \ 'vue': v:true,
+      \ }
+
 " YouCompleteME
 set completeopt-=preview
-let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
-let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
-let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
-let g:ycm_complete_in_comments = 1 " Completion in comments
-let g:ycm_complete_in_strings = 1 " Completion in string
-
+" let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
+" let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
+" let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
+" let g:ycm_complete_in_comments = 1 " Completion in comments
+" let g:ycm_complete_in_strings = 1 " Completion in string
+"
 let g:ycm_extra_conf_globlist = ['~/*']
+
+" let g:ycm_language_server = [ {
+"     \ 'name': 'vue',
+"     \ 'filetypes': [ 'vue' ],
+"     \ 'cmdline': [ 'vls'  ]
+"     \ } ]
 
 
 " ultisnips
@@ -263,9 +294,18 @@ inoremap <expr> <CR> pumvisible() ? "<C-R>=ExpandSnippetOrCarriageReturn()<CR>" 
 " set omnifunc=ale#completion#OmniFunc
 " let g:ale_completion_enabled = 1
 " let g:ale_completion_autoimport = 0
+
 let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
-let g:ale_linters = {'python': ['ruff'], 'vue': ['eslint', 'vls'], 'c': ['clangtidy'], 'cpp': ['clangtidy'], 'asm': []}
-let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace'], 'python': ['isort', 'black'], 'vue':['prettier', 'eslint'], 'cpp': ['clang-format']}
+
+let g:ale_linters = {
+\  'python': ['ruff'],
+\  'vue': ['eslint', 'vls'],
+\  'c': ['clangtidy'],
+\  'cpp': ['clangtidy'],
+\  'asm': []
+\}
+
+let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace'], 'python': ['isort', 'black', 'ruff'], 'vue':['prettier', 'eslint'], 'cpp': ['clang-format']}
 let g:ale_sign_error = ''
 let g:ale_sign_warning = '⚠️'
 let g:ale_lint_on_save = 1
