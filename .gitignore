@@ -4,6 +4,7 @@ alacritty/include/*
 kitty/font_size.conf
 kitty/current-theme.conf
 kitty/kitty.conf.bak
+kitty/base16-theme.conf
 local
 *.local
 
