@@ -1,12 +1,10 @@
-sway/colorscheme
-waybar/colors.css
-alacritty/include/*
-kitty/font_size.conf
-kitty/current-theme.conf
-kitty/kitty.conf.bak
-kitty/base16-theme.conf
 local
 *.local
+
+*.swp
+*.idea
+
+*.diff
 
 aerc/accounts.conf
 aerc/map.conf
@@ -16,7 +14,15 @@ mpd/log
 mpd/state
 mpd/sticker.sql
 
-*.swp
-*.idea
+sway/colorscheme
 
-*.diff
+waybar/colors.css
+
+alacritty/include/*
+
+kitty/font_size.conf
+kitty/current-theme.conf
+kitty/kitty.conf.bak
+kitty/base16-theme.conf
+
+nvim/pack/
