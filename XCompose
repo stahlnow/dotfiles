@@ -9,8 +9,6 @@ include "%L"
 <Multi_key> <u> <u>: "ü"
 <Multi_key> <u> <U>: "Ü"
 
-<Multi_key> <-> <->: "—"
-
 # some greek letters
 <Multi_key> <g> <a> : "α"       # Alpha (ἄλφα)
 <Multi_key> <g> <A> : "Α"       #

@@ -14,8 +14,8 @@ git checkout --patch translations locale/*
 find . -name \*.pyc -delete
 echo 'iYYmCq9.7c!9XZE' | sudo openconnect -u chstaehli@gess.ethz.ch sslvpn.ethz.ch/gess --passwd-on-stdin##eth
 lsblk --output NAME,FSTYPE,LABEL,MOUNTPOINT,FSSIZE,FSUSED,FSUSE%##lsblk
-sudo mount -t cifs //winstor5.ad.zhdk.ch/computersignale /opt/computersignale -o username=cstaehli,password=oog2Iam3woa0ohoor7ch##zhdk
-sudo mount -t cifs //winstor5.ad.zhdk.ch/computersignale2 /opt/computersignale2 -o username=cstaehli,password=oog2Iam3woa0ohoor7ch##zhdk
+sudo mount -t cifs //winstor5.ad.zhdk.ch/computersignale /opt/computersignale -o username=cstaehli,password=##zhdk
+sudo mount -t cifs //winstor5.ad.zhdk.ch/computersignale2 /opt/computersignale2 -o username=cstaehli,password=##zhdk
 sudo openvpn --config ~/beach/vpn/z35/inspectorsteel-udp-1194-christoph-config.ovpn --auth-user-pass ~/beach/vpn/z35/pass##z35
 poetry run ./manage.py check##check
 poetry run ./manage.py createsuperuser##createsuperuser
@@ -32,3 +32,5 @@ systemctl --type=service##services
 cd ~/.cache/pypoetry/virtualenvs/##virtualenvs
 poetry env info --path##poetry
 pqdf input.pdf --password=password --decrypt output.pdf##Decrypt pdf and save
+poetry env remove $(which python)##remove env (activate shell first)
+docker run -d --name postgres-xy-my-site -p 5433:5432 -e POSTGRES_PASSWORD=postgres -e POSTGRES_USER=postgres -e POSTGRES_HOST_AUTH_METHOD=trust -e POSTGRES_DB=my_site_local -e PGDATA=/var/lib/postgresql/data/pgdata -v ~/temp/my_site/postgresql:/var/lib/postgresql/data postgres:11-alpine##postgres

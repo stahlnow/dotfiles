@@ -1,8 +1,9 @@
 #
 # aerc nord styleset
 #
-
 *.default=true
+*.normal=true
+
 *.selected.reverse=toggle
 
 title.reverse=true
