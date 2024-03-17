@@ -47,4 +47,6 @@ for_window {
 
   [class="Hp-15c.tcl"] floating enable, sticky toggle
 
+  [class="FreeCAD" title="Insert a Part"] floating enable
+
 }
