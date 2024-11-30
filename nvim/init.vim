@@ -1,11 +1,9 @@
 " #############################################################################################################
-" ############################################################################################### Plugin setup
+" ################################################################################################ Plugin setup
 " #############################################################################################################
-" https://github.com/junegunn/vim-plug
-set nocompatible              " be iMproved, required
-filetype off                  " required
 let g:python3_host_prog = $HOME . '/.local/venv/nvim/bin/python'
 
+" https://github.com/junegunn/vim-plug
 " Make sure you use single quotes for Plug
 """""""""""""""""""""""""""""""""""""""""""""" essential plugins
 call plug#begin(stdpath('data') . '/plugged')
@@ -28,27 +26,16 @@ Plug 'posva/vim-vue'
 Plug 'tpope/vim-abolish'
 
 Plug 'ycm-core/YouCompleteMe'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 
 Plug 'github/copilot.vim'
 
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'deoplete-plugins/deoplete-jedi'
-
 """""""""""""""""""""""""""""""""""""""""""""" fancy plugins
-" NERDTree Ctrl+n
-" Plug 'scrooloose/nerdtree'
-" Plug 'Xuyuanp/nerdtree-git-plugin'
-
-
 " lf file manager <leader>f
 Plug 'ptzz/lf.vim'
 Plug 'voldikss/vim-floaterm'
 
-
 " Help fix the ssh copy/paste madness
-Plug 'ojroques/vim-oscyank', {'branch': 'main'}
+" Plug 'ojroques/vim-oscyank', {'branch': 'main'}
 
 " Git blame
 Plug 'tveskag/nvim-blame-line'
@@ -60,7 +47,13 @@ Plug 'tveskag/nvim-blame-line'
 ":Screm    " converts to SCREAMING_SNAKE_CASE     ('foo bar' -> 'FOO_BAR')
 Plug 'nicwest/vim-camelsnek'
 
-" Unicode plugin
+":Digraphs        - Search for specific digraph char
+":UnicodeSearch   - Search for specific Unicode char
+":UnicodeSearch!  - Search for specific Unicode char (and add at current cursor position)
+":UnicodeName     - Identify character under cursor (like ga command)
+":UnicodeTable    - Print Unicode Table in new window
+":DownloadUnicode - Download (or update) Unicode data
+":UnicodeCache    - Create cache file Unicode plugin
 Plug 'chrisbra/unicode.vim'
 
 " Git wrapper
@@ -69,6 +62,9 @@ Plug 'tpope/vim-fugitive'
 
 " Lean & mean status/tabline for vim that's light as air.
 Plug 'vim-airline/vim-airline'
+
+" icons (for use with vim-airline)
+Plug 'ryanoasis/vim-devicons'
 
 " Colorizer (:h Colorizer) for visualising color codes like #ff00ff or 'green'
 Plug 'chrisbra/Colorizer'
@@ -82,29 +78,28 @@ Plug 'djoshea/vim-autoread'
 " Base 16 colorscheme
 Plug 'RRethy/nvim-base16'
 
-" python docstring generator :Pydocstring
-Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
-
-" icons
-Plug 'ryanoasis/vim-devicons'
-
 " glsl syntax highlighting for OpenGL Shading Language
 Plug 'tikhomirov/vim-glsl'
 
+" faust syntax highlighting
+Plug 'gmoe/vim-faust'
+
+" supercollider
+Plug 'davidgranstrom/scnvim'
+
+
 " Initialize plugin system
 call plug#end()
-filetype on " turn filetype back on
 
 " #############################################################################################################
 " ############################################################################################### General setup
 " #############################################################################################################
-
 " Map space key as <Leader>
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 
 set clipboard+=unnamedplus              " use clipboard instead of vim registers
-set number    				" show line numbers
+set number    				                  " show line numbers
 set showmatch matchtime=2               " briefly show the matching bracket {[( when typing )]}
 set title                               " enable 'title' as window name
 set titlestring=%t                      " set filename as title
@@ -125,7 +120,7 @@ set path+=**
 " Additional tabs: Cycle through the menu
 set wildmode=longest:full,full
 
-set expandtab " On pressing tab, insert spaces
+set expandtab " On pressing tab, insert space
 set tabstop=2 " define width of a <Tab> character
 set shiftwidth=2 " determines how many blanks are inserted when using the > and < commands, and when automatic indentation is used. If set to 0, it uses the value of tabstop.
 set softtabstop=-1 " Use value of shiftwidth
@@ -133,19 +128,28 @@ set smarttab       " Always use shiftwidth
 set autoindent
 set smartindent
 
-" enable project-specific vimrc
-set exrc " exrc allows loading local executing local rc files.
-set secure " secure disallows the use of :autocmd, shell and write commands in local .vimrc files.
+let g:netrw_liststyle=3
 
+filetype plugin on
+
+" set tab width
+autocmd FileType cpp    setlocal ts=4 sts=4 sw=4 expandtab
 autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
 autocmd FileType scss   setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType yaml   setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType vue    setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType js     setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType ts     setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType faust  setlocal ts=4 sts=4 sw=4 expandtab
+
+" enable project-specific vimrc
+" set exrc " exrc allows loading local executing local rc files.
+" set secure " secure disallows the use of :autocmd, shell and write commands in local .vimrc files.
 
 " disable continuation of comments
 autocmd FileType * set formatoptions-=cro
 
+" see :help ft-python-indent
 let g:pyindent_open_paren = 'shiftwidth()'
 let g:pyindent_nested_paren = 'shiftwidth()'
 let g:pyindent_continue = 'shiftwidth()'
@@ -158,15 +162,18 @@ highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Re
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
 
 " #############################################################################################################
-" ############################################################################################### Key mappings
+" ################################################################################################ Key mappings
 " #############################################################################################################
 " remap ^ to 1 to use 1 as 'go to first character of line'
 noremap 1 ^
 
-" Insert newline without entering insert mode and staying on same line
+" remap $ to end of line WITHOUT newline (by going one character to the right)
+vnoremap $ $h
+
+" <Enter> to insert newline without entering insert mode and staying on same line
 nmap <CR> o<Esc>k
 
-" Make double-<Esc> clear search highlights
+" double-<Esc> clear search highlights
 nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch <bar> :call UncolorAllWords()<CR><Esc>
 
 " q starts visual block mode
@@ -179,9 +186,17 @@ xnoremap <expr> p 'pgv"'.v:register.'y`>'
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 
+" save/update
 nnoremap <Leader>s :update<CR>
+
+" quit (checks saved)
 nnoremap <Leader>d :bd<CR>
+
+" fore quit
 nnoremap <Leader>q :q!<CR>
+
+" copy buffer full path to + register
+nnoremap <Leader>~ :let @+=expand('%:p')<CR>
 
 " jump to next/previous change
 nnoremap <Leader>n ]c
@@ -198,30 +213,40 @@ let g:fzf_action = {
 nnoremap <Leader>a :Ag<CR>
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>t :Tags<CR>
-nnoremap <Leader>o :Buffers<CR>
-nnoremap <Leader>h :History<CR>
+" nnoremap <Leader>o :Buffers<CR>
+" nnoremap <Leader>h :History<CR>
 
-let $FZF_DEFAULT_COMMAND='find . \! \( -type d -path ./.git -prune \) \! -type d \! -name ''*.tags'' -printf ''%P\n'''"
-
-nnoremap <Leader>bl :Black<CR>
+" defined in .zshrc
+" let $FZF_DEFAULT_COMMAND='find . \! \( -type d -path ./.git -prune \) \! -type d \! -name ''*.tags'' -printf ''%P\n'''"
 
 " yank line whitespace-trimmed w/o newline
 nnoremap <Leader>y _yg_
 
 " use plugin to yank from anywhere (https://github.com/ojroques/vim-oscyank)
-vnoremap <Leader>Y :OSCYank<CR>
+" vnoremap <Leader>Y :OSCYank<CR>
 
 " use space + D for delete to black hole register
 " nnoremap <Leader>D "_d
 " xnoremap <Leader>D "_d
 
-nnoremap <Leader>D :YcmCompleter GoToDefinition<CR>
+" [r]repeat last command
+nnoremap <Leader>r @:
 
-" Git blame
+" [i]inspect
+nnoremap <leader>i :YcmCompleter GoToType<CR>
+nnoremap <Leader>I :YcmCompleter GoToDefinition<CR>
+
+" jump f[o]rward
+nnoremap <Leader>o <C-I>
+" jump [p]revious
+nnoremap <Leader>p <C-O>
+
+" Git [b]blame
 nnoremap <silent> <Leader>b :ToggleBlameLine<CR>
 
 " switch to next buffer
 nnoremap <Leader>l :bn<CR>
+nnoremap <Leader>h :bp<CR>
 
 " Go to buffer by number
 nnoremap <Leader>1 :buffer 1<CR>
@@ -234,29 +259,52 @@ nnoremap <Leader>7 :buffer 7<CR>
 nnoremap <Leader>8 :buffer 8<CR>
 nnoremap <Leader>9 :buffer 9<CR>
 
-
-" start nerd tree
-map <C-n> :NERDTreeToggle<CR>
+" Map lf https://github.com/ptzz/lf.vim
+let g:lf_map_keys = 0
+map <Leader>e :Lf<CR>
 
 " reload vim config in-place
 nnoremap <Leader>sv :source $MYVIMRC<CR>
 
 " #############################################################################################################
-" ############################################################################################### Plugin settings
+" ############################################################################################# Plugin settings
 " #############################################################################################################
+
+lua require('colorschemes')
+
 
 " interestingwords
 nnoremap <silent> <leader>j :call UncolorAllWords()<cr>
 
 
 " Copilot
-let g:copilot_enabled = v:false
+let g:copilot_enabled = v:true
 let g:copilot_filetypes = {
       \ '*': v:false,
       \ 'python': v:true,
-      \ 'js': v:true,
+      \ 'javascript': v:true,
       \ 'vue': v:true,
+      \ 'faust': v:false,
+      \ 'supercollider': v:false,
+      \ 'glsl': v:true,
       \ }
+
+" toggle Copilot with <Leader>+\ "
+"lua << EOF
+"local copilot_on = true
+"vim.api.nvim_create_user_command("CopilotToggle", function()
+"	if copilot_on then
+"		vim.cmd("Copilot disable")
+"		print("Copilot OFF")
+"	else
+"		vim.cmd("Copilot enable")
+"		print("Copilot ON")
+"	end
+"	copilot_on = not copilot_on
+"end, { nargs = 0 })
+"vim.keymap.set("", "<Leader>\\", ":CopilotToggle<CR>", { noremap = true, silent = true })
+"EOF
+
 
 " YouCompleteME
 set completeopt-=preview
@@ -274,21 +322,15 @@ let g:ycm_extra_conf_globlist = ['~/*']
 "     \ 'cmdline': [ 'vls'  ]
 "     \ } ]
 
+" just in case i forget about how to make 'go to file' work with python
+" create a file .ycm_extra_conf.py inside the python project folder with the following content:
+"def Settings(**kwargs):  # noqa N802
+"    return {
+"        'interpreter_path': 'path/to/the/pypoetry/virtualenvs/pi/pa/po/bin/python',
+"    }
 
-" ultisnips
-" following functions enables 'return' key to insert snippets
-" in combination with YouCompleteME
-let g:UltiSnipsExpandTrigger = "<nop>"
-let g:ulti_expand_or_jump_res = 0
-function ExpandSnippetOrCarriageReturn()
-    let snippet = UltiSnips#ExpandSnippetOrJump()
-    if g:ulti_expand_or_jump_res > 0
-        return snippet
-    else
-        return "\<CR>"
-    endif
-endfunction
-inoremap <expr> <CR> pumvisible() ? "<C-R>=ExpandSnippetOrCarriageReturn()<CR>" : "\<CR>"
+
+
 
 " ale
 " set omnifunc=ale#completion#OmniFunc
@@ -299,13 +341,21 @@ let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
 
 let g:ale_linters = {
 \  'python': ['ruff'],
-\  'vue': ['eslint', 'vls'],
+\  'vue': ['eslint'],
+\  'javascript': ['eslint'],
 \  'c': ['clangtidy'],
 \  'cpp': ['clangtidy'],
 \  'asm': []
 \}
 
-let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace'], 'python': ['isort', 'black', 'ruff'], 'vue':['prettier', 'eslint'], 'cpp': ['clang-format']}
+let g:ale_fixers = {
+\  '*': ['remove_trailing_lines', 'trim_whitespace'],
+\  'python': ['isort', 'black', 'ruff'],
+\  'vue': ['prettier', 'eslint'],
+\  'javascript': ['prettier', 'eslint'],
+\  'cpp': ['clang-format']
+\}
+
 let g:ale_sign_error = ''
 let g:ale_sign_warning = '⚠️'
 let g:ale_lint_on_save = 1
@@ -329,10 +379,7 @@ let g:ale_cpp_clangtidy_extra_options = ''
 let g:ale_cpp_clangtidy_options = ''
 let g:ale_set_balloons=1
 let g:ale_linters_explicit=1
-
 let g:airline#extensions#ale#enabled=1
-
-
 
 " colors base16-shell https://github.com/chriskempson/base16-shell
 if filereadable(expand("~/.vimrc_background"))
@@ -344,14 +391,54 @@ endif
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline_section_b = '' " hide Environment status (VCS information - branch, hunk summary (master), battery level)
+let g:airline_section_x = '' " hide filetype
+let g:airline_section_y = '' " hide file encoding[fileformat]
 
-" LaTeX Live Previewer options
-let g:livepreview_previewer = 'evince'
-let g:livepreview_engine = 'lualatex'
 
-" #############################################################################################################
+" airblade/vim-gitgutter
+let g:gitgutter_map_keys = 0 " disable all key mappings
+
+
+" supercollider
+" https://github.com/davidgranstrom/scnvim
+lua << EOF
+local scnvim = require 'scnvim'
+local map = scnvim.map
+local map_expr = scnvim.map_expr
+scnvim.setup {
+  -- 'n', 'i', 'x' stands for normal, insert, visual mode
+  keymaps = {
+    -- ['<C-i>'] = map('postwin.toggle', {'n', 'i'}),
+    ['<CR>'] = map('postwin.toggle'),
+    ['<C-l>'] = map('postwin.clear', {'n', 'i'}),
+    -- ['<M-e>'] = map('editor.send_line', {'i', 'n'}),
+    ['<C-e>'] = {
+      map('editor.send_block', {'i', 'n'}),
+      map('editor.send_selection', 'x'),
+    },
+    ['<C-s>'] = map('sclang.hard_stop', {'n', 'x', 'i'}),
+    ['<C-k>'] = map('signature.show', {'n', 'i'}),
+    ['<leader>i'] = map('sclang.start'),
+    ['<leader>r'] = map('sclang.recompile'),
+    ['<leader>b'] = map_expr('s.boot'),
+    ['<leader>m'] = map_expr('s.meter'),
+  },
+  editor = {
+    highlight = {
+      color = 'IncSearch',
+    },
+  },
+  postwin = {
+    float = {
+      enabled = true,
+    },
+  },
+}
+EOF
+
+
 " ############################################################################################### Commands
-" #############################################################################################################
 " Triger `autoread` when files changes on disk
 " https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
 " https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
