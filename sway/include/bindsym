@@ -63,7 +63,7 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+space floating toggle, exec "swaymsg move position center; swaymsg resize set 80ppt 80ppt"
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -142,15 +142,15 @@ bindsym $mod+Delete mode $mode_system
 
 set $mode_resize "<span font_size='8pt' color='$base07'>  Resize  </span>"
 mode --pango_markup $mode_resize  {
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-        bindsym Down resize shrink height 10 px or 10 ppt
-        bindsym Up resize grow height 10 px or 10 ppt
+        bindsym h resize shrink width 5 px or 1 ppt
+        bindsym l resize grow width 5 px or 1 ppt
+        bindsym k resize shrink height 5 px or 1 ppt
+        bindsym j resize grow height 5 px or 1 ppt
+        # arrow keys
+        bindsym Left resize shrink width 5 px or 1 ppt
+        bindsym Right resize grow width 5 px or 1 ppt
+        bindsym Down resize shrink height 5 px or 1 ppt
+        bindsym Up resize grow height 5 px or 1 ppt
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -201,5 +201,5 @@ bindsym --release $win+Print exec grim - | wl-copy
 # fancy shortcuts
 ###############################################################
 # start two lf file manager
-set $double_lf $term -e lf & $term -e lf &
-bindsym $mod+u exec $double_lf
+# set $double_lf $term -e lf & $term -e lf &
+# bindsym $mod+u exec $double_lf

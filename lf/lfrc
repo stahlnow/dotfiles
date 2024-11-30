@@ -102,6 +102,9 @@ map gi :cd ~/incoming; set sortby time; set reverse
 map gs :cd ~/music;
 map gm :cd /run/media/stahl
 
+# reverse sort order with sr
+map sr :set reverse!
+
 # view images in folder
 #map V $find . -type f | sort | imv -d -s shrink
 map V $~/.dotfiles/scripts/rifle_imv.sh $f
@@ -131,6 +134,7 @@ map <enter> open
 
 cmd open ${{
     case $(file --mime-type $f -b) in
+        text/csv) xdg-open $fx;;
         text/*) $EDITOR $fx;;
         inode/x-empty) $EDITOR $fx;;
         application/json) $EDITOR $fx;;
@@ -173,13 +177,7 @@ cmd yank-path ${{
       wl-copy
 }}
 
-cmd yank-basename ${{
-    if [ -n "$fs" ]; thenup
-      echo "$fs" | xargs -r -d '\n' basename -a --
-    else
-      basename -- "$f" | tr -d '\n'
-    fi | wl-copy
-}}
+cmd yank-basename $basename -a -- $fx | head -c-1 | wl-copy
 
 cmd yank-basename-without-extension ${{
     echo "$fx" |

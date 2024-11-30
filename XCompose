@@ -63,7 +63,8 @@ include "%L"
 <Multi_key> <n> <1> <8> : "⅛"
 
 ## Emoji
+<Multi_key> <e> <a>         	    : "→"    # ARROW
 <Multi_key> <e> <o> <k>         	: "✔"    # WHITE HEAVY CHECK MARK
-<Multi_key> <e> <c> <a> <l> 		: ""    # CALENDAR
+<Multi_key> <e> <c> <a> <l> 		  : ""    # CALENDAR
 <Multi_key> <e> <i> <d> <e> <a>		: ""    # ELECTRIC LIGHT BULB
 <Multi_key> <e> <b> <o> <m> <b>		: ""    # BOMB

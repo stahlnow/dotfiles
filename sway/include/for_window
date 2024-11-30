@@ -28,13 +28,26 @@ for_window {
 	[app_id="pavucontrol"] floating enable, border pixel 2
 
 	[class="(?i)qjackctl"] floating enable, border pixel 4
+	[class="QjackCtl"] floating enable, border pixel 4
 	[title="(?i)JACK Audio Connection Kit"] floating enable, border pixel 4, resize set 485 108
+
+  # x42 plugins
+	[title="Spectr"] floating enable
+	[title="Autotune (microtonal)"] floating enable
+	[title="Goniometer"] floating enable
+
+  # pure data
+  [class="PatchWindow"] floating enable, border pixel 2
+
+  # vmpk virtual midi piano keyboard
+  [app_id="net.sourceforge.VMPK"] floating enable
+
+  # some faust stuff i did
+  [app_id=".*faust.*"] floating enable
 
 	[app_id="gpredict"] floating enable, border pixel 2
 
 	[class="jetbrains-pycharm" title="^(win.*)"] floating enable
-
-	[app_id="thunderbird"] floating enable, border pixel 2
 
 	[app_id="firefox" title="^Developer Tools .*"] floating enable
 	[app_id="firefox" title="^Live Tracklist.*"] floating enable, border pixel 10, resize set 630 397
@@ -46,5 +59,7 @@ for_window {
 	[app_id="dablin_gtk"] floating enable, border pixel 0
 
   [class="Hp-15c.tcl"] floating enable, sticky toggle
+
+	[app_id="blueberry.py"] floating enable, border pixel 2
 
 }

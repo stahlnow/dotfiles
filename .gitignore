@@ -18,4 +18,6 @@ mpd/sticker.sql
 *.swp
 *.idea
 
+*.backup
+
 *.diff

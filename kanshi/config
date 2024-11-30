@@ -1,3 +1,4 @@
+# laptop
 profile {
 	output eDP-1 enable mode 1920x1200 position 0,0
 }
@@ -17,7 +18,20 @@ profile {
   output eDP-1 disable
 }
 
+##########################################################################################
+# projectors
+##########################################################################################
 profile {
   output "Samsung Electric Company S24B300 0x00003333" mode 1920x1080 position 0,0
+  output eDP-1 disable
+}
+
+profile {
+  output "Hewlett Packard HP ZR2740w CNT215W0PP" mode 2560x1440 position 0,0
+  output eDP-1 disable
+}
+
+profile {
+  output "HDMI-A-1 'Delta Electronics Inc PROJECTOR 0x01010101'" mode 1280x800 position 0,0
   output eDP-1 disable
 }
