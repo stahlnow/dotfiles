@@ -44,6 +44,17 @@ return {
     opt = require "plugins.config.copilot",
   },
 
+  -- ChatGPT
+  -- https://github.com/Robitx/gp.nvim
+  {
+    "robitx/gp.nvim",
+    config = function()
+      local conf = require "plugins.config.gpt"
+      require("gp").setup(conf.config)
+      conf.setup_mappings()
+    end,
+  },
+
   ---------------------------------------------- fancy plugins
   -- lf file manager
   {
