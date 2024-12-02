@@ -20,6 +20,16 @@ vim.api.nvim_create_autocmd("Filetype", {
   desc = "Set tab width for Faust files",
 })
 
+vim.api.nvim_create_autocmd("Filetype", {
+  pattern = "lua",
+  callback = function()
+    vim.opt.tabstop = 3
+    vim.opt.softtabstop = 3
+    vim.opt.shiftwidth = 3
+    vim.opt.expandtab = true
+  end,
+  desc = "Set tab width for Faust files",
+})
 
 vim.api.nvim_create_autocmd("Filetype", {
   pattern = "faust",
