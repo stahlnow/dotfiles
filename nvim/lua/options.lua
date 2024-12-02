@@ -50,7 +50,7 @@ o.path:append({ '**' })
 -- 1st tab:         Complete the longest match and bring up 'wildmenu'
 -- Additional tabs: Cycle through the menu
 o.wildmenu = true
-o.wildmode = "longest,full,full"
+o.wildmode = "longest:full,full"
 
 -- Indentation
 o.expandtab = true        -- On pressing tab, insert space
