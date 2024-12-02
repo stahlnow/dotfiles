@@ -21,3 +21,5 @@ mpd/sticker.sql
 *.backup
 
 *.diff
+
+*.log
