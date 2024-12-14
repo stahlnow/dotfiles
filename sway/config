@@ -3,19 +3,17 @@ set $mod Mod1
 set $win Mod4
 set $ctrl Control
 set $term kitty
-
 floating_modifier $mod
 
-# us_personal file in ~/.xkb/symbols/us_personal
-include /home/stahl/.xkb/us_personal
-input * xkb_layout "us_personal"
-input * xkb_options "caps:escape,compose:ralt"
-
-input "1133:49291:Logitech_G502_HERO_Gaming_Mouse" {
-  accel_profile flat
-  pointer_accel 1.0
+# lenovo laptop: swap page_up/page_down with home/end
+input "1:1:AT_Translated_Set_2_keyboard" {
+  xkb_layout "us_personal"
+  xkb_options "caps:escape,compose:ralt"
 }
 
+input "13364:53297:Keychron__Keychron_Link__Keyboard" {
+  xkb_options "caps:escape,compose:ralt,ctrl:swap_lwin_lctl,ctrl:swap_rwin_rctl"
+}
 
 font pango:Hack Nerd Font Mono 8
 

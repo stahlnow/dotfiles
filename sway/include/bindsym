@@ -29,7 +29,7 @@ bindsym $win+Tab workspace next
 # start bemenu
 set $be_b #000000
 set $be_primary $base0C
-bindsym $mod+d exec j4-dmenu-desktop --dmenu="bemenu -i -M 500 --fn 'Hack Nerd Font Mono 8' -H 24 --hf '$be_primary' --prompt ''" --no-generic --term=alacritty
+bindsym $mod+d exec j4-dmenu-desktop --dmenu="bemenu -i -M 500 --fn 'Hack Nerd Font Mono 8' -H 24 --hf '$be_primary' --prompt ''" --no-generic --term=kitty
 
 # change focus
 bindsym $mod+j focus down
@@ -174,6 +174,9 @@ bindsym $win+f1 exec --no-startup-id ~/.local/bin/pa_mute_toggle.sh # mute sound
 bindsym $ctrl+f3 exec --no-startup-id ~/.local/bin/pa_change_volume.sh  +1% #increase sound volume
 bindsym $ctrl+f2 exec --no-startup-id ~/.local/bin/pa_change_volume.sh -1% #increase sound volume
 bindsym $ctrl+f1 exec --no-startup-id ~/.local/bin/pa_mute_toggle.sh  # mute sound
+bindsym --input-device="13364:53297:Keychron__Keychron_Link__Keyboard" $mod+f12 exec --no-startup-id ~/.local/bin/pa_change_volume.sh +1% #increase sound volume
+bindsym --input-device="13364:53297:Keychron__Keychron_Link__Keyboard" $mod+f11 exec --no-startup-id ~/.local/bin/pa_change_volume.sh -1% #decrease sound volume
+bindsym --input-device="13364:53297:Keychron__Keychron_Link__Keyboard" $mod+f10 exec --no-startup-id ~/.local/bin/pa_mute_toggle.sh # mute sound
 
 # Sreen brightness controls
 bindsym $mod+f6 exec light -A 5
@@ -190,12 +193,15 @@ bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+bindsym --input-device="13364:53297:Keychron__Keychron_Link__Keyboard" $mod+f8 exec playerctl play-pause
+bindsym --input-device="13364:53297:Keychron__Keychron_Link__Keyboard" $mod+f9 exec playerctl next
+bindsym --input-device="13364:53297:Keychron__Keychron_Link__Keyboard" $mod+f7 exec playerctl previous
 
-# save screenshot region as file
-bindsym --release $ctrl+Print exec slurp -d | grim -g - $(xdg-user-dir HOME)/screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
 # copy region to clipboard
 bindsym --release Print exec grim -g "$(slurp -d)" - | wl-copy
 bindsym --release $win+Print exec grim - | wl-copy
+# save screenshot region as file
+bindsym --release $ctrl+Print exec slurp -d | grim -g - $(xdg-user-dir HOME)/screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
 
 ###############################################################
 # fancy shortcuts
