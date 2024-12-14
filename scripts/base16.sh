@@ -26,7 +26,7 @@ kitty() {
 		check=$(check_theme_exists $url $theme $pat)
 		if [[ -z "$check" ]]; then
 			printf "install $theme for kitty.\n"
-			curl -sf https://raw.githubusercontent.com/kdrag0n/base16-kitty/master/colors/base16-$theme.conf > ~/.config/kitty/base16-theme.conf
+			curl -sf https://raw.githubusercontent.com/kdrag0n/base16-kitty/master/colors/base16-$theme.conf > ~/.config/kitty/current-theme.conf
       kill -USR1 $(pgrep kitty)
 		else
 			printf "install $theme for kitty failed.\n"
