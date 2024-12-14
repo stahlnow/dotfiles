@@ -3,23 +3,15 @@ M = {}
 
 M.config = {
    openai_api_key = { "cat", vim.fn.stdpath('config') .. '/secrets/openai_api_key' },
+   -- directory for storing chat files
+   -- chat_dir = vim.fn.stdpath("data"):gsub("/$", "") .. "/gp/chats",
+   chat_dir = vim.fn.expand('$HOME/ai/nvim/chats'),
 }
 
-M.setup_mappings = function()
-
-   local function keymapOptions(desc)
-       return {
-           noremap = true,
-           silent = true,
-           nowait = true,
-           desc = "GPT prompt " .. desc,
-       }
-   end
-
-   local map = vim.keymap.set
-
-   map("n", "<leader>g", "<cmd>GpChatToggle toggle<cr>", keymapOptions("Toggle Chat"))
-
-end
+M.mappings = {
+   { "<leader>g", "<cmd>GpChatToggle toggle<cr>", desc = "Toggle Chat" },
+   { "<leader>gn", "<cmd>GpChatNew<cr>", desc = "New Chat" },
+   { "<leader>gd", "<cmd>GpChatDelete<cr>", desc = "Delete Chat" },
+}
 
 return M

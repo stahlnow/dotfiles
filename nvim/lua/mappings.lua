@@ -1,7 +1,8 @@
 local map = vim.keymap.set
 
--- remap ^ to 1 to use 1 as 'go to first character of line'
-map('n', '1', '^', { noremap = true })
+-- remap ^ to ! to use 1 as 'go to first character of line'
+map('n', '!', '^', { noremap = true })
+map('v', '!', '^', { noremap = true })
 
 -- remap $ to end of line WITHOUT newline (by going one character to the right)
 map('v', '$', '$h', { noremap = true })
@@ -22,6 +23,9 @@ map('n', '<esc><esc>', function()
 end,
 { noremap = true }
 )
+
+-- map ctrl+4 for scrolling upwards
+-- map('n', '<c-4>', 'c-Y', { noremap = true })
 
 -- mappings involving leader key
 

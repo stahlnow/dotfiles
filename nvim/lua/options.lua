@@ -22,8 +22,6 @@ o.smartcase  = true         -- ignore case when searching lowercase, but not whe
 o.splitbelow = true
 o.splitright = true
 
-o.formatoptions:remove({'c', 'r', 'o'}) -- Avoid auto-commenting new lines
-
 -- completion
 -- TODO check
 o.completeopt:remove({'preview'})
@@ -50,7 +48,7 @@ o.path:append({ '**' })
 -- 1st tab:         Complete the longest match and bring up 'wildmenu'
 -- Additional tabs: Cycle through the menu
 o.wildmenu = true
-o.wildmode = "longest:full,full"
+o.wildmode = "longest:list,full"
 
 -- Indentation
 o.expandtab = true        -- On pressing tab, insert space
