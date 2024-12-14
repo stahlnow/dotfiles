@@ -11,6 +11,8 @@ git commit --allow-empty -m "trigger deploy" && git push##dummy
 git checkout --patch translations website/locale/*
 docker system prune##prune
 git checkout --patch translations locale/*
+git remote add origin git@git.sr.ht:~stahl/{{repo}}##git add remote
+git push --set-upstream origin main##push main
 find . -name \*.pyc -delete
 echo 'iYYmCq9.7c!9XZE' | sudo openconnect -u chstaehli@gess.ethz.ch sslvpn.ethz.ch/gess --passwd-on-stdin##eth
 lsblk --output NAME,FSTYPE,LABEL,MOUNTPOINT,FSSIZE,FSUSED,FSUSE%##lsblk
