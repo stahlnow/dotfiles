@@ -13,9 +13,13 @@ vim.g.ale_linter_aliases = {vue = {'vue', 'javascript'}}
 vim.g.ale_fixers = {
   ['*'] = {'remove_trailing_lines', 'trim_whitespace'},
   python = {'isort', 'black', 'ruff'},
-  vue = {'prettier', 'eslint'},
+  css = {'prettier'},
+  scss = {'prettier'},
   javascript = {'prettier', 'eslint'},
   cpp = {'clang-format'},
+  vue = {'prettier', 'eslint'},
+  html = {'prettier'},
+  -- htmldjango = {'prettier'},
   -- lua = {'luafmt'},
 }
 

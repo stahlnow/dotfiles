@@ -31,6 +31,9 @@ M.config = {
       },
    },
    filetypes = {
+      python = true,
+      javscript = true,
+      cpp = true,
       faust = false,
       supercollider = false,
       glsl = false,

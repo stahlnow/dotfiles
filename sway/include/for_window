@@ -62,4 +62,6 @@ for_window {
 
 	[app_id="blueberry.py"] floating enable, border pixel 2
 
+  [title="aerc"] floating enable, move position center, resize set 80ppt 80ppt
+
 }
