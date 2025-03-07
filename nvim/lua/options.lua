@@ -78,3 +78,6 @@ vim.g.python_indent = {
   continue = 'shiftwidth()',
   closed_paren_align_last_line = false,
 }
+
+-- fenced code highlight
+vim.g.markdown_fenced_languages = {'html', 'python', 'lua', 'c', 'cpp', 'asm', 'bash', 'make', 'man', 'rust', 'go', 'typescript', 'javascript', 'django', 'glsl' }

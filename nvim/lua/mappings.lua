@@ -5,7 +5,7 @@ map('n', '!', '^', { noremap = true })
 map('v', '!', '^', { noremap = true })
 
 -- remap $ to end of line WITHOUT newline (by going one character to the right)
-map('v', '$', '$h', { noremap = true })
+-- map('v', '$', '$h', { noremap = true })
 
 -- <Enter> to insert newline without entering insert mode and staying on same line
 map('n', '<cr>', 'o<esc>k', { })
