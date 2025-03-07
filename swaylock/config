@@ -1,0 +1,11 @@
+image=/home/stahl/pics/_flickr_dump/img_20151212_205037_23724257615_o.jpg
+
+color=000000
+
+ring-color=ffffff
+separator-color=00000000
+inside-color=00000000
+line-uses-inside
+
+indicator-radius=200
+indicator-thickness=6

@@ -10,6 +10,9 @@ bindsym $mod+Return exec $term --working-directory $(~/.config/sway/scripts/sway
 # browser
 bindsym $mod+b exec "firefox -P default"
 
+# mail
+bindsym $mod+m exec "aerc-sway.sh"
+
 # restart
 bindsym $mod+Shift+r exec "swaymsg reload"
 
@@ -116,21 +119,22 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 set $mode_system "<span font_size='8pt' color='$base07'>System (<b>l</b>) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown</span>"
 mode --pango_markup $mode_system {
     bindsym l exec swaylock \
-        --screenshots \
-        --clock \
-        --indicator \
-        --indicator-radius 300 \
-        --indicator-thickness 7 \
-        --effect-blur 30x5 \
-        --effect-vignette 0.5:0.5 \
-        --ring-color 005500 \
-        --key-hl-color 00ff00 \
-        --line-color 00000000 \
-        --inside-color 00000088 \
-        --text-color ffffff \
-        --separator-color 00000000 \
-        --grace 2 \
-        --fade-in 0.5 \
+        --color 000000 \
+        # --screenshots \
+        # --clock \
+        # --indicator \
+        # --indicator-radius 300 \
+        # --indicator-thickness 7 \
+        # --effect-blur 30x5 \
+        # --effect-vignette 0.5:0.5 \
+        # --ring-color 005500 \
+        # --key-hl-color 00ff00 \
+        # --line-color 00000000 \
+        # --inside-color 00000088 \
+        # --text-color ffffff \
+        # --separator-color 00000000 \
+        # --grace 2 \
+        # --fade-in 0.5 \
         , mode "default"
 
     bindsym e exec --no-startup-id swaymsg exit, mode "default"
@@ -147,9 +151,13 @@ bindsym $mod+Delete mode $mode_system
 set $mode_resize "<span font_size='8pt' color='$base07'>  Resize  </span>"
 mode --pango_markup $mode_resize  {
         bindsym h resize shrink width 5 px or 1 ppt
+        bindsym Shift+h resize shrink width 15 px or 10 ppt
         bindsym l resize grow width 5 px or 1 ppt
+        bindsym Shift+l resize grow width 15 px or 10 ppt
         bindsym k resize shrink height 5 px or 1 ppt
+        bindsym Shift+k resize shrink height 15 px or 10 ppt
         bindsym j resize grow height 5 px or 1 ppt
+        bindsym Shift+j resize grow height 15 px or 10 ppt
         # arrow keys
         bindsym Left resize shrink width 5 px or 1 ppt
         bindsym Right resize grow width 5 px or 1 ppt
@@ -178,6 +186,15 @@ bindsym $win+f1 exec --no-startup-id ~/.local/bin/pa_mute_toggle.sh # mute sound
 bindsym $ctrl+f3 exec --no-startup-id ~/.local/bin/pa_change_volume.sh  +1% #increase sound volume
 bindsym $ctrl+f2 exec --no-startup-id ~/.local/bin/pa_change_volume.sh -1% #increase sound volume
 bindsym $ctrl+f1 exec --no-startup-id ~/.local/bin/pa_mute_toggle.sh  # mute sound
+
+bindsym --input-device="13364:53296:Keychron__Keychron_Link__Keyboard" $mod+f12 exec --no-startup-id ~/.local/bin/pa_change_volume.sh +1% #increase sound volume
+bindsym --input-device="13364:53296:Keychron__Keychron_Link__Keyboard" Shift+f12 exec --no-startup-id ~/.local/bin/pa_change_volume.sh +1% #increase sound volume
+bindsym --input-device="13364:53296:Keychron__Keychron_Link__Keyboard" $mod+f11 exec --no-startup-id ~/.local/bin/pa_change_volume.sh -1% #decrease sound volume
+bindsym --input-device="13364:53296:Keychron__Keychron_Link__Keyboard" Shift+f11 exec --no-startup-id ~/.local/bin/pa_change_volume.sh -1% #decrease sound volume
+bindsym --input-device="13364:53296:Keychron__Keychron_Link__Keyboard" $mod+f10 exec --no-startup-id ~/.local/bin/pa_mute_toggle.sh # mute sound
+bindsym --input-device="13364:53296:Keychron__Keychron_Link__Keyboard" Shift+f10 exec --no-startup-id ~/.local/bin/pa_mute_toggle.sh # mute sound
+
+
 bindsym --input-device="13364:53297:Keychron__Keychron_Link__Keyboard" $mod+f12 exec --no-startup-id ~/.local/bin/pa_change_volume.sh +1% #increase sound volume
 bindsym --input-device="13364:53297:Keychron__Keychron_Link__Keyboard" Shift+f12 exec --no-startup-id ~/.local/bin/pa_change_volume.sh +1% #increase sound volume
 bindsym --input-device="13364:53297:Keychron__Keychron_Link__Keyboard" $mod+f11 exec --no-startup-id ~/.local/bin/pa_change_volume.sh -1% #decrease sound volume
@@ -200,6 +217,11 @@ bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+
+bindsym --input-device="13364:53296:Keychron__Keychron_Link__Keyboard" $mod+f8 exec playerctl play-pause
+bindsym --input-device="13364:53296:Keychron__Keychron_Link__Keyboard" $mod+f9 exec playerctl next
+bindsym --input-device="13364:53296:Keychron__Keychron_Link__Keyboard" $mod+f7 exec playerctl previous
+
 bindsym --input-device="13364:53297:Keychron__Keychron_Link__Keyboard" $mod+f8 exec playerctl play-pause
 bindsym --input-device="13364:53297:Keychron__Keychron_Link__Keyboard" $mod+f9 exec playerctl next
 bindsym --input-device="13364:53297:Keychron__Keychron_Link__Keyboard" $mod+f7 exec playerctl previous

@@ -15,6 +15,13 @@ focus_on_window_activation focus
 default_border none
 for_window [app_id="kitty"] border pixel 1
 
+# make tabs height really small
+font none 0.1
+titlebar_padding 1
+
+# font setting kept for reference
+# font pango:Hack Nerd Font Mono 8
+
 #hide_edge_borders both
 #hide_edge_borders smart
 #hide_edge_borders --i3 both

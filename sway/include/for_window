@@ -13,11 +13,13 @@ for_window {
 	[class=".*"] inhibit_idle fullscreen
 	[app_id=".*"] inhibit_idle fullscreen
 
-	#[app_id="kitty"] border normal
-
-	[window_role="^(bubble|pop-up|task_dialog|dialog|menu)$"] floating enable, border pixel 2
-
-	#[app_id="(.*)keepassxc"] floating enable
+  [window_role="pop-up"] floating enable, border pixel 2
+  [window_role="bubble"] floating enable, border pixel 2
+  [window_role="dialog"] floating enable, border pixel 2
+  [window_role="task_dialog"] floating enable, border pixel 2
+  [window_type="dialog"] floating enable, border pixel 2
+  [window_role="menu"] floating enable, border pixel 2
+  [window_type="menu"] floating enable, border pixel 2
 
 	[title="^(Copying|Preferences)$"] floating enable, border pixel 2
 
@@ -62,6 +64,6 @@ for_window {
 
 	[app_id="blueberry.py"] floating enable, border pixel 2
 
-  [title="aerc"] floating enable, move position center, resize set 80ppt 80ppt
+  # [title="aerc"] floating enable, move position center, resize set 80ppt 80ppt
 
 }

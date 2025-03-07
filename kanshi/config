@@ -18,6 +18,11 @@ profile {
   output eDP-1 disable
 }
 
+profile {
+  output "Hewlett Packard HP ZR2740w CNT215W0PP" mode 2560x1440 position 0,0
+  output eDP-1 disable
+}
+
 ##########################################################################################
 # projectors
 ##########################################################################################
@@ -27,11 +32,11 @@ profile {
 }
 
 profile {
-  output "Hewlett Packard HP ZR2740w CNT215W0PP" mode 2560x1440 position 0,0
+  output "Delta Electronics Inc PROJECTOR 0x01010101" mode 1280x800 position 0,0
   output eDP-1 disable
 }
 
 profile {
-  output "HDMI-A-1 'Delta Electronics Inc PROJECTOR 0x01010101'" mode 1280x800 position 0,0
+  output "WSX SGD SX8 0x00000321" mode 1280x720 position 0,0
   output eDP-1 disable
 }
