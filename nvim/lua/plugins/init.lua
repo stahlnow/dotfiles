@@ -16,10 +16,6 @@ return {
    --:UnicodeCache    - Create cache file Unicode plugin
    "chrisbra/unicode.vim",
 
-   -- Git wrapper
-   -- usage: :Git status, :help fugitive
-   "tpope/vim-fugitive",
-
    "backdround/tabscope.nvim",
 
    -- icons (for use with vim-airline)

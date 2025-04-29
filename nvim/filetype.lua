@@ -33,6 +33,7 @@ vim.filetype.add {
       tf = 'terraform',
       tsx = 'typescriptreact',
       ts = 'typescript',
+      dis = 'disassembly',
    },
    filename = {
       ['.eslintrc'] = 'json',
@@ -42,7 +43,7 @@ vim.filetype.add {
    },
    pattern = {
       ['.env.*'] = 'sh', -- detect .env.foo as sh
-      ['.*%.[sS]'] = 'gas', -- set asm files to gas
+      -- ['.*%.[sS]'] = 'gas', -- set asm files to gas
    },
 }
 

@@ -38,11 +38,10 @@ return {
 
    end,
 
-
    keys = {
-      { "<leader>gn", "<cmd>GpChatNew<cr>", desc = "New Chat" },
-      { "<leader>g", "<cmd>GpChatToggle toggle<cr>", desc = "Toggle Chat" },
-      { "<leader>gn", "<cmd>GpChatDelete<cr>", desc = "Delete Chat" },
+      { "<leader>gn", "<cmd>GpChatNew<cr>", desc = "New Chat", noremap = True, nowait = True, silent = True },
+      { "<leader>gd", "<cmd>GpChatDelete<cr>", desc = "Delete Chat", noremap = True, nowait = True, silent = True },
+      { "<leader>gt", "<cmd>GpChatToggle toggle<cr>", desc = "Toggle Chat", noremap = True, nowait = True, silent = True },
    },
 
 }

@@ -33,16 +33,16 @@ end,
 map('n', '<leader>r', '@:', { noremap = true  })
 
 -- save/close/quit
-map('n', '<leader>s', '<cmd>update<cr>', { noremap = true  }) -- save/update
+map({'n', 'v'}, '<leader>s', '<cmd>update<cr>', { noremap = true  }) -- save/update
 map('n', '<leader>d', '<cmd>bd<cr>', { noremap = true  }) -- remove buffer (checks saved)
-map('n', '<leader>q', '<cmd>q!<cr>', { noremap = true  }) -- force quit
+map({'n', 'v'}, '<leader>q', '<cmd>q!<cr>', { noremap = true  }) -- force quit
 
 -- copy absolute path of current buffer to + register
 -- map('n', '<leader>~', '<cmd>let @+=expand("%:p")<cr>', { noremap = true  })
 
 -- vimdiff: jump to next/previous change
 map('n', '<leader>n', ']c', { noremap = true  })
-map('n', '<leader>p', '[c', { noremap = true  })
+map('n', '<leader>N', '[c', { noremap = true  })
 
 -- yank whole line whitespace-trimmed & w/o newline
 -- map('n', '<leader>y', '_yg_', { noremap = true  })

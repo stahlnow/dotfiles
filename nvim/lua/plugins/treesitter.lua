@@ -2,15 +2,14 @@ return {
 
    "nvim-treesitter/nvim-treesitter",
 
-   event = { "BufReadPre", "BufNewFile" },
-
    build = ":TSUpdate",
 
-   --[[
+   event = { "BufReadPre", "BufNewFile" },
+
    dependencies = {
-      "windwp/nvim-ts-autotag",
+      "nvim-treesitter/nvim-treesitter-textobjects"
+      -- "windwp/nvim-ts-autotag",
    },
-   --]]
 
    config = function()
       -- import nvim-treesitter plugin
@@ -28,9 +27,15 @@ return {
          autotag = {
             enable = true,
          },
+
          -- ensure these language parsers are installed
          ensure_installed = {
+            "c",
+            "cpp",
+            "asm",
+            "cmake",
             "python",
+            "go",
             "json",
             "javascript",
             "typescript",
@@ -38,10 +43,9 @@ return {
             "yaml",
             "html",
             "css",
-            "prisma",
+            "diff",
             "markdown",
             "markdown_inline",
-            "svelte",
             "graphql",
             "bash",
             "lua",
@@ -49,9 +53,11 @@ return {
             "dockerfile",
             "gitignore",
             "query",
-            "vimdoc",
-            "c",
+            "glsl",
+            "faust",
+            "disassembly",
          },
+
          incremental_selection = {
             enable = true,
             keymaps = {

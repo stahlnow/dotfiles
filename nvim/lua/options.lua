@@ -2,12 +2,12 @@ local o = vim.opt
 
 vim.g.mapleader = " "
 
--- load python3 faster, i think some plugin wants this..
--- TODO
--- g.python3_host_prog = vim.fs.normalize('~/.local/venv/nvim/bin/python')
+-- load python3 faster
+vim.g.python3_host_prog = vim.fs.normalize('~/.local/venv/nvim/bin/python')
 
 o.clipboard:append({ 'unnamedplus' })  -- use clipboard instead of vim registers
 o.number    = true          -- show line numbers
+o.scrolloff = 15            -- keep cursor centered
 o.showmatch = true          -- briefly show the matching bracket {[( when typing )]}
 o.matchtime = 2
 o.title     = true          -- enable 'title' as window name
