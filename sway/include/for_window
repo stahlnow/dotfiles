@@ -10,8 +10,6 @@ assign {
 # enable floating for dialog, etc.
 for_window {
 
-	[class=".*"] floating enable, border normal
-
 	[class=".*"] inhibit_idle fullscreen
 	[app_id=".*"] inhibit_idle fullscreen
 
