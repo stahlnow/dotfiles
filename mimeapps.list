@@ -53,6 +53,7 @@ x-scheme-handler/https=firefox.desktop
 image/jpeg=imv-dir.desktop
 image/svg+xml=imv.desktop
 application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice-writer.desktop
+application/lrf=calibre-lrfviewer.desktop
 
 [Added Associations]
 audio/midi=deadbeef.desktop;

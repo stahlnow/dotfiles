@@ -34,11 +34,23 @@ o.whichwrap:append({
   [']'] = true,
 })
 
--- backupd and swap
+-- backup and swap
+
+-- Some servers have issues with backup files, see #649
+o.backup = false
+o.writebackup = false
+
 o.backupdir = vim.fn.expand('$HOME/.vim/backup//')
 o.directory = vim.fn.expand('$HOME/.vim/swp//')
-
 o.shortmess:append({ A = true })  -- don't show message when an existing swap file is found.
+
+-- Having longer updatetime (default is 4000 ms = 4s) leads to noticeable
+-- delays and poor user experience
+o.updatetime = 300
+
+-- Always show the signcolumn, otherwise it would shift the text each time
+-- diagnostics appeared/became resolved
+vim.opt.signcolumn = "yes"
 
 -- use with :find for opening files or b: for jumping to buffers
 -- finds (nested) files in subdirectories, can use wildmarks :find *.cpp
@@ -72,12 +84,12 @@ vim.api.nvim_set_hl(0, 'DiffText', {  cterm=bold, ctermfg=10, ctermbg=88, gui=no
 
 -- python indenting
 -- see :h ft-python-indent
-vim.g.python_indent = {
-  open_paren = 'shiftwidth()',
-  nested_paren = 'shiftwidth()',
-  continue = 'shiftwidth()',
-  closed_paren_align_last_line = false,
-}
+-- vim.g.python_indent = {
+--   open_paren = 'shiftwidth()',
+--   nested_paren = 'shiftwidth()',
+--   continue = 'shiftwidth()',
+--   closed_paren_align_last_line = false,
+-- }
 
 -- fenced code highlight
 vim.g.markdown_fenced_languages = {'html', 'python', 'lua', 'c', 'cpp', 'asm', 'bash', 'make', 'man', 'rust', 'go', 'typescript', 'javascript', 'django', 'glsl' }

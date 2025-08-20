@@ -74,6 +74,24 @@ vim.api.nvim_create_autocmd({'BufLeave', 'FocusLost', 'InsertEnter', 'WinLeave' 
 --[[ ------------------------------------------------------------
  filetype specific autocommands
 -- ------------------------------------------------------------]]
+vim.api.nvim_create_autocmd("BufWritePre", {
+  group = vim.api.nvim_create_augroup('coc_python_isort', { clear = true }),
+  pattern = "*.py",
+  callback = function()
+    vim.fn.CocAction('runCommand', 'python.sortImports')
+  end,
+  desc = "Run isort on save for python files",
+})
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+   pattern = "*.py",
+   callback = function()
+      local filepath = vim.fn.expand("%:p")
+      vim.fn.system({ "ruff", "check", "--fix", filepath })
+      vim.cmd("edit!")
+   end,
+})
+
 vim.api.nvim_create_autocmd("Filetype", {
    pattern = "python",
    callback = function()

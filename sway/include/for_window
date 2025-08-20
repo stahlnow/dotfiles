@@ -1,0 +1,55 @@
+# assign workspaces for apps
+assign {
+	[app_id="(telegram|TelegramDesktop)"] $ws5
+	[app_id="(.*)Kotatogram_Desktop"] $ws5
+	[instance="slack"] $ws5
+	[app_id="Slack"] $ws5
+	[instance="signal"] $ws5
+}
+
+# enable floating for dialog, etc.
+for_window {
+
+	[class=".*"] floating enable, border normal
+
+	[class=".*"] inhibit_idle fullscreen
+	[app_id=".*"] inhibit_idle fullscreen
+
+	#[app_id="kitty"] border normal
+
+	[window_role="^(bubble|pop-up|task_dialog|dialog|menu)$"] floating enable, border pixel 2, title_format "%title"
+
+	#[app_id="(.*)keepassxc"] floating enable
+
+	[title="^(Copying|Preferences)$"] floating enable, border pixel 2
+
+	# supercollider
+	#[title="^(.*Plot.*|Stethoscope|.*plot.*)$"] floating enable, border pixel 2
+
+	# Always float these applications.
+	[app_id="pavucontrol"] floating enable, border pixel 2
+
+	[class="(?i)qjackctl"] floating enable, border pixel 4
+	[title="(?i)JACK Audio Connection Kit"] floating enable, border pixel 4, resize set 485 108
+
+	[app_id="gpredict"] floating enable, border pixel 2
+
+	[class="jetbrains-pycharm" title="^(win.*)"] floating enable
+
+	[app_id="thunderbird"] floating enable, border pixel 2
+
+	[app_id="firefox" title="^Developer Tools .*"] floating enable
+	[app_id="firefox" title="^Live Tracklist.*"] floating enable, border pixel 10, resize set 630 397
+  [app_id="firefox" title="Firefox — Sharing Indicator"] floating enable
+
+	[class="mgba"] floating enable, border pixel 10, resize set 640 480
+
+	[app_id="retroarch"] floating enable, border pixel 2
+	[app_id="dablin_gtk"] floating enable, border pixel 0
+
+  [class="Hp-15c.tcl"] floating enable, sticky toggle
+
+  [class="FreeCAD" title="Insert a Part"] floating enable
+
+  [title="Insert Virtual Instrument on New Track..."] floating enable, resize set 640 480
+}

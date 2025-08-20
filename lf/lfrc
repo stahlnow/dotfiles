@@ -98,6 +98,7 @@ map t yes_preview
 map b mark-load
 
 map gh :cd ~; set sortby natural; set reverse!;
+map gc :cd ~/cloud; set sortby natural; set reverse!;
 map gi :cd ~/incoming; set sortby time; set reverse
 map gs :cd ~/music;
 map gm :cd /run/media/stahl

@@ -10,3 +10,6 @@ background-color=#000000AA
 border-color=#FFFFFFAA
 
 
+[urgency=critical]
+default-timeout=0
+

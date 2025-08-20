@@ -1,0 +1,41 @@
+{
+  "inlayHint.enable": true,
+
+  // Formatting
+  "coc.preferences.formatOnSave": true,
+
+  // HTML
+  "html.format.enable": true,
+
+  // django
+  "htmldjango.completion.enable": false,
+  "htmldjango.djlint.enableLint": false,
+
+  // Python
+  "python.formatting.provider": "ruff",
+  "python.sortImports.args": ["--profile", "black"],
+  "pyright.organizeimports.provider": "isort",
+  "python.analysis.autoImportCompletions": false,
+
+  // Linting
+  "python.linting.enabled": true,
+  "python.linting.ruffEnabled": true,
+
+  // Type checking
+  "python.analysis.typeCheckingMode": "basic",
+  "python.analysis.exclude": ["**/migrations", "**/__pycache__"],
+
+  // Pyright
+  "pyright.disableDiagnostics": true,
+  "pyright.inlayHints.functionReturnTypes": false,
+  "pyright.inlayHints.parameterTypes": false,
+  "pyright.inlayHints.variableTypes": false,
+
+  "languageserver": {
+    "tinymist": {
+      "command": "tinymist",
+      "filetypes": ["typst"],
+      "settings": {}
+    }
+  }
+}
