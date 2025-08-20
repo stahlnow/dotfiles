@@ -21,7 +21,7 @@ font pango:Hack Nerd Font Mono 8
 
 include /home/stahl/.config/sway/colorscheme
 include /home/stahl/.config/sway/include/*
-include /home/stahl/.config/sway/local
+include /home/stahl/.config/sway/local_include/*
 
 
 # import systemd environment variables so 'xdg-desktop-portal-wlr' is happy

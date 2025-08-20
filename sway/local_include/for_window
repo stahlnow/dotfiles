@@ -10,12 +10,14 @@ assign {
 # enable floating for dialog, etc.
 for_window {
 
+	[class=".*"] floating enable, border normal
+
 	[class=".*"] inhibit_idle fullscreen
 	[app_id=".*"] inhibit_idle fullscreen
 
 	#[app_id="kitty"] border normal
 
-	[window_role="^(bubble|pop-up|task_dialog|dialog|menu)$"] floating enable, border pixel 2
+	[window_role="^(bubble|pop-up|task_dialog|dialog|menu)$"] floating enable, border pixel 2, title_format "%title"
 
 	#[app_id="(.*)keepassxc"] floating enable
 
@@ -49,4 +51,5 @@ for_window {
 
   [class="FreeCAD" title="Insert a Part"] floating enable
 
+  [title="Insert Virtual Instrument on New Track..."] floating enable, resize set 640 480
 }
