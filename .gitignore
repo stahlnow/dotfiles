@@ -14,8 +14,8 @@ mpd/log
 mpd/state
 mpd/sticker.sql
 
-<<<<<<< HEAD
 sway/colorscheme
+sway/local_include/*
 
 waybar/colors.css
 
@@ -38,4 +38,3 @@ nvim/secrets
 *.diff
 
 *.log
->>>>>>> 2f03dbfc6ef4d6dad14b3a1c6e1d20cd97d1bde1
