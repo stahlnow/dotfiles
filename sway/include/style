@@ -1,6 +1,6 @@
 include colorscheme
 #                       Border  BG      Text    Ind     Child Border
-client.focused          $base0A $base0A $base00 $base0A $base0A
+client.focused          $base0B $base0B $base00 $base0B $base0B
 client.focused_inactive $base01 $base01 $base05 $base03 $base01
 client.unfocused        $base00 $base00 $base05 $base01 $base01
 client.urgent           $base08 $base08 $base00 $base08 $base08
@@ -14,6 +14,13 @@ focus_on_window_activation focus
 # hide titlebars
 default_border none
 for_window [app_id="kitty"] border pixel 1
+
+# make tabs height really small
+font none 0.1
+titlebar_padding 1
+
+# font setting kept for reference
+# font pango:Hack Nerd Font Mono 8
 
 #hide_edge_borders both
 #hide_edge_borders smart

@@ -26,7 +26,7 @@ kitty() {
 		check=$(check_theme_exists $url $theme $pat)
 		if [[ -z "$check" ]]; then
 			printf "install $theme for kitty.\n"
-			curl -sf https://raw.githubusercontent.com/kdrag0n/base16-kitty/master/colors/base16-$theme.conf > ~/.config/kitty/base16-theme.conf
+			curl -sf https://raw.githubusercontent.com/kdrag0n/base16-kitty/master/colors/base16-$theme.conf > ~/.config/kitty/current-theme.conf
       kill -USR1 $(pgrep kitty)
 		else
 			printf "install $theme for kitty failed.\n"
@@ -85,12 +85,13 @@ vim() {
 		check=$(check_theme_exists $url $theme $pat)
 		if [[ -z "$check" ]]; then
 			printf "install $theme for vim.\n"
-			# generate .vimrc_background
-			echo -e "if \0041exists('g:colors_name') || g:colors_name != 'base16-$theme'\n  colorscheme base16-$theme\nendif" >| ~/.vimrc_background
-			# reload vim configs
+      # replace theme in colorschemes.lua
+      sed -i -e "s/vim\.cmd\.colorscheme(\"base16-[^\"]*\")/vim.cmd.colorscheme(\"base16-$theme\")/" $HOME/.config/nvim/lua/colorschemes.lua
+			# reload colorschemes.lua module
 			for path in $(/usr/bin/nvr --nostart --serverlist)
 			do
-				/usr/bin/nvr --nostart --servername $path -cc "so ~/.config/nvim/init.vim"
+        /usr/bin/nvr --nostart --servername $path -c "lua package.loaded['colorschemes'] = nil" # remove it from cache
+        /usr/bin/nvr --nostart --servername $path -c "lua require('colorschemes')" # load it
 			done
 		else
 			printf "install $theme for vim failed.\n"

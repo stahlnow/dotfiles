@@ -14,6 +14,7 @@ mpd/log
 mpd/state
 mpd/sticker.sql
 
+<<<<<<< HEAD
 sway/colorscheme
 
 waybar/colors.css
@@ -26,3 +27,15 @@ kitty/kitty.conf.bak
 kitty/base16-theme.conf
 
 nvim/pack/
+=======
+nvim/secrets
+
+*.swp
+*.idea
+
+*.backup
+
+*.diff
+
+*.log
+>>>>>>> 2f03dbfc6ef4d6dad14b3a1c6e1d20cd97d1bde1

@@ -1,10 +1,17 @@
 workspace_auto_back_and_forth yes
 
+# should prevent character printing for bindsym with --input-device
+# https://github.com/swaywm/sway/issues/6961
+seat * keyboard_grouping none
+
 # terminal
 bindsym $mod+Return exec $term --working-directory $(~/.config/sway/scripts/sway-cwd.sh)
 
 # browser
 bindsym $mod+b exec "firefox -P default"
+
+# mail
+bindsym $mod+m exec "aerc-sway.sh"
 
 # restart
 bindsym $mod+Shift+r exec "swaymsg reload"
@@ -29,7 +36,7 @@ bindsym $win+Tab workspace next
 # start bemenu
 set $be_b #000000
 set $be_primary $base0C
-bindsym $mod+d exec j4-dmenu-desktop --dmenu="bemenu -i -M 500 --fn 'Hack Nerd Font Mono 8' -H 24 --hf '$be_primary' --prompt ''" --no-generic --term=alacritty
+bindsym $mod+d exec j4-dmenu-desktop --dmenu="bemenu -i -M 500 --fn 'Hack Nerd Font Mono 8' -H 24 --hf '$be_primary' --prompt ''" --no-generic --term=kitty
 
 # change focus
 bindsym $mod+j focus down
@@ -38,15 +45,18 @@ bindsym $mod+l focus right
 bindsym $mod+h focus left
 
 # move focused window
+bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
-bindsym $mod+Shift+h move right
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
+
+# sticky
+bindsym $mod+Shift+s sticky toggle
 
 # split in horizontal orientation
 bindsym $mod+c split h
@@ -63,7 +73,7 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+space floating toggle, exec "swaymsg move position center; swaymsg resize set 80ppt 80ppt"
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -112,21 +122,22 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 set $mode_system "<span font_size='8pt' color='$base07'>System (<b>l</b>) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown</span>"
 mode --pango_markup $mode_system {
     bindsym l exec swaylock \
-        --screenshots \
-        --clock \
-        --indicator \
-        --indicator-radius 300 \
-        --indicator-thickness 7 \
-        --effect-blur 30x5 \
-        --effect-vignette 0.5:0.5 \
-        --ring-color 005500 \
-        --key-hl-color 00ff00 \
-        --line-color 00000000 \
-        --inside-color 00000088 \
-        --text-color ffffff \
-        --separator-color 00000000 \
-        --grace 2 \
-        --fade-in 0.5 \
+        --color 000000 \
+        # --screenshots \
+        # --clock \
+        # --indicator \
+        # --indicator-radius 300 \
+        # --indicator-thickness 7 \
+        # --effect-blur 30x5 \
+        # --effect-vignette 0.5:0.5 \
+        # --ring-color 005500 \
+        # --key-hl-color 00ff00 \
+        # --line-color 00000000 \
+        # --inside-color 00000088 \
+        # --text-color ffffff \
+        # --separator-color 00000000 \
+        # --grace 2 \
+        # --fade-in 0.5 \
         , mode "default"
 
     bindsym e exec --no-startup-id swaymsg exit, mode "default"
@@ -142,15 +153,19 @@ bindsym $mod+Delete mode $mode_system
 
 set $mode_resize "<span font_size='8pt' color='$base07'>  Resize  </span>"
 mode --pango_markup $mode_resize  {
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-        bindsym Down resize shrink height 10 px or 10 ppt
-        bindsym Up resize grow height 10 px or 10 ppt
+        bindsym h resize shrink width 5 px or 1 ppt
+        bindsym Shift+h resize shrink width 15 px or 10 ppt
+        bindsym l resize grow width 5 px or 1 ppt
+        bindsym Shift+l resize grow width 15 px or 10 ppt
+        bindsym k resize shrink height 5 px or 1 ppt
+        bindsym Shift+k resize shrink height 15 px or 10 ppt
+        bindsym j resize grow height 5 px or 1 ppt
+        bindsym Shift+j resize grow height 15 px or 10 ppt
+        # arrow keys
+        bindsym Left resize shrink width 5 px or 1 ppt
+        bindsym Right resize grow width 5 px or 1 ppt
+        bindsym Down resize shrink height 5 px or 1 ppt
+        bindsym Up resize grow height 5 px or 1 ppt
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -175,6 +190,21 @@ bindsym $ctrl+f3 exec --no-startup-id ~/.local/bin/pa_change_volume.sh  +1% #inc
 bindsym $ctrl+f2 exec --no-startup-id ~/.local/bin/pa_change_volume.sh -1% #increase sound volume
 bindsym $ctrl+f1 exec --no-startup-id ~/.local/bin/pa_mute_toggle.sh  # mute sound
 
+bindsym --input-device="13364:53296:Keychron__Keychron_Link__Keyboard" $mod+f12 exec --no-startup-id ~/.local/bin/pa_change_volume.sh +1% #increase sound volume
+bindsym --input-device="13364:53296:Keychron__Keychron_Link__Keyboard" Shift+f12 exec --no-startup-id ~/.local/bin/pa_change_volume.sh +1% #increase sound volume
+bindsym --input-device="13364:53296:Keychron__Keychron_Link__Keyboard" $mod+f11 exec --no-startup-id ~/.local/bin/pa_change_volume.sh -1% #decrease sound volume
+bindsym --input-device="13364:53296:Keychron__Keychron_Link__Keyboard" Shift+f11 exec --no-startup-id ~/.local/bin/pa_change_volume.sh -1% #decrease sound volume
+bindsym --input-device="13364:53296:Keychron__Keychron_Link__Keyboard" $mod+f10 exec --no-startup-id ~/.local/bin/pa_mute_toggle.sh # mute sound
+bindsym --input-device="13364:53296:Keychron__Keychron_Link__Keyboard" Shift+f10 exec --no-startup-id ~/.local/bin/pa_mute_toggle.sh # mute sound
+
+
+bindsym --input-device="13364:53297:Keychron__Keychron_Link__Keyboard" $mod+f12 exec --no-startup-id ~/.local/bin/pa_change_volume.sh +1% #increase sound volume
+bindsym --input-device="13364:53297:Keychron__Keychron_Link__Keyboard" Shift+f12 exec --no-startup-id ~/.local/bin/pa_change_volume.sh +1% #increase sound volume
+bindsym --input-device="13364:53297:Keychron__Keychron_Link__Keyboard" $mod+f11 exec --no-startup-id ~/.local/bin/pa_change_volume.sh -1% #decrease sound volume
+bindsym --input-device="13364:53297:Keychron__Keychron_Link__Keyboard" Shift+f11 exec --no-startup-id ~/.local/bin/pa_change_volume.sh -1% #decrease sound volume
+bindsym --input-device="13364:53297:Keychron__Keychron_Link__Keyboard" $mod+f10 exec --no-startup-id ~/.local/bin/pa_mute_toggle.sh # mute sound
+bindsym --input-device="13364:53297:Keychron__Keychron_Link__Keyboard" Shift+f10 exec --no-startup-id ~/.local/bin/pa_mute_toggle.sh # mute sound
+
 # Sreen brightness controls
 bindsym $mod+f6 exec light -A 5
 bindsym $mod+f5 exec light -U 5
@@ -191,15 +221,23 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-# save screenshot region as file
-bindsym --release $ctrl+Print exec slurp -d | grim -g - $(xdg-user-dir HOME)/screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
+bindsym --input-device="13364:53296:Keychron__Keychron_Link__Keyboard" $mod+f8 exec playerctl play-pause
+bindsym --input-device="13364:53296:Keychron__Keychron_Link__Keyboard" $mod+f9 exec playerctl next
+bindsym --input-device="13364:53296:Keychron__Keychron_Link__Keyboard" $mod+f7 exec playerctl previous
+
+bindsym --input-device="13364:53297:Keychron__Keychron_Link__Keyboard" $mod+f8 exec playerctl play-pause
+bindsym --input-device="13364:53297:Keychron__Keychron_Link__Keyboard" $mod+f9 exec playerctl next
+bindsym --input-device="13364:53297:Keychron__Keychron_Link__Keyboard" $mod+f7 exec playerctl previous
+
 # copy region to clipboard
 bindsym --release Print exec grim -g "$(slurp -d)" - | wl-copy
 bindsym --release $win+Print exec grim - | wl-copy
+# save screenshot region as file
+bindsym --release $ctrl+Print exec slurp -d | grim -g - $(xdg-user-dir HOME)/screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')
 
 ###############################################################
 # fancy shortcuts
 ###############################################################
 # start two lf file manager
-set $double_lf $term -e lf & $term -e lf &
-bindsym $mod+u exec $double_lf
+# set $double_lf $term -e lf & $term -e lf &
+# bindsym $mod+u exec $double_lf

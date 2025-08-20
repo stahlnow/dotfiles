@@ -344,7 +344,7 @@ song_columns_list_format = (20)[]{a} (6f)[green]{NE} (50)[white]{t|f:Title} (20)
 #
 #browser_display_mode = classic
 #
-#search_engine_display_mode = classic
+search_engine_display_mode = columns
 #
 #playlist_editor_display_mode = classic
 #
