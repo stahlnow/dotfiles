@@ -27,7 +27,6 @@ kitty/kitty.conf.bak
 kitty/base16-theme.conf
 
 nvim/pack/
-=======
 nvim/secrets
 
 *.swp
