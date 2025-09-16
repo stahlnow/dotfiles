@@ -19,6 +19,7 @@ return {
 		formatters_by_ft = {
 			python = { "isort", "ruff_fix", "ruff_format" },
 			javascript = { "prettierd", "prettier", stop_after_first = true }, -- runs whatever it finds first
+			html = { "prettierd", "prettier", stop_after_first = true }, -- runs whatever it finds first
 			vue = { "prettierd", "prettier", stop_after_first = true }, -- runs whatever it finds first
 			lua = { "stylua" },
 		},

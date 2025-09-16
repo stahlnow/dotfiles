@@ -1,3 +1,4 @@
+-- lua/lsp/basedpyright
 vim.lsp.config("basedpyright", {
 	settings = {
 		basedpyright = {
@@ -16,3 +17,4 @@ vim.lsp.config("basedpyright", {
 		-- },
 	},
 })
+vim.lsp.enable({ "basedpyright" })

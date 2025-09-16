@@ -1,4 +1,4 @@
--- Vue.js LSP setup .. wohoooo!
+-- Vue.js lsp setup .. wohoooo!
 -- configuration: https://github.com/vuejs/language-tools/wiki/Neovim#configurationSection
 
 local vue_language_server_path = vim.fn.stdpath("data")
@@ -27,21 +27,26 @@ local vtsls_config = {
 }
 
 local ts_ls_config = {
+	cmd = { "typescript-language-server", "--stdio" },
 	init_options = {
 		plugins = {
 			vue_plugin,
 		},
 	},
+	on_attach = function(client)
+		-- optional: disable tsserver formatting as we use prettier
+		client.server_capabilities.documentFormattingProvider = false
+	end,
 	filetypes = tsserver_filetypes,
 }
 
--- glad, we do not need to change anything right now
+-- straight copy from here: https://github.com/neovim/nvim-lspconfig/blob/master/lsp/vue_ls.lua
 local vue_ls_config = {}
 
 -- assign configs
 vim.lsp.config("vtsls", vtsls_config)
-vim.lsp.config("vue_ls", vue_ls_config)
 vim.lsp.config("ts_ls", ts_ls_config)
+vim.lsp.config("vue_ls", vue_ls_config)
 
--- enable servers (fancy new way!)
+-- enable servers
 vim.lsp.enable({ "vtsls", "vue_ls" }) -- If using `ts_ls` replace `vtsls` to `ts_ls`

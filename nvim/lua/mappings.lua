@@ -28,7 +28,7 @@ end, { noremap = true })
 -- mappings involving leader key
 
 -- [r]repeat last command
-map("n", "<leader>r", "@:", { noremap = true })
+-- map("n", "<leader>r", "@:", { noremap = true })
 
 -- save/close/quit
 map({ "n", "v" }, "<leader>s", "<cmd>update<cr>", { noremap = true }) -- save/update
@@ -77,6 +77,9 @@ map("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under c
 
 opts.desc = "See available code actions"
 map({ "n", "v" }, "<leader>ga", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
+
+-- opts.desc = "Call 1st available code actions to [r]epair"
+-- map({ "n", "v" }, "<leader>r", .... TODO
 
 opts.desc = "Smart rename"
 map("n", "<leader>gr", vim.lsp.buf.rename, opts) -- smart rename

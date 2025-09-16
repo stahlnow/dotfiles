@@ -8,18 +8,28 @@ return {
 		"mason-org/mason-lspconfig.nvim",
 		"neovim/nvim-lspconfig",
 	},
-	lazy = false, -- Eager load as recommended
+	lazy = false, -- eager load
 	config = function()
 		local mason = require("mason")
 		local masonlsp = require("mason-lspconfig")
 
 		mason.setup()
 
-		-- this automatically installs AND enables the lsp server..
+		-- NOTE: most lsp configuration come from neovim/nvim-lspconfig plugin dependency
+		-- see: https://github.com/neovim/nvim-lspconfig
+
+		-- masonlsp helps auto-installing servers
+		-- and i keep masonlsp mainly for the few extra configs it has:
+		-- see https://github.com/mason-org/mason-lspconfig.nvim/tree/main/lua/mason-lspconfig/lsp
+
 		masonlsp.setup({
+			-- NOTE: we explicitly enable plugins in lua/lsp/init
+			automatic_enable = false,
+
+			-- NOTE: auto install some servers
 			ensure_installed = {
 				"jsonls",
-				"html_lsp",
+				"html",
 				"cssls",
 				"basedpyright",
 				"ruff",
