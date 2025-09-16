@@ -1,11 +1,7 @@
 local map = vim.keymap.set
 
--- remap ^ to ! to use 1 as 'go to first character of line'
-map("n", "!", "^", { noremap = true })
-map("v", "!", "^", { noremap = true })
-
--- remap $ to end of line WITHOUT newline (by going one character to the right)
--- map('v', '$', '$h', { noremap = true })
+-- remap ^ to ! to use shift+1 as 'go to first character of line'
+map({ "n", "v" }, "!", "^", { noremap = true })
 
 -- <Enter> to insert newline without entering insert mode and staying on same line
 map("n", "<cr>", "o<esc>k", {})
@@ -16,14 +12,13 @@ map("n", "q", "<c-V>", { noremap = true })
 -- paste over without overwriting register
 map("x", "p", "P", { noremap = true })
 
+map("n", "<c-a>", "gg<s-v>G", { noremap = true, desc = "Select all text" })
+
 -- double-<Esc> clear search highlights and all 'colored' words
 map("n", "<esc><esc>", function()
 	vim.cmd("nohl")
 	vim.cmd("call UncolorAllWords()") -- from plugin lfv89/vim-interestingwords
 end, { noremap = true })
-
--- map ctrl+4 for scrolling upwards
--- map('n', '<c-4>', 'c-Y', { noremap = true })
 
 -- mappings involving leader key
 
