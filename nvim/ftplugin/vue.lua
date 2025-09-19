@@ -1,5 +1,5 @@
 -- Using vim gf mapping with "@" alias
-vim.cmd [[
+vim.cmd([[
   setlocal isfname+=@-@
   setlocal includeexpr=substitute(v:fname,'^@\/','src/','')
-]]
+]])

@@ -16,8 +16,6 @@ return {
    --:UnicodeCache    - Create cache file Unicode plugin
    "chrisbra/unicode.vim",
 
-   "backdround/tabscope.nvim",
-
    -- icons (for use with vim-airline)
    "ryanoasis/vim-devicons",
 
