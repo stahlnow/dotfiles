@@ -26,8 +26,8 @@ kitty/current-theme.conf
 kitty/kitty.conf.bak
 kitty/base16-theme.conf
 
+nvim/lua/colorschemes.lua
 nvim/pack/
-=======
 nvim/secrets
 
 *.swp
