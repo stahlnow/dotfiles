@@ -27,6 +27,7 @@ kitty/kitty.conf.bak
 kitty/base16-theme.conf
 
 nvim/lua/colorschemes.lua
+nvim/lazy-lock.json
 nvim/pack/
 nvim/secrets
 
