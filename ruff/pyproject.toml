@@ -1,0 +1,53 @@
+[tool.ruff]
+line-length = 79
+
+[tool.ruff.lint]
+extend-ignore = [
+  "E501",
+  "S101", # Use of `assert` detected
+  "FBT002", # NOTE: check possible implications
+  "A002",
+  "A003",
+  "RET504",
+  "TID252", # NOTE: check possible implications
+  "ARG", # NOTE: migrate # pylint: disable=unused-argument
+  "PLW2901", # NOTE: check possible implications
+  "TRY", # NOTE: check possible implications
+  "ERA001", # Found commented-out code
+]
+
+select = [
+  "E",   # pycodestyle (error)
+  "W",   # pycodestyle (warning)
+  "F",   # Pyflakes
+  "C90", # mccabe
+  "N",   # pep8-naming
+  "UP",  # pyupgrade
+  "S",   # flake8-bandit
+  "BLE", # flake8-blind-except
+  "FBT", # flake8-boolean-trap
+  "B",   # flake8-bugbear
+  "A",   # flake8-builtins
+  "COM", # flake8-commas
+  "C4",  # flake8-comprehensions
+  "DJ",  # flake8-django
+  "PIE", # flake8-pie
+  "RSE", # flake8-raise
+  "RET", # flake8-return
+  "SLF", # flake8-self
+  "SIM", # flake8-simplify
+  "TID", # flake8-tidy-imports
+  "ARG", # flake8-unused-arguments
+  # "PTH", # flake8-use-pathlib
+  "ERA",
+  # "PLR",
+  "PLW",
+  "TRY", # tryceratops
+]
+
+fixable = ["ALL"]
+unfixable = ["F401"] # never fix unused imports
+
+[tool.ruff.lint.mccabe]
+# Unlike Flake8, default to a complexity level of 10.
+max-complexity = 8
