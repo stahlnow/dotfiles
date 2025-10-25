@@ -70,27 +70,18 @@ vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost", "InsertEnter", "WinLeave"
 })
 
 --[[ ------------------------------------------------------------
- language specific autocommands
+ file type specific autocommands
 -- ------------------------------------------------------------]]
--- format on save using 'conform' plugin (https://github.com/stevearc/conform.nvim)
-vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = "*",
-	callback = function(args)
-		require("conform").format({ bufnr = args.buf })
-	end,
-})
-
 -- Restore default <CR> in quickfix / location list windows
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "qf" },
 	callback = function()
-		-- Make <CR> jump to entry in quickfix/location list
+		-- Make <CR> jump to entry in quickfix/location list (this overrides my defaulit mapping 'new-line' on <CR>)
 		vim.api.nvim_buf_set_keymap(0, "n", "<CR>", "<CR>", { noremap = true, silent = true })
 	end,
 })
 
 -- following lines define indentation
-
 vim.api.nvim_create_autocmd("Filetype", {
 	pattern = "python",
 	callback = function()

@@ -2,19 +2,20 @@
 vim.lsp.config("basedpyright", {
 	settings = {
 		basedpyright = {
+			disableOrganizeImports = true,
 			analysis = {
-				disableOrganizeImports = true,
+				ignore = { "*" }, -- using ruff
+				typeCheckingMode = "off", -- "off", "basic", "standard", "strict", "recommended", "all"
 				autoImportCompletions = false,
-				typeCheckingMode = "standard", -- basic
 				exclude = { "**/migrations", "**/__pycache__" },
 			},
 		},
-		-- python = {
-		--    analysis = {
-		--       -- Ignore all files for analysis to exclusively use Ruff for linting
-		--       ignore = { '*' },
-		--    },
-		-- },
+		python = {
+			analysis = {
+				ignore = { "*" }, -- using ruff
+				typeCheckingMode = "off", -- using mypy
+			},
+		},
 	},
 })
 vim.lsp.enable({ "basedpyright" })

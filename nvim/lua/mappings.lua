@@ -12,8 +12,6 @@ map("n", "q", "<c-V>", { noremap = true })
 -- paste over without overwriting register
 map("x", "p", "P", { noremap = true })
 
-map("n", "<c-a>", "gg<s-v>G", { noremap = true, desc = "Select all text" })
-
 -- double-<Esc> clear search highlights and all 'colored' words
 map("n", "<esc><esc>", function()
 	vim.cmd("nohl")
@@ -71,16 +69,4 @@ opts.desc = "Show documentation"
 map("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
 
 opts.desc = "See available code actions"
-map({ "n", "v" }, "<leader>ga", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
-
--- opts.desc = "Call 1st available code actions to [r]epair"
--- map({ "n", "v" }, "<leader>r", .... TODO
-
-opts.desc = "Smart rename"
-map("n", "<leader>gr", vim.lsp.buf.rename, opts) -- smart rename
-
-opts.desc = "Show refereces"
-map("n", "<leader>gR", vim.lsp.buf.references, opts) -- show references
-
-opts.desc = "Show type definitions"
-map("n", "<leader>gT", vim.lsp.buf.type_definition, opts) -- show type definitions
+map({ "n", "v" }, "<leader>r", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection

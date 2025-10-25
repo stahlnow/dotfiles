@@ -26,7 +26,22 @@ return {
 			-- NOTE: we explicitly enable plugins in lua/lsp/init
 			automatic_enable = false,
 
-			-- NOTE: auto install some servers
+			-- NOTE 1: this list does NOT include the 'manually' installed tools
+			-- via :MasonInstall, so check :Mason for installed tools
+
+			-- NOTE 2: auto install some servers USE CAREFULLY FOR THE FOLLOWING
+			-- REASON: Unexpected side effects when using auto-format on save (ie.
+			-- using the 'conform' plugin) can happen as all of the following
+			-- tools are available GLOBALLY for neovim (and not package.json based
+			-- as you would expect!). This can lead to the problem, that a
+			-- 'auto-format' is applied that is in conflict with repository-based
+			-- tools. For example: repository has eslint configured, but not
+			-- prettier. When prettier tool is installed here (globally),
+			-- 'conform' plugin applies 'prettier' default formatting, which in
+			-- term (may) conflict with eslint config.
+
+			-- TLDR; do not install prettier globally
+
 			ensure_installed = {
 				"jsonls",
 				"html",
