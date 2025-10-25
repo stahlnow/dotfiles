@@ -3,28 +3,28 @@
 -- Usage: :Mason
 -- registry: https://mason-registry.dev/registry/list
 return {
-	"mason-org/mason.nvim",
-	dependencies = {
-		"mason-org/mason-lspconfig.nvim",
-		"neovim/nvim-lspconfig",
-	},
-	lazy = false, -- eager load
-	config = function()
-		local mason = require("mason")
-		local masonlsp = require("mason-lspconfig")
+   "mason-org/mason.nvim",
+   dependencies = {
+      "mason-org/mason-lspconfig.nvim",
+      "neovim/nvim-lspconfig",
+   },
+   lazy = false, -- eager load
+   config = function()
+      local mason = require("mason")
+      local masonlsp = require("mason-lspconfig")
 
-		mason.setup()
+      mason.setup()
 
-		-- NOTE: most lsp configuration come from neovim/nvim-lspconfig plugin dependency
-		-- see: https://github.com/neovim/nvim-lspconfig
+      -- NOTE: most lsp configuration come from neovim/nvim-lspconfig plugin dependency
+      -- see: https://github.com/neovim/nvim-lspconfig
 
-		-- masonlsp helps auto-installing servers
-		-- and i keep masonlsp mainly for the few extra configs it has:
-		-- see https://github.com/mason-org/mason-lspconfig.nvim/tree/main/lua/mason-lspconfig/lsp
+      -- masonlsp helps auto-installing servers
+      -- and i keep masonlsp mainly for the few extra configs it has:
+      -- see https://github.com/mason-org/mason-lspconfig.nvim/tree/main/lua/mason-lspconfig/lsp
 
-		masonlsp.setup({
-			-- NOTE: we explicitly enable plugins in lua/lsp/init
-			automatic_enable = false,
+      masonlsp.setup({
+         -- NOTE: we explicitly enable plugins LATER in @lua/lsp/init
+         automatic_enable = false,
 
 			-- NOTE 1: this list does NOT include the 'manually' installed tools
 			-- via :MasonInstall, so check :Mason for installed tools
@@ -52,7 +52,6 @@ return {
 				"vue_ls",
 				"vtsls",
 				"lua_ls",
-				"gopls",
 				"eslint",
 			},
 		})
